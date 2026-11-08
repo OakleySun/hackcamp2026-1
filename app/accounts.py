@@ -92,6 +92,8 @@ def login(conn, email: str, password: str) -> dict:
                        (email.strip().lower(),)).fetchone()
     # Hash anyway when the email is unknown so response time doesn't reveal which emails exist.
     ok = check_password(password, row["password_hash"] if row else hash_password("x" * 8))
+    if row and row["password_hash"] == "google":
+        raise AuthError("this account signs in with Google")
     if not row or not ok:
         raise AuthError("wrong email or password")
     with conn:

@@ -18,6 +18,7 @@ import { Route as PulseRouteImport } from './routes/pulse'
 import { Route as SetupRouteImport } from './routes/setup'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SubscribeRouteImport } from './routes/subscribe'
+import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
 import { Route as EventsIdRouteImport } from './routes/events.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -65,6 +66,11 @@ const SubscribeRoute = SubscribeRouteImport.update({
   path: '/subscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventsIdRoute = EventsIdRouteImport.update({
   id: '/events/$id',
   path: '/events/$id',
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/setup': typeof SetupRoute
   '/signup': typeof SignupRoute
   '/subscribe': typeof SubscribeRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/events/$id': typeof EventsIdRoute
 }
 export interface FileRoutesByTo {
@@ -93,6 +100,7 @@ export interface FileRoutesByTo {
   '/setup': typeof SetupRoute
   '/signup': typeof SignupRoute
   '/subscribe': typeof SubscribeRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/events/$id': typeof EventsIdRoute
 }
 export interface FileRoutesById {
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   '/setup': typeof SetupRoute
   '/signup': typeof SignupRoute
   '/subscribe': typeof SubscribeRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/events/$id': typeof EventsIdRoute
 }
 export interface FileRouteTypes {
@@ -120,6 +129,7 @@ export interface FileRouteTypes {
     | '/setup'
     | '/signup'
     | '/subscribe'
+    | '/auth/callback'
     | '/events/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -132,6 +142,7 @@ export interface FileRouteTypes {
     | '/setup'
     | '/signup'
     | '/subscribe'
+    | '/auth/callback'
     | '/events/$id'
   id:
     | '__root__'
@@ -144,6 +155,7 @@ export interface FileRouteTypes {
     | '/setup'
     | '/signup'
     | '/subscribe'
+    | '/auth/callback'
     | '/events/$id'
   fileRoutesById: FileRoutesById
 }
@@ -157,6 +169,7 @@ export interface RootRouteChildren {
   SetupRoute: typeof SetupRoute
   SignupRoute: typeof SignupRoute
   SubscribeRoute: typeof SubscribeRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
   EventsIdRoute: typeof EventsIdRoute
 }
 
@@ -225,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/events/$id': {
       id: '/events/$id'
       path: '/events/$id'
@@ -245,6 +265,7 @@ const rootRouteChildren: RootRouteChildren = {
   SetupRoute: SetupRoute,
   SignupRoute: SignupRoute,
   SubscribeRoute: SubscribeRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
   EventsIdRoute: EventsIdRoute,
 }
 export const routeTree = rootRouteImport

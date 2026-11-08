@@ -74,6 +74,8 @@ type AuthState = {
   ready: boolean;
   signup: (email: string, password: string) => Promise<User>;
   login: (email: string, password: string) => Promise<User>;
+  /** Finish "Continue with Google": trade the one-time code from /auth/callback for a session. */
+  redeemGoogle: (code: string) => Promise<User>;
   logout: () => Promise<void>;
   saveProfile: (p: Profile) => Promise<User>;
 };
@@ -122,6 +124,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             authed(null, { method: "POST", body: JSON.stringify({ email, password }) }),
           ),
         ),
+      redeemGoogle: async (code) =>
+        start(
+          await request(
+            "/api/auth/google/redeem",
+            authed(null, { method: "POST", body: JSON.stringify({ code }) }),
+          ),
+        ),
       logout: async () => {
         await fetchLogout(token);
         writeToken(null);
@@ -142,6 +151,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
+
+/** Full-page navigation to the backend, which sends the browser on to Google's sign-in screen. */
+export const googleSignInUrl = (next = "/") =>
+  `${API_URL}/api/auth/google/start?next=${encodeURIComponent(next)}`;
+
+/** Whether the backend has Google sign-in configured (the button is hidden otherwise). */
+export const fetchAuthProviders = () => request<{ google: boolean }>("/api/auth/providers");
 
 async function fetchLogout(token: string | null) {
   // 204 has no body, so this can't go through request(); a failed logout still clears the browser.

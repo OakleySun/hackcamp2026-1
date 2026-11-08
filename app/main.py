@@ -1,18 +1,19 @@
 import hmac
 from contextlib import asynccontextmanager, closing
 from pathlib import Path
+from urllib.parse import urlencode
 
 import anyio
-from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
+from fastapi import Cookie, Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import AwareDatetime
 
-from . import accounts, config, db, enrichment, pulse, service, topic_enrichment
+from . import accounts, config, db, enrichment, oauth, pulse, service, topic_enrichment
 from .extract import ExtractionUnavailable
-from .models import (ClaimRequest, Credentials, IntakeRequest, ProfileRequest, ResolveRequest, ResultRequest,
-                     SubscribeRequest)
+from .models import (ClaimRequest, Credentials, GoogleRedeem, IntakeRequest, ProfileRequest, ResolveRequest,
+                     ResultRequest, SubscribeRequest)
 
 MAX_IMAGE_BYTES = 5 * 1024 * 1024
 
@@ -115,6 +116,51 @@ def login(body: Credentials, conn=Depends(get_conn)):
 @app.post("/api/auth/logout", status_code=204)
 def logout(token: str = Depends(_session_token), conn=Depends(get_conn)):
     accounts.logout(conn, token)
+
+
+@app.get("/api/auth/providers")
+def auth_providers():
+    """Which sign-in buttons the website should show."""
+    return {"google": oauth.enabled()}
+
+
+def _back_to_site(fragment: dict) -> RedirectResponse:
+    # The fragment never reaches a server, so the one-time code stays out of logs and Referer headers.
+    resp = RedirectResponse(oauth.frontend_url("/auth/callback") + "#" + urlencode(fragment), status_code=303)
+    resp.delete_cookie(oauth.COOKIE, path="/api/auth/google")
+    return resp
+
+
+@app.get("/api/auth/google/start")
+def google_start(next: str = "/", conn=Depends(get_conn)):
+    try:
+        url, state = oauth.start(conn, next)
+    except oauth.OAuthError as exc:
+        return _back_to_site({"error": str(exc)})
+    resp = RedirectResponse(url, status_code=303)
+    resp.set_cookie(oauth.COOKIE, state, max_age=oauth.STATE_MINUTES * 60, path="/api/auth/google",
+                    httponly=True, samesite="lax", secure=oauth.redirect_uri().startswith("https://"))
+    return resp
+
+
+@app.get("/api/auth/google/callback")
+def google_callback(state: str | None = None, code: str | None = None, error: str | None = None,
+                    quad_oauth_state: str | None = Cookie(default=None), conn=Depends(get_conn)):
+    if error:  # e.g. the user pressed Cancel on Google's screen
+        return _back_to_site({"error": "Google sign-in was cancelled."})
+    try:
+        login_code, next_path = oauth.finish(conn, state, code, quad_oauth_state)
+    except oauth.OAuthError as exc:
+        return _back_to_site({"error": str(exc)})
+    return _back_to_site({"code": login_code, "next": next_path})
+
+
+@app.post("/api/auth/google/redeem")
+def google_redeem(body: GoogleRedeem, conn=Depends(get_conn)):
+    try:
+        return oauth.redeem(conn, body.code)
+    except accounts.AuthError as exc:
+        raise HTTPException(401, str(exc))
 
 
 @app.get("/api/me")
