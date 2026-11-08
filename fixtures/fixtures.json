@@ -14,7 +14,7 @@
       "source_id": "src-direct-form",
       "external_id": "flyer-001",
       "source_url": "https://example.org/flyer/intro-to-git",
-      "caption": "Intro to Git workshop! Nov 12, 2026, 5–6 pm, Demo Hall 101. Free, beginners welcome. RSVP: https://example.org/rsvp/demo-intro-to-git",
+      "caption": "Intro to Git workshop! Nov 12, 2026, 5–6 pm, Demo Hall 101. Free, beginners welcome. Open to everyone. Free pizza and Git stickers! RSVP: https://example.org/rsvp/demo-intro-to-git",
       "expected": "one event, one new_event outbox row"
     },
     "B": {
@@ -35,15 +35,15 @@
       "source_id": "src-direct-form",
       "external_id": "flyer-002",
       "source_url": "https://example.org/flyer/intro-to-git-wk2",
-      "caption": "Intro to Git again! Nov 19, 2026, 5–6 pm, Demo Hall 101. Free, beginners welcome. Sign up: https://example.org/signup",
+      "caption": "Intro to Git again! Nov 19, 2026, 5–6 pm, Demo Hall 101. Free, beginners welcome. For 1st-year Computer Science students. Prize for the best first commit message! Sign up: https://example.org/signup",
       "expected": "separate occurrence with its own event_id"
     }
   },
   "candidates": {
-    "A": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-12", "local_start": "17:00", "local_end": "18:00", "venue": "Demo Hall 101", "cost_status": "free", "beginner_friendly": true, "topics": ["tech"], "rsvp_url": "https://example.org/rsvp/demo-intro-to-git"},
+    "A": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-12", "local_start": "17:00", "local_end": "18:00", "venue": "Demo Hall 101", "cost_status": "free", "beginner_friendly": true, "topics": ["tech"], "perks": ["free_food", "free_swag"], "audience": ["anyone"], "rsvp_url": "https://example.org/rsvp/demo-intro-to-git"},
     "B": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-12", "local_start": "17:00", "local_end": null, "venue": "Demo Hall 101", "cost_status": "free", "beginner_friendly": null, "topics": ["tech"], "rsvp_url": "https://example.org/rsvp/demo-intro-to-git"},
     "C": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-12", "local_start": "17:00", "local_end": null, "venue": "Demo Hall 204", "cost_status": "free", "beginner_friendly": true, "topics": ["tech"], "rsvp_url": "https://example.org/rsvp/demo-intro-to-git"},
-    "D": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-19", "local_start": "17:00", "local_end": "18:00", "venue": "Demo Hall 101", "cost_status": "free", "beginner_friendly": true, "topics": ["tech"], "rsvp_url": "https://example.org/signup"}
+    "D": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-19", "local_start": "17:00", "local_end": "18:00", "venue": "Demo Hall 101", "cost_status": "free", "beginner_friendly": true, "topics": ["tech"], "perks": ["prizes"], "audience": ["first_years", "cs_students"], "rsvp_url": "https://example.org/signup"}
   },
   "subscribers": [
     {"subscriber_id": "sub-1", "email": "student1@example.test", "topics": ["tech"], "want_free": true, "want_beginner": true, "after_4pm": true, "note": "matches A; gets 1 alert + 1 correction"},

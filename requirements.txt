@@ -5,6 +5,9 @@ email-validator
 jinja2
 python-multipart
 httpx
+beautifulsoup4>=4.12,<5
+icalendar>=6,<8
+recurring-ical-events>=3.8,<4
 python-dotenv
 google-genai
 tzdata

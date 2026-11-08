@@ -1,0 +1,7 @@
+httpx
+beautifulsoup4>=4.12,<5
+pydantic
+python-dotenv
+icalendar>=6,<8
+recurring-ical-events>=3.8,<4
+tzdata

@@ -12,13 +12,14 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
-from . import config, matching
+from . import config, matching, places
 from .extract import extract
 from .models import Candidate
 
 VAN = ZoneInfo("America/Vancouver")
 SNAP_FIELDS = ("title", "local_date", "local_start", "local_end", "venue",
-               "cost_status", "beginner_friendly", "topics", "rsvp_url")
+               "cost_status", "beginner_friendly", "topics", "perks", "audience", "rsvp_url")
+JSON_FIELDS = ("topics", "perks", "audience")
 CORRECTION_FIELDS = ("local_date", "local_start", "venue")
 LEASE_SECONDS = 120
 
@@ -93,7 +94,8 @@ def get_event(conn, event_id: str) -> dict | None:
     if not row:
         return None
     ev = dict(row)
-    ev["topics"] = json.loads(ev["topics"])
+    for f in JSON_FIELDS:
+        ev[f] = json.loads(ev[f])
     return ev
 
 
@@ -115,12 +117,13 @@ def create_event(conn, club_id: str, c: Candidate, ann_id: str, reviewer: str | 
     eid = new_id("evt")
     conn.execute(
         """INSERT INTO events (event_id, club_id, title, local_date, local_start, local_end, start_utc,
-                               venue, cost_status, beginner_friendly, topics, rsvp_url, provenance)
-           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                               venue, cost_status, beginner_friendly, topics, perks, audience, rsvp_url,
+                               provenance)
+           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
         (eid, club_id, c.title, c.local_date, c.local_start, c.local_end,
          start_utc(c.local_date, c.local_start), c.venue, c.cost_status,
          None if c.beginner_friendly is None else int(c.beginner_friendly),
-         json.dumps(c.topics), c.rsvp_url, json.dumps({"created_from": ann_id})))
+         json.dumps(c.topics), json.dumps(c.perks), json.dumps(c.audience), c.rsvp_url, json.dumps({"created_from": ann_id})))
     ev = get_event(conn, eid)
     conn.execute("INSERT INTO event_revisions (event_id, revision, snapshot, changed, reason, approver, created_at) "
                  "VALUES (?,?,?,?,?,?,?)", (eid, 1, json.dumps(snapshot(ev)), "{}", "created", reviewer, now()))
@@ -143,7 +146,8 @@ def update_event(conn, event_id: str, changes: dict, reason: str, approver: str 
     rev = ev["current_revision"] + 1
     sets = ", ".join(f"{f}=?" for f in changed)
     conn.execute(f"UPDATE events SET {sets}, current_revision=? WHERE event_id=?",
-                 [*[v["new"] for v in changed.values()], rev, event_id])
+                 [*[json.dumps(v["new"]) if f in JSON_FIELDS else v["new"] for f, v in changed.items()],
+                  rev, event_id])
     updated = get_event(conn, event_id)
     conn.execute("UPDATE events SET start_utc=? WHERE event_id=?",
                  (start_utc(updated["local_date"], updated["local_start"]), event_id))
@@ -163,10 +167,12 @@ def update_event(conn, event_id: str, changes: dict, reason: str, approver: str 
 
 # ---------------------------------------------------------------- intake
 
-def content_hash(caption: str | None, image: bytes | None) -> str:
+def content_hash(caption: str | None, image: bytes | None, candidate: Candidate | None = None) -> str:
     h = hashlib.sha256()
     h.update(matching.norm_text(caption).encode())
     h.update(image or b"")
+    if candidate is not None:
+        h.update(candidate.model_dump_json().encode())
     return h.hexdigest()
 
 
@@ -183,18 +189,21 @@ def resolve_club(conn, slug: str | None) -> str | None:
 
 def intake(conn, source_id: str, external_id: str, caption: str | None, source_url: str | None = None,
            image: bytes | None = None, mime: str | None = None,
-           observed_at: datetime | None = None) -> dict:
+           observed_at: datetime | None = None, candidate: Candidate | None = None) -> dict:
     src = conn.execute("SELECT * FROM sources WHERE source_id=?", (source_id,)).fetchone()
     if not src or not src["enabled"]:
         raise NotFound(f"unknown or disabled source {source_id}")
-    h = content_hash(caption, image)
+    if candidate is not None and (src["kind"] not in ("icalendar", "public_events") or image is not None):
+        raise ValueError("Structured candidates require a registered calendar/public-events source and no image")
+    h = content_hash(caption, image, candidate)
     detected_at = observed_at.astimezone(timezone.utc).isoformat(timespec="seconds") if observed_at else now()
     with conn:
         inserted = conn.execute(
             "INSERT INTO source_announcements (announcement_id, source_id, external_id, source_url, "
-            "content_hash, caption, detected_at) VALUES (?,?,?,?,?,?,?) "
+            "content_hash, caption, detected_at, candidate) VALUES (?,?,?,?,?,?,?,?) "
             "ON CONFLICT(source_id, external_id, content_hash) DO NOTHING",
-            (new_id("ann"), source_id, external_id, source_url, h, caption, detected_at)).rowcount
+            (new_id("ann"), source_id, external_id, source_url, h, caption, detected_at,
+             candidate.model_dump_json() if candidate is not None else None)).rowcount
         row = conn.execute("SELECT announcement_id, status, event_id FROM source_announcements "
                            "WHERE source_id=? AND external_id=? AND content_hash=?",
                            (source_id, external_id, h)).fetchone()
@@ -229,7 +238,10 @@ def process(conn, aid: str, image: bytes | None = None, mime: str | None = None)
     src = conn.execute("SELECT * FROM sources WHERE source_id=?", (ann["source_id"],)).fetchone()
     error = None
     try:
-        cand = extract(ann["caption"], image, mime)
+        if src["kind"] in ("icalendar", "public_events") and ann["candidate"]:
+            cand = Candidate.model_validate_json(ann["candidate"])
+        else:
+            cand = extract(ann["caption"], image, mime)
         if not cand.organizer_slug:
             cand.organizer_slug = src["club_id"]
         club_id = resolve_club(conn, cand.organizer_slug)
@@ -347,9 +359,16 @@ def public_event(conn, ev: dict) -> dict:
         "WHERE a.event_id=? AND a.source_url IS NOT NULL", (ev["event_id"],))]
     last = conn.execute("SELECT revision, changed, created_at FROM event_revisions WHERE event_id=? AND revision>1 "
                         "AND changed<>'{}' ORDER BY revision DESC LIMIT 1", (ev["event_id"],)).fetchone()
+    history = conn.execute("SELECT revision, changed, created_at FROM event_revisions WHERE event_id=? "
+                           "AND revision>1 AND changed<>'{}' ORDER BY revision", (ev["event_id"],)).fetchall()
+    club = conn.execute("SELECT display_name FROM clubs WHERE club_id=?", (ev["club_id"],)).fetchone()
     out = {k: ev[k] for k in ("event_id", "club_id", "current_revision", "state", *SNAP_FIELDS, "start_utc")}
+    out["club_name"] = club["display_name"] if club else ev["club_id"]
     out["beginner_friendly"] = None if ev["beginner_friendly"] is None else bool(ev["beginner_friendly"])
     out["sources"] = sources
+    out["place"] = places.locate(ev["venue"])  # {id, name, lat, lng} or None when not on the map
+    out["history"] = [{"revision": h["revision"], "changed": json.loads(h["changed"]), "confirmed_at": h["created_at"]}
+                      for h in history]
     out["unknown_fields"] = [f for f in ("local_start", "local_end", "venue", "rsvp_url") if ev[f] is None]
     out["latest_update"] = ({"revision": last["revision"], "changed": json.loads(last["changed"]),
                              "confirmed_at": last["created_at"]} if last else None)
@@ -463,7 +482,9 @@ def _when(date: str | None, start: str | None) -> str:
 def build_message(conn, event_id: str, revision: int, kind: str) -> dict:
     rev = _revision(conn, event_id, revision)
     snap, changed = json.loads(rev["snapshot"]), json.loads(rev["changed"])
-    url = f"{config.get('APP_BASE_URL', 'http://127.0.0.1:8000')}/events/{event_id}"
+    # Event pages live in the Quad frontend (frontend/); APP_BASE_URL stays the API origin.
+    base = config.get("FRONTEND_BASE_URL") or config.get("APP_BASE_URL", "http://127.0.0.1:8000")
+    url = f"{base.rstrip('/')}/events/{event_id}"
     when = _when(snap["local_date"], snap["local_start"])
     if kind == "new_event":
         traits = []

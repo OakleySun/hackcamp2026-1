@@ -1,0 +1,15 @@
+{
+  "computer_id": "1667005f-7f99-4cb5-aaf6-94a4b72c1c05",
+  "external_user_id": "club-alerts-monitor-instagram",
+  "name": "club-alerts-instagram",
+  "os": "linux",
+  "intended_agent_id": "64d4de41-90f6-4bf3-8a1f-56e42e18d7d0",
+  "profile_directory": "/home/desk/.config/chromium",
+  "login_url": "https://www.instagram.com/accounts/login/",
+  "login_verified_at_utc": "2026-11-08T07:06:32Z",
+  "club_post_caption_access_verified": true,
+  "sleep_wake_session_verified": true,
+  "last_confirmed_status": "sleeping",
+  "instagram_monitoring_enabled": false,
+  "note": "Owner login and CSSS post caption access verified; login survived a sleep/wake cycle. Computer left asleep. Reuse this computer and profile; do not create another computer per check. Session credentials stay on its disk. Scheduled Instagram intake is not implemented yet."
+}

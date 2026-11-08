@@ -3,11 +3,13 @@ from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.concurrency import run_in_threadpool
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import AwareDatetime
 
-from . import config, db, service
+from . import accounts, config, db, service
 from .extract import ExtractionUnavailable
-from .models import ClaimRequest, IntakeRequest, ResolveRequest, ResultRequest, SubscribeRequest
+from .models import (ClaimRequest, Credentials, IntakeRequest, ProfileRequest, ResolveRequest, ResultRequest,
+                     SubscribeRequest)
 
 MAX_IMAGE_BYTES = 5 * 1024 * 1024
 
@@ -21,6 +23,16 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="UBC Club Alerts API", lifespan=lifespan)
+
+# The Quad frontend (frontend/) runs on its own origin and calls the public API from the browser.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[o.strip() for o in config.get(
+        "CORS_ORIGINS", "http://localhost:8080,http://127.0.0.1:8080,http://localhost:3000,http://localhost:5173",
+    ).split(",") if o.strip()],
+    allow_methods=["GET", "POST", "PUT"],
+    allow_headers=["Content-Type", "Authorization"],
+)
 
 
 def get_conn():
@@ -57,6 +69,52 @@ def _run(fn, *args, **kwargs):
         raise HTTPException(409, str(exc))
     except ValueError as exc:
         raise HTTPException(422, str(exc))
+
+
+# ------------------------------------------------------------ accounts
+
+def _session_token(authorization: str = Header(default="")) -> str:
+    return authorization.removeprefix("Bearer ").strip()
+
+
+def current_user(token: str = Depends(_session_token), conn=Depends(get_conn)) -> dict:
+    try:
+        return accounts.user_for_token(conn, token)
+    except accounts.AuthError as exc:
+        raise HTTPException(401, str(exc))
+
+
+@app.post("/api/auth/signup", status_code=201)
+def signup(body: Credentials, conn=Depends(get_conn)):
+    try:
+        return accounts.signup(conn, body.email, body.password)
+    except accounts.EmailTaken:
+        raise HTTPException(409, "an account with this email already exists")
+    except ValueError as exc:
+        raise HTTPException(422, str(exc))
+
+
+@app.post("/api/auth/login")
+def login(body: Credentials, conn=Depends(get_conn)):
+    try:
+        return accounts.login(conn, body.email, body.password)
+    except accounts.AuthError as exc:
+        raise HTTPException(401, str(exc))
+
+
+@app.post("/api/auth/logout", status_code=204)
+def logout(token: str = Depends(_session_token), conn=Depends(get_conn)):
+    accounts.logout(conn, token)
+
+
+@app.get("/api/me")
+def me(user: dict = Depends(current_user)):
+    return user
+
+
+@app.put("/api/me/profile")
+def save_profile(body: ProfileRequest, user: dict = Depends(current_user), conn=Depends(get_conn)):
+    return _run(accounts.save_profile, conn, user["user_id"], body)
 
 
 # ------------------------------------------------------------ public
@@ -117,7 +175,7 @@ def manage(token: str, opt_out: bool = True, conn=Depends(get_conn)):
 @app.post("/api/intake", status_code=202, dependencies=[Depends(require_source)])
 def intake(body: IntakeRequest, conn=Depends(get_conn)):
     return _run(service.intake, conn, body.source_id, body.external_id, body.caption, body.source_url,
-                observed_at=body.observed_at)
+                observed_at=body.observed_at, candidate=body.candidate)
 
 
 @app.post("/api/intake/upload", status_code=202, dependencies=[Depends(require_source)])

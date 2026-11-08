@@ -257,7 +257,9 @@ COMMENT 'Headline numbers for the dashboard'
 AS
 SELECT
   (SELECT count(*) FROM club_alerts_bronze.source_announcements) AS posts_received,
-  (SELECT count(*) FROM club_alerts_bronze.source_announcements WHERE source_id = 'src-maritime-feed') AS found_by_maritime_agent,
+  -- Everything except hand submissions and the fixture demo feed was found by the Maritime agent
+  (SELECT count(*) FROM club_alerts_bronze.source_announcements
+   WHERE source_id NOT IN ('src-direct-form', 'src-demo-feed')) AS found_by_maritime_agent,
   (SELECT count(*) FROM club_alerts_gold.match_judgements WHERE same_event) AS duplicates_caught_by_ai,
   (SELECT count(*) FROM club_alerts_gold.match_judgements WHERE NOT same_event) AS pairs_kept_separate,
   (SELECT count(*) FROM club_alerts_bronze.event_revisions WHERE revision > 1) AS confirmed_changes,

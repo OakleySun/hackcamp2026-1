@@ -30,6 +30,8 @@ CREATE TABLE IF NOT EXISTS events (
   cost_status      TEXT NOT NULL DEFAULT 'unknown' CHECK (cost_status IN ('free','paid','unknown')),
   beginner_friendly INTEGER,                  -- 1 / 0 / NULL (unknown)
   topics           TEXT NOT NULL DEFAULT '[]',
+  perks            TEXT NOT NULL DEFAULT '[]', -- JSON array: free_food | free_swag | prizes
+  audience         TEXT NOT NULL DEFAULT '[]', -- JSON array of extract.AUDIENCES; [] = not stated
   rsvp_url         TEXT,
   provenance       TEXT NOT NULL DEFAULT '{}' -- JSON: field -> source_id + evidence
 );
@@ -129,4 +131,26 @@ CREATE TABLE IF NOT EXISTS deliveries (
   claim_expires  TEXT,
   provider_msg_id TEXT,
   UNIQUE (subscriber_id, event_id, revision, kind)
+);
+
+-- Student accounts (Quad frontend). Profile fields are optional except where the setup flow asks.
+CREATE TABLE IF NOT EXISTS users (
+  user_id        TEXT PRIMARY KEY,
+  email          TEXT NOT NULL UNIQUE,
+  password_hash  TEXT NOT NULL,              -- scrypt$<salt hex>$<hash hex>
+  created_at     TEXT NOT NULL,
+  onboarded_at   TEXT,                       -- set when the setup flow is finished
+  birthday       TEXT,                       -- YYYY-MM-DD
+  major          TEXT,
+  gender         TEXT,                       -- see models.GENDERS
+  gender_detail  TEXT,                       -- free text when gender = 'self-describe'
+  interests      TEXT NOT NULL DEFAULT '[]', -- JSON array of topic slugs
+  hobbies        TEXT NOT NULL DEFAULT '[]'  -- JSON array of short strings
+);
+
+CREATE TABLE IF NOT EXISTS sessions (
+  token_hash  TEXT PRIMARY KEY,              -- sha256 of the bearer token; the token itself is never stored
+  user_id     TEXT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+  created_at  TEXT NOT NULL,
+  expires_at  TEXT NOT NULL
 );
