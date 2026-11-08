@@ -1,0 +1,52 @@
+{
+  "club": {
+    "club_id": "demo-campus-coding-club",
+    "display_name": "Demo Campus Coding Club",
+    "aliases": ["DCCC", "Demo Coding Club"]
+  },
+  "sources": [
+    {"source_id": "src-direct-form", "club_id": "demo-campus-coding-club", "kind": "direct_form"},
+    {"source_id": "src-demo-feed",   "club_id": "demo-campus-coding-club", "kind": "demo_feed"}
+  ],
+  "announcements": {
+    "A": {
+      "source_id": "src-direct-form",
+      "external_id": "flyer-001",
+      "source_url": "https://example.org/flyer/intro-to-git",
+      "caption": "Intro to Git workshop! Nov 12, 5pm, Demo Hall 101. Free, beginners welcome. RSVP: https://example.org/rsvp/demo-intro-to-git",
+      "expected": "one event, one new_event outbox row"
+    },
+    "B": {
+      "source_id": "src-demo-feed",
+      "external_id": "mirror-001",
+      "source_url": "https://example.org/feed/intro-to-git",
+      "caption": "Learn Git with us - Intro to Git, Thursday Nov 12 at 5 PM in Demo Hall 101. Free. RSVP https://example.org/rsvp/demo-intro-to-git",
+      "expected": "linked to A's event, source added, NO new alert"
+    },
+    "C": {
+      "source_id": "src-direct-form",
+      "external_id": "flyer-001",
+      "source_url": "https://example.org/flyer/intro-to-git",
+      "caption": "ROOM CHANGE: Intro to Git, Nov 12 5pm now in Demo Hall 204. RSVP: https://example.org/rsvp/demo-intro-to-git",
+      "expected": "review item first; after confirm, revision 2 and ONE correction"
+    },
+    "D": {
+      "source_id": "src-direct-form",
+      "external_id": "flyer-002",
+      "source_url": "https://example.org/flyer/intro-to-git-wk2",
+      "caption": "Intro to Git again! Nov 19, 5pm, Demo Hall 101. Free, beginners welcome. Sign up: https://example.org/signup",
+      "expected": "separate occurrence with its own event_id"
+    }
+  },
+  "candidates": {
+    "A": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-12", "local_start": "17:00", "local_end": "18:00", "venue": "Demo Hall 101", "cost_status": "free", "beginner_friendly": true, "topics": ["tech"], "rsvp_url": "https://example.org/rsvp/demo-intro-to-git"},
+    "B": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-12", "local_start": "17:00", "local_end": null, "venue": "Demo Hall 101", "cost_status": "free", "beginner_friendly": null, "topics": ["tech"], "rsvp_url": "https://example.org/rsvp/demo-intro-to-git"},
+    "C": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-12", "local_start": "17:00", "local_end": null, "venue": "Demo Hall 204", "cost_status": "free", "beginner_friendly": true, "topics": ["tech"], "rsvp_url": "https://example.org/rsvp/demo-intro-to-git"},
+    "D": {"organizer_slug": "demo-campus-coding-club", "title": "Intro to Git", "local_date": "2026-11-19", "local_start": "17:00", "local_end": "18:00", "venue": "Demo Hall 101", "cost_status": "free", "beginner_friendly": true, "topics": ["tech"], "rsvp_url": "https://example.org/signup"}
+  },
+  "subscribers": [
+    {"subscriber_id": "sub-1", "email": "student1@example.test", "topics": ["tech"], "want_free": true, "want_beginner": true, "after_4pm": true, "note": "matches A; gets 1 alert + 1 correction"},
+    {"subscriber_id": "sub-2", "email": "student2@example.test", "topics": ["music"], "want_free": false, "want_beginner": false, "after_4pm": false, "note": "different topic; gets 0 alerts"},
+    {"subscriber_id": "sub-3", "email": "student3@example.test", "topics": ["tech"], "want_free": true, "want_beginner": true, "after_4pm": true, "note": "unsubscribes after the first alert; gets no correction"}
+  ]
+}

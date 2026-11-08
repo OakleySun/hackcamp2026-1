@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+email-validator
+jinja2
+python-multipart
+httpx
+python-dotenv
+google-genai
+tzdata
+pytest
