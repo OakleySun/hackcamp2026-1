@@ -13,28 +13,28 @@
       "source_id": "src-direct-form",
       "external_id": "flyer-001",
       "source_url": "https://example.org/flyer/intro-to-git",
-      "caption": "Intro to Git workshop! Nov 12, 5pm, Demo Hall 101. Free, beginners welcome. RSVP: https://example.org/rsvp/demo-intro-to-git",
+      "caption": "Intro to Git workshop! Nov 12, 2026, 5–6 pm, Demo Hall 101. Free, beginners welcome. RSVP: https://example.org/rsvp/demo-intro-to-git",
       "expected": "one event, one new_event outbox row"
     },
     "B": {
       "source_id": "src-demo-feed",
       "external_id": "mirror-001",
       "source_url": "https://example.org/feed/intro-to-git",
-      "caption": "Learn Git with us - Intro to Git, Thursday Nov 12 at 5 PM in Demo Hall 101. Free. RSVP https://example.org/rsvp/demo-intro-to-git",
+      "caption": "Learn Git with us - Intro to Git, Thursday Nov 12, 2026 at 5 PM in Demo Hall 101. Free. RSVP https://example.org/rsvp/demo-intro-to-git",
       "expected": "linked to A's event, source added, NO new alert"
     },
     "C": {
       "source_id": "src-direct-form",
       "external_id": "flyer-001",
       "source_url": "https://example.org/flyer/intro-to-git",
-      "caption": "ROOM CHANGE: Intro to Git, Nov 12 5pm now in Demo Hall 204. RSVP: https://example.org/rsvp/demo-intro-to-git",
+      "caption": "ROOM CHANGE: Intro to Git, Nov 12, 2026 at 5 PM, now in Demo Hall 204. RSVP: https://example.org/rsvp/demo-intro-to-git",
       "expected": "review item first; after confirm, revision 2 and ONE correction"
     },
     "D": {
       "source_id": "src-direct-form",
       "external_id": "flyer-002",
       "source_url": "https://example.org/flyer/intro-to-git-wk2",
-      "caption": "Intro to Git again! Nov 19, 5pm, Demo Hall 101. Free, beginners welcome. Sign up: https://example.org/signup",
+      "caption": "Intro to Git again! Nov 19, 2026, 5–6 pm, Demo Hall 101. Free, beginners welcome. Sign up: https://example.org/signup",
       "expected": "separate occurrence with its own event_id"
     }
   },

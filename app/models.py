@@ -1,6 +1,6 @@
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import AwareDatetime, BaseModel, Field
 
 
 class Evidence(BaseModel):
@@ -28,7 +28,7 @@ class IntakeRequest(BaseModel):
     source_id: str
     external_id: str
     source_url: Optional[str] = None
-    observed_at: Optional[str] = None
+    observed_at: Optional[AwareDatetime] = None
     caption: Optional[str] = None
 
 

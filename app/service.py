@@ -139,44 +139,52 @@ def resolve_club(conn, slug: str | None) -> str | None:
 
 
 def intake(conn, source_id: str, external_id: str, caption: str | None, source_url: str | None = None,
-           image: bytes | None = None, mime: str | None = None) -> dict:
+           image: bytes | None = None, mime: str | None = None,
+           observed_at: datetime | None = None) -> dict:
     src = conn.execute("SELECT * FROM sources WHERE source_id=?", (source_id,)).fetchone()
     if not src or not src["enabled"]:
         raise NotFound(f"unknown or disabled source {source_id}")
     h = content_hash(caption, image)
-    row = conn.execute("SELECT announcement_id, status, event_id FROM source_announcements "
-                       "WHERE source_id=? AND external_id=? AND content_hash=?",
-                       (source_id, external_id, h)).fetchone()
-    if row:  # unchanged retry: return what already exists
-        return {"announcement_id": row["announcement_id"], "state": row["status"],
-                "event_id": row["event_id"], "duplicate": True}
-    aid = new_id("ann")
+    detected_at = observed_at.astimezone(timezone.utc).isoformat(timespec="seconds") if observed_at else now()
     with conn:
         conn.execute("INSERT INTO source_announcements (announcement_id, source_id, external_id, source_url, "
-                     "content_hash, caption, detected_at) VALUES (?,?,?,?,?,?,?)",
-                     (aid, source_id, external_id, source_url, h, caption, now()))
+                     "content_hash, caption, detected_at) VALUES (?,?,?,?,?,?,?) "
+                     "ON CONFLICT(source_id, external_id, content_hash) DO NOTHING",
+                     (new_id("ann"), source_id, external_id, source_url, h, caption, detected_at))
+        row = conn.execute("SELECT announcement_id, status, event_id FROM source_announcements "
+                           "WHERE source_id=? AND external_id=? AND content_hash=?",
+                           (source_id, external_id, h)).fetchone()
         conn.execute("UPDATE sources SET last_success_at=? WHERE source_id=?", (now(), source_id))
-    return process(conn, aid, image, mime)
+    if row["status"] != "pending":
+        return _duplicate(row)
+    return process(conn, row["announcement_id"], image, mime)
+
+
+def _duplicate(row) -> dict:
+    return {"announcement_id": row["announcement_id"], "state": row["status"],
+            "event_id": row["event_id"], "duplicate": True}
 
 
 def _review(conn, aid: str, reason: str, candidate_ids=None, diff=None, expected_revision=None,
             candidate: Candidate | None = None) -> dict:
     rid = new_id("rev")
-    with conn:
-        conn.execute("UPDATE source_announcements SET status='review', error=?, candidate=COALESCE(?, candidate) "
-                     "WHERE announcement_id=?",
-                     (reason, candidate.model_dump_json() if candidate else None, aid))
-        conn.execute("INSERT INTO review_items (review_id, announcement_id, candidate_ids, expected_revision, "
-                     "field_diff, created_at) VALUES (?,?,?,?,?,?)",
-                     (rid, aid, json.dumps(candidate_ids or []), expected_revision, json.dumps(diff or {}), now()))
+    conn.execute("UPDATE source_announcements SET status='review', error=?, candidate=COALESCE(?, candidate) "
+                 "WHERE announcement_id=?",
+                 (reason, candidate.model_dump_json() if candidate else None, aid))
+    conn.execute("INSERT INTO review_items (review_id, announcement_id, candidate_ids, expected_revision, "
+                 "field_diff, created_at) VALUES (?,?,?,?,?,?)",
+                 (rid, aid, json.dumps(candidate_ids or []), expected_revision, json.dumps(diff or {}), now()))
     return {"announcement_id": aid, "state": "review", "review_id": rid, "reason": reason, "duplicate": False}
 
 
 def process(conn, aid: str, image: bytes | None = None, mime: str | None = None) -> dict:
     ann = conn.execute("SELECT * FROM source_announcements WHERE announcement_id=?", (aid,)).fetchone()
     src = conn.execute("SELECT * FROM sources WHERE source_id=?", (ann["source_id"],)).fetchone()
+    error = None
     try:
         cand = extract(ann["caption"], image, mime)
+        if not cand.organizer_slug:
+            cand.organizer_slug = src["club_id"]
         club_id = resolve_club(conn, cand.organizer_slug)
         problems = []
         if not club_id:
@@ -188,27 +196,41 @@ def process(conn, aid: str, image: bytes | None = None, mime: str | None = None)
         if not cand.local_date:
             problems.append("missing date")
         else:
-            datetime.strptime(cand.local_date, "%Y-%m-%d")
+            cand.local_date = datetime.strptime(cand.local_date, "%Y-%m-%d").date().isoformat()
         if cand.local_start:
-            datetime.strptime(cand.local_start, "%H:%M")
+            cand.local_start = datetime.strptime(cand.local_start, "%H:%M").strftime("%H:%M")
+        if cand.local_end:
+            cand.local_end = datetime.strptime(cand.local_end, "%H:%M").strftime("%H:%M")
         if problems:
             raise ValueError("; ".join(problems))
-    except Exception as exc:  # extraction or validation failure goes to a human
-        return _review(conn, aid, f"needs review: {exc}")
+    except ValueError as exc:
+        error = f"needs review: {exc}"
 
-    prior = conn.execute("SELECT event_id FROM source_announcements WHERE source_id=? AND external_id=? "
-                         "AND event_id IS NOT NULL AND announcement_id<>? ORDER BY detected_at DESC LIMIT 1",
-                         (ann["source_id"], ann["external_id"], aid)).fetchone()
-    events = [get_event(conn, r["event_id"]) for r in conn.execute(
-        "SELECT event_id FROM events WHERE club_id=? AND state='published'", (club_id,))]
-    d = matching.decide(events, cand, prior["event_id"] if prior else None)
-
-    if d["kind"] == "review":
-        first = d["event_id"] or (d["candidate_ids"][0] if d["candidate_ids"] else None)
-        ev = get_event(conn, first) if first else None
-        return _review(conn, aid, d["reason"], d["candidate_ids"], d["conflicts"],
-                       ev["current_revision"] if ev else None, cand)
     with conn:
+        # The provider call runs outside the write transaction. Re-check after acquiring the
+        # lock so overlapping source checks cannot publish the same pending row twice.
+        conn.execute("BEGIN IMMEDIATE")
+        current = conn.execute("SELECT announcement_id, status, event_id FROM source_announcements "
+                               "WHERE announcement_id=?", (aid,)).fetchone()
+        if current is None:
+            raise NotFound(aid)
+        if current["status"] != "pending":
+            return _duplicate(current)
+        if error:
+            return _review(conn, aid, error)
+
+        prior = conn.execute("SELECT event_id FROM source_announcements WHERE source_id=? AND external_id=? "
+                             "AND event_id IS NOT NULL AND announcement_id<>? ORDER BY detected_at DESC LIMIT 1",
+                             (ann["source_id"], ann["external_id"], aid)).fetchone()
+        events = [get_event(conn, r["event_id"]) for r in conn.execute(
+            "SELECT event_id FROM events WHERE club_id=? AND state='published'", (club_id,))]
+        d = matching.decide(events, cand, prior["event_id"] if prior else None)
+        if d["kind"] == "review":
+            first = d["event_id"] or (d["candidate_ids"][0] if d["candidate_ids"] else None)
+            ev = get_event(conn, first) if first else None
+            return _review(conn, aid, d["reason"], d["candidate_ids"], d["conflicts"],
+                           ev["current_revision"] if ev else None, cand)
+
         conn.execute("UPDATE source_announcements SET candidate=?, evidence=?, error=NULL WHERE announcement_id=?",
                      (cand.model_dump_json(), json.dumps([e.model_dump() for e in cand.evidence]), aid))
         if d["kind"] == "new":

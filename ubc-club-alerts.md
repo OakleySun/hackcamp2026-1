@@ -137,8 +137,8 @@ Keep the database and fixture defaults in the local profile. The example config 
 
 1. Implement an authenticated intake route for source connectors and an organizer form for direct submissions. Accept text and JPEG or PNG images up to a documented size cap such as 5 MB. Validate decoded file type, size, club scope, and allowed source links. Keep the uploaded image private to the review workflow unless you have permission to republish it.
 2. Normalize the source ID and calculate a content hash from the stable content fields and image bytes, excluding polling timestamps. Uniquely identify a version by `(source_id, external_id, content_hash)`. An unchanged retry returns the existing ID. A revised post creates a new version and keeps its previous evidence.
-3. Return `202 Accepted` after persisting an intake job. Have the worker resume pending jobs, including interrupted extraction. Route permission errors, unsupported images and repeated failures to review with a reason.
-4. For a flyer or caption, call Gemini with image bytes plus text and a small structured-output schema. Pick an image-capable model in your project and set it via `GEMINI_MODEL`. Allow nulls for unknown fields. Constrain `topics` to the slugs in `fixtures/topics.json` as an enum, with one or two per event. Ask for short source excerpts for date, time, venue, cost and eligibility. Treat flyer text as source material and run the model with no action tools. [Gemini structured output](https://ai.google.dev/gemini-api/docs/structured-output?lang=rest) · [Gemini image input](https://ai.google.dev/gemini-api/docs/image-understanding?hl=en)
+3. Intake saves the announcement before calling Gemini and returns `202 Accepted` with the result. A provider failure returns `503` and leaves the announcement pending. Retrying the same payload resumes it. An unusable extraction goes to the review queue with a reason.
+4. Set `GEMINI_API_KEY` on the FastAPI server and restart it. `GEMINI_MODEL` defaults to `gemini-3.8-flash` and can be set to another model that supports images and structured output. Upload a JPEG or PNG at `POST /api/intake/upload` with a bearer `SOURCE_INGEST_TOKEN` and form fields `source_id`, `external_id`, `source_url`, `caption` and `flyer`. The app calls Gemini with the image and caption and filters topics to the supported slugs. In demo mode without a key, the known fixture captions use local fixture data. [Gemini structured output](https://ai.google.dev/gemini-api/docs/structured-output?lang=rest) · [Gemini image input](https://ai.google.dev/gemini-api/docs/image-understanding?hl=en) · [Gemini models](https://ai.google.dev/gemini-api/docs/models?hl=en)
 5. Validate parsed values in Pydantic and apply server rules. Require a recognized organizer, title and known local date to publish. A date-only listing can show **Time TBD** and stays out of the alert workflow until a valid start time is available. Use `America/Vancouver` for local dates and time filters and store known instants in UTC. Keep time zone data current and route ambiguous or contradictory times to review.
 6. Use `cost_status` values `free`, `paid`, and `unknown`. Mark an event free for the general audience only with explicit evidence. Use `true`, `false`, or `null` for `beginner_friendly`. Leave absent venue, end time, cost, and RSVP URL blank. Only accept RSVP URLs found in the source or supplied by the organizer, and offer **View source** when the RSVP link is missing.
 7. For structured calendar listings, parse explicit page fields first. Send unclear records to the same validator and review path. Use one intake contract regardless of source.
@@ -230,17 +230,39 @@ The feed answers two questions: what is this student most likely to want, and wh
 
 ### Step 6 — Deploy a Maritime source-monitoring agent
 
-1. Add a small source-check script that fetches only configured sources with permitted access. Start with a team-owned, hosted fixture feed. Check AMS access requirements and use an available supported feed or permitted pages for real monitoring. Use manual intake when automated access is unavailable.
-2. Have the script emit one structured record per listing with the source ID, external listing ID, canonical URL, observed time, and caption or attachment reference. Save run status, counts, and errors. Distinguish a failed fetch from an empty result. A disappeared listing is a review signal and does not automatically cancel an event.
-3. Deploy a Maritime agent template with terminal tools. Put the checker script and read-only source list in its workspace. Configure the HTTPS app endpoint and a credential scoped to intake. Give the agent the fixed command to run and require a run summary with detected, submitted, unchanged, and failed counts. Page content stays data for the checker and cannot set commands or destinations. [Maritime agent frameworks](https://maritime.sh/docs/frameworks)
-4. Run it manually against the demo feed and verify the intake request reaches the app. Configure a Maritime platform trigger for each 15-minute check. The platform trigger can wake an idle agent. Replace `club-alerts-monitor` with the actual agent ID if it differs. [Maritime triggers and schedules](https://maritime.sh/docs/triggers)
+1. Start FastAPI in `APP_MODE=demo` with a non-default `SOURCE_INGEST_TOKEN`. The demo feed at `/demo/maritime-feed` serves the fictional Intro to Git event. From a second terminal, run the checker below. A second run against the same feed should report one unchanged listing.
 
 ```powershell
-maritime triggers create club-alerts-monitor --type cron --cron "*/15 * * * *" --prompt "Run the approved club source-check script and report detected, submitted, unchanged and failed counts."
+.\.venv\Scripts\python.exe -m scripts.check_sources
+$env:MARITIME_FEED_URL = "http://127.0.0.1:8000/demo/maritime-feed?room_change=true"
+.\.venv\Scripts\python.exe -m scripts.check_sources
+```
+
+   The room-change feed keeps the listing ID and submits the new venue for review. The checker reports checked, submitted, unchanged, review, and failed counts. A failed check exits with a nonzero status.
+
+2. For a real source, configure an approved HTTPS JSON feed. Return `{"events": [...]}` with a stable `external_id`, `source_url` and `caption` or optional `flyer_url` per listing. Register its source ID in the app's `sources` table and scope it to a known club where appropriate. Host flyer images on the feed's origin. The checker sends a flyer to the image intake endpoint when present and keeps the app token out of feed and image requests. Check AMS access requirements before adding an AMS adapter.
+3. Deploy a Maritime template with terminal access. From your authenticated Maritime CLI, upload the checker to the agent, using the ID from its overview. [Maritime CLI reference](https://maritime.sh/docs/cli)
+
+```powershell
+maritime files upload AGENT_ID .\scripts\check_sources.py --dest-dir /data/club-alerts
+```
+
+4. In the agent's environment, set `APP_BASE_URL` to the deployed FastAPI HTTPS origin, `MARITIME_FEED_URL` to the approved feed, and `MARITIME_SOURCE_ID` to the registered source. Store the same intake credential used by FastAPI as the agent's `SOURCE_INGEST_TOKEN` secret. Gemini credentials stay on FastAPI. In the agent terminal, create a virtual environment and run the checker once.
+
+```bash
+python3 -m venv /data/club-alerts/.venv
+/data/club-alerts/.venv/bin/python -m pip install httpx pydantic python-dotenv
+/data/club-alerts/.venv/bin/python /data/club-alerts/check_sources.py
+```
+
+5. After the manual check succeeds, register a Maritime platform trigger. Use the deployed agent name in place of `club-alerts-monitor` if yours differs. The trigger wakes the agent on schedule even when idle. [Maritime triggers and schedules](https://maritime.sh/docs/triggers)
+
+```powershell
+maritime triggers create club-alerts-monitor --type cron --cron "*/15 * * * *" --prompt "Run /data/club-alerts/.venv/bin/python /data/club-alerts/check_sources.py once. Report its summary and exit status."
 maritime triggers list club-alerts-monitor
 ```
 
-5. Add a new fixture listing to the hosted feed. Capture one real scheduled run and keep its timestamp and corresponding intake record for judging. Keep a manual **Run check** path for a deterministic live demo.
+6. Capture a real scheduled run with its timestamp and corresponding intake record. For the room-change demo, switch the approved feed to the changed fixture or update its listing with the same external ID. Confirm the change in the existing review flow.
 
 **Exit check** — A real Maritime run discovers a labeled demo listing. Rechecking the same source yields no additional event or alert. The team can show the deployed agent and its run history.
 
