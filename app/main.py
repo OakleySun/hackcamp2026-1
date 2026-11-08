@@ -117,7 +117,7 @@ def manage(token: str, opt_out: bool = True, conn=Depends(get_conn)):
 @app.post("/api/intake", status_code=202, dependencies=[Depends(require_source)])
 def intake(body: IntakeRequest, conn=Depends(get_conn)):
     return _run(service.intake, conn, body.source_id, body.external_id, body.caption, body.source_url,
-                observed_at=body.observed_at)
+                observed_at=body.observed_at, candidate=body.candidate)
 
 
 @app.post("/api/intake/upload", status_code=202, dependencies=[Depends(require_source)])

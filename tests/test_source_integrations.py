@@ -8,12 +8,26 @@ from fastapi.testclient import TestClient
 from google import genai
 from google.genai import types
 
+from app import db
 from app.main import app
 from scripts.check_sources import check_source
 
 FLYER = base64.b64decode(
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a53sAAAAASUVORK5CYII="
 )
+
+
+def test_production_startup_does_not_seed_fixtures(tmp_path, monkeypatch):
+    monkeypatch.setenv("APP_MODE", "production")
+    monkeypatch.setenv("DATABASE_PATH", str(tmp_path / "production.db"))
+
+    with TestClient(app):
+        conn = db.connect()
+        try:
+            for table in ("clubs", "sources", "subscriptions"):
+                assert conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0] == 0
+        finally:
+            conn.close()
 
 
 def test_monitored_flyer_retry_duplicate_and_room_change(tmp_path, monkeypatch):

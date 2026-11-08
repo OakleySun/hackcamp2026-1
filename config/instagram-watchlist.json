@@ -1,0 +1,19 @@
+{
+  "mode": "manual_only",
+  "note": "Official account links verified through club or university pages. No authenticated Instagram integration or automatic post ingestion is configured.",
+  "accounts": [
+    {"club": "UBC CSSS", "url": "https://www.instagram.com/ubc_csss/", "official_page": "https://ubccsss.org/"},
+    {"club": "UBC Women in Computer Science", "url": "https://www.instagram.com/ubcwics/", "official_page": "https://ubccsss.org/about/affiliates/"},
+    {"club": "nwPlus", "url": "https://www.instagram.com/nwplusubc/", "official_page": "https://ubccsss.org/about/affiliates/"},
+    {"club": "UBC Anime Club", "url": "https://www.instagram.com/ubcani/", "official_page": "https://amsclubs.ca/anime-club/"},
+    {"club": "UBC Game Dev", "url": "https://www.instagram.com/ubcgamedev/", "official_page": "https://ubccsss.org/about/affiliates/"},
+    {"club": "UBC Women in Data Science", "url": "https://www.instagram.com/widsubc/", "official_page": "https://ubccsss.org/about/affiliates/"},
+    {"club": "QueerCoded UBC", "url": "https://www.instagram.com/qcubc/", "official_page": "https://ubccsss.org/about/affiliates/"},
+    {"club": "UBC Machine Learning Research", "url": "https://www.instagram.com/ubc_mlr/", "official_page": "https://ubccsss.org/about/affiliates/"},
+    {"club": "UBC Quantum", "url": "https://www.instagram.com/ubcquantum/", "official_page": "https://ubccsss.org/about/affiliates/"},
+    {"club": "UBC Startups", "url": "https://www.instagram.com/ubcstartups/", "official_page": "https://ubccsss.org/about/affiliates/"},
+    {"club": "UBC Launch Pad", "url": "https://www.instagram.com/ubclaunchpad/", "official_page": "https://luma.com/launchpadubc"},
+    {"club": "UBC Chess Club", "url": "https://www.instagram.com/ubcchessclub/", "official_page": "https://amsclubs.ca/chess-club/"},
+    {"club": "AMS Asian Brush Calligraphy at UBC", "url": "https://www.instagram.com/ubcabcalligraphy/", "official_page": "https://amsclubs.ca/asian-brush-calligraphy/"}
+  ]
+}

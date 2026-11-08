@@ -120,10 +120,12 @@ def update_event(conn, event_id: str, changes: dict, reason: str, approver: str 
 
 # ---------------------------------------------------------------- intake
 
-def content_hash(caption: str | None, image: bytes | None) -> str:
+def content_hash(caption: str | None, image: bytes | None, candidate: Candidate | None = None) -> str:
     h = hashlib.sha256()
     h.update(matching.norm_text(caption).encode())
     h.update(image or b"")
+    if candidate is not None:
+        h.update(candidate.model_dump_json().encode())
     return h.hexdigest()
 
 
@@ -140,17 +142,20 @@ def resolve_club(conn, slug: str | None) -> str | None:
 
 def intake(conn, source_id: str, external_id: str, caption: str | None, source_url: str | None = None,
            image: bytes | None = None, mime: str | None = None,
-           observed_at: datetime | None = None) -> dict:
+           observed_at: datetime | None = None, candidate: Candidate | None = None) -> dict:
     src = conn.execute("SELECT * FROM sources WHERE source_id=?", (source_id,)).fetchone()
     if not src or not src["enabled"]:
         raise NotFound(f"unknown or disabled source {source_id}")
-    h = content_hash(caption, image)
+    if candidate is not None and (src["kind"] not in ("icalendar", "public_events") or image is not None):
+        raise ValueError("Structured candidates require a registered calendar/public-events source and no image")
+    h = content_hash(caption, image, candidate)
     detected_at = observed_at.astimezone(timezone.utc).isoformat(timespec="seconds") if observed_at else now()
     with conn:
         conn.execute("INSERT INTO source_announcements (announcement_id, source_id, external_id, source_url, "
-                     "content_hash, caption, detected_at) VALUES (?,?,?,?,?,?,?) "
+                     "content_hash, caption, detected_at, candidate) VALUES (?,?,?,?,?,?,?,?) "
                      "ON CONFLICT(source_id, external_id, content_hash) DO NOTHING",
-                     (new_id("ann"), source_id, external_id, source_url, h, caption, detected_at))
+                     (new_id("ann"), source_id, external_id, source_url, h, caption, detected_at,
+                      candidate.model_dump_json() if candidate is not None else None))
         row = conn.execute("SELECT announcement_id, status, event_id FROM source_announcements "
                            "WHERE source_id=? AND external_id=? AND content_hash=?",
                            (source_id, external_id, h)).fetchone()
@@ -182,7 +187,10 @@ def process(conn, aid: str, image: bytes | None = None, mime: str | None = None)
     src = conn.execute("SELECT * FROM sources WHERE source_id=?", (ann["source_id"],)).fetchone()
     error = None
     try:
-        cand = extract(ann["caption"], image, mime)
+        if src["kind"] in ("icalendar", "public_events") and ann["candidate"]:
+            cand = Candidate.model_validate_json(ann["candidate"])
+        else:
+            cand = extract(ann["caption"], image, mime)
         if not cand.organizer_slug:
             cand.organizer_slug = src["club_id"]
         club_id = resolve_club(conn, cand.organizer_slug)

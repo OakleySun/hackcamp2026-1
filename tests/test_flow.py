@@ -9,6 +9,7 @@ from app import db, service
 
 @pytest.fixture(autouse=True)
 def offline(monkeypatch):
+    monkeypatch.setenv("APP_MODE", "demo")
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
 
 

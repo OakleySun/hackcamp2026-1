@@ -30,6 +30,7 @@ class IntakeRequest(BaseModel):
     source_url: Optional[str] = None
     observed_at: Optional[AwareDatetime] = None
     caption: Optional[str] = None
+    candidate: Optional[Candidate] = None
 
 
 class SubscribeRequest(BaseModel):

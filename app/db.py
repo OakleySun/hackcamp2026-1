@@ -26,7 +26,7 @@ def load_fixtures() -> dict:
 
 def init_db(conn: sqlite3.Connection, seed: bool = True) -> None:
     conn.executescript(SCHEMA.read_text(encoding="utf-8"))
-    if seed:
+    if seed and config.get("APP_MODE", "demo") == "demo":
         seed_reference_data(conn)
 
 

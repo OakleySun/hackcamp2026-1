@@ -230,41 +230,14 @@ The feed answers two questions: what is this student most likely to want, and wh
 
 ### Step 6 — Deploy a Maritime source-monitoring agent
 
-1. Start FastAPI in `APP_MODE=demo` with a non-default `SOURCE_INGEST_TOKEN`. The demo feed at `/demo/maritime-feed` serves the fictional Intro to Git event. From a second terminal, run the checker below. A second run against the same feed should report one unchanged listing.
+1. Follow [the real-source setup](maritime-setup.md). Start FastAPI in `APP_MODE=production` with generated intake, reviewer and workflow tokens. Run `python -m scripts.setup_sources` to register the six public sources without seeding sample data.
+2. Set `MARITIME_SOURCES_FILE=config/monitored-sources.json` locally and `/app/config/monitored-sources.json` on the worker. Run `python -m scripts.check_sources`. AMS club listings, AMS campus events, CSSS calendars and Launch Pad use explicit fields without Gemini. UBC RSS is review only because it omits event dates. Unknown organizers enter review; unchanged rechecks create no additional event or alert. See [current coverage and Instagram status](source-coverage.md).
+3. Package the deterministic custom worker with `python -m scripts.package_monitor`, upload its code-only archive, and deploy it to the existing `club-alerts-monitor`. The worker binds Maritime's injected `$PORT`, answers health checks without side effects, and handles checks in the background. It needs no LLM or paid AI credits. Account for hosting and disk charges before deployment.
+4. Save the same `SOURCE_INGEST_TOKEN` in the agent's secrets. Set its `APP_BASE_URL` to a reachable HTTPS backend, or use the explicitly allowed Maritime private connector described in the setup guide. The local backend, connector and laptop must remain running for that connection. Keep Gemini credentials on FastAPI.
+5. Run `maritime chat --agent club-alerts-monitor check`, then `maritime chat --agent club-alerts-monitor status` to verify real remote intake before scheduling. A successful check reports checked, submitted, unchanged, review and failed counts; results persist under `/data/club-alerts/last-check.json`.
+6. Register a platform cron trigger with `maritime triggers create club-alerts-monitor --type cron --cron "*/15 * * * *" --prompt "check"`. The custom handler runs Python directly, without model calls. Verify the trigger and capture a real scheduled run with its timestamp and corresponding intake records.
 
-```powershell
-.\.venv\Scripts\python.exe -m scripts.check_sources
-$env:MARITIME_FEED_URL = "http://127.0.0.1:8000/demo/maritime-feed?room_change=true"
-.\.venv\Scripts\python.exe -m scripts.check_sources
-```
-
-   The room-change feed keeps the listing ID and submits the new venue for review. The checker reports checked, submitted, unchanged, review, and failed counts. A failed check exits with a nonzero status.
-
-2. For a real source, configure an approved HTTPS JSON feed. Return `{"events": [...]}` with a stable `external_id`, `source_url` and `caption` or optional `flyer_url` per listing. Register its source ID in the app's `sources` table and scope it to a known club where appropriate. Host flyer images on the feed's origin. The checker sends a flyer to the image intake endpoint when present and keeps the app token out of feed and image requests. Check AMS access requirements before adding an AMS adapter.
-3. Deploy a Maritime template with terminal access. From your authenticated Maritime CLI, upload the checker to the agent, using the ID from its overview. [Maritime CLI reference](https://maritime.sh/docs/cli)
-
-```powershell
-maritime files upload AGENT_ID .\scripts\check_sources.py --dest-dir /data/club-alerts
-```
-
-4. In the agent's environment, set `APP_BASE_URL` to the deployed FastAPI HTTPS origin, `MARITIME_FEED_URL` to the approved feed, and `MARITIME_SOURCE_ID` to the registered source. Store the same intake credential used by FastAPI as the agent's `SOURCE_INGEST_TOKEN` secret. Gemini credentials stay on FastAPI. In the agent terminal, create a virtual environment and run the checker once.
-
-```bash
-python3 -m venv /data/club-alerts/.venv
-/data/club-alerts/.venv/bin/python -m pip install httpx pydantic python-dotenv
-/data/club-alerts/.venv/bin/python /data/club-alerts/check_sources.py
-```
-
-5. After the manual check succeeds, register a Maritime platform trigger. Use the deployed agent name in place of `club-alerts-monitor` if yours differs. The trigger wakes the agent on schedule even when idle. [Maritime triggers and schedules](https://maritime.sh/docs/triggers)
-
-```powershell
-maritime triggers create club-alerts-monitor --type cron --cron "*/15 * * * *" --prompt "Run /data/club-alerts/.venv/bin/python /data/club-alerts/check_sources.py once. Report its summary and exit status."
-maritime triggers list club-alerts-monitor
-```
-
-6. Capture a real scheduled run with its timestamp and corresponding intake record. For the room-change demo, switch the approved feed to the changed fixture or update its listing with the same external ID. Confirm the change in the existing review flow.
-
-**Exit check** — A real Maritime run discovers a labeled demo listing. Rechecking the same source yields no additional event or alert. The team can show the deployed agent and its run history.
+**Exit check** — A real remote check imports calendar events, an unchanged recheck creates no duplicates, and a platform trigger is registered. Source changes and ambiguous organizers retain the existing review process. Filtering cancellations does not yet retract previously published events.
 
 ### Step 7 — Add Databricks SQL reconciliation
 

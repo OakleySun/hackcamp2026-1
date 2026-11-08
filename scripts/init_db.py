@@ -1,4 +1,4 @@
-"""Create the SQLite database and seed the demo club, sources and test subscribers.
+"""Create the SQLite database; seed sample records only in demo mode.
 Run from the repo root:  python -m scripts.init_db
 """
 from app import config, db

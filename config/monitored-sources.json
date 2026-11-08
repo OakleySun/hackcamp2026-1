@@ -1,0 +1,74 @@
+{
+  "clubs": [
+    {"club_id": "ubc-anime", "display_name": "UBC Anime Club", "aliases": ["UBCAni"]},
+    {"club_id": "ubc-wargamers", "display_name": "Wargamers of UBC", "aliases": []},
+    {"club_id": "ubc-chess", "display_name": "UBC Chess Club", "aliases": []},
+    {"club_id": "ubc-calligraphy", "display_name": "AMS Asian Brush Calligraphy at UBC", "aliases": []},
+    {"club_id": "ubc-salsa", "display_name": "Speech and Linguistics Student Association", "aliases": ["UBC SALSA"]},
+    {"club_id": "ubc-launchpad", "display_name": "UBC Launch Pad", "aliases": ["Launch Pad"]},
+    {"club_id": "ams-ubc", "display_name": "AMS of UBC", "aliases": ["AMS"]},
+    {"club_id": "ams-gallery", "display_name": "The Gallery Patio & Lounge", "aliases": []}
+  ],
+  "sources": [
+    {
+      "source_id": "src-csss-affiliates",
+      "name": "CSSS affiliate calendar",
+      "kind": "icalendar",
+      "format": "ical",
+      "url": "https://calendar.google.com/calendar/ical/1e1ce102f2951b154df282dc66ea69722b37b41a8956d88361befe9ceb9e8080%40group.calendar.google.com/public/basic.ics",
+      "lookahead_days": 60
+    },
+    {
+      "source_id": "src-ams-clubs",
+      "name": "AMS Club Events",
+      "kind": "public_events",
+      "format": "ams_html",
+      "url": "https://amsclubs.ca/all-events/",
+      "lookahead_days": 60,
+      "options": {
+        "organizers": {
+          "UBC Anime Club": "ubc-anime",
+          "Wargamers of UBC": "ubc-wargamers",
+          "UBC Chess Club": "ubc-chess",
+          "AMS Asian Brush Calligraphy at UBC": "ubc-calligraphy",
+          "Speech and Linguistics Student Association": "ubc-salsa"
+        }
+      }
+    },
+    {
+      "source_id": "src-ams-campus",
+      "name": "AMS campus calendar",
+      "kind": "public_events",
+      "format": "tribe",
+      "url": "https://www.ams.ubc.ca/wp-json/tribe/events/v1/events",
+      "lookahead_days": 60,
+      "options": {"organizers": {"ams": "ams-ubc", "the-gallery-patio-lounge": "ams-gallery"}}
+    },
+    {
+      "source_id": "src-csss-website",
+      "name": "CSSS website calendar",
+      "club_id": "ubc-csss",
+      "kind": "icalendar",
+      "format": "ical",
+      "url": "https://ubccsss.org/events/index.ics",
+      "lookahead_days": 60
+    },
+    {
+      "source_id": "src-launchpad-luma",
+      "name": "UBC Launch Pad public calendar",
+      "club_id": "ubc-launchpad",
+      "kind": "public_events",
+      "format": "luma",
+      "url": "https://luma.com/launchpadubc",
+      "lookahead_days": 60,
+      "options": {"organizer_slug": "ubc-launchpad"}
+    },
+    {
+      "source_id": "src-ubc-events-rss",
+      "name": "UBC Events RSS (review only; event dates unavailable)",
+      "kind": "public_events",
+      "format": "rss",
+      "url": "https://events.ubc.ca/events/feed/"
+    }
+  ]
+}
