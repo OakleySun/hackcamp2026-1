@@ -2,8 +2,11 @@ import hmac
 from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
+from fastapi.concurrency import run_in_threadpool
+from pydantic import AwareDatetime
 
 from . import config, db, service
+from .extract import ExtractionUnavailable
 from .models import ClaimRequest, IntakeRequest, ResolveRequest, ResultRequest, SubscribeRequest
 
 MAX_IMAGE_BYTES = 5 * 1024 * 1024
@@ -46,6 +49,8 @@ require_workflow = _require("WORKFLOW_API_TOKEN")
 def _run(fn, *args, **kwargs):
     try:
         return fn(*args, **kwargs)
+    except ExtractionUnavailable as exc:
+        raise HTTPException(503, str(exc)) from exc
     except service.NotFound as exc:
         raise HTTPException(404, str(exc))
     except service.ReviewConflict as exc:
@@ -111,12 +116,14 @@ def manage(token: str, opt_out: bool = True, conn=Depends(get_conn)):
 
 @app.post("/api/intake", status_code=202, dependencies=[Depends(require_source)])
 def intake(body: IntakeRequest, conn=Depends(get_conn)):
-    return _run(service.intake, conn, body.source_id, body.external_id, body.caption, body.source_url)
+    return _run(service.intake, conn, body.source_id, body.external_id, body.caption, body.source_url,
+                observed_at=body.observed_at)
 
 
 @app.post("/api/intake/upload", status_code=202, dependencies=[Depends(require_source)])
 async def intake_upload(source_id: str = Form(...), external_id: str = Form(...), caption: str = Form(""),
-                        source_url: str = Form(""), flyer: UploadFile | None = File(None), conn=Depends(get_conn)):
+                        source_url: str = Form(""), observed_at: AwareDatetime | None = Form(None),
+                        flyer: UploadFile | None = File(None), conn=Depends(get_conn)):
     image, mime = None, None
     if flyer is not None:
         image = await flyer.read(MAX_IMAGE_BYTES + 1)
@@ -128,7 +135,18 @@ async def intake_upload(source_id: str = Form(...), external_id: str = Form(...)
             mime = "image/png"
         else:
             raise HTTPException(415, "only JPEG or PNG images are accepted")
-    return _run(service.intake, conn, source_id, external_id, caption or None, source_url or None, image, mime)
+    return await run_in_threadpool(
+        _run, service.intake, conn, source_id, external_id, caption or None, source_url or None,
+        image, mime, observed_at,
+    )
+
+
+@app.get("/demo/maritime-feed")
+def maritime_demo_feed(room_change: bool = False):
+    if config.get("APP_MODE", "demo") != "demo":
+        raise HTTPException(404, "demo feed not available")
+    item = db.load_fixtures()["announcements"]["C" if room_change else "A"]
+    return {"demo": True, "events": [{key: item[key] for key in ("external_id", "source_url", "caption")}]}
 
 
 @app.get("/api/reviews", dependencies=[Depends(require_reviewer)])
