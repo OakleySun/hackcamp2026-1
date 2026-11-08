@@ -111,3 +111,49 @@ def test_missing_price_fails_free_filter(conn):
     conn.commit()
     assert service.list_events(conn, free=True, include_past=True) == []
     assert len(service.list_events(conn, include_past=True)) == 1
+
+
+def test_perks_are_stored_and_public(conn):
+    a, d = send(conn, "A"), send(conn, "D")
+    assert service.public_event(conn, service.get_event(conn, a["event_id"]))["perks"] == ["free_food", "free_swag"]
+    assert service.public_event(conn, service.get_event(conn, d["event_id"]))["perks"] == ["prizes"]
+
+
+def test_audience_is_stored_and_filled_only_when_unstated(conn, monkeypatch):
+    a, d = send(conn, "A"), send(conn, "D")
+    assert service.get_event(conn, a["event_id"])["audience"] == ["anyone"]
+    assert service.public_event(conn, service.get_event(conn, d["event_id"]))["audience"] == ["first_years", "cs_students"]
+    # A mirror that names a different audience doesn't overwrite one that was stated...
+    fx = db.load_fixtures()
+    fx["candidates"]["B"]["audience"] = ["women"]
+    monkeypatch.setattr("app.extract.load_fixtures", lambda: fx)
+    send(conn, "B")
+    assert service.get_event(conn, a["event_id"])["audience"] == ["anyone"]
+    # ...but does fill it in when the original didn't say.
+    conn.execute("UPDATE events SET audience='[]' WHERE event_id=?", (a["event_id"],))
+    conn.commit()
+    b = fx["announcements"]["B"]
+    service.intake(conn, b["source_id"], "mirror-002", b["caption"], b["source_url"])
+    assert service.get_event(conn, a["event_id"])["audience"] == ["women"]
+    assert [o["kind"] for o in outbox(conn)].count("correction") == 0
+
+
+def test_mirror_adds_new_perks_quietly(conn, monkeypatch):
+    eid = send(conn, "A")["event_id"]
+    conn.execute("UPDATE events SET perks='[\"free_food\"]'")
+    conn.commit()
+    fx = db.load_fixtures()
+    fx["candidates"]["B"]["perks"] = ["free_food", "prizes"]
+    monkeypatch.setattr("app.extract.load_fixtures", lambda: fx)
+    send(conn, "B")
+    ev = service.get_event(conn, eid)
+    assert ev["perks"] == ["free_food", "prizes"]
+    assert [o["kind"] for o in outbox(conn)] == ["new_event"]  # perks never trigger a correction
+
+
+def test_old_database_gains_perks_column(tmp_path):
+    c = db.connect(str(tmp_path / "old.db"))
+    old_schema = "\n".join(l for l in db.SCHEMA.read_text(encoding="utf-8").splitlines() if "perks" not in l)
+    c.executescript(old_schema)
+    db.init_db(c)
+    assert "perks" in {r["name"] for r in c.execute("PRAGMA table_info(events)")}
