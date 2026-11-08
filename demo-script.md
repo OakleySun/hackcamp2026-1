@@ -10,7 +10,8 @@ Sponsors: Maritime, Gemini, Lovable, Databricks/Genie, n8n.
 
 - Backend in demo mode, fresh DB. Frontend on :8080. `quadDemoRefresh` snippet running (README) so pages live-update.
 - Fixtures A + C dated upcoming.
-- Tabs open behind Quad, in this order: Maritime run log → Databricks Genie space (question pre-tested) → n8n (preview already run).
+- Tabs open behind Quad, in this order: Maritime run log → n8n (preview already run) → Databricks Genie space (question pre-tested).
+- Pulse page has data (DATABRICKS_PULSE_JOB_ID set, job has run at least once). If it says "will appear after the first refresh," fix that before recording.
 - Signed in with 2–3 interests. Notifications off.
 
 ---
@@ -62,16 +63,19 @@ Sponsors: Maritime, Gemini, Lovable, Databricks/Genie, n8n.
 - Gmail or ntfy to phone. Receipt table, no double sends.
 - Visual workflow = debuggable at 3am.
 
-### 8. Flip to Databricks / Genie — asking questions about all of it (30s)
+### 8. Back to Quad → Pulse page, then Genie (40s)
 
-- Everything we just saw — every post, every revision — exports in the background to **Databricks**. Bronze = raw post, never thrown away. Silver = cleaned + buildings. Gold = current events, activity over time, duplicates caught, gaps.
-- **Genie** on top of Gold. Type: "free beginner-friendly tech events after 4 this week." Real answer with organizer, time, building, source link.
+- Click **Pulse** in the nav. "Everything we just saw — every post, every revision — also exports in the background to **Databricks**."
+- Point at the numbers: source announcements, upcoming events analyzed, event updates recorded, venues placed by AI, possible duplicates. Point at "Databricks last refreshed" — this is live, not a mockup.
+- How it works, quick: Bronze = raw post, never thrown away. Silver = cleaned + buildings. Gold = current events, activity, duplicates caught, gaps. A Databricks job reruns the pipeline when Bronze changes, Quad picks up the result every 5 min and only shows events that still match a published revision.
+- Scroll to "Recently analyzed events" — "AI building suggestion" means Databricks `ai_query` figured out the building from the venue text. Click one → it's a real Quad event with a real source.
+- Flip to the **Genie** tab, same Gold tables. Type: "free beginner-friendly tech events after 4 this week." Real answer with organizer, time, building, source link.
 - Same 8 topics, same rules as the app: unknown cost ≠ free. "Is it free" is the #1 question on campus.
 - Genie only sees public tables. No subscriber data ever goes to Databricks.
 
 ### 9. Back to Quad — wrap (15s)
 
-- Maritime watches the sources, Gemini reads the messy ones, our backend keeps one record per event with a human in the loop, n8n gets it to your phone, Databricks/Genie let you ask questions about it, Lovable gave us the time.
+- Maritime watches the sources, Gemini reads the messy ones, our backend keeps one record per event with a human in the loop, n8n gets it to your phone, Databricks runs the analysis behind Pulse and Genie, Lovable gave us the time.
 - Be honest: Instagram login needs babysitting, alert loop needs more testing. Core thing works.
 
 ---
@@ -83,4 +87,4 @@ Sponsors: Maritime, Gemini, Lovable, Databricks/Genie, n8n.
 - 350 clubs × a couple events a month = thousands a year. Nobody has the real number. (say as estimate)
 - "U Build Character."
 
-Running long? Cut the Lovable aside → Instagram detail → n8n receipt detail. Never cut section 6.
+Running long? Cut the Lovable aside → Instagram detail → n8n receipt detail → the Bronze/Silver/Gold explainer (just show Pulse and move on). Never cut section 6.
