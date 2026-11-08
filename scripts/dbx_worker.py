@@ -3,6 +3,7 @@
     python -m scripts.dbx_worker            # loop forever (every 30 s)
     python -m scripts.dbx_worker --once     # one pass, then exit (good for cron or a demo)
     python -m scripts.dbx_worker --retry-failed --once
+    python -m scripts.dbx_worker --backfill --once
 
 Each pass: claim a batch in a short transaction, close it, call Databricks, then record success or
 schedule a retry in another short transaction. A crash leaves rows 'claimed' with an expiry, so the
@@ -15,7 +16,7 @@ import json
 import time
 from datetime import datetime, timedelta, timezone
 
-from app import databricks, db
+from app import databricks, db, service
 
 LEASE_SECONDS = 120
 MAX_ATTEMPTS = 12
@@ -28,6 +29,26 @@ def _now() -> datetime:
 
 def _iso(t: datetime) -> str:
     return t.isoformat(timespec="seconds")
+
+
+def backfill(conn) -> dict:
+    """Queue records from before the export worker was installed."""
+    with conn:
+        conn.execute("BEGIN IMMEDIATE")
+        announcements = conn.execute(
+            "SELECT a.announcement_id FROM source_announcements a WHERE NOT EXISTS ("
+            "SELECT 1 FROM dbx_queue q WHERE q.kind='announcement' AND q.aggregate=a.announcement_id)"
+        ).fetchall()
+        revisions = conn.execute(
+            "SELECT r.event_id, r.revision FROM event_revisions r WHERE NOT EXISTS ("
+            "SELECT 1 FROM dbx_queue q WHERE q.kind='revision' AND q.aggregate=r.event_id "
+            "AND q.version=r.revision)"
+        ).fetchall()
+        for row in announcements:
+            service.enqueue_announcement(conn, row["announcement_id"])
+        for row in revisions:
+            service.enqueue_revision(conn, row["event_id"], row["revision"])
+    return {"announcements": len(announcements), "revisions": len(revisions)}
 
 
 def claim(conn, limit: int = BATCH) -> list[dict]:
@@ -95,10 +116,13 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--once", action="store_true")
     parser.add_argument("--interval", type=float, default=30)
+    parser.add_argument("--backfill", action="store_true", help="queue historical records missing from the export queue")
     parser.add_argument("--retry-failed", action="store_true", help="move failed rows back to pending first")
     args = parser.parse_args()
     conn = db.connect()
     db.init_db(conn)
+    if args.backfill:
+        print(json.dumps({"backfill": backfill(conn)}), flush=True)
     if args.retry_failed:
         with conn:
             conn.execute("UPDATE dbx_queue SET state='pending', attempts=0, next_retry_at=NULL WHERE state='failed'")

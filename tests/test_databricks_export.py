@@ -67,6 +67,22 @@ def test_retry_of_same_post_adds_nothing(conn):
     assert len(queue(conn)) == before
 
 
+def test_backfill_queues_missing_records_without_replacing_existing_versions(conn):
+    a = send(conn, "A")
+    b = send(conn, "B")
+    conn.execute("DELETE FROM dbx_queue WHERE aggregate IN (?, ?)", (a["announcement_id"], a["event_id"]))
+    conn.commit()
+    existing = [row for row in queue(conn) if row["aggregate"] == b["announcement_id"]]
+
+    assert dbx_worker.backfill(conn) == {"announcements": 1, "revisions": 1}
+    assert dbx_worker.backfill(conn) == {"announcements": 0, "revisions": 0}
+    rows = queue(conn)
+    assert [row for row in rows if row["aggregate"] == b["announcement_id"]] == existing
+    announcement, = [row for row in rows if row["aggregate"] == a["announcement_id"]]
+    assert json.loads(announcement["payload"])["status"] == "linked"
+    assert any(row["kind"] == "revision" and row["aggregate"] == a["event_id"] for row in rows)
+
+
 def test_review_and_confirm_export_outcome_and_new_revision(conn):
     a = send(conn, "A")
     c = send(conn, "C")

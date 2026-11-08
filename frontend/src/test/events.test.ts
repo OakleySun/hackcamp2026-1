@@ -49,6 +49,13 @@ const EVENTS = [
 ].map(toCampusEvent);
 
 describe("API mapping", () => {
+  it("keeps untagged events out of topic recommendations", () => {
+    const untagged = toCampusEvent(api({ topics: [] }));
+    expect(untagged.topic).toBeNull();
+    expect(forYou([untagged], ["social"], [])).toEqual([]);
+    expect(explore([untagged], ["tech"], [])).toEqual([]);
+  });
+
   it("maps backend fields onto the UI model", () => {
     const e = EVENTS[0]!;
     expect(e).toMatchObject({
@@ -114,7 +121,7 @@ describe("practical filters", () => {
   it("stay close only suggests nearby topics", () => {
     const picks = explore(EVENTS, ["tech"], [], "close");
     expect(picks.length).toBeGreaterThan(0);
-    expect(picks.every((p) => ["academic", "career"].includes(p.event.topic))).toBe(true);
+    expect(picks.every((p) => p.event.topic === "academic" || p.event.topic === "career")).toBe(true);
   });
   it("for you only returns events in a chosen topic", () => {
     expect(forYou(EVENTS, ["tech"], []).map((r) => r.event.id)).toEqual(["evt-1"]);

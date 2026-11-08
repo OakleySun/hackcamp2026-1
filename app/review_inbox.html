@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Event review · Quad</title>
+<style>
+  body { margin: 3rem auto; padding: 0 1.25rem; max-width: 58rem; background: #f7f7f2; color: #20251d;
+    font: 16px/1.5 system-ui, sans-serif; }
+  h1, h2, p { margin: 0 0 .65rem; }
+  form, article { border: 1px solid #d5dbd2; border-radius: 12px; padding: 1rem; margin: 1rem 0; background: #fff; }
+  label { display: block; margin-bottom: .3rem; }
+  input, button { font: inherit; padding: .45rem .7rem; border: 1px solid #667760; border-radius: 6px; }
+  button { color: #fff; background: #315a38; cursor: pointer; margin-right: .5rem; }
+  button:disabled { opacity: .6; cursor: default; }
+  a { color: #315a38; }
+  .meta { color: #4a5747; }
+</style>
+<main>
+  <p class="meta">QUAD / TEAM TOOLS</p>
+  <h1>Event review</h1>
+  <p>Quad publishes confirmed matches automatically. Listings with missing or conflicting details appear here with their official source.</p>
+  <form id="access">
+    <label for="token">Reviewer token</label>
+    <input id="token" type="password" required autocomplete="off">
+    <button>Load suggestions</button>
+  </form>
+  <p id="status" role="status"></p>
+  <section id="results" aria-label="Suggestions"></section>
+</main>
+<script>
+  const results = document.querySelector('#results');
+  const status = document.querySelector('#status');
+  const tokenInput = document.querySelector('#token');
+  let token = '';
+
+  function add(parent, tag, text, className) {
+    const element = document.createElement(tag);
+    element.textContent = text;
+    if (className) element.className = className;
+    parent.append(element);
+    return element;
+  }
+
+  async function api(path) {
+    const response = await fetch(path, {
+      headers: { Authorization: `Bearer ${token}` },
+      cache: 'no-store',
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(typeof payload.detail === 'string' ? payload.detail : 'Request failed.');
+    return payload;
+  }
+
+  function render(item) {
+    const event = item.evidence;
+    const card = document.createElement('article');
+    add(card, 'h2', item.candidate.title || event.title);
+    const fields = [event.local_date, event.local_start, event.venue, event.organizer || 'Organizer missing'];
+    add(card, 'p', fields.filter(Boolean).join(' · '));
+    const source = add(add(card, 'p', ''), 'a', 'Open official source');
+    source.href = event.url;
+    source.target = '_blank';
+    source.rel = 'noopener noreferrer';
+    results.append(card);
+  }
+
+  document.querySelector('#access').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    token = tokenInput.value.trim();
+    tokenInput.value = '';
+    status.textContent = 'Loading…';
+    results.replaceChildren();
+    try {
+      const items = await api('/api/reviews/enrichment');
+      status.textContent = `${items.length} unresolved suggestions.`;
+      items.forEach(render);
+    } catch (error) {
+      status.textContent = error.message;
+    }
+  });
+</script>

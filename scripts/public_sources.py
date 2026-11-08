@@ -211,6 +211,55 @@ def _luma(client, url, now, days, options):
     return events
 
 
+def _html_events(client, url, now, days, options):
+    """Capture linked announcements for review without inventing dates from posting times."""
+    soup = BeautifulSoup(download(client, url), "html.parser")
+    events, seen = [], set()
+    pattern = options.get("event_path", r"/events?/[^/?#]+")
+    for link in soup.select("a[href]"):
+        target = urljoin(url, link["href"]).split("#")[0]
+        title = link.get_text(" ", strip=True)
+        if (urlsplit(target).hostname != urlsplit(url).hostname or not re.search(pattern, urlsplit(target).path)
+                or not 5 <= len(title) <= 300 or target in seen):
+            continue
+        seen.add(target)
+        context = link.parent.get_text(" ", strip=True)[:5000]
+        events.append(_listing(target, target, title, organizer=options.get("organizer_slug"),
+                               description=context))
+    if not events:
+        raise ValueError("No readable event links; source needs inspection")
+    return events
+
+
+def _biztech(client, url, now, days, options):
+    lower, upper = _window(now, days)
+    soup = BeautifulSoup(download(client, url), "html.parser")
+    cards = soup.select('[data-framer-name="ContentArea"]')
+    events, seen = [], set()
+    for card in cards:
+        texts = [p.get_text(" ", strip=True) for p in card.select("p")]
+        match = next((re.fullmatch(r"([A-Za-z]+) (\d{1,2})(?:[-\u2013](\d{1,2}))?, (\d{4})", t)
+                      for t in texts if re.fullmatch(r"([A-Za-z]+) (\d{1,2})(?:[-\u2013](\d{1,2}))?, (\d{4})", t)), None)
+        if not match:
+            continue
+        start = datetime.strptime(f"{match[1]} {match[2]}, {match[4]}", "%B %d, %Y").replace(tzinfo=VANCOUVER)
+        index = texts.index(match[0])
+        if index + 1 >= len(texts):
+            raise ValueError("BizTech event title is missing")
+        title = texts[index + 1]
+        if not lower.date() <= start.date() < upper.date() or title in seen:
+            continue
+        seen.add(title)
+        detail = next((urljoin(url, a["href"]) for a in card.select("a[href]")
+                       if "/events/" in urljoin(url, a["href"])), url + "#" + re.sub(r"\W+", "-", title.lower()))
+        events.append(_listing(title, detail, title, start=start,
+                               organizer=options.get("organizer_slug", "ubc-biztech"),
+                               description="\n".join(texts), all_day=True))
+    if not cards:
+        raise ValueError("BizTech event page format changed")
+    return events
+
+
 def public_feed(client, url, feed_format, *, now=None, days=60, options=None):
     options = options or {}
     try:
@@ -222,6 +271,10 @@ def public_feed(client, url, feed_format, *, now=None, days=60, options=None):
             events = _rss(client, url)
         elif feed_format == "luma":
             events = _luma(client, url, now, days, options)
+        elif feed_format == "html_events":
+            events = _html_events(client, url, now, days, options)
+        elif feed_format == "biztech":
+            events = _biztech(client, url, now, days, options)
         else:
             raise ValueError("Unknown public-source adapter")
     except (KeyError, TypeError, AttributeError, ET.ParseError) as exc:

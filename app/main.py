@@ -1,12 +1,14 @@
 import hmac
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, closing
+from pathlib import Path
 
 from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from pydantic import AwareDatetime
 
-from . import accounts, config, db, service
+from . import accounts, config, db, enrichment, service
 from .extract import ExtractionUnavailable
 from .models import (ClaimRequest, Credentials, IntakeRequest, ProfileRequest, ResolveRequest, ResultRequest,
                      SubscribeRequest)
@@ -16,9 +18,9 @@ MAX_IMAGE_BYTES = 5 * 1024 * 1024
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    conn = db.connect()
-    db.init_db(conn)
-    conn.close()
+    with closing(db.connect()) as conn:
+        db.init_db(conn)
+        service.backfill_event_topics(conn)
     yield
 
 
@@ -55,6 +57,7 @@ def _require(env_name: str):
 
 require_source = _require("SOURCE_INGEST_TOKEN")
 require_reviewer = _require("REVIEWER_TOKEN")
+require_enrichment = _require("REVIEW_ENRICHMENT_TOKEN")
 require_workflow = _require("WORKFLOW_API_TOKEN")
 
 
@@ -213,6 +216,31 @@ def reviews(conn=Depends(get_conn)):
         "SELECT r.*, a.caption, a.source_url, a.candidate FROM review_items r "
         "JOIN source_announcements a USING (announcement_id) WHERE r.state='open' ORDER BY r.created_at").fetchall()
     return [dict(r) for r in rows]
+
+
+@app.get("/api/enrichment/work", dependencies=[Depends(require_enrichment)])
+def enrichment_work(conn=Depends(get_conn)):
+    return enrichment.work(conn)
+
+
+@app.post("/api/enrichment/results", dependencies=[Depends(require_enrichment)])
+def enrichment_results(body: enrichment.Batch, conn=Depends(get_conn)):
+    return _run(enrichment.store, conn, body)
+
+
+@app.get("/api/reviews/inbox", response_class=HTMLResponse)
+def review_inbox():
+    return Path(__file__).with_name("review_inbox.html").read_text(encoding="utf-8")
+
+
+@app.get("/api/reviews/enrichment", dependencies=[Depends(require_reviewer)])
+def review_enrichment(conn=Depends(get_conn)):
+    return enrichment.inbox(conn)
+
+
+@app.post("/api/reviews/{review_id}/approve-enrichment", dependencies=[Depends(require_reviewer)])
+def approve_enrichment(review_id: str, body: enrichment.Approval, conn=Depends(get_conn)):
+    return _run(enrichment.approve, conn, review_id, body.version)
 
 
 @app.post("/api/reviews/{review_id}/resolve", dependencies=[Depends(require_reviewer)])

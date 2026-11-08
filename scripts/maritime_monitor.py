@@ -16,8 +16,9 @@ def timestamp():
 
 
 class Monitor:
-    def __init__(self, state_path):
+    def __init__(self, state_path, group="public"):
         self.path = Path(state_path)
+        self.group = group
         self.lock = Lock()
         self.running = False
         try:
@@ -51,8 +52,8 @@ class Monitor:
         result = {"status": "failed"}
         try:
             process = subprocess.run(
-                [sys.executable, "-m", "scripts.check_sources"],
-                capture_output=True, text=True, timeout=600,
+                [sys.executable, "-m", "scripts.check_sources", *(["--group", "instagram"] if self.group == "instagram" else [])],
+                capture_output=True, text=True, timeout=3600 if self.group == "instagram" else 600,
             )
             if process.stdout.strip():
                 counts = json.loads(process.stdout.strip().splitlines()[-1])
@@ -79,7 +80,7 @@ class Monitor:
                 self.running = False
 
 
-def handler_for(monitor):
+def handler_for(monitor, instagram=None):
     class Handler(BaseHTTPRequestHandler):
         def reply(self, status, body):
             data = json.dumps(body).encode()
@@ -94,7 +95,7 @@ def handler_for(monitor):
             if self.path == "/health":
                 self.reply(200, {"status": "ok", "worker": "calendar", "uses_llm": False})
             elif self.path == "/status":
-                self.reply(200, monitor.status())
+                self.reply(200, {**monitor.status(), **({"instagram": instagram.status()} if instagram else {})})
             elif self.path == "/schedules":
                 # Schedules are managed explicitly through Maritime triggers after a proven check.
                 self.reply(200, [])
@@ -116,6 +117,10 @@ def handler_for(monitor):
                 return
             if message == "status":
                 self.reply(200, {"response": json.dumps(monitor.status())})
+            elif message == "instagram status" and instagram:
+                self.reply(200, {"response": json.dumps(instagram.status())})
+            elif message == "check instagram" and instagram:
+                self.reply(200, instagram.start())
             elif message in ("check", "check calendar"):
                 self.reply(200, monitor.start())
             else:
@@ -131,7 +136,8 @@ def handler_for(monitor):
 def main():
     state_path = os.environ.get("MARITIME_CHECK_STATE", "/data/club-alerts/last-check.json")
     monitor = Monitor(state_path)
-    server = ThreadingHTTPServer(("0.0.0.0", int(os.environ.get("PORT", "18789"))), handler_for(monitor))
+    instagram = Monitor(str(Path(state_path).with_name("last-instagram-check.json")), group="instagram")
+    server = ThreadingHTTPServer(("0.0.0.0", int(os.environ.get("PORT", "18789"))), handler_for(monitor, instagram))
     server.serve_forever()
 
 

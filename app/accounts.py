@@ -12,7 +12,7 @@ import re
 import secrets
 from datetime import date, datetime, timedelta, timezone
 
-from .extract import TOPICS
+from .topics import TOPICS
 from .models import ProfileRequest
 
 SESSION_DAYS = 30

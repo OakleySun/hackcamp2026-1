@@ -19,7 +19,12 @@ def register_sources(conn, manifest=None):
         if existing and tuple(existing) != (source["kind"], source.get("club_id"), source["url"]):
             raise ValueError(f"Existing configuration differs for {source['source_id']}")
     with conn:
-        for club in manifest["clubs"]:
+        clubs = list(manifest["clubs"])
+        directory = MANIFEST.with_name("club-directory.json")
+        if directory.exists():
+            clubs.extend({"club_id": c["club_id"], "display_name": c["name"], "aliases": []}
+                         for c in json.loads(directory.read_text(encoding="utf-8"))["clubs"])
+        for club in clubs:
             conn.execute("INSERT INTO clubs (club_id, display_name, aliases) VALUES (?,?,?) "
                          "ON CONFLICT(club_id) DO NOTHING",
                          (club["club_id"], club["display_name"], json.dumps(club["aliases"])))

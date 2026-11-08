@@ -77,6 +77,13 @@ CREATE TABLE IF NOT EXISTS review_items (
   resolved_at       TEXT
 );
 
+CREATE TABLE IF NOT EXISTS review_enrichments (
+  review_id  TEXT PRIMARY KEY REFERENCES review_items(review_id),
+  evidence   TEXT NOT NULL,
+  version    TEXT NOT NULL,
+  checked_at TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS subscriptions (
   subscriber_id TEXT PRIMARY KEY,
   email         TEXT NOT NULL UNIQUE,

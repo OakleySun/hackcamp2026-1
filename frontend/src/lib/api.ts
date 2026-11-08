@@ -1,5 +1,5 @@
 // Client for the FastAPI backend in ../app (see app/main.py).
-// Loaders call these during SSR and in the browser, so the base URL must be absolute.
+// On Maritime, the browser uses Nitro's same-origin proxy and SSR calls FastAPI directly.
 import {
   AUDIENCES,
   PERKS,
@@ -14,9 +14,12 @@ import {
   type Topic,
 } from "./events";
 
-export const API_URL = (
-  (import.meta.env["VITE_API_URL"] as string | undefined) || "http://127.0.0.1:8000"
-).replace(/\/+$/, "");
+const configuredUrl = import.meta.env["VITE_API_URL"] as string | undefined;
+const localBackend = "http://127.0.0.1:8000";
+export const API_URL =
+  configuredUrl === "same-origin"
+    ? (typeof window === "undefined" ? localBackend : "")
+    : (configuredUrl || localBackend).replace(/\/+$/, "");
 
 /** Shape returned by service.public_event. */
 export type ApiEvent = {
@@ -77,7 +80,7 @@ export async function request<T>(path: string, init?: RequestInit): Promise<T> {
   try {
     res = await fetch(`${API_URL}${path}`, init);
   } catch {
-    throw new ApiError(`Can't reach the server at ${API_URL}. Is the backend running?`);
+    throw new ApiError(`Can't reach the API at ${API_URL || "this site"}.`);
   }
   if (!res.ok) {
     const body = (await res.json().catch(() => null)) as { detail?: unknown } | null;
@@ -168,7 +171,7 @@ export function toCampusEvent(a: ApiEvent): CampusEvent {
     id: a.event_id,
     title: a.title,
     club: a.club_name ?? a.club_id,
-    topic: topics[0] ?? "social", // Gemini picks from TOPICS; fall back if a source had none
+    topic: topics[0] ?? null,
     topics,
     date: a.local_date,
     start: a.local_date ? `${a.local_date}T${a.local_start ?? "00:00"}` : "",

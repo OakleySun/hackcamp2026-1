@@ -75,7 +75,7 @@ function EventPage() {
       </Link>
       <header className="mt-6">
         <div className="flex flex-wrap gap-2">
-          {(e.topics.length ? e.topics : [e.topic]).map((t) => (
+          {e.topics.map((t) => (
             <span key={t} className="status-chip" data-topic={t}>
               {topicLabel(t)}
             </span>

@@ -2,6 +2,8 @@
 
 ## Current state
 
+**Update:** directory-wide Instagram automation is now installed, with 294 linked accounts and a separate bounded twice-daily trigger prepared. Restarting Chromium for its automation interface reached a login screen; owner sign-in is pending in the private desktop. The trigger and `MARITIME_INSTAGRAM_ENABLED` remain disabled until the automated reader is verified. See [expanded monitoring setup](club-monitoring.md). The original sleep/wake verification below is historical and does not establish the current restarted browser's login.
+
 The owner selected the separate Linux browser route after the costs below were disclosed. The persistent Linux computer `club-alerts-instagram` is now provisioned, and Chromium successfully opened Instagram's login form. Its ID is `1667005f-7f99-4cb5-aaf6-94a4b72c1c05`; its stable external user ID is `club-alerts-monitor-instagram`. Reuse this computer instead of creating one per check.
 
 The browser profile is `/home/desk/.config/chromium`, on the computer's persistent disk. Its directory exists with permissions `0700`. On November 8, 2026 UTC, the owner completed login and signed-in access was verified by opening CSSS's "Full Stack Pancakes" post and reading its caption. The same post remained accessible after one sleep/wake cycle. The computer was then left asleep; its sleeping status was confirmed at 07:06:32 UTC. No password, cookies or session have been copied into the repository. Private takeover links are short-lived and are not saved here.
@@ -41,4 +43,4 @@ Sources: [Maritime billing](https://maritime.sh/docs/billing), [persistent Linux
 
 The computer sleeps after five idle minutes. Sleep retains its browser profile and login cookies, although Instagram can independently expire the login. Viewer links expire and are revoked when the computer sleeps or the takeover completes; use the same computer with a fresh link when needed. Do not delete the computer to stop compute billing, because deleting also destroys the saved profile.
 
-The calendar checker does not yet browse Instagram. Login is verified and the persistent session is ready; scheduled Instagram checks and review routing are separate implementation work and remain disabled. No Instagram posts were imported during verification. Instagram may expire a session or require the owner to sign in again.
+The separate Instagram checker and review routing are implemented and deployed, pending owner sign-in and a successful reader check. Public checks run independently. No Instagram posts were imported during initial verification. Instagram may expire a session or require the owner to sign in again.

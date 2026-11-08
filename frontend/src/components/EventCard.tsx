@@ -64,9 +64,13 @@ export function EventCard({
   return (
     <article className="event-card" data-variant={variant}>
       <div className="flex items-center justify-between gap-2">
-        <span className="status-chip" data-topic={e.topic}>
-          {topicLabel(e.topic)}
-        </span>
+        <div className="flex flex-wrap gap-2">
+          {e.topics.map((t) => (
+            <span key={t} className="status-chip" data-topic={t}>
+              {topicLabel(t)}
+            </span>
+          ))}
+        </div>
         {e.changes.length > 0 && (
           <span className="status-chip" data-kind="updated">
             Updated

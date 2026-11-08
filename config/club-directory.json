@@ -1,0 +1,5066 @@
+{
+  "directory_url": "https://amsclubs.ca/all-clubs/",
+  "discovered_at": "2026-11-08T07:28:36+00:00",
+  "expected_clubs": 317,
+  "clubs": [
+    {
+      "club_id": "ams-180-degrees-consulting",
+      "name": "180 Degrees Consulting at UBC",
+      "directory_url": "https://amsclubs.ca/180-degrees-consulting/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:25:58+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/180ubc/"
+      ],
+      "website_urls": [
+        "https://www.ubc180dc.org/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubc180dc.org/",
+          "final_url": "https://www.ubc180dc.org/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:25:58+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-ai-club",
+      "name": "AMS AI Club at UBC",
+      "directory_url": "https://amsclubs.ca/ai-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:25:59+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcaiclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-aiesec",
+      "name": "UBC AIESEC",
+      "directory_url": "https://amsclubs.ca/aiesec/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:25:59+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/axp.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-accounting-club",
+      "name": "UBC Accounting Club",
+      "directory_url": "https://amsclubs.ca/accounting-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:00+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcaccounting/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-agape-street-missions",
+      "name": "UBC Agape Street Missions",
+      "directory_url": "https://amsclubs.ca/agape-street-missions/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:00+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcagapeoutreach/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-alpha-phi-omega",
+      "name": "Alpha Phi Omega",
+      "directory_url": "https://amsclubs.ca/alpha-phi-omega/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:01+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/apoubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-amnesty-international",
+      "name": "Amnesty International UBC",
+      "directory_url": "https://amsclubs.ca/amnesty-international/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:01+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ai_ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-anatomy-and-dissection-club",
+      "name": "The AMS Anatomy and Dissection Club at UBC",
+      "directory_url": "https://amsclubs.ca/anatomy-and-dissection-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:02+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.aadc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ancient-mediterranean-and-near-eastern-student-association",
+      "name": "Ancient Mediterranean and Near Eastern Student Association",
+      "directory_url": "https://amsclubs.ca/ancient-mediterranean-and-near-eastern-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:02+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.amne.sa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ubc-anime",
+      "name": "UBC Anime Club",
+      "directory_url": "https://amsclubs.ca/anime-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:03+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcani/"
+      ],
+      "website_urls": [
+        "https://www.ubcani.com/"
+      ],
+      "link_hubs": [
+        "https://www.linktr.ee/ubcani"
+      ],
+      "websites": [
+        {
+          "url": "https://www.ubcani.com/",
+          "final_url": "https://www.ubcani.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:04+00:00",
+          "event_urls": [
+            "https://www.ubcani.com/events"
+          ],
+          "event_checks": [
+            {
+              "url": "https://www.ubcani.com/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:04+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-anthropology-students-association",
+      "name": "AMS Anthropology Students Association (ASA) at UBC",
+      "directory_url": "https://amsclubs.ca/anthropology-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:03+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.asa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-applied-machine-learning-and-art",
+      "name": "AMS Applied Machine Learning & Art @ UBC",
+      "directory_url": "https://amsclubs.ca/applied-machine-learning-and-art/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:04+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_amla/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-aqua-society",
+      "name": "UBC Aqua Society",
+      "directory_url": "https://amsclubs.ca/aqua-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:04+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcaquasociety/"
+      ],
+      "website_urls": [
+        "https://diveubc.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://diveubc.com/",
+          "final_url": "https://diveubc.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:05+00:00",
+          "event_urls": [
+            "https://diveubc.com/calendar/register/67ed0792-8094-4793-a484-4614ac1e",
+            "https://diveubc.com/calendar/register/67ed0ea6-8074-4931-9f77-4278ac1e"
+          ],
+          "event_checks": [
+            {
+              "url": "https://diveubc.com/calendar/register/67ed0792-8094-4793-a484-4614ac1e",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:06+00:00"
+            },
+            {
+              "url": "https://diveubc.com/calendar/register/67ed0ea6-8074-4931-9f77-4278ac1e",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:07+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-association-of-canadian-archivists",
+      "name": "Association of Canadian Archivists Student Chapter",
+      "directory_url": "https://amsclubs.ca/association-of-canadian-archivists/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:05+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/acaubc/"
+      ],
+      "website_urls": [
+        "https://acaubc.wordpress.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://acaubc.wordpress.com/",
+          "final_url": "https://acaubc.wordpress.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:05+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-music-for-mental-health",
+      "name": "AMS Music for Mental Health at UBC",
+      "directory_url": "https://amsclubs.ca/music-for-mental-health/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:05+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmmh/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-armenian-student-association",
+      "name": "AMS Armenian Student Association at UBC",
+      "directory_url": "https://amsclubs.ca/armenian-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:06+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcarmenia/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-astronomy-club",
+      "name": "The UBC Astronomy Club",
+      "directory_url": "https://amsclubs.ca/astronomy-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:06+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcastronomyclub/"
+      ],
+      "website_urls": [
+        "https://www.ubcastronomyclub.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcastronomyclub.com/",
+          "final_url": "https://www.ubcastronomyclub.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:07+00:00",
+          "event_urls": [
+            "https://www.ubcastronomyclub.com/events"
+          ],
+          "event_checks": [
+            {
+              "url": "https://www.ubcastronomyclub.com/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:07+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-autism-associates",
+      "name": "AMS Autism Associates Club at UBC",
+      "directory_url": "https://amsclubs.ca/autism-associates/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:07+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ams_autism_associates/"
+      ],
+      "website_urls": [
+        "https://www.bouncelife.com/organizations/66e086e4c3f8a775f2933db7"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.bouncelife.com/organizations/66e086e4c3f8a775f2933db7",
+          "final_url": "https://www.bouncelife.com/organizations/66e086e4c3f8a775f2933db7",
+          "status": 402,
+          "checked_at": "2026-11-08T07:26:07+00:00"
+        }
+      ]
+    },
+    {
+      "club_id": "ams-aviary-climbing-club",
+      "name": "The Aviary Climbing Club",
+      "directory_url": "https://amsclubs.ca/aviary-climbing-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:07+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-brasa",
+      "name": "BRASA UBC - Brazilian Student Association",
+      "directory_url": "https://amsclubs.ca/brasa/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:08+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/brasaubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/brasaubc"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-badminton-club",
+      "name": "UBC Badminton Club",
+      "directory_url": "https://amsclubs.ca/badminton-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:08+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_bc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-baking-club",
+      "name": "AMS Baking Club at UBC",
+      "directory_url": "https://amsclubs.ca/baking-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:09+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbaking/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ballet-club",
+      "name": "UBC Ballet Club",
+      "directory_url": "https://amsclubs.ca/ballet-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:09+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcballet/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-barista-club",
+      "name": "AMS Barista Club at UBC",
+      "directory_url": "https://amsclubs.ca/barista-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:10+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbaristaclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-bike-club",
+      "name": "AMS Bike Club at UBC",
+      "directory_url": "https://amsclubs.ca/bike-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:10+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmtbclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-bike-coop",
+      "name": "AMS Bike Co-op",
+      "directory_url": "https://amsclubs.ca/bike-coop/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:11+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/bikekitchenubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-biochemistry-student-association",
+      "name": "Biochemistry Student Association (BSA)",
+      "directory_url": "https://amsclubs.ca/biochemistry-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:11+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/bsa_ubc/"
+      ],
+      "website_urls": [
+        "https://blogs.ubc.ca/biochemistryassociation/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://blogs.ubc.ca/biochemistryassociation/",
+          "final_url": "https://blogs.ubc.ca/biochemistryassociation/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:11+00:00",
+          "event_urls": [
+            "https://blogs.ubc.ca/biochemistryassociation/events/"
+          ],
+          "event_checks": [
+            {
+              "url": "https://blogs.ubc.ca/biochemistryassociation/events/",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:12+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-biological-sciences-society",
+      "name": "UBC Biological Sciences Society",
+      "directory_url": "https://amsclubs.ca/biological-sciences-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:12+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.biosoc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ubc-bcit-biotechnology-club",
+      "name": "UBC BCIT Biotechnology Club",
+      "directory_url": "https://amsclubs.ca/ubc-bcit-biotechnology-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:12+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbcitbiotech/"
+      ],
+      "website_urls": [
+        "https://www.ubcbcitbiotech.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcbcitbiotech.com/",
+          "error": "ConnectError"
+        }
+      ]
+    },
+    {
+      "club_id": "ubc-biztech",
+      "name": "UBC BizTech",
+      "directory_url": "https://amsclubs.ca/ubc-biztech/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:13+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbiztech/"
+      ],
+      "website_urls": [
+        "https://www.ubcbiztech.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcbiztech.com/",
+          "final_url": "https://www.ubcbiztech.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:13+00:00",
+          "event_urls": [
+            "https://www.ubcbiztech.com/events",
+            "https://www.ubcbiztech.com/events/kickstart-2026"
+          ],
+          "event_checks": [
+            {
+              "url": "https://www.ubcbiztech.com/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:13+00:00"
+            },
+            {
+              "url": "https://www.ubcbiztech.com/events/kickstart-2026",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:14+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-black-muslim-collective",
+      "name": "Black Muslim Collective",
+      "directory_url": "https://amsclubs.ca/black-muslim-collective/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:13+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbmc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-botany-enthusiasts-club",
+      "name": "UBC Botany Enthusiasts Club",
+      "directory_url": "https://amsclubs.ca/botany-enthusiasts-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:14+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbotanyclub/"
+      ],
+      "website_urls": [
+        "https://mailchi.mp/202a67dd59b4/ubc-bec"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://mailchi.mp/202a67dd59b4/ubc-bec",
+          "final_url": "https://mailchi.mp/202a67dd59b4/ubc-bec",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:14+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-boxing-club",
+      "name": "UBC Boxing Club",
+      "directory_url": "https://amsclubs.ca/boxing-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:14+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcboxingclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-brewing-club",
+      "name": "UBC Brewing Club",
+      "directory_url": "https://amsclubs.ca/brewing-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:15+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbrewing/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-comedy-club",
+      "name": "AMS Comedy Club at UBC",
+      "directory_url": "https://amsclubs.ca/comedy-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:15+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubccomedyclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-calisthenics-and-body-improvement",
+      "name": "AMS Calisthenics and Body Improvement Club at UBC",
+      "directory_url": "https://amsclubs.ca/calisthenics-and-body-improvement/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:16+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.calisthenics/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-canadian-association-for-security-and-intelligence-studies",
+      "name": "AMS Canadian Association for Security and Intelligence Studies  (CASIS) at UBC",
+      "directory_url": "https://amsclubs.ca/canadian-association-for-security-and-intelligence-studies/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:16+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/casisubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-canadian-students-for-sensible-drug-policy",
+      "name": "Canadian Students for Sensible Drug Policy",
+      "directory_url": "https://amsclubs.ca/canadian-students-for-sensible-drug-policy/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:17+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/cssdp_vancouver/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-chabad",
+      "name": "Chabad UBC",
+      "directory_url": "https://amsclubs.ca/chabad/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:17+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/chabadubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-canadian-wheelchair-club",
+      "name": "UBC Canadian Wheelchair Club",
+      "directory_url": "https://amsclubs.ca/canadian-wheelchair-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:18+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcwheelchair/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-catholic-christian-outreach",
+      "name": "Catholic Christian Outreach",
+      "directory_url": "https://amsclubs.ca/catholic-christian-outreach/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:18+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ccoubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-chemical-and-biological-engineering-undergraduate-club",
+      "name": "Chemical and Biological Engineering Undergraduate Club",
+      "directory_url": "https://amsclubs.ca/chemical-and-biological-engineering-undergraduate-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:19+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/chbecouncil/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-childrens-charity-at-ubc",
+      "name": "Children's Charity at UBC",
+      "directory_url": "https://amsclubs.ca/childrens-charity-at-ubc/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:19+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcchildrenscharity/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-christian-students",
+      "name": "Christian Students @ UBC",
+      "directory_url": "https://amsclubs.ca/christian-students/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:20+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/christianstudentsatubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-citr",
+      "name": "CiTR 101.9 FM & Discorder Magazine",
+      "directory_url": "https://amsclubs.ca/citr/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:20+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-cognitive-systems-society",
+      "name": "Cognitive Systems Society",
+      "directory_url": "https://amsclubs.ca/cognitive-systems-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:21+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/cogsubc/"
+      ],
+      "website_urls": [
+        "https://cogs-ubc.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://cogs-ubc.ca/",
+          "final_url": "https://cogs-ubc.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:21+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-colombian-student-association",
+      "name": "AMS Colombian Student Association at UBC",
+      "directory_url": "https://amsclubs.ca/colombian-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:21+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/colsaubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-coptic-orthodox-student-association",
+      "name": "Coptic Orthodox Student Association (COSA)",
+      "directory_url": "https://amsclubs.ca/coptic-orthodox-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:22+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-curling-club",
+      "name": "AMS Curling Club at UBC",
+      "directory_url": "https://amsclubs.ca/curling-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:22+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubccurlingclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ubc-dance-team",
+      "name": "UBC Dance Team",
+      "directory_url": "https://amsclubs.ca/ubc-dance-team/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:23+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcdanceteam/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-diabetes-club",
+      "name": "AMS Diabetes Club at UBC",
+      "directory_url": "https://amsclubs.ca/diabetes-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:23+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcdiabetesclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-dragon-boat-club",
+      "name": "UBC Dragon Boat Club",
+      "directory_url": "https://amsclubs.ca/dragon-boat-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:24+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.current/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-egyptian-student-association",
+      "name": "AMS Egyptian Student Association (ESA) at UBC",
+      "directory_url": "https://amsclubs.ca/egyptian-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:24+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/esa__ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-engineering-physics-student-association",
+      "name": "The UBC Engineering Physics Student Association",
+      "directory_url": "https://amsclubs.ca/engineering-physics-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:25+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-english-students-association",
+      "name": "UBC AMS English Students' Association",
+      "directory_url": "https://amsclubs.ca/english-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:25+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_esa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-environmental-engineering-student-association",
+      "name": "Environmental Engineering Student Association",
+      "directory_url": "https://amsclubs.ca/environmental-engineering-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:26+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubceesa/"
+      ],
+      "website_urls": [
+        "https://blogs.ubc.ca/environmentalengineeringstudentassociation/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://blogs.ubc.ca/environmentalengineeringstudentassociation/",
+          "final_url": "https://blogs.ubc.ca/environmentalengineeringstudentassociation/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:27+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-indigenous-business-association",
+      "name": "AMS Indigenous Business Association at UBC",
+      "directory_url": "https://amsclubs.ca/indigenous-business-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:26+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/iba.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-environmental-policy-association",
+      "name": "UBC Environmental Policy Association",
+      "directory_url": "https://amsclubs.ca/environmental-policy-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:27+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_epa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-environmental-sciences-students-association",
+      "name": "Environmental Sciences Students' Association (ESSA)",
+      "directory_url": "https://amsclubs.ca/environmental-sciences-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:27+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcessa/"
+      ],
+      "website_urls": [
+        "https://essaubc.wixsite.com/earth"
+      ],
+      "link_hubs": [
+        "https://linktr.ee/ubcessa"
+      ],
+      "websites": [
+        {
+          "url": "https://essaubc.wixsite.com/earth",
+          "final_url": "https://essaubc.wixsite.com/earth",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:27+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-equestrian",
+      "name": "UBC Equestrian Club",
+      "directory_url": "https://amsclubs.ca/equestrian/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:28+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcequestrianclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcequestrian"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-esports-association",
+      "name": "UBC Esports Association",
+      "directory_url": "https://amsclubs.ca/esports-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:28+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcea/"
+      ],
+      "website_urls": [
+        "https://www.ubcesports.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcesports.ca/",
+          "final_url": "https://www.ubcesports.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:29+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-exchange-and-international-student-club",
+      "name": "Exchange and International Student Club",
+      "directory_url": "https://amsclubs.ca/exchange-and-international-student-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:29+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_xisc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-fencing-club",
+      "name": "UBC Fencing Club",
+      "directory_url": "https://amsclubs.ca/fencing-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:29+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcfencing/"
+      ],
+      "website_urls": [
+        "https://ubcfencing.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcfencing.ca/",
+          "final_url": "https://www.ubcfencing.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:30+00:00",
+          "event_urls": [
+            "https://www.ubcfencing.ca/calendar"
+          ],
+          "event_checks": [
+            {
+              "url": "https://www.ubcfencing.ca/calendar",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:30+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-figure-skating-club",
+      "name": "AMS Figure Skating Club at UBC",
+      "directory_url": "https://amsclubs.ca/figure-skating-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:30+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcfigureskating/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-fijian-students-association",
+      "name": "AMS Fijian Students Association at UBC",
+      "directory_url": "https://amsclubs.ca/fijian-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:30+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/fjsa.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-film-society",
+      "name": "UBC Film Society",
+      "directory_url": "https://amsclubs.ca/film-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:31+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcfilmsociety/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-finance-association",
+      "name": "UBC Finance Association",
+      "directory_url": "https://amsclubs.ca/finance-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:31+00:00",
+      "instagram_urls": [],
+      "website_urls": [
+        "https://ubcfa.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcfa.ca/",
+          "final_url": "https://ubcfa.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:31+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-friends-of-msf",
+      "name": "Friends of MSF (Medecins Sans Frontieres) UBC",
+      "directory_url": "https://amsclubs.ca/friends-of-msf/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:32+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/friendsofmsfubc/"
+      ],
+      "website_urls": [
+        "https://riskassessment.my.canva.site/friends-of-msf"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://riskassessment.my.canva.site/friends-of-msf",
+          "final_url": "https://riskassessment.my.canva.site/friends-of-msf",
+          "status": 404,
+          "checked_at": "2026-11-08T07:26:32+00:00"
+        }
+      ]
+    },
+    {
+      "club_id": "ams-game-development-association",
+      "name": "AMS Game Development Association",
+      "directory_url": "https://amsclubs.ca/game-development-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:32+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-geography-students-association",
+      "name": "Geography Students' Association",
+      "directory_url": "https://amsclubs.ca/geography-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:33+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcgsa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-georox",
+      "name": "Georox",
+      "directory_url": "https://amsclubs.ca/georox/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:33+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/georoxubc/"
+      ],
+      "website_urls": [
+        "https://blogs.ubc.ca/georox/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://blogs.ubc.ca/georox/",
+          "final_url": "https://blogs.ubc.ca/georox/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:33+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-german-student-association",
+      "name": "UBC German Student Association",
+      "directory_url": "https://amsclubs.ca/german-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:34+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-get-thrifty-ubc",
+      "name": "Get Thrifty UBC",
+      "directory_url": "https://amsclubs.ca/get-thrifty-ubc/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:34+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/getthriftyubc/"
+      ],
+      "website_urls": [
+        "https://www.getthrifty.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.getthrifty.ca/",
+          "final_url": "https://getthrifty.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:35+00:00",
+          "event_urls": [
+            "https://getthrifty.ca/pages/events"
+          ],
+          "event_checks": [
+            {
+              "url": "https://getthrifty.ca/pages/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:36+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-girls-in-steam",
+      "name": "AMS Girls in STEAM @ UBC",
+      "directory_url": "https://amsclubs.ca/girls-in-steam/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:35+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/gis.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-gluten-free-and-celiac-students",
+      "name": "UBC Gluten-Free and Celiac Students",
+      "directory_url": "https://amsclubs.ca/gluten-free-and-celiac-students/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:35+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcceliacs/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-golden-voices",
+      "name": "Golden Voices",
+      "directory_url": "https://amsclubs.ca/golden-voices/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:36+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/goldenvoicesproject/"
+      ],
+      "website_urls": [
+        "https://goldenvoicesprojec.wixsite.com/goldenvoices"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://goldenvoicesprojec.wixsite.com/goldenvoices",
+          "final_url": "https://goldenvoicesprojec.wixsite.com/goldenvoices",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:37+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-greek-student-association",
+      "name": "AMS Greek Student Association (GreekSA) at UBC",
+      "directory_url": "https://amsclubs.ca/greek-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:36+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_greeksa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-health-and-society-student-club",
+      "name": "AMS Health and Society Student Club at UBC",
+      "directory_url": "https://amsclubs.ca/health-and-society-student-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:37+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcheso/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-heart-and-stroke-foundation",
+      "name": "UBC Heart and Stroke Foundation",
+      "directory_url": "https://amsclubs.ca/heart-and-stroke-foundation/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:37+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubchsf/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-hindu-yuva",
+      "name": "AMS Hindu Yuva",
+      "directory_url": "https://amsclubs.ca/hindu-yuva/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:38+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/hinduyuva.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-hopetohouse-awareness-initiative",
+      "name": "Hope to House Awareness Initiative at UBC",
+      "directory_url": "https://amsclubs.ca/hopetohouse-awareness-initiative/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:38+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubchopetohouse/"
+      ],
+      "website_urls": [
+        "https://mailchi.mp/e309ce34acf0/subscribehopetohouse"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://mailchi.mp/e309ce34acf0/subscribehopetohouse",
+          "final_url": "https://mailchi.mp/e309ce34acf0/subscribehopetohouse",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:39+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-humanities-in-healthcare",
+      "name": "AMS Humanities in Healthcare at UBC",
+      "directory_url": "https://amsclubs.ca/humanities-in-healthcare/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:39+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.hih/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ubc-improv",
+      "name": "UBC Improv",
+      "directory_url": "https://amsclubs.ca/ubc-improv/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:39+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcimprov/"
+      ],
+      "website_urls": [
+        "https://www.ubcimprov.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcimprov.ca/",
+          "final_url": "https://www.ubcimprov.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:39+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-innovation-on-board",
+      "name": "AMS Innovation OnBoard (IOB) @ UBC",
+      "directory_url": "https://amsclubs.ca/innovation-on-board/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:40+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/innovationonboard_/"
+      ],
+      "website_urls": [
+        "https://innovationboard.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://innovationboard.ca/",
+          "final_url": "https://www.innovationboard.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:40+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-intervarsity-christian-fellowship",
+      "name": "AMS InterVarsity Christian Fellowship at UBC",
+      "directory_url": "https://amsclubs.ca/intervarsity-christian-fellowship/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:40+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ivcfubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-international-relations-students-association",
+      "name": "International Relations Students' Association",
+      "directory_url": "https://amsclubs.ca/international-relations-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:41+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/irsaubc/"
+      ],
+      "website_urls": [
+        "https://irsaubc.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://irsaubc.ca/",
+          "final_url": "https://irsaubc.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:42+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-israel-on-campus",
+      "name": "Israel on Campus (IOC)",
+      "directory_url": "https://amsclubs.ca/israel-on-campus/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:41+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/israeloncampus.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-jain-students-association",
+      "name": "AMS Jain Students Association",
+      "directory_url": "https://amsclubs.ca/jain-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:42+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_jsa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-japan-association",
+      "name": "UBC Japan Association",
+      "directory_url": "https://amsclubs.ca/japan-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:42+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_ja/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-japan-career-network",
+      "name": "UBC Japan Career Network",
+      "directory_url": "https://amsclubs.ca/japan-career-network/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:43+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.jcn/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-jesus-disciple-movement",
+      "name": "Jesus Disciple Movement",
+      "directory_url": "https://amsclubs.ca/jesus-disciple-movement/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:43+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/_jdm_canada_/"
+      ],
+      "website_urls": [
+        "https://forms.gle/iaB3SnveyXZgrGUJ8"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://forms.gle/iaB3SnveyXZgrGUJ8",
+          "final_url": "https://docs.google.com/forms/d/e/1FAIpQLSeCJxmxWkAj-f9bHmHJhJ0jiaUpeN5jk5tl6LeV2SgoKBfjCA/viewform?usp=send_form",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:44+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-jewish-students-association",
+      "name": "Jewish Students Association",
+      "directory_url": "https://amsclubs.ca/jewish-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:44+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcjsa"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-junoon",
+      "name": "UBC Junoon",
+      "directory_url": "https://amsclubs.ca/junoon/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:44+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcjunoon/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-filipino-students-association",
+      "name": "UBC Kababayan: Filipino Student's Association",
+      "directory_url": "https://amsclubs.ca/filipino-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:45+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubckaba/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-kendo-club",
+      "name": "UBC Kendo Club",
+      "directory_url": "https://amsclubs.ca/kendo-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:45+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubckendo/"
+      ],
+      "website_urls": [
+        "https://ubckendo.wixsite.com/website"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubckendo.wixsite.com/website",
+          "final_url": "https://ubckendo.wixsite.com/website",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:45+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-association-of-korean-canadian-scientists-and-engineers",
+      "name": "Association of Korean Canadian Scientists and Engineers",
+      "directory_url": "https://amsclubs.ca/association-of-korean-canadian-scientists-and-engineers/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:46+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/akcse_ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-korean-campus-mission",
+      "name": "Korean Campus Mission at University of British Columbia (KCM-UBC)",
+      "directory_url": "https://amsclubs.ca/korean-campus-mission/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:46+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubckoinonia/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-korean-commerce-student-association",
+      "name": "Korean Commerce Student Association",
+      "directory_url": "https://amsclubs.ca/korean-commerce-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:47+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_kcsa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubckcsa2324"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-landscape-architecture-student-association",
+      "name": "Landscape Architecture Student Association (LASA)",
+      "directory_url": "https://amsclubs.ca/landscape-architecture-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:47+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-mahjong-club",
+      "name": "UBC Mahjong Club",
+      "directory_url": "https://amsclubs.ca/mahjong-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:48+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmahjongclub/"
+      ],
+      "website_urls": [
+        "https://www.ubcmahjong.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcmahjong.com/",
+          "final_url": "https://ubc.gg/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:48+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-malayali-students-association",
+      "name": "AMS Malayali Students Association",
+      "directory_url": "https://amsclubs.ca/malayali-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:48+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubckeralam/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-manufacturing-engineering-undergraduate-club",
+      "name": "The Manufacturing Engineering Undergraduate Club of the University of British Columbia",
+      "directory_url": "https://amsclubs.ca/manufacturing-engineering-undergraduate-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:49+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmanu/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-marketing-association",
+      "name": "University of British Columbia Marketing Association",
+      "directory_url": "https://amsclubs.ca/marketing-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:49+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcma/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-mechanical-engineering-club",
+      "name": "Mechanical Engineering Club",
+      "directory_url": "https://amsclubs.ca/mechanical-engineering-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:50+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcclubmech/"
+      ],
+      "website_urls": [
+        "https://ubcclubmech.ca/",
+        "https://ubcclubmech.ca/discord"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcclubmech.ca/",
+          "final_url": "https://ubcclubmech.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:50+00:00",
+          "event_urls": [
+            "https://ubcclubmech.ca/events"
+          ],
+          "event_checks": [
+            {
+              "url": "https://ubcclubmech.ca/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:50+00:00"
+            }
+          ]
+        },
+        {
+          "url": "https://ubcclubmech.ca/discord",
+          "final_url": "https://ubcclubmech.ca/discord",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:51+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-medical-imaging-club",
+      "name": "AMS Medical Imaging Club at UBC",
+      "directory_url": "https://amsclubs.ca/medical-imaging-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:50+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmic/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-medical-ethics-clubs",
+      "name": "AMS Medical Ethics Club @ UBC",
+      "directory_url": "https://amsclubs.ca/medical-ethics-clubs/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:51+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.medethics/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-mental-health-awareness-club",
+      "name": "UBC Mental Health Awareness Club",
+      "directory_url": "https://amsclubs.ca/mental-health-awareness-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:51+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmhac/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-middle-east-indian-students-association",
+      "name": "AMS Middle East Indian Students' Association at UBC",
+      "directory_url": "https://amsclubs.ca/middle-east-indian-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:52+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmeisa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-midwifery-students-association",
+      "name": "Midwifery Student's Association",
+      "directory_url": "https://amsclubs.ca/midwifery-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:52+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-mindfulness-meditation-community",
+      "name": "AMS Mindfulness Meditation Community at UBC",
+      "directory_url": "https://amsclubs.ca/mindfulness-meditation-community/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:53+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmeditationcommunity/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-model-united-nations-student-association",
+      "name": "Model United Nations Student Association",
+      "directory_url": "https://amsclubs.ca/model-united-nations-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:53+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/munsaubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-modeling-club",
+      "name": "AMS Modeling Club @UBC",
+      "directory_url": "https://amsclubs.ca/modeling-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:54+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmodelingclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-motion",
+      "name": "Motion UBC",
+      "directory_url": "https://amsclubs.ca/motion/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:54+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/motionubc/"
+      ],
+      "website_urls": [
+        "https://motionubc.vercel.app/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://motionubc.vercel.app/",
+          "final_url": "https://motionubc.vercel.app/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:54+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-muaythai-club",
+      "name": "AMS Muaythai Club at UBC",
+      "directory_url": "https://amsclubs.ca/muaythai-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:55+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmuaythai/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-multifaith-club",
+      "name": "UBC Multifaith club",
+      "directory_url": "https://amsclubs.ca/multifaith-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:55+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmultifaithclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-music-initiative",
+      "name": "UBC Music Initiative",
+      "directory_url": "https://amsclubs.ca/music-initiative/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:56+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmusicinitiative/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-music-production-club",
+      "name": "AMS Music Production Club at UBC",
+      "directory_url": "https://amsclubs.ca/music-production-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:56+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/mpc_ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-musicbox-childrens-charity",
+      "name": "MusicBox Children's Charity",
+      "directory_url": "https://amsclubs.ca/musicbox-childrens-charity/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:57+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/musicbox_ubc/",
+        "https://www.instagram.com/musicboxcc/"
+      ],
+      "website_urls": [
+        "https://www.musicboxcc.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.musicboxcc.com/",
+          "final_url": "https://www.musicboxcc.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:57+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-muslim-students-association",
+      "name": "Muslim Students' Association of UBC",
+      "directory_url": "https://amsclubs.ca/muslim-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:57+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/msaubc/"
+      ],
+      "website_urls": [
+        "https://msaubc.org/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://msaubc.org/",
+          "final_url": "https://msaubc.org/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:57+00:00",
+          "event_urls": [
+            "https://msaubc.org/calendar"
+          ],
+          "event_checks": [
+            {
+              "url": "https://msaubc.org/calendar",
+              "status": 200,
+              "checked_at": "2026-11-08T07:26:58+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-myanmar-student-club",
+      "name": "AMS Myanmar Student Club at UBC",
+      "directory_url": "https://amsclubs.ca/myanmar-student-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:58+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmmclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcmm"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-navigators",
+      "name": "The Navigators",
+      "directory_url": "https://amsclubs.ca/navigators/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:58+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcnavigators/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-neuroscience-association",
+      "name": "UBC AMS Neuroscience Association",
+      "directory_url": "https://amsclubs.ca/neuroscience-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:59+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcneuroassociation/"
+      ],
+      "website_urls": [
+        "https://neuro.ubc.ca/student-initiatives/ubc-neuroscience-association/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://neuro.ubc.ca/student-initiatives/ubc-neuroscience-association/",
+          "final_url": "https://neuro.ubc.ca/student-initiatives/ubc-neuroscience-association/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:26:59+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-occupational-therapy-student-society",
+      "name": "Occupational Therapy Student Society",
+      "directory_url": "https://amsclubs.ca/occupational-therapy-student-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:26:59+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcotss/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-paint-club",
+      "name": "AMS Paint Club",
+      "directory_url": "https://amsclubs.ca/paint-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:00+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcpaintclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-persian-club",
+      "name": "UBC Persian Club",
+      "directory_url": "https://amsclubs.ca/persian-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:00+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcpc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-peruvian-student-association",
+      "name": "AMS Peruvian Student Association at UBC",
+      "directory_url": "https://amsclubs.ca/peruvian-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:01+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/peru_ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-bachelor-pharmaceutical-sciences-student-association",
+      "name": "Bachelor of Pharmaceutical Sciences Student Association",
+      "directory_url": "https://amsclubs.ca/bachelor-pharmaceutical-sciences-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:01+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbpsc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-philosophy-students-association",
+      "name": "Philosophy Students Association",
+      "directory_url": "https://amsclubs.ca/philosophy-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:02+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_philsa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-photographic-society",
+      "name": "UBC AMS PHOTOGRAPHIC SOCIETY",
+      "directory_url": "https://amsclubs.ca/photographic-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:02+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcphotosoc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-science-one-survivor",
+      "name": "Science One Survivor",
+      "directory_url": "https://amsclubs.ca/science-one-survivor/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:03+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/sosurvivors.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-physics-society",
+      "name": "AMS Physics Society at UBC",
+      "directory_url": "https://amsclubs.ca/physics-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:03+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcphyssoc/"
+      ],
+      "website_urls": [
+        "https://physsoc.phas.ubc.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://physsoc.phas.ubc.ca/",
+          "error": "ReadError"
+        }
+      ]
+    },
+    {
+      "club_id": "ams-pilates-club",
+      "name": "AMS Pilates Club",
+      "directory_url": "https://amsclubs.ca/pilates-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:04+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcpilatesclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-planetary-health-club",
+      "name": "Planetary Health Club",
+      "directory_url": "https://amsclubs.ca/planetary-health-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:04+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.planetaryhealth/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-players-club",
+      "name": "UBC Players Club",
+      "directory_url": "https://amsclubs.ca/players-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:05+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcplayersclub/"
+      ],
+      "website_urls": [
+        "https://ubcplayersclub.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcplayersclub.com/",
+          "final_url": "https://ubcplayersclub.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:05+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-poker-club",
+      "name": "AMS Poker Club",
+      "directory_url": "https://amsclubs.ca/poker-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:05+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-political-science-students-association",
+      "name": "UBC Political Science Students' Association",
+      "directory_url": "https://amsclubs.ca/political-science-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:06+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.pssa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-power-to-change",
+      "name": "Power to Change",
+      "directory_url": "https://amsclubs.ca/power-to-change/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:06+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/p2cubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-pre-law-association",
+      "name": "UBC Pre-Law Association",
+      "directory_url": "https://amsclubs.ca/pre-law-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:07+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcprelaw/"
+      ],
+      "website_urls": [
+        "https://ubcprelaw.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcprelaw.com/",
+          "final_url": "https://ubcprelaw.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:08+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-pre-veterinary-and-animal-welfare-club",
+      "name": "Pre-Veterinary and Animal Welfare Club",
+      "directory_url": "https://amsclubs.ca/pre-veterinary-and-animal-welfare-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:07+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcpaw/"
+      ],
+      "website_urls": [
+        "https://ubcpaw.wixsite.com/home"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcpaw.wixsite.com/home",
+          "final_url": "https://ubcpaw.wixsite.com/home",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:07+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-predental-society",
+      "name": "AMS Pre-Dental Society at UBC",
+      "directory_url": "https://amsclubs.ca/predental-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:08+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcpredent/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-psychedelic-society",
+      "name": "UBC Psychedelic Society",
+      "directory_url": "https://amsclubs.ca/psychedelic-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:08+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_psychedelic/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-psychology-students-association",
+      "name": "Psychology Students' Association",
+      "directory_url": "https://amsclubs.ca/psychology-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:09+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.psa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-quantum-club",
+      "name": "AMS UBC Quantum Club @UBC",
+      "directory_url": "https://amsclubs.ca/quantum-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:09+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcquantum/"
+      ],
+      "website_urls": [
+        "https://ubcquantum.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcquantum.com/",
+          "final_url": "https://ubcquantum.com/cgi-sys/suspendedpage.cgi",
+          "status": 403,
+          "checked_at": "2026-11-08T07:27:10+00:00"
+        }
+      ]
+    },
+    {
+      "club_id": "ams-real-estate-club",
+      "name": "UBC Real Estate Club",
+      "directory_url": "https://amsclubs.ca/real-estate-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:10+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcrealestateclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-red-cross-club",
+      "name": "UBC Red Cross Club",
+      "directory_url": "https://amsclubs.ca/red-cross-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:10+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcredcross/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-romance-studies-students-association",
+      "name": "Romance Studies Students Association",
+      "directory_url": "https://amsclubs.ca/romance-studies-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:11+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-roots-on-roof",
+      "name": "Roots on the Roof",
+      "directory_url": "https://amsclubs.ca/roots-on-roof/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:11+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/rootsontheroof/"
+      ],
+      "website_urls": [
+        "https://rootsontheroof.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://rootsontheroof.ca/",
+          "final_url": "https://rootsontheroof.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:11+00:00",
+          "event_urls": [
+            "https://rootsontheroof.ca/categories/events/"
+          ],
+          "event_checks": [
+            {
+              "url": "https://rootsontheroof.ca/categories/events/",
+              "status": 200,
+              "checked_at": "2026-11-08T07:27:12+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-running-club",
+      "name": "AMS Running Club at UBC",
+      "directory_url": "https://amsclubs.ca/running-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:12+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-sisu",
+      "name": "UBC SISU",
+      "directory_url": "https://amsclubs.ca/sisu/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:12+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsisu/"
+      ],
+      "website_urls": [
+        "https://ubcsisu.wordpress.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcsisu.wordpress.com/",
+          "final_url": "https://ubcsisu.wordpress.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:12+00:00",
+          "event_urls": [
+            "https://ubcsisu.wordpress.com/events/"
+          ],
+          "event_checks": [
+            {
+              "url": "https://ubcsisu.wordpress.com/events/",
+              "status": 200,
+              "checked_at": "2026-11-08T07:27:13+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-stem-fellowship",
+      "name": "STEM Fellowship",
+      "directory_url": "https://amsclubs.ca/stem-fellowship/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:13+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-sailing-club",
+      "name": "UBC Sailing Club",
+      "directory_url": "https://amsclubs.ca/sailing-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:13+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-salsa-rueda",
+      "name": "The Salsa Rueda Club",
+      "directory_url": "https://amsclubs.ca/salsa-rueda/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:14+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsalsarueda/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-scandinavian-and-nordic-student-association",
+      "name": "UBC Scandinavian and Nordic Student Association",
+      "directory_url": "https://amsclubs.ca/scandinavian-and-nordic-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:14+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsnsa/"
+      ],
+      "website_urls": [
+        "https://open.spotify.com/user/69putffsttc9vas9kw5g558sl",
+        "https://ubcsnsa.com/"
+      ],
+      "link_hubs": [
+        "https://linktr.ee/ubcsnsa"
+      ],
+      "websites": [
+        {
+          "url": "https://open.spotify.com/user/69putffsttc9vas9kw5g558sl",
+          "final_url": "https://open.spotify.com/user/69putffsttc9vas9kw5g558sl",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:14+00:00",
+          "event_urls": []
+        },
+        {
+          "url": "https://ubcsnsa.com/",
+          "final_url": "https://ubcsnsa.weebly.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:15+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-science-fiction-and-fantasy-society",
+      "name": "UBC Science Fiction & Fantasy Society",
+      "directory_url": "https://amsclubs.ca/science-fiction-and-fantasy-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:15+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_sfs/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-seri-malaysia-club",
+      "name": "Seri Malaysia Club",
+      "directory_url": "https://amsclubs.ca/seri-malaysia-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:15+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmalaysians/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-shito-ryu-sato-kai-karate-club",
+      "name": "AMS Shito-Ryu Sato-Kai Karate Club at UBC",
+      "directory_url": "https://amsclubs.ca/shito-ryu-sato-kai-karate-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:16+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/shitoryu.satokai/",
+        "https://www.instagram.com/ubc_karate/"
+      ],
+      "website_urls": [
+        "https://www.shitoryu.net/ubc-dojo/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.shitoryu.net/ubc-dojo/",
+          "final_url": "https://www.shitoryu.net/ubc-dojo/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:17+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-singapore-students-association",
+      "name": "Singapore Students' Association",
+      "directory_url": "https://amsclubs.ca/singapore-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:16+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/theubcssa/"
+      ],
+      "website_urls": [
+        "https://ubcssa.vercel.app/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcssa.vercel.app/",
+          "final_url": "https://ubcssa.vercel.app/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:24+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-sociology-students-association",
+      "name": "UBC Sociology Students' Association",
+      "directory_url": "https://amsclubs.ca/sociology-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:17+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcssa/"
+      ],
+      "website_urls": [
+        "https://blogs.ubc.ca/ubcssa/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://blogs.ubc.ca/ubcssa/",
+          "final_url": "https://blogs.ubc.ca/ubcssa/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:17+00:00",
+          "event_urls": [
+            "https://blogs.ubc.ca/ubcssa/events/"
+          ],
+          "event_checks": [
+            {
+              "url": "https://blogs.ubc.ca/ubcssa/events/",
+              "status": 200,
+              "checked_at": "2026-11-08T07:27:17+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-ubc-sororities",
+      "name": "UBC Sororities",
+      "directory_url": "https://amsclubs.ca/ubc-sororities/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:17+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsororities/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ubc-salsa",
+      "name": "Speech and Linguistics Student Association",
+      "directory_url": "https://amsclubs.ca/speech-and-linguistics-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:18+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_salsa/"
+      ],
+      "website_urls": [
+        "https://ubcsalsa.wordpress.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcsalsa.wordpress.com/",
+          "final_url": "https://ubcsalsa.wordpress.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:18+00:00",
+          "event_urls": [
+            "https://ubcsalsa.wordpress.com/calendar/",
+            "https://ubcsalsa.wordpress.com/calendar/peer-tutoring-schedule/"
+          ],
+          "event_checks": [
+            {
+              "url": "https://ubcsalsa.wordpress.com/calendar/",
+              "status": 200,
+              "checked_at": "2026-11-08T07:27:19+00:00"
+            },
+            {
+              "url": "https://ubcsalsa.wordpress.com/calendar/peer-tutoring-schedule/",
+              "status": 200,
+              "checked_at": "2026-11-08T07:27:19+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-sports-car-club",
+      "name": "AMS Sports Car Club at UBC",
+      "directory_url": "https://amsclubs.ca/sports-car-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:18+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsportscarclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-sprouts-cafe",
+      "name": "UBC Sprouts Cafe",
+      "directory_url": "https://amsclubs.ca/sprouts-cafe/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:19+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsprouts/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-students-for-partners-in-health-canada",
+      "name": "UBC Students for Partners in Health Canada",
+      "directory_url": "https://amsclubs.ca/students-for-partners-in-health-canada/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:19+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-swim-club",
+      "name": "AMS Swim Club at UBC",
+      "directory_url": "https://amsclubs.ca/swim-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:20+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/swimclub.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ubc-taekwondo",
+      "name": "AMS UBC Taekwondo",
+      "directory_url": "https://amsclubs.ca/ubc-taekwondo/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:20+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubctaekwondo/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-tax-assistance-clinic",
+      "name": "UBC Tax Assistance Clinic",
+      "directory_url": "https://amsclubs.ca/tax-assistance-clinic/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:21+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.tacs/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-taylor-swift-club",
+      "name": "AMS Taylor Swift Club at UBC",
+      "directory_url": "https://amsclubs.ca/taylor-swift-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:21+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcswifties/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-teaclub",
+      "name": "UBC Tea Club",
+      "directory_url": "https://amsclubs.ca/teaclub/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:22+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcteaclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-tennis-circle",
+      "name": "AMS Tennis Circle @UBC",
+      "directory_url": "https://amsclubs.ca/tennis-circle/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:22+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubctenniscircle/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-thaqalayn-muslim-association",
+      "name": "Thaqalayn Muslim Association (TMA)",
+      "directory_url": "https://amsclubs.ca/thaqalayn-muslim-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:23+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/tma_ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/TMA_UBC?fbclid=IwY2xjawFOB8VleHRuA2FlbQIxMAABHcfPbs4kUcZtiGdLeus6dHWMlyY7e-_eTWzWVsDxbPm_JLUbAJb-edSu6A_aem_d71oZbAtwoclqPH9Deetng"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-third-world-eye-care-society",
+      "name": "UBC Third World Eye Care Society",
+      "directory_url": "https://amsclubs.ca/third-world-eye-care-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:23+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubctwecs/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-thunderbird-dance-team",
+      "name": "Thunderbird Dance Team",
+      "directory_url": "https://amsclubs.ca/thunderbird-dance-team/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:24+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubctdt/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-thunderbird-marching-band",
+      "name": "Thunderbird Marching Band",
+      "directory_url": "https://amsclubs.ca/thunderbird-marching-band/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:24+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubctmb/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-trading-group",
+      "name": "UBC Trading Group",
+      "directory_url": "https://amsclubs.ca/trading-group/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:25+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubctradinggroup/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-transplant-club",
+      "name": "AMS Transplant Club at UBC",
+      "directory_url": "https://amsclubs.ca/transplant-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:25+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubctransplant/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-triathlon-club",
+      "name": "UBC AMS Triathlon Club",
+      "directory_url": "https://amsclubs.ca/triathlon-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:26+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubctriathlon.ams/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-twilight",
+      "name": "Twilight",
+      "directory_url": "https://amsclubs.ca/twilight/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:26+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubccua/"
+      ],
+      "website_urls": [
+        "https://mp.weixin.qq.com/s/mOTeabIiHiV-stnoSIkRXQ",
+        "https://www.xiaohongshu.com/user/profile/5dda2546000000000100821c?xhsshare=CopyLink&appuid=5d060cfe0000000012022d35&apptime=1727481337&share_id=7a859ad0cf6d4c11946cc5b2d9910e7e"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://mp.weixin.qq.com/s/mOTeabIiHiV-stnoSIkRXQ",
+          "final_url": "https://mp.weixin.qq.com/mp/wappoc_appmsgcaptcha?target_url=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FmOTeabIiHiV-stnoSIkRXQ",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:27+00:00",
+          "event_urls": []
+        },
+        {
+          "url": "https://www.xiaohongshu.com/user/profile/5dda2546000000000100821c?xhsshare=CopyLink&appuid=5d060cfe0000000012022d35&apptime=1727481337&share_id=7a859ad0cf6d4c11946cc5b2d9910e7e",
+          "final_url": "https://www.rednote.com/login?redirectPath=http%3A%2F%2Fwww.rednote.com%2Fuser%2Fprofile%2F5dda2546000000000100821c%3Fxhsshare%3DCopyLink%26appuid%3D5d060cfe0000000012022d35%26apptime%3D1727481337%26share_id%3D7a859ad0cf6d4c11946cc5b2d9910e7e%26exSource%3Dnull",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:29+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-usu",
+      "name": "AMS Ukrainian Student Union at UBC",
+      "directory_url": "https://amsclubs.ca/usu/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:27+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_usu/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-undergraduate-chemistry-society",
+      "name": "Undergraduate Chemistry Society",
+      "directory_url": "https://amsclubs.ca/undergraduate-chemistry-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:27+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_ucs/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-university-christian-ministries",
+      "name": "University Christian Ministries",
+      "directory_url": "https://amsclubs.ca/university-christian-ministries/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:28+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ucmatubc/"
+      ],
+      "website_urls": [
+        "https://www.ucmatubc.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ucmatubc.com/",
+          "final_url": "https://www.ucmatubc.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:28+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-unlimited-dance-club",
+      "name": "AMS Unlimited Dance Club at UBC (UDC)",
+      "directory_url": "https://amsclubs.ca/unlimited-dance-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:28+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-vancouver-hanfu-culture-association",
+      "name": "Vancouver Hanfu Culture Association",
+      "directory_url": "https://amsclubs.ca/vancouver-hanfu-culture-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:29+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/vanhanfu/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-varisty-outdoor-club",
+      "name": "Varsity Outdoor Club",
+      "directory_url": "https://amsclubs.ca/varisty-outdoor-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:29+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-vegans-of-ubc",
+      "name": "Vegans of UBC",
+      "directory_url": "https://amsclubs.ca/vegans-of-ubc/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:30+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/vegansofubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-vietnamese-student-association",
+      "name": "Vietnamese Student Association",
+      "directory_url": "https://amsclubs.ca/vietnamese-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:30+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcvsa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-vision-health-volunteers",
+      "name": "Vision Health Volunteers",
+      "directory_url": "https://amsclubs.ca/vision-health-volunteers/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:31+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcvisionhealth/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-voice-acting",
+      "name": "Voice Acting Club",
+      "directory_url": "https://amsclubs.ca/voice-acting/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:31+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/slyx_voiceacting/"
+      ],
+      "website_urls": [
+        "https://www.xiaohongshu.com/user/profile/617a1a2a0000000002026e94?xsec_source=pc_search"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.xiaohongshu.com/user/profile/617a1a2a0000000002026e94?xsec_source=pc_search",
+          "final_url": "https://www.rednote.com/user/profile/617a1a2a0000000002026e94?xsec_source=pc_search",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:33+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-volleyball-club",
+      "name": "AMS Volleyball Club at UBC",
+      "directory_url": "https://amsclubs.ca/volleyball-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:32+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcvolleyballclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-wargamers-of-ubc",
+      "name": "Wargamers of UBC",
+      "directory_url": "https://amsclubs.ca/wargamers-of-ubc/",
+      "directory_status": 403,
+      "checked_at": "2026-11-08T07:32:55+00:00",
+      "error": "HTTP 403",
+      "website_urls": [],
+      "instagram_urls": []
+    },
+    {
+      "club_id": "ams-water-polo-club",
+      "name": "UBC Water Polo Club",
+      "directory_url": "https://amsclubs.ca/water-polo-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:33+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcwaterpolo/"
+      ],
+      "website_urls": [
+        "https://calendar.google.com/calendar/u/0?cid=OTBiNDJlZmQ1MGY5ZjU4MjIwNDFkMmU1MDgyOGY5OTUzNDExMzdmOGYwZDgxNjJhNjAwMjY0MmFjNjM1OTFlY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://calendar.google.com/calendar/u/0?cid=OTBiNDJlZmQ1MGY5ZjU4MjIwNDFkMmU1MDgyOGY5OTUzNDExMzdmOGYwZDgxNjJhNjAwMjY0MmFjNjM1OTFlY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t",
+          "final_url": "https://accounts.google.com/v3/signin/identifier?continue=https://calendar.google.com/calendar/u/0/r?cid%3DOTBiNDJlZmQ1MGY5ZjU4MjIwNDFkMmU1MDgyOGY5OTUzNDExMzdmOGYwZDgxNjJhNjAwMjY0MmFjNjM1OTFlY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&emr=1&followup=https://calendar.google.com/calendar/u/0/r?cid%3DOTBiNDJlZmQ1MGY5ZjU4MjIwNDFkMmU1MDgyOGY5OTUzNDExMzdmOGYwZDgxNjJhNjAwMjY0MmFjNjM1OTFlY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&osid=1&passive=1209600&service=cl&flowName=WebLiteSignIn&flowEntry=ServiceLogin",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:34+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-weightlifting-and-powerlifting-club",
+      "name": "UBC Weightlifting and Powerlifting Club",
+      "directory_url": "https://amsclubs.ca/weightlifting-and-powerlifting-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:33+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubclifting/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-wing-chun-club",
+      "name": "AMS Wing Chun Club at UBC",
+      "directory_url": "https://amsclubs.ca/wing-chun-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:34+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-women-in-science-club",
+      "name": "UBC Women in Science Club",
+      "directory_url": "https://amsclubs.ca/women-in-science-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:34+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.wis/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-women-in-sports",
+      "name": "AMS Women in Sports @ UBC",
+      "directory_url": "https://amsclubs.ca/women-in-sports/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:35+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/wispubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-women-empowerment-club",
+      "name": "AMS Women Empowerment Club @ UBC",
+      "directory_url": "https://amsclubs.ca/women-empowerment-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:35+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcwec/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-wrestling-club",
+      "name": "UBC Wrestling Club",
+      "directory_url": "https://amsclubs.ca/wrestling-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:36+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcwrestling/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-yoga-club",
+      "name": "UBC Yoga Club",
+      "directory_url": "https://amsclubs.ca/yoga-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:36+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcyogaclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-young-women-for-stem",
+      "name": "AMS Young Women for STEM",
+      "directory_url": "https://amsclubs.ca/young-women-for-stem/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:37+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_ywfstem/"
+      ],
+      "website_urls": [
+        "https://ubcywfs.wordpress.com/about/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcywfs.wordpress.com/about/",
+          "final_url": "https://ubcywfs.wordpress.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:37+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-young-women-in-business",
+      "name": "Young Women in Business UBC",
+      "directory_url": "https://amsclubs.ca/young-women-in-business/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:37+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ywibubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-a-cappella",
+      "name": "UBC A Cappella",
+      "directory_url": "https://amsclubs.ca/a-cappella/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:38+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcacappella/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-archers",
+      "name": "UBC Archers",
+      "directory_url": "https://amsclubs.ca/archers/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:38+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcarchers/"
+      ],
+      "website_urls": [
+        "https://ubcarchery.ca/"
+      ],
+      "link_hubs": [
+        "https://linktr.ee/ubcarchers"
+      ],
+      "websites": [
+        {
+          "url": "https://ubcarchery.ca/",
+          "final_url": "https://sites.google.com/view/ubcarchers/home?authuser=3",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:39+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-artelier",
+      "name": "AMS Artelier at UBC",
+      "directory_url": "https://amsclubs.ca/artelier/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:39+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcartelier/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcartelier"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ubc-calligraphy",
+      "name": "AMS Asian Brush Calligraphy at UBC",
+      "directory_url": "https://amsclubs.ca/asian-brush-calligraphy/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:39+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcabcalligraphy/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcabcalligraphy"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-beads-and-crafts",
+      "name": "Beads and Crafts",
+      "directory_url": "https://amsclubs.ca/beads-and-crafts/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:40+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubccrafts/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-belly-dance-club",
+      "name": "AMS Belly Dance Club at UBC",
+      "directory_url": "https://amsclubs.ca/belly-dance-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:40+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-best-buddies",
+      "name": "Best Buddies UBC",
+      "directory_url": "https://amsclubs.ca/best-buddies/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:41+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/bestbuddiesubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-bizchina-club",
+      "name": "UBC BizChina Club",
+      "directory_url": "https://amsclubs.ca/bizchina-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:41+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbizchina/"
+      ],
+      "website_urls": [
+        "https://ubcbizchina.com/",
+        "https://xhslink.com/m/8TYEc7arGYZ"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcbizchina.com/",
+          "error": "ConnectError"
+        },
+        {
+          "url": "https://xhslink.com/m/8TYEc7arGYZ",
+          "final_url": "https://www.rednote.com/login?redirectPath=http%3A%2F%2Fwww.rednote.com%2Fexplore%3FexSource%3Dnull",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:49+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-black-student-union",
+      "name": "UBC AMS Black Student Union",
+      "directory_url": "https://amsclubs.ca/black-student-union/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:42+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcbsu/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-blank-vinyl-project",
+      "name": "Blank Vinyl Project",
+      "directory_url": "https://amsclubs.ca/blank-vinyl-project/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:42+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/blankvinylproject/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-book-club",
+      "name": "AMS Book Club @ UBC",
+      "directory_url": "https://amsclubs.ca/book-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:43+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.bookclub/"
+      ],
+      "website_urls": [
+        "https://gmail.us9.list-manage.com/subscribe?u=729c7fc2d1f06f7678db9cf05&id=01e66e7c8b",
+        "https://www.google.com/maps/d/u/0/viewer?mid=1077sucjwlFnYI-RPtFtDYmictEF3uC4&ll=49.24628719999998%2C-123.10095100000001&z=10"
+      ],
+      "link_hubs": [
+        "https://linktr.ee/ubcbookclub"
+      ],
+      "websites": [
+        {
+          "url": "https://gmail.us9.list-manage.com/subscribe?u=729c7fc2d1f06f7678db9cf05&id=01e66e7c8b",
+          "final_url": "https://gmail.us9.list-manage.com/subscribe?u=729c7fc2d1f06f7678db9cf05&id=01e66e7c8b",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:45+00:00",
+          "event_urls": []
+        },
+        {
+          "url": "https://www.google.com/maps/d/u/0/viewer?mid=1077sucjwlFnYI-RPtFtDYmictEF3uC4&ll=49.24628719999998%2C-123.10095100000001&z=10",
+          "final_url": "https://www.google.com/maps/d/viewer?mid=1077sucjwlFnYI-RPtFtDYmictEF3uC4&ll=49.24628719999998,-123.10095100000001&z=10",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:46+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-born-for-more",
+      "name": "Born For More",
+      "directory_url": "https://amsclubs.ca/born-for-more/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:43+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-bowling-club",
+      "name": "AMS Bowling Club at UBC",
+      "directory_url": "https://amsclubs.ca/bowling-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:44+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-c4-choral-composition-club",
+      "name": "UBC C4 Choral Composition Club",
+      "directory_url": "https://amsclubs.ca/c4-choral-composition-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:44+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcc4club/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcc4"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-cancer-association",
+      "name": "AMS Cancer Association of UBC",
+      "directory_url": "https://amsclubs.ca/cancer-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:45+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_ca/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-campus-canines",
+      "name": "AMS Campus Canines at UBC",
+      "directory_url": "https://amsclubs.ca/campus-canines/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:45+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/campuscaninesubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-cantonese-christian-fellowship",
+      "name": "Cantonese Christian Fellowship",
+      "directory_url": "https://amsclubs.ca/cantonese-christian-fellowship/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:46+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_ccf/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-capacity",
+      "name": "AMS CAPACity @UBC",
+      "directory_url": "https://amsclubs.ca/capacity/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:46+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubccapacity/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-students-of-the-caribbean",
+      "name": "AMS Students of the Caribbean (SOCA) at UBC",
+      "directory_url": "https://amsclubs.ca/students-of-the-caribbean/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:47+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsoca/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-central-asian-student-union",
+      "name": "AMS Central Asian Student Union (CASU) at UBC",
+      "directory_url": "https://amsclubs.ca/central-asian-student-union/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:47+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.casunion/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-casual-baseball",
+      "name": "AMS Casual Baseball Club at UBC",
+      "directory_url": "https://amsclubs.ca/casual-baseball/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:48+00:00",
+      "instagram_urls": [],
+      "website_urls": [
+        "https://forms.gle/anTtZcL1pvBYQg8PA"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://forms.gle/anTtZcL1pvBYQg8PA",
+          "final_url": "https://docs.google.com/forms/d/e/1FAIpQLScFmk1uzob3B2T1DnSS9aKTSK2S4rqqCRBc97ZGxqWVRFLHeA/viewform?usp=send_form",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:48+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-central-american-students-association",
+      "name": "AMS Central American Students Association (CASAUBC) at UBC",
+      "directory_url": "https://amsclubs.ca/central-american-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:48+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/casaubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ubc-chess",
+      "name": "UBC Chess Club",
+      "directory_url": "https://amsclubs.ca/chess-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:49+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcchessclub/",
+        "https://www.instagram.com/wwwchesscom/"
+      ],
+      "website_urls": [
+        "https://www.chess.com/club/ubc-chess-club"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.chess.com/club/ubc-chess-club",
+          "final_url": "https://www.chess.com/club/ubc-chess-club",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:49+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-chinese-students-association",
+      "name": "Chinese Students' Association",
+      "directory_url": "https://amsclubs.ca/chinese-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:49+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubccsa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-civil-engineering",
+      "name": "Civil Engineering Club",
+      "directory_url": "https://amsclubs.ca/civil-engineering/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:50+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/civilclub/"
+      ],
+      "website_urls": [
+        "https://www.ubccivils.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubccivils.com/",
+          "final_url": "https://www.ubccivils.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:51+00:00",
+          "event_urls": [
+            "https://www.ubccivils.com/events"
+          ],
+          "event_checks": [
+            {
+              "url": "https://www.ubccivils.com/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:27:52+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-climate-justice",
+      "name": "AMS Climate Justice at UBC",
+      "directory_url": "https://amsclubs.ca/climate-justice/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:50+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/climatejusticeubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ubc-csss",
+      "name": "Computer Science Student Society",
+      "directory_url": "https://amsclubs.ca/csss/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:51+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_csss/"
+      ],
+      "website_urls": [
+        "https://www.ubccsss.org/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubccsss.org/",
+          "final_url": "https://ubccsss.org/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:51+00:00",
+          "event_urls": [
+            "https://ubccsss.org/events",
+            "https://ubccsss.org/events/"
+          ],
+          "event_checks": [
+            {
+              "url": "https://ubccsss.org/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:27:52+00:00"
+            },
+            {
+              "url": "https://ubccsss.org/events/",
+              "status": 200,
+              "checked_at": "2026-11-08T07:27:53+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-conservatives",
+      "name": "UBC Conservatives",
+      "directory_url": "https://amsclubs.ca/conservatives/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:51+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcconservatives/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-cooking-club",
+      "name": "UBC Cooking Club",
+      "directory_url": "https://amsclubs.ca/cooking-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:52+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/cookingclububc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-creative-industries-network",
+      "name": "Creative Industries Network",
+      "directory_url": "https://amsclubs.ca/creative-industries-network/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:52+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/cin.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-cvc",
+      "name": "UBC CVC",
+      "directory_url": "https://amsclubs.ca/cvc/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:53+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.cvc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-dance-horizons",
+      "name": "AMS Dance Horizons",
+      "directory_url": "https://amsclubs.ca/dance-horizons/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:53+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcdancehorizons/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-debate-society",
+      "name": "UBC Debate Society",
+      "directory_url": "https://amsclubs.ca/debate-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:54+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-devec",
+      "name": "AMS DEVEC at UBC",
+      "directory_url": "https://amsclubs.ca/devec/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:54+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/devec.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-disc-golf-club",
+      "name": "AMS Disc Golf Club @ UBC",
+      "directory_url": "https://amsclubs.ca/disc-golf-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:55+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcdiscgolf/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-echo",
+      "name": "AMS ECHO at UBC",
+      "directory_url": "https://amsclubs.ca/echo/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:55+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/echoubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ecegsa-at-ubc",
+      "name": "UBC Electronica",
+      "directory_url": "https://amsclubs.ca/ecegsa-at-ubc/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:56+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcelectronica/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-eprojects",
+      "name": "eProjects",
+      "directory_url": "https://amsclubs.ca/eprojects/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:56+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/eprojectsubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-f1-club",
+      "name": "AMS F1 Club at UBC",
+      "directory_url": "https://amsclubs.ca/f1-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:57+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-fed-together",
+      "name": "AMS FED Together at UBC",
+      "directory_url": "https://amsclubs.ca/fed-together/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:57+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/amsfedtogether/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-food-science-club",
+      "name": "UBC Food Science Club",
+      "directory_url": "https://amsclubs.ca/food-science-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:58+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcfoodscience/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-foundation-of-international-medical-reflief-for-children",
+      "name": "UBC Foundation of International Medical Relief for Children",
+      "directory_url": "https://amsclubs.ca/foundation-of-international-medical-reflief-for-children/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:58+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.fimrc/"
+      ],
+      "website_urls": [
+        "https://fimrcubc.weebly.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://fimrcubc.weebly.com/",
+          "final_url": "https://fimrcubc.weebly.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:27:58+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-game-show-club",
+      "name": "UBC Game Show Club",
+      "directory_url": "https://amsclubs.ca/game-show-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:59+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcgameshow/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-grsj-undergraduate-society",
+      "name": "Gender, Race, Sexuality, and Social Justice Undergraduate Society",
+      "directory_url": "https://amsclubs.ca/grsj-undergraduate-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:27:59+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/grsjua_ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-go-club",
+      "name": "UBC Go Club",
+      "directory_url": "https://amsclubs.ca/go-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:00+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_go_club/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-gujarati",
+      "name": "Gujarati Students' Association",
+      "directory_url": "https://amsclubs.ca/gujarati/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:00+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-hui-o-haiwaii",
+      "name": "AMS Hui O Hawai'i at UBC",
+      "directory_url": "https://amsclubs.ca/hui-o-haiwaii/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:01+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubchawaii/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-womens-health-research-club",
+      "name": "AMS Women's Health Research Club at UBC",
+      "directory_url": "https://amsclubs.ca/womens-health-research-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:01+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-her-fitness",
+      "name": "AMS Her Fitness at UBC",
+      "directory_url": "https://amsclubs.ca/her-fitness/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:02+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/herfitnessubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-history-students-association",
+      "name": "UBC History Students Association",
+      "directory_url": "https://amsclubs.ca/history-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:02+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/hsaubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-club-hk",
+      "name": "UBC Club HK",
+      "directory_url": "https://amsclubs.ca/club-hk/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:03+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcclubhk/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcclubhk?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadrHjJc-z_nE0xhqA0lczOeP76SRIdyzjVq43CyPZnbMzLnRkxeb-jtVqVMYw_aem_z9JU5_FANy7z-u8TIdMljw"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-hong-kong-yours-association",
+      "name": "Hong Kong YOURS Association",
+      "directory_url": "https://amsclubs.ca/hong-kong-yours-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:03+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubchkyours/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ice-cream-club",
+      "name": "AMS Ice Cream Club at UBC",
+      "directory_url": "https://amsclubs.ca/ice-cream-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:04+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcicecream/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcicecream"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-irc",
+      "name": "AMS IRC @ UBC",
+      "directory_url": "https://amsclubs.ca/irc/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:04+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/islamicrelief.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-italian-student-association",
+      "name": "Italian Student Association",
+      "directory_url": "https://amsclubs.ca/italian-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:05+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-jackorg",
+      "name": "Jack.Org at UBC",
+      "directory_url": "https://amsclubs.ca/jackorg/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:05+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/jack.orgubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-jazz-club",
+      "name": "UBC Jazz Club at AMS",
+      "directory_url": "https://amsclubs.ca/jazz-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:06+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcjazzclub/"
+      ],
+      "website_urls": [
+        "https://www.ubcjazzclub.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcjazzclub.ca/",
+          "final_url": "https://www.ubcjazzclub.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:06+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-k-wave",
+      "name": "UBC K-Wave",
+      "directory_url": "https://amsclubs.ca/k-wave/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:06+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubckwave/"
+      ],
+      "website_urls": [
+        "https://ubckwave.wixsite.com/ubckwave"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubckwave.wixsite.com/ubckwave",
+          "final_url": "https://ubckwave.wixsite.com/ubckwave",
+          "status": 404,
+          "checked_at": "2026-11-08T07:28:06+00:00"
+        }
+      ]
+    },
+    {
+      "club_id": "ams-knitting-and-sewing",
+      "name": "AMS Knitting & Sewing Club at UBC",
+      "directory_url": "https://amsclubs.ca/knitting-and-sewing/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:07+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcknitandsew/"
+      ],
+      "website_urls": [
+        "https://blogspot.us11.list-manage.com/subscribe?u=87e43fb9964b9871b23fd4764&id=b5dc3dd6e2"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://blogspot.us11.list-manage.com/subscribe?u=87e43fb9964b9871b23fd4764&id=b5dc3dd6e2",
+          "final_url": "https://blogspot.us11.list-manage.com/subscribe?u=87e43fb9964b9871b23fd4764&id=b5dc3dd6e2",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:09+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-kung-fu-association",
+      "name": "UBC Kung Fu Association",
+      "directory_url": "https://amsclubs.ca/kung-fu-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:07+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubckungfu/"
+      ],
+      "website_urls": [
+        "https://ubckungfu.wixsite.com/welcome"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubckungfu.wixsite.com/welcome",
+          "final_url": "https://ubckungfu.wixsite.com/welcome",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:07+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-kurdish-club",
+      "name": "AMS Kurdish Club at UBC",
+      "directory_url": "https://amsclubs.ca/kurdish-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:08+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubckurdishclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ubclifedrawing",
+      "name": "UBC Life Drawing",
+      "directory_url": "https://amsclubs.ca/ubclifedrawing/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:08+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubclifedrawingclub/"
+      ],
+      "website_urls": [
+        "https://ubclifedrawing.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubclifedrawing.ca/",
+          "final_url": "https://ubclifedrawing.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:08+00:00",
+          "event_urls": [
+            "https://ubclifedrawing.ca/calendar"
+          ],
+          "event_checks": [
+            {
+              "url": "https://ubclifedrawing.ca/calendar",
+              "status": 200,
+              "checked_at": "2026-11-08T07:28:09+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-canadian-liver-foundation",
+      "name": "UBC Canadian Liver Foundation",
+      "directory_url": "https://amsclubs.ca/canadian-liver-foundation/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:09+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.clf/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-loggers-sports",
+      "name": "UBC Logger's Sports",
+      "directory_url": "https://amsclubs.ca/loggers-sports/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:09+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcthunderjacks/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-love-your-neighbour-club",
+      "name": "AMS Love Your Neighbour Club @ UBC",
+      "directory_url": "https://amsclubs.ca/love-your-neighbour-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:10+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/lync.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-media-studies-student-association",
+      "name": "Media Studies Student Association",
+      "directory_url": "https://amsclubs.ca/media-studies-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:10+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmssa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcmssa"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-medical-genetics-club",
+      "name": "AMS Medical Genetics Club",
+      "directory_url": "https://amsclubs.ca/medical-genetics-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:11+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmedgen/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-medical-laboratory-club",
+      "name": "Medical Laboratory Club",
+      "directory_url": "https://amsclubs.ca/medical-laboratory-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:11+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_medlab/"
+      ],
+      "website_urls": [
+        "https://docs.google.com/forms/d/e/1FAIpQLSeKRLcsK1hYQgmRXwd1qtKHWtwv5dUl7ScMgNKxWyIFNfPSRA/viewform?usp=header"
+      ],
+      "link_hubs": [
+        "https://linktr.ee/UBCMedLab?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn3WF29oQpwdd4ONJBazmAg0MC6RyUEK0KRWKiBVUo7YD0slwdHYffEhGFGG0_aem_wtZvxyPpP0dnA-gkuLvTVA"
+      ],
+      "websites": [
+        {
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSeKRLcsK1hYQgmRXwd1qtKHWtwv5dUl7ScMgNKxWyIFNfPSRA/viewform?usp=header",
+          "final_url": "https://docs.google.com/forms/d/e/1FAIpQLSeKRLcsK1hYQgmRXwd1qtKHWtwv5dUl7ScMgNKxWyIFNfPSRA/viewform?usp=header",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:12+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-mens-mental-health-club",
+      "name": "Men's Mental Health Club",
+      "directory_url": "https://amsclubs.ca/mens-mental-health-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:12+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmmhc/"
+      ],
+      "website_urls": [
+        "https://ubcmmhc.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcmmhc.com/",
+          "final_url": "https://ubcmmhc.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:12+00:00",
+          "event_urls": [
+            "https://ubcmmhc.com/events"
+          ],
+          "event_checks": [
+            {
+              "url": "https://ubcmmhc.com/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:28:12+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-mexsa",
+      "name": "UBC MEXSA",
+      "directory_url": "https://amsclubs.ca/mexsa/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:12+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcmexsa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-minecraft-club",
+      "name": "AMS Minecraft Club",
+      "directory_url": "https://amsclubs.ca/minecraft-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:13+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/crosscollegiateminecraft/",
+        "https://www.instagram.com/ubcminecraft/"
+      ],
+      "website_urls": [
+        "https://www.2cml.org/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.2cml.org/",
+          "final_url": "https://www.2cml.org/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:13+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-mining-engineering-undergraduate-club",
+      "name": "UBC Mining Engineering Undergraduate Club",
+      "directory_url": "https://amsclubs.ca/mining-engineering-undergraduate-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:13+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_mining/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-muo-pediatrics",
+      "name": "AMS MUO Pediatrics at UBC",
+      "directory_url": "https://amsclubs.ca/muo-pediatrics/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:14+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/muopediatrics_ubc/"
+      ],
+      "website_urls": [
+        "https://muopediatrics.weebly.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://muopediatrics.weebly.com/",
+          "final_url": "https://muopediatrics.weebly.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:14+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-musical-theatre-troupe",
+      "name": "UBC Musical Theatre Troupe",
+      "directory_url": "https://amsclubs.ca/musical-theatre-troupe/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:14+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-netball-club",
+      "name": "AMS Netball Club @ UBC",
+      "directory_url": "https://amsclubs.ca/netball-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:15+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcnetballclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-new-taiwanese-generation",
+      "name": "New Taiwanese Generation",
+      "directory_url": "https://amsclubs.ca/new-taiwanese-generation/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:15+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcntg/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ubc-nwplus",
+      "name": "nwPlus",
+      "directory_url": "https://amsclubs.ca/nwplus/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:16+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/nwplusubc/"
+      ],
+      "website_urls": [
+        "https://nwplus.io/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://nwplus.io/",
+          "final_url": "https://nwplus.io/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:16+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-pharmacology-and-caps",
+      "name": "Pharmacology and CAPS Student Association",
+      "directory_url": "https://amsclubs.ca/pharmacology-and-caps/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:16+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/pcsa_ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-pharmacology-student-association",
+      "name": "Pharmacology Student Association",
+      "directory_url": "https://amsclubs.ca/pharmacology-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:17+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.pharmacology/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-pickleball",
+      "name": "UBC Pickleball Club",
+      "directory_url": "https://amsclubs.ca/pickleball/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:17+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcpbc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-pickupubc",
+      "name": "AMS PickUpUBC At UBC",
+      "directory_url": "https://amsclubs.ca/pickupubc/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:18+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/pickupubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-pre-optometry-club",
+      "name": "The AMS Pre-Optometry Club",
+      "directory_url": "https://amsclubs.ca/pre-optometry-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:18+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.preoptometry/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-pre-medical-society",
+      "name": "UBC Pre-Medical Society",
+      "directory_url": "https://amsclubs.ca/pre-medical-society/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:19+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcpremedsociety/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-print-arts-and-crafts-club",
+      "name": "PRINT Arts and Crafts Club",
+      "directory_url": "https://amsclubs.ca/print-arts-and-crafts-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:19+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.makersmarket/",
+        "https://www.instagram.com/ubc.print/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-product-management-club",
+      "name": "AMS PRODUCT MANAGEMENT CLUB @ UBC",
+      "directory_url": "https://amsclubs.ca/product-management-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:20+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcpmc/"
+      ],
+      "website_urls": [
+        "https://ubcpmc.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ubcpmc.com/",
+          "final_url": "https://ubcpmc.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:20+00:00",
+          "event_urls": [
+            "https://ubcpmc.com/events"
+          ],
+          "event_checks": [
+            {
+              "url": "https://ubcpmc.com/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:28:20+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ams-quizbowl-club",
+      "name": "UBC Quizbowl Club of the AMS",
+      "directory_url": "https://amsclubs.ca/quizbowl-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:20+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcquizbowl/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ubcquizbowl"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-right-to-play",
+      "name": "Right to Play UBC",
+      "directory_url": "https://amsclubs.ca/right-to-play/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:21+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ubc-rise",
+      "name": "UBC RISE",
+      "directory_url": "https://amsclubs.ca/ubc-rise/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:21+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcrise/"
+      ],
+      "website_urls": [
+        "https://campsite.bio/ubcrise/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://campsite.bio/ubcrise/",
+          "final_url": "https://campsite.bio/ubcrise/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:22+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-ubcrobomaster",
+      "name": "AMS UBCROBOMASTER @ UBC",
+      "directory_url": "https://amsclubs.ca/ubcrobomaster/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:22+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-sargam-ubc",
+      "name": "Sargam UBC",
+      "directory_url": "https://amsclubs.ca/sargam-ubc/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:22+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/sargamubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-science-digest",
+      "name": "UBC Science Digest",
+      "directory_url": "https://amsclubs.ca/science-digest/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:23+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsciencedigest/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-shooting-sports",
+      "name": "AMS Shooting Sports at UBC",
+      "directory_url": "https://amsclubs.ca/shooting-sports/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:23+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcshootingsports/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-skih-students-association",
+      "name": "UBC Sikh Students' Association",
+      "directory_url": "https://amsclubs.ca/skih-students-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:24+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ssaubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [
+        "https://linktr.ee/ssaubc"
+      ],
+      "websites": []
+    },
+    {
+      "club_id": "ams-skateboard-club",
+      "name": "AMS Skateboard Club @ UBC",
+      "directory_url": "https://amsclubs.ca/skateboard-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:24+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/skateclububc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ski-and-board",
+      "name": "UBC Ski and Board",
+      "directory_url": "https://amsclubs.ca/ski-and-board/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:25+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcskiandboard/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-slam-poetry",
+      "name": "UBC Slam Poetry",
+      "directory_url": "https://amsclubs.ca/slam-poetry/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:25+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcslampoetry/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-operation-smile-club",
+      "name": "UBC Operation Smile Club",
+      "directory_url": "https://amsclubs.ca/operation-smile-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:26+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcopsmile/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-solidarity-for-palestenian-human-rights",
+      "name": "Solidarity for Palestinian Human Rights",
+      "directory_url": "https://amsclubs.ca/solidarity-for-palestenian-human-rights/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:26+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsphr/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-sports-business",
+      "name": "UBC Sports Business Association",
+      "directory_url": "https://amsclubs.ca/sports-business/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:27+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsba/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-squash-club",
+      "name": "AMS Squash Club at UBC",
+      "directory_url": "https://amsclubs.ca/squash-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:27+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcsquash/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-amsstrings",
+      "name": "AMS Strings Club",
+      "directory_url": "https://amsclubs.ca/amsstrings/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:28+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcstrings/"
+      ],
+      "website_urls": [
+        "https://www.ubcstrings.org/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcstrings.org/",
+          "final_url": "https://www.ubcstrings.org/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:28+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-student-energy",
+      "name": "AMS Student Energy at UBC",
+      "directory_url": "https://amsclubs.ca/student-energy/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:28+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-supply-chain-and-operations-association",
+      "name": "UBC Supply Chain and Operations Association",
+      "directory_url": "https://amsclubs.ca/supply-chain-and-operations-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:29+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-taiwan-association",
+      "name": "AMS UBC Taiwan Association at UBC",
+      "directory_url": "https://amsclubs.ca/taiwan-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:29+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcta/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-tamil-student-association",
+      "name": "UBC Tamil Student Association",
+      "directory_url": "https://amsclubs.ca/tamil-student-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:30+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc.tsa/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-unbounded",
+      "name": "AMS unboundED @ UBC",
+      "directory_url": "https://amsclubs.ca/unbounded/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:30+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/unbounded.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-undergraduate-math-association",
+      "name": "Undergraduate Mathematics Society",
+      "directory_url": "https://amsclubs.ca/undergraduate-math-association/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:31+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ums.ubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ubc-unicef",
+      "name": "UBC UNICEF",
+      "directory_url": "https://amsclubs.ca/ubc-unicef/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:31+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcunicef_campusclub/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ux-hub",
+      "name": "UBC UX Hub",
+      "directory_url": "https://amsclubs.ca/ux-hub/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:32+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcuxhub/"
+      ],
+      "website_urls": [
+        "https://www.ubcuxhub.ca/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcuxhub.ca/",
+          "final_url": "https://www.ubcuxhub.ca/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:32+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-vaccine-literacy-club",
+      "name": "Vaccine Literacy Club",
+      "directory_url": "https://amsclubs.ca/vaccine-literacy-club/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:32+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcvaccineliteracy/"
+      ],
+      "website_urls": [
+        "https://www.ubcvaccine.club/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcvaccine.club/",
+          "final_url": "https://www.ubcvaccine.club/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:33+00:00",
+          "event_urls": [
+            "https://www.ubcvaccine.club/events"
+          ],
+          "event_checks": [
+            {
+              "url": "https://www.ubcvaccine.club/events",
+              "status": 200,
+              "checked_at": "2026-11-08T07:28:34+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ubc-wids",
+      "name": "Women in Data Science (WiDS@UBC)",
+      "directory_url": "https://amsclubs.ca/women-in-data-science/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:33+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/widsubc/"
+      ],
+      "website_urls": [
+        "https://www.ubcwids.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://www.ubcwids.com/",
+          "final_url": "https://www.ubcwids.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:33+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-womens-lacrosse",
+      "name": "UBC Women's Lacrosse",
+      "directory_url": "https://amsclubs.ca/womens-lacrosse/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:33+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcwomens_lacrosse/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-womens-health",
+      "name": "AMS Women's Health Club",
+      "directory_url": "https://amsclubs.ca/womens-health/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:34+00:00",
+      "instagram_urls": [],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-womens-health-reproductive-project",
+      "name": "AMS Women's Reproductive Health Project",
+      "directory_url": "https://amsclubs.ca/womens-health-reproductive-project/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:34+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/whpubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-world-vision",
+      "name": "World Vision UBC",
+      "directory_url": "https://amsclubs.ca/world-vision/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:35+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/wvubc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-ynotfortots",
+      "name": "UBC YNOTFORTOTS",
+      "directory_url": "https://amsclubs.ca/ynotfortots/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:35+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcynotfortots/"
+      ],
+      "website_urls": [
+        "https://ynotfortots.com/"
+      ],
+      "link_hubs": [],
+      "websites": [
+        {
+          "url": "https://ynotfortots.com/",
+          "final_url": "https://ynotfortots.com/",
+          "status": 200,
+          "checked_at": "2026-11-08T07:28:35+00:00",
+          "event_urls": []
+        }
+      ]
+    },
+    {
+      "club_id": "ams-young-liberals-of-canada",
+      "name": "UBC Young Liberals of Canada",
+      "directory_url": "https://amsclubs.ca/young-liberals-of-canada/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:36+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubc_ylc/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    },
+    {
+      "club_id": "ams-young-new-democrats",
+      "name": "UBC Young New Democrats",
+      "directory_url": "https://amsclubs.ca/young-new-democrats/",
+      "directory_status": 200,
+      "checked_at": "2026-11-08T07:28:36+00:00",
+      "instagram_urls": [
+        "https://www.instagram.com/ubcndp/"
+      ],
+      "website_urls": [],
+      "link_hubs": [],
+      "websites": []
+    }
+  ]
+}

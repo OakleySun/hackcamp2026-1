@@ -16,6 +16,11 @@ def main():
             ("scripts/check_sources.py", "scripts/check_sources.py"),
             ("scripts/calendar_feed.py", "scripts/calendar_feed.py"),
             ("scripts/public_sources.py", "scripts/public_sources.py"),
+            ("scripts/club_directory.py", "scripts/club_directory.py"),
+            ("scripts/club_sites.py", "scripts/club_sites.py"),
+            ("scripts/instagram_monitor.py", "scripts/instagram_monitor.py"),
+            ("config/club-directory.json", "config/club-directory.json"),
+            ("config/instagram-watchlist.json", "config/instagram-watchlist.json"),
             ("config/monitored-sources.json", "config/monitored-sources.json"),
         ):
             bundle.write(root / source, destination)

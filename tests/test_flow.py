@@ -5,6 +5,7 @@ import os
 import pytest
 
 from app import db, service
+from app.models import Candidate
 
 
 @pytest.fixture(autouse=True)
@@ -44,6 +45,48 @@ def test_same_source_version_twice_is_idempotent(conn):
     assert second["duplicate"] is True and second["announcement_id"] == first["announcement_id"]
     assert conn.execute("SELECT COUNT(*) FROM events").fetchone()[0] == 1
     assert len(outbox(conn)) == 1
+
+
+def test_structured_event_topics_use_listing_text_and_preserve_explicit_tags(conn):
+    with conn:
+        conn.execute("INSERT INTO sources (source_id, club_id, kind) VALUES (?,?,?)",
+                     ("src-test-calendar", FX["club"]["club_id"], "public_events"))
+
+    def publish(title, description, tags):
+        result = service.intake(conn, "src-test-calendar", title,
+                                f"Title: {title}\nVenue: Social Hall\nDescription: {description}",
+                                candidate=Candidate(title=title, local_date="2026-11-15", topics=tags))
+        return result["event_id"]
+
+    inferred = publish("Build Day", "A hands-on robotics workshop.", [])
+    supplied = publish("Volleyball meetup", "Drop in any time.", [" Wellness ", "wellness", "invalid"])
+    unknown = publish("Weekly Session", "Details coming soon.", [])
+
+    def for_topic(topic):
+        return [event["event_id"] for event in service.list_events(conn, topic=topic, include_past=True)]
+
+    assert for_topic("tech") == [inferred]
+    assert for_topic("wellness") == [supplied]
+    assert for_topic("sports") == for_topic("social") == []
+    assert service.get_event(conn, unknown)["topics"] == []
+
+
+def test_existing_event_tags_backfill_once_without_duplicating_alert_or_staling_review(conn):
+    event_id = send(conn, "A")["event_id"]
+    review = send(conn, "C")
+    with conn:
+        conn.execute("UPDATE events SET topics='[]' WHERE event_id=?", (event_id,))
+        conn.execute("UPDATE source_announcements SET candidate=json_remove(candidate, '$.topics') WHERE event_id=?",
+                     (event_id,))
+
+    assert service.backfill_event_topics(conn) == 1
+    assert service.backfill_event_topics(conn) == 0
+    tagged = service.list_events(conn, topic="tech", include_past=True)[0]
+    assert tagged["event_id"] == event_id and tagged["current_revision"] == 2
+    assert [o["kind"] for o in outbox(conn)] == ["new_event"]
+    assert conn.execute("SELECT 1 FROM dbx_queue WHERE kind='revision' AND aggregate=? AND version=2",
+                        (event_id,)).fetchone()
+    assert service.resolve_review(conn, review["review_id"], "confirm", 2, "tester")["revision"] == 3
 
 
 def test_b_mirror_links_without_new_alert(conn):

@@ -1,19 +1,3204 @@
 {
-  "mode": "manual_only",
-  "note": "Official account links verified through club or university pages. No authenticated Instagram integration or automatic post ingestion is configured.",
+  "mode": "pending_activation",
+  "note": "Official links from AMS club pages and their linked websites. Scheduled checks require the persistent browser and cost approval; missing Instagram links are not guessed.",
   "accounts": [
-    {"club": "UBC CSSS", "url": "https://www.instagram.com/ubc_csss/", "official_page": "https://ubccsss.org/"},
-    {"club": "UBC Women in Computer Science", "url": "https://www.instagram.com/ubcwics/", "official_page": "https://ubccsss.org/about/affiliates/"},
-    {"club": "nwPlus", "url": "https://www.instagram.com/nwplusubc/", "official_page": "https://ubccsss.org/about/affiliates/"},
-    {"club": "UBC Anime Club", "url": "https://www.instagram.com/ubcani/", "official_page": "https://amsclubs.ca/anime-club/"},
-    {"club": "UBC Game Dev", "url": "https://www.instagram.com/ubcgamedev/", "official_page": "https://ubccsss.org/about/affiliates/"},
-    {"club": "UBC Women in Data Science", "url": "https://www.instagram.com/widsubc/", "official_page": "https://ubccsss.org/about/affiliates/"},
-    {"club": "QueerCoded UBC", "url": "https://www.instagram.com/qcubc/", "official_page": "https://ubccsss.org/about/affiliates/"},
-    {"club": "UBC Machine Learning Research", "url": "https://www.instagram.com/ubc_mlr/", "official_page": "https://ubccsss.org/about/affiliates/"},
-    {"club": "UBC Quantum", "url": "https://www.instagram.com/ubcquantum/", "official_page": "https://ubccsss.org/about/affiliates/"},
-    {"club": "UBC Startups", "url": "https://www.instagram.com/ubcstartups/", "official_page": "https://ubccsss.org/about/affiliates/"},
-    {"club": "UBC Launch Pad", "url": "https://www.instagram.com/ubclaunchpad/", "official_page": "https://luma.com/launchpadubc"},
-    {"club": "UBC Chess Club", "url": "https://www.instagram.com/ubcchessclub/", "official_page": "https://amsclubs.ca/chess-club/"},
-    {"club": "AMS Asian Brush Calligraphy at UBC", "url": "https://www.instagram.com/ubcabcalligraphy/", "official_page": "https://amsclubs.ca/asian-brush-calligraphy/"}
+    {
+      "club": "180 Degrees Consulting at UBC",
+      "url": "https://www.instagram.com/180ubc/",
+      "official_page": "https://amsclubs.ca/180-degrees-consulting/",
+      "clubs": [
+        {
+          "club_id": "ams-180-degrees-consulting",
+          "name": "180 Degrees Consulting at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Jesus Disciple Movement",
+      "url": "https://www.instagram.com/_jdm_canada_/",
+      "official_page": "https://amsclubs.ca/jesus-disciple-movement/",
+      "clubs": [
+        {
+          "club_id": "ams-jesus-disciple-movement",
+          "name": "Jesus Disciple Movement"
+        }
+      ]
+    },
+    {
+      "club": "Association of Canadian Archivists Student Chapter",
+      "url": "https://www.instagram.com/acaubc/",
+      "official_page": "https://amsclubs.ca/association-of-canadian-archivists/",
+      "clubs": [
+        {
+          "club_id": "ams-association-of-canadian-archivists",
+          "name": "Association of Canadian Archivists Student Chapter"
+        }
+      ]
+    },
+    {
+      "club": "Amnesty International UBC",
+      "url": "https://www.instagram.com/ai_ubc/",
+      "official_page": "https://amsclubs.ca/amnesty-international/",
+      "clubs": [
+        {
+          "club_id": "ams-amnesty-international",
+          "name": "Amnesty International UBC"
+        }
+      ]
+    },
+    {
+      "club": "Association of Korean Canadian Scientists and Engineers",
+      "url": "https://www.instagram.com/akcse_ubc/",
+      "official_page": "https://amsclubs.ca/association-of-korean-canadian-scientists-and-engineers/",
+      "clubs": [
+        {
+          "club_id": "ams-association-of-korean-canadian-scientists-and-engineers",
+          "name": "Association of Korean Canadian Scientists and Engineers"
+        }
+      ]
+    },
+    {
+      "club": "AMS Autism Associates Club at UBC",
+      "url": "https://www.instagram.com/ams_autism_associates/",
+      "official_page": "https://amsclubs.ca/autism-associates/",
+      "clubs": [
+        {
+          "club_id": "ams-autism-associates",
+          "name": "AMS Autism Associates Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS FED Together at UBC",
+      "url": "https://www.instagram.com/amsfedtogether/",
+      "official_page": "https://amsclubs.ca/fed-together/",
+      "clubs": [
+        {
+          "club_id": "ams-fed-together",
+          "name": "AMS FED Together at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Alpha Phi Omega",
+      "url": "https://www.instagram.com/apoubc/",
+      "official_page": "https://amsclubs.ca/alpha-phi-omega/",
+      "clubs": [
+        {
+          "club_id": "ams-alpha-phi-omega",
+          "name": "Alpha Phi Omega"
+        }
+      ]
+    },
+    {
+      "club": "UBC AIESEC",
+      "url": "https://www.instagram.com/axp.ubc/",
+      "official_page": "https://amsclubs.ca/aiesec/",
+      "clubs": [
+        {
+          "club_id": "ams-aiesec",
+          "name": "UBC AIESEC"
+        }
+      ]
+    },
+    {
+      "club": "Best Buddies UBC",
+      "url": "https://www.instagram.com/bestbuddiesubc/",
+      "official_page": "https://amsclubs.ca/best-buddies/",
+      "clubs": [
+        {
+          "club_id": "ams-best-buddies",
+          "name": "Best Buddies UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Bike Co-op",
+      "url": "https://www.instagram.com/bikekitchenubc/",
+      "official_page": "https://amsclubs.ca/bike-coop/",
+      "clubs": [
+        {
+          "club_id": "ams-bike-coop",
+          "name": "AMS Bike Co-op"
+        }
+      ]
+    },
+    {
+      "club": "Blank Vinyl Project",
+      "url": "https://www.instagram.com/blankvinylproject/",
+      "official_page": "https://amsclubs.ca/blank-vinyl-project/",
+      "clubs": [
+        {
+          "club_id": "ams-blank-vinyl-project",
+          "name": "Blank Vinyl Project"
+        }
+      ]
+    },
+    {
+      "club": "BRASA UBC - Brazilian Student Association",
+      "url": "https://www.instagram.com/brasaubc/",
+      "official_page": "https://amsclubs.ca/brasa/",
+      "clubs": [
+        {
+          "club_id": "ams-brasa",
+          "name": "BRASA UBC - Brazilian Student Association"
+        }
+      ]
+    },
+    {
+      "club": "Biochemistry Student Association (BSA)",
+      "url": "https://www.instagram.com/bsa_ubc/",
+      "official_page": "https://amsclubs.ca/biochemistry-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-biochemistry-student-association",
+          "name": "Biochemistry Student Association (BSA)"
+        }
+      ]
+    },
+    {
+      "club": "AMS Campus Canines at UBC",
+      "url": "https://www.instagram.com/campuscaninesubc/",
+      "official_page": "https://amsclubs.ca/campus-canines/",
+      "clubs": [
+        {
+          "club_id": "ams-campus-canines",
+          "name": "AMS Campus Canines at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Central American Students Association (CASAUBC) at UBC",
+      "url": "https://www.instagram.com/casaubc/",
+      "official_page": "https://amsclubs.ca/central-american-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-central-american-students-association",
+          "name": "AMS Central American Students Association (CASAUBC) at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Canadian Association for Security and Intelligence Studies  (CASIS) at UBC",
+      "url": "https://www.instagram.com/casisubc/",
+      "official_page": "https://amsclubs.ca/canadian-association-for-security-and-intelligence-studies/",
+      "clubs": [
+        {
+          "club_id": "ams-canadian-association-for-security-and-intelligence-studies",
+          "name": "AMS Canadian Association for Security and Intelligence Studies  (CASIS) at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Catholic Christian Outreach",
+      "url": "https://www.instagram.com/ccoubc/",
+      "official_page": "https://amsclubs.ca/catholic-christian-outreach/",
+      "clubs": [
+        {
+          "club_id": "ams-catholic-christian-outreach",
+          "name": "Catholic Christian Outreach"
+        }
+      ]
+    },
+    {
+      "club": "Chabad UBC",
+      "url": "https://www.instagram.com/chabadubc/",
+      "official_page": "https://amsclubs.ca/chabad/",
+      "clubs": [
+        {
+          "club_id": "ams-chabad",
+          "name": "Chabad UBC"
+        }
+      ]
+    },
+    {
+      "club": "Chemical and Biological Engineering Undergraduate Club",
+      "url": "https://www.instagram.com/chbecouncil/",
+      "official_page": "https://amsclubs.ca/chemical-and-biological-engineering-undergraduate-club/",
+      "clubs": [
+        {
+          "club_id": "ams-chemical-and-biological-engineering-undergraduate-club",
+          "name": "Chemical and Biological Engineering Undergraduate Club"
+        }
+      ]
+    },
+    {
+      "club": "Christian Students @ UBC",
+      "url": "https://www.instagram.com/christianstudentsatubc/",
+      "official_page": "https://amsclubs.ca/christian-students/",
+      "clubs": [
+        {
+          "club_id": "ams-christian-students",
+          "name": "Christian Students @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "Creative Industries Network",
+      "url": "https://www.instagram.com/cin.ubc/",
+      "official_page": "https://amsclubs.ca/creative-industries-network/",
+      "clubs": [
+        {
+          "club_id": "ams-creative-industries-network",
+          "name": "Creative Industries Network"
+        }
+      ]
+    },
+    {
+      "club": "Civil Engineering Club",
+      "url": "https://www.instagram.com/civilclub/",
+      "official_page": "https://amsclubs.ca/civil-engineering/",
+      "clubs": [
+        {
+          "club_id": "ams-civil-engineering",
+          "name": "Civil Engineering Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Climate Justice at UBC",
+      "url": "https://www.instagram.com/climatejusticeubc/",
+      "official_page": "https://amsclubs.ca/climate-justice/",
+      "clubs": [
+        {
+          "club_id": "ams-climate-justice",
+          "name": "AMS Climate Justice at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Cognitive Systems Society",
+      "url": "https://www.instagram.com/cogsubc/",
+      "official_page": "https://amsclubs.ca/cognitive-systems-society/",
+      "clubs": [
+        {
+          "club_id": "ams-cognitive-systems-society",
+          "name": "Cognitive Systems Society"
+        }
+      ]
+    },
+    {
+      "club": "AMS Colombian Student Association at UBC",
+      "url": "https://www.instagram.com/colsaubc/",
+      "official_page": "https://amsclubs.ca/colombian-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-colombian-student-association",
+          "name": "AMS Colombian Student Association at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Cooking Club",
+      "url": "https://www.instagram.com/cookingclububc/",
+      "official_page": "https://amsclubs.ca/cooking-club/",
+      "clubs": [
+        {
+          "club_id": "ams-cooking-club",
+          "name": "UBC Cooking Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Minecraft Club",
+      "url": "https://www.instagram.com/crosscollegiateminecraft/",
+      "official_page": "https://amsclubs.ca/minecraft-club/",
+      "clubs": [
+        {
+          "club_id": "ams-minecraft-club",
+          "name": "AMS Minecraft Club"
+        }
+      ]
+    },
+    {
+      "club": "Canadian Students for Sensible Drug Policy",
+      "url": "https://www.instagram.com/cssdp_vancouver/",
+      "official_page": "https://amsclubs.ca/canadian-students-for-sensible-drug-policy/",
+      "clubs": [
+        {
+          "club_id": "ams-canadian-students-for-sensible-drug-policy",
+          "name": "Canadian Students for Sensible Drug Policy"
+        }
+      ]
+    },
+    {
+      "club": "AMS DEVEC at UBC",
+      "url": "https://www.instagram.com/devec.ubc/",
+      "official_page": "https://amsclubs.ca/devec/",
+      "clubs": [
+        {
+          "club_id": "ams-devec",
+          "name": "AMS DEVEC at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS ECHO at UBC",
+      "url": "https://www.instagram.com/echoubc/",
+      "official_page": "https://amsclubs.ca/echo/",
+      "clubs": [
+        {
+          "club_id": "ams-echo",
+          "name": "AMS ECHO at UBC"
+        }
+      ]
+    },
+    {
+      "club": "eProjects",
+      "url": "https://www.instagram.com/eprojectsubc/",
+      "official_page": "https://amsclubs.ca/eprojects/",
+      "clubs": [
+        {
+          "club_id": "ams-eprojects",
+          "name": "eProjects"
+        }
+      ]
+    },
+    {
+      "club": "AMS Egyptian Student Association (ESA) at UBC",
+      "url": "https://www.instagram.com/esa__ubc/",
+      "official_page": "https://amsclubs.ca/egyptian-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-egyptian-student-association",
+          "name": "AMS Egyptian Student Association (ESA) at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Fijian Students Association at UBC",
+      "url": "https://www.instagram.com/fjsa.ubc/",
+      "official_page": "https://amsclubs.ca/fijian-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-fijian-students-association",
+          "name": "AMS Fijian Students Association at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Friends of MSF (Medecins Sans Frontieres) UBC",
+      "url": "https://www.instagram.com/friendsofmsfubc/",
+      "official_page": "https://amsclubs.ca/friends-of-msf/",
+      "clubs": [
+        {
+          "club_id": "ams-friends-of-msf",
+          "name": "Friends of MSF (Medecins Sans Frontieres) UBC"
+        }
+      ]
+    },
+    {
+      "club": "Georox",
+      "url": "https://www.instagram.com/georoxubc/",
+      "official_page": "https://amsclubs.ca/georox/",
+      "clubs": [
+        {
+          "club_id": "ams-georox",
+          "name": "Georox"
+        }
+      ]
+    },
+    {
+      "club": "Get Thrifty UBC",
+      "url": "https://www.instagram.com/getthriftyubc/",
+      "official_page": "https://amsclubs.ca/get-thrifty-ubc/",
+      "clubs": [
+        {
+          "club_id": "ams-get-thrifty-ubc",
+          "name": "Get Thrifty UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Girls in STEAM @ UBC",
+      "url": "https://www.instagram.com/gis.ubc/",
+      "official_page": "https://amsclubs.ca/girls-in-steam/",
+      "clubs": [
+        {
+          "club_id": "ams-girls-in-steam",
+          "name": "AMS Girls in STEAM @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "Golden Voices",
+      "url": "https://www.instagram.com/goldenvoicesproject/",
+      "official_page": "https://amsclubs.ca/golden-voices/",
+      "clubs": [
+        {
+          "club_id": "ams-golden-voices",
+          "name": "Golden Voices"
+        }
+      ]
+    },
+    {
+      "club": "Gender, Race, Sexuality, and Social Justice Undergraduate Society",
+      "url": "https://www.instagram.com/grsjua_ubc/",
+      "official_page": "https://amsclubs.ca/grsj-undergraduate-society/",
+      "clubs": [
+        {
+          "club_id": "ams-grsj-undergraduate-society",
+          "name": "Gender, Race, Sexuality, and Social Justice Undergraduate Society"
+        }
+      ]
+    },
+    {
+      "club": "AMS Her Fitness at UBC",
+      "url": "https://www.instagram.com/herfitnessubc/",
+      "official_page": "https://amsclubs.ca/her-fitness/",
+      "clubs": [
+        {
+          "club_id": "ams-her-fitness",
+          "name": "AMS Her Fitness at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Hindu Yuva",
+      "url": "https://www.instagram.com/hinduyuva.ubc/",
+      "official_page": "https://amsclubs.ca/hindu-yuva/",
+      "clubs": [
+        {
+          "club_id": "ams-hindu-yuva",
+          "name": "AMS Hindu Yuva"
+        }
+      ]
+    },
+    {
+      "club": "UBC History Students Association",
+      "url": "https://www.instagram.com/hsaubc/",
+      "official_page": "https://amsclubs.ca/history-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-history-students-association",
+          "name": "UBC History Students Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Indigenous Business Association at UBC",
+      "url": "https://www.instagram.com/iba.ubc/",
+      "official_page": "https://amsclubs.ca/indigenous-business-association/",
+      "clubs": [
+        {
+          "club_id": "ams-indigenous-business-association",
+          "name": "AMS Indigenous Business Association at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Innovation OnBoard (IOB) @ UBC",
+      "url": "https://www.instagram.com/innovationonboard_/",
+      "official_page": "https://amsclubs.ca/innovation-on-board/",
+      "clubs": [
+        {
+          "club_id": "ams-innovation-on-board",
+          "name": "AMS Innovation OnBoard (IOB) @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "International Relations Students' Association",
+      "url": "https://www.instagram.com/irsaubc/",
+      "official_page": "https://amsclubs.ca/international-relations-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-international-relations-students-association",
+          "name": "International Relations Students' Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS IRC @ UBC",
+      "url": "https://www.instagram.com/islamicrelief.ubc/",
+      "official_page": "https://amsclubs.ca/irc/",
+      "clubs": [
+        {
+          "club_id": "ams-irc",
+          "name": "AMS IRC @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "Israel on Campus (IOC)",
+      "url": "https://www.instagram.com/israeloncampus.ubc/",
+      "official_page": "https://amsclubs.ca/israel-on-campus/",
+      "clubs": [
+        {
+          "club_id": "ams-israel-on-campus",
+          "name": "Israel on Campus (IOC)"
+        }
+      ]
+    },
+    {
+      "club": "AMS InterVarsity Christian Fellowship at UBC",
+      "url": "https://www.instagram.com/ivcfubc/",
+      "official_page": "https://amsclubs.ca/intervarsity-christian-fellowship/",
+      "clubs": [
+        {
+          "club_id": "ams-intervarsity-christian-fellowship",
+          "name": "AMS InterVarsity Christian Fellowship at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Jack.Org at UBC",
+      "url": "https://www.instagram.com/jack.orgubc/",
+      "official_page": "https://amsclubs.ca/jackorg/",
+      "clubs": [
+        {
+          "club_id": "ams-jackorg",
+          "name": "Jack.Org at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Love Your Neighbour Club @ UBC",
+      "url": "https://www.instagram.com/lync.ubc/",
+      "official_page": "https://amsclubs.ca/love-your-neighbour-club/",
+      "clubs": [
+        {
+          "club_id": "ams-love-your-neighbour-club",
+          "name": "AMS Love Your Neighbour Club @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "Motion UBC",
+      "url": "https://www.instagram.com/motionubc/",
+      "official_page": "https://amsclubs.ca/motion/",
+      "clubs": [
+        {
+          "club_id": "ams-motion",
+          "name": "Motion UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Music Production Club at UBC",
+      "url": "https://www.instagram.com/mpc_ubc/",
+      "official_page": "https://amsclubs.ca/music-production-club/",
+      "clubs": [
+        {
+          "club_id": "ams-music-production-club",
+          "name": "AMS Music Production Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Muslim Students' Association of UBC",
+      "url": "https://www.instagram.com/msaubc/",
+      "official_page": "https://amsclubs.ca/muslim-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-muslim-students-association",
+          "name": "Muslim Students' Association of UBC"
+        }
+      ]
+    },
+    {
+      "club": "Model United Nations Student Association",
+      "url": "https://www.instagram.com/munsaubc/",
+      "official_page": "https://amsclubs.ca/model-united-nations-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-model-united-nations-student-association",
+          "name": "Model United Nations Student Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS MUO Pediatrics at UBC",
+      "url": "https://www.instagram.com/muopediatrics_ubc/",
+      "official_page": "https://amsclubs.ca/muo-pediatrics/",
+      "clubs": [
+        {
+          "club_id": "ams-muo-pediatrics",
+          "name": "AMS MUO Pediatrics at UBC"
+        }
+      ]
+    },
+    {
+      "club": "MusicBox Children's Charity",
+      "url": "https://www.instagram.com/musicbox_ubc/",
+      "official_page": "https://amsclubs.ca/musicbox-childrens-charity/",
+      "clubs": [
+        {
+          "club_id": "ams-musicbox-childrens-charity",
+          "name": "MusicBox Children's Charity"
+        }
+      ]
+    },
+    {
+      "club": "MusicBox Children's Charity",
+      "url": "https://www.instagram.com/musicboxcc/",
+      "official_page": "https://amsclubs.ca/musicbox-childrens-charity/",
+      "clubs": [
+        {
+          "club_id": "ams-musicbox-childrens-charity",
+          "name": "MusicBox Children's Charity"
+        }
+      ]
+    },
+    {
+      "club": "nwPlus",
+      "url": "https://www.instagram.com/nwplusubc/",
+      "official_page": "https://ubccsss.org/about/affiliates/",
+      "clubs": [
+        {
+          "club_id": "ubc-nwplus",
+          "name": "nwPlus"
+        }
+      ]
+    },
+    {
+      "club": "Power to Change",
+      "url": "https://www.instagram.com/p2cubc/",
+      "official_page": "https://amsclubs.ca/power-to-change/",
+      "clubs": [
+        {
+          "club_id": "ams-power-to-change",
+          "name": "Power to Change"
+        }
+      ]
+    },
+    {
+      "club": "Pharmacology and CAPS Student Association",
+      "url": "https://www.instagram.com/pcsa_ubc/",
+      "official_page": "https://amsclubs.ca/pharmacology-and-caps/",
+      "clubs": [
+        {
+          "club_id": "ams-pharmacology-and-caps",
+          "name": "Pharmacology and CAPS Student Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Peruvian Student Association at UBC",
+      "url": "https://www.instagram.com/peru_ubc/",
+      "official_page": "https://amsclubs.ca/peruvian-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-peruvian-student-association",
+          "name": "AMS Peruvian Student Association at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS PickUpUBC At UBC",
+      "url": "https://www.instagram.com/pickupubc/",
+      "official_page": "https://amsclubs.ca/pickupubc/",
+      "clubs": [
+        {
+          "club_id": "ams-pickupubc",
+          "name": "AMS PickUpUBC At UBC"
+        }
+      ]
+    },
+    {
+      "club": "QueerCoded UBC",
+      "url": "https://www.instagram.com/qcubc/",
+      "official_page": "https://ubccsss.org/about/affiliates/"
+    },
+    {
+      "club": "Roots on the Roof",
+      "url": "https://www.instagram.com/rootsontheroof/",
+      "official_page": "https://amsclubs.ca/roots-on-roof/",
+      "clubs": [
+        {
+          "club_id": "ams-roots-on-roof",
+          "name": "Roots on the Roof"
+        }
+      ]
+    },
+    {
+      "club": "Sargam UBC",
+      "url": "https://www.instagram.com/sargamubc/",
+      "official_page": "https://amsclubs.ca/sargam-ubc/",
+      "clubs": [
+        {
+          "club_id": "ams-sargam-ubc",
+          "name": "Sargam UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Shito-Ryu Sato-Kai Karate Club at UBC",
+      "url": "https://www.instagram.com/shitoryu.satokai/",
+      "official_page": "https://amsclubs.ca/shito-ryu-sato-kai-karate-club/",
+      "clubs": [
+        {
+          "club_id": "ams-shito-ryu-sato-kai-karate-club",
+          "name": "AMS Shito-Ryu Sato-Kai Karate Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Skateboard Club @ UBC",
+      "url": "https://www.instagram.com/skateclububc/",
+      "official_page": "https://amsclubs.ca/skateboard-club/",
+      "clubs": [
+        {
+          "club_id": "ams-skateboard-club",
+          "name": "AMS Skateboard Club @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "Voice Acting Club",
+      "url": "https://www.instagram.com/slyx_voiceacting/",
+      "official_page": "https://amsclubs.ca/voice-acting/",
+      "clubs": [
+        {
+          "club_id": "ams-voice-acting",
+          "name": "Voice Acting Club"
+        }
+      ]
+    },
+    {
+      "club": "Science One Survivor",
+      "url": "https://www.instagram.com/sosurvivors.ubc/",
+      "official_page": "https://amsclubs.ca/science-one-survivor/",
+      "clubs": [
+        {
+          "club_id": "ams-science-one-survivor",
+          "name": "Science One Survivor"
+        }
+      ]
+    },
+    {
+      "club": "UBC Sikh Students' Association",
+      "url": "https://www.instagram.com/ssaubc/",
+      "official_page": "https://amsclubs.ca/skih-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-skih-students-association",
+          "name": "UBC Sikh Students' Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Swim Club at UBC",
+      "url": "https://www.instagram.com/swimclub.ubc/",
+      "official_page": "https://amsclubs.ca/swim-club/",
+      "clubs": [
+        {
+          "club_id": "ams-swim-club",
+          "name": "AMS Swim Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Singapore Students' Association",
+      "url": "https://www.instagram.com/theubcssa/",
+      "official_page": "https://amsclubs.ca/singapore-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-singapore-students-association",
+          "name": "Singapore Students' Association"
+        }
+      ]
+    },
+    {
+      "club": "Thaqalayn Muslim Association (TMA)",
+      "url": "https://www.instagram.com/tma_ubc/",
+      "official_page": "https://amsclubs.ca/thaqalayn-muslim-association/",
+      "clubs": [
+        {
+          "club_id": "ams-thaqalayn-muslim-association",
+          "name": "Thaqalayn Muslim Association (TMA)"
+        }
+      ]
+    },
+    {
+      "club": "The AMS Anatomy and Dissection Club at UBC",
+      "url": "https://www.instagram.com/ubc.aadc/",
+      "official_page": "https://amsclubs.ca/anatomy-and-dissection-club/",
+      "clubs": [
+        {
+          "club_id": "ams-anatomy-and-dissection-club",
+          "name": "The AMS Anatomy and Dissection Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Ancient Mediterranean and Near Eastern Student Association",
+      "url": "https://www.instagram.com/ubc.amne.sa/",
+      "official_page": "https://amsclubs.ca/ancient-mediterranean-and-near-eastern-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-ancient-mediterranean-and-near-eastern-student-association",
+          "name": "Ancient Mediterranean and Near Eastern Student Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Anthropology Students Association (ASA) at UBC",
+      "url": "https://www.instagram.com/ubc.asa/",
+      "official_page": "https://amsclubs.ca/anthropology-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-anthropology-students-association",
+          "name": "AMS Anthropology Students Association (ASA) at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Biological Sciences Society",
+      "url": "https://www.instagram.com/ubc.biosoc/",
+      "official_page": "https://amsclubs.ca/biological-sciences-society/",
+      "clubs": [
+        {
+          "club_id": "ams-biological-sciences-society",
+          "name": "UBC Biological Sciences Society"
+        }
+      ]
+    },
+    {
+      "club": "AMS Book Club @ UBC",
+      "url": "https://www.instagram.com/ubc.bookclub/",
+      "official_page": "https://amsclubs.ca/book-club/",
+      "clubs": [
+        {
+          "club_id": "ams-book-club",
+          "name": "AMS Book Club @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Calisthenics and Body Improvement Club at UBC",
+      "url": "https://www.instagram.com/ubc.calisthenics/",
+      "official_page": "https://amsclubs.ca/calisthenics-and-body-improvement/",
+      "clubs": [
+        {
+          "club_id": "ams-calisthenics-and-body-improvement",
+          "name": "AMS Calisthenics and Body Improvement Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Central Asian Student Union (CASU) at UBC",
+      "url": "https://www.instagram.com/ubc.casunion/",
+      "official_page": "https://amsclubs.ca/central-asian-student-union/",
+      "clubs": [
+        {
+          "club_id": "ams-central-asian-student-union",
+          "name": "AMS Central Asian Student Union (CASU) at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Canadian Liver Foundation",
+      "url": "https://www.instagram.com/ubc.clf/",
+      "official_page": "https://amsclubs.ca/canadian-liver-foundation/",
+      "clubs": [
+        {
+          "club_id": "ams-canadian-liver-foundation",
+          "name": "UBC Canadian Liver Foundation"
+        }
+      ]
+    },
+    {
+      "club": "UBC Dragon Boat Club",
+      "url": "https://www.instagram.com/ubc.current/",
+      "official_page": "https://amsclubs.ca/dragon-boat-club/",
+      "clubs": [
+        {
+          "club_id": "ams-dragon-boat-club",
+          "name": "UBC Dragon Boat Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC CVC",
+      "url": "https://www.instagram.com/ubc.cvc/",
+      "official_page": "https://amsclubs.ca/cvc/",
+      "clubs": [
+        {
+          "club_id": "ams-cvc",
+          "name": "UBC CVC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Foundation of International Medical Relief for Children",
+      "url": "https://www.instagram.com/ubc.fimrc/",
+      "official_page": "https://amsclubs.ca/foundation-of-international-medical-reflief-for-children/",
+      "clubs": [
+        {
+          "club_id": "ams-foundation-of-international-medical-reflief-for-children",
+          "name": "UBC Foundation of International Medical Relief for Children"
+        }
+      ]
+    },
+    {
+      "club": "AMS Humanities in Healthcare at UBC",
+      "url": "https://www.instagram.com/ubc.hih/",
+      "official_page": "https://amsclubs.ca/humanities-in-healthcare/",
+      "clubs": [
+        {
+          "club_id": "ams-humanities-in-healthcare",
+          "name": "AMS Humanities in Healthcare at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Japan Career Network",
+      "url": "https://www.instagram.com/ubc.jcn/",
+      "official_page": "https://amsclubs.ca/japan-career-network/",
+      "clubs": [
+        {
+          "club_id": "ams-japan-career-network",
+          "name": "UBC Japan Career Network"
+        }
+      ]
+    },
+    {
+      "club": "PRINT Arts and Crafts Club",
+      "url": "https://www.instagram.com/ubc.makersmarket/",
+      "official_page": "https://amsclubs.ca/print-arts-and-crafts-club/",
+      "clubs": [
+        {
+          "club_id": "ams-print-arts-and-crafts-club",
+          "name": "PRINT Arts and Crafts Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Medical Ethics Club @ UBC",
+      "url": "https://www.instagram.com/ubc.medethics/",
+      "official_page": "https://amsclubs.ca/medical-ethics-clubs/",
+      "clubs": [
+        {
+          "club_id": "ams-medical-ethics-clubs",
+          "name": "AMS Medical Ethics Club @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "Pharmacology Student Association",
+      "url": "https://www.instagram.com/ubc.pharmacology/",
+      "official_page": "https://amsclubs.ca/pharmacology-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-pharmacology-student-association",
+          "name": "Pharmacology Student Association"
+        }
+      ]
+    },
+    {
+      "club": "Planetary Health Club",
+      "url": "https://www.instagram.com/ubc.planetaryhealth/",
+      "official_page": "https://amsclubs.ca/planetary-health-club/",
+      "clubs": [
+        {
+          "club_id": "ams-planetary-health-club",
+          "name": "Planetary Health Club"
+        }
+      ]
+    },
+    {
+      "club": "The AMS Pre-Optometry Club",
+      "url": "https://www.instagram.com/ubc.preoptometry/",
+      "official_page": "https://amsclubs.ca/pre-optometry-club/",
+      "clubs": [
+        {
+          "club_id": "ams-pre-optometry-club",
+          "name": "The AMS Pre-Optometry Club"
+        }
+      ]
+    },
+    {
+      "club": "PRINT Arts and Crafts Club",
+      "url": "https://www.instagram.com/ubc.print/",
+      "official_page": "https://amsclubs.ca/print-arts-and-crafts-club/",
+      "clubs": [
+        {
+          "club_id": "ams-print-arts-and-crafts-club",
+          "name": "PRINT Arts and Crafts Club"
+        }
+      ]
+    },
+    {
+      "club": "Psychology Students' Association",
+      "url": "https://www.instagram.com/ubc.psa/",
+      "official_page": "https://amsclubs.ca/psychology-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-psychology-students-association",
+          "name": "Psychology Students' Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Political Science Students' Association",
+      "url": "https://www.instagram.com/ubc.pssa/",
+      "official_page": "https://amsclubs.ca/political-science-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-political-science-students-association",
+          "name": "UBC Political Science Students' Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Tax Assistance Clinic",
+      "url": "https://www.instagram.com/ubc.tacs/",
+      "official_page": "https://amsclubs.ca/tax-assistance-clinic/",
+      "clubs": [
+        {
+          "club_id": "ams-tax-assistance-clinic",
+          "name": "UBC Tax Assistance Clinic"
+        }
+      ]
+    },
+    {
+      "club": "UBC Tamil Student Association",
+      "url": "https://www.instagram.com/ubc.tsa/",
+      "official_page": "https://amsclubs.ca/tamil-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-tamil-student-association",
+          "name": "UBC Tamil Student Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Women in Science Club",
+      "url": "https://www.instagram.com/ubc.wis/",
+      "official_page": "https://amsclubs.ca/women-in-science-club/",
+      "clubs": [
+        {
+          "club_id": "ams-women-in-science-club",
+          "name": "UBC Women in Science Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Applied Machine Learning & Art @ UBC",
+      "url": "https://www.instagram.com/ubc_amla/",
+      "official_page": "https://amsclubs.ca/applied-machine-learning-and-art/",
+      "clubs": [
+        {
+          "club_id": "ams-applied-machine-learning-and-art",
+          "name": "AMS Applied Machine Learning & Art @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Badminton Club",
+      "url": "https://www.instagram.com/ubc_bc/",
+      "official_page": "https://amsclubs.ca/badminton-club/",
+      "clubs": [
+        {
+          "club_id": "ams-badminton-club",
+          "name": "UBC Badminton Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Cancer Association of UBC",
+      "url": "https://www.instagram.com/ubc_ca/",
+      "official_page": "https://amsclubs.ca/cancer-association/",
+      "clubs": [
+        {
+          "club_id": "ams-cancer-association",
+          "name": "AMS Cancer Association of UBC"
+        }
+      ]
+    },
+    {
+      "club": "Cantonese Christian Fellowship",
+      "url": "https://www.instagram.com/ubc_ccf/",
+      "official_page": "https://amsclubs.ca/cantonese-christian-fellowship/",
+      "clubs": [
+        {
+          "club_id": "ams-cantonese-christian-fellowship",
+          "name": "Cantonese Christian Fellowship"
+        }
+      ]
+    },
+    {
+      "club": "UBC CSSS",
+      "url": "https://www.instagram.com/ubc_csss/",
+      "official_page": "https://ubccsss.org/",
+      "clubs": [
+        {
+          "club_id": "ubc-csss",
+          "name": "Computer Science Student Society"
+        }
+      ]
+    },
+    {
+      "club": "UBC Environmental Policy Association",
+      "url": "https://www.instagram.com/ubc_epa/",
+      "official_page": "https://amsclubs.ca/environmental-policy-association/",
+      "clubs": [
+        {
+          "club_id": "ams-environmental-policy-association",
+          "name": "UBC Environmental Policy Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC AMS English Students' Association",
+      "url": "https://www.instagram.com/ubc_esa/",
+      "official_page": "https://amsclubs.ca/english-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-english-students-association",
+          "name": "UBC AMS English Students' Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Go Club",
+      "url": "https://www.instagram.com/ubc_go_club/",
+      "official_page": "https://amsclubs.ca/go-club/",
+      "clubs": [
+        {
+          "club_id": "ams-go-club",
+          "name": "UBC Go Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Greek Student Association (GreekSA) at UBC",
+      "url": "https://www.instagram.com/ubc_greeksa/",
+      "official_page": "https://amsclubs.ca/greek-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-greek-student-association",
+          "name": "AMS Greek Student Association (GreekSA) at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Japan Association",
+      "url": "https://www.instagram.com/ubc_ja/",
+      "official_page": "https://amsclubs.ca/japan-association/",
+      "clubs": [
+        {
+          "club_id": "ams-japan-association",
+          "name": "UBC Japan Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Jain Students Association",
+      "url": "https://www.instagram.com/ubc_jsa/",
+      "official_page": "https://amsclubs.ca/jain-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-jain-students-association",
+          "name": "AMS Jain Students Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Shito-Ryu Sato-Kai Karate Club at UBC",
+      "url": "https://www.instagram.com/ubc_karate/",
+      "official_page": "https://amsclubs.ca/shito-ryu-sato-kai-karate-club/",
+      "clubs": [
+        {
+          "club_id": "ams-shito-ryu-sato-kai-karate-club",
+          "name": "AMS Shito-Ryu Sato-Kai Karate Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Korean Commerce Student Association",
+      "url": "https://www.instagram.com/ubc_kcsa/",
+      "official_page": "https://amsclubs.ca/korean-commerce-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-korean-commerce-student-association",
+          "name": "Korean Commerce Student Association"
+        }
+      ]
+    },
+    {
+      "club": "Medical Laboratory Club",
+      "url": "https://www.instagram.com/ubc_medlab/",
+      "official_page": "https://amsclubs.ca/medical-laboratory-club/",
+      "clubs": [
+        {
+          "club_id": "ams-medical-laboratory-club",
+          "name": "Medical Laboratory Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Mining Engineering Undergraduate Club",
+      "url": "https://www.instagram.com/ubc_mining/",
+      "official_page": "https://amsclubs.ca/mining-engineering-undergraduate-club/",
+      "clubs": [
+        {
+          "club_id": "ams-mining-engineering-undergraduate-club",
+          "name": "UBC Mining Engineering Undergraduate Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Machine Learning Research",
+      "url": "https://www.instagram.com/ubc_mlr/",
+      "official_page": "https://ubccsss.org/about/affiliates/"
+    },
+    {
+      "club": "Philosophy Students Association",
+      "url": "https://www.instagram.com/ubc_philsa/",
+      "official_page": "https://amsclubs.ca/philosophy-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-philosophy-students-association",
+          "name": "Philosophy Students Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Psychedelic Society",
+      "url": "https://www.instagram.com/ubc_psychedelic/",
+      "official_page": "https://amsclubs.ca/psychedelic-society/",
+      "clubs": [
+        {
+          "club_id": "ams-psychedelic-society",
+          "name": "UBC Psychedelic Society"
+        }
+      ]
+    },
+    {
+      "club": "Speech and Linguistics Student Association",
+      "url": "https://www.instagram.com/ubc_salsa/",
+      "official_page": "https://amsclubs.ca/speech-and-linguistics-student-association/",
+      "clubs": [
+        {
+          "club_id": "ubc-salsa",
+          "name": "Speech and Linguistics Student Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Science Fiction & Fantasy Society",
+      "url": "https://www.instagram.com/ubc_sfs/",
+      "official_page": "https://amsclubs.ca/science-fiction-and-fantasy-society/",
+      "clubs": [
+        {
+          "club_id": "ams-science-fiction-and-fantasy-society",
+          "name": "UBC Science Fiction & Fantasy Society"
+        }
+      ]
+    },
+    {
+      "club": "Undergraduate Chemistry Society",
+      "url": "https://www.instagram.com/ubc_ucs/",
+      "official_page": "https://amsclubs.ca/undergraduate-chemistry-society/",
+      "clubs": [
+        {
+          "club_id": "ams-undergraduate-chemistry-society",
+          "name": "Undergraduate Chemistry Society"
+        }
+      ]
+    },
+    {
+      "club": "AMS Ukrainian Student Union at UBC",
+      "url": "https://www.instagram.com/ubc_usu/",
+      "official_page": "https://amsclubs.ca/usu/",
+      "clubs": [
+        {
+          "club_id": "ams-usu",
+          "name": "AMS Ukrainian Student Union at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Exchange and International Student Club",
+      "url": "https://www.instagram.com/ubc_xisc/",
+      "official_page": "https://amsclubs.ca/exchange-and-international-student-club/",
+      "clubs": [
+        {
+          "club_id": "ams-exchange-and-international-student-club",
+          "name": "Exchange and International Student Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Young Liberals of Canada",
+      "url": "https://www.instagram.com/ubc_ylc/",
+      "official_page": "https://amsclubs.ca/young-liberals-of-canada/",
+      "clubs": [
+        {
+          "club_id": "ams-young-liberals-of-canada",
+          "name": "UBC Young Liberals of Canada"
+        }
+      ]
+    },
+    {
+      "club": "AMS Young Women for STEM",
+      "url": "https://www.instagram.com/ubc_ywfstem/",
+      "official_page": "https://amsclubs.ca/young-women-for-stem/",
+      "clubs": [
+        {
+          "club_id": "ams-young-women-for-stem",
+          "name": "AMS Young Women for STEM"
+        }
+      ]
+    },
+    {
+      "club": "AMS Asian Brush Calligraphy at UBC",
+      "url": "https://www.instagram.com/ubcabcalligraphy/",
+      "official_page": "https://amsclubs.ca/asian-brush-calligraphy/",
+      "clubs": [
+        {
+          "club_id": "ubc-calligraphy",
+          "name": "AMS Asian Brush Calligraphy at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC A Cappella",
+      "url": "https://www.instagram.com/ubcacappella/",
+      "official_page": "https://amsclubs.ca/a-cappella/",
+      "clubs": [
+        {
+          "club_id": "ams-a-cappella",
+          "name": "UBC A Cappella"
+        }
+      ]
+    },
+    {
+      "club": "UBC Accounting Club",
+      "url": "https://www.instagram.com/ubcaccounting/",
+      "official_page": "https://amsclubs.ca/accounting-club/",
+      "clubs": [
+        {
+          "club_id": "ams-accounting-club",
+          "name": "UBC Accounting Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Agape Street Missions",
+      "url": "https://www.instagram.com/ubcagapeoutreach/",
+      "official_page": "https://amsclubs.ca/agape-street-missions/",
+      "clubs": [
+        {
+          "club_id": "ams-agape-street-missions",
+          "name": "UBC Agape Street Missions"
+        }
+      ]
+    },
+    {
+      "club": "AMS AI Club at UBC",
+      "url": "https://www.instagram.com/ubcaiclub/",
+      "official_page": "https://amsclubs.ca/ai-club/",
+      "clubs": [
+        {
+          "club_id": "ams-ai-club",
+          "name": "AMS AI Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Anime Club",
+      "url": "https://www.instagram.com/ubcani/",
+      "official_page": "https://amsclubs.ca/anime-club/",
+      "clubs": [
+        {
+          "club_id": "ubc-anime",
+          "name": "UBC Anime Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Aqua Society",
+      "url": "https://www.instagram.com/ubcaquasociety/",
+      "official_page": "https://amsclubs.ca/aqua-society/",
+      "clubs": [
+        {
+          "club_id": "ams-aqua-society",
+          "name": "UBC Aqua Society"
+        }
+      ]
+    },
+    {
+      "club": "UBC Archers",
+      "url": "https://www.instagram.com/ubcarchers/",
+      "official_page": "https://amsclubs.ca/archers/",
+      "clubs": [
+        {
+          "club_id": "ams-archers",
+          "name": "UBC Archers"
+        }
+      ]
+    },
+    {
+      "club": "AMS Armenian Student Association at UBC",
+      "url": "https://www.instagram.com/ubcarmenia/",
+      "official_page": "https://amsclubs.ca/armenian-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-armenian-student-association",
+          "name": "AMS Armenian Student Association at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Artelier at UBC",
+      "url": "https://www.instagram.com/ubcartelier/",
+      "official_page": "https://amsclubs.ca/artelier/",
+      "clubs": [
+        {
+          "club_id": "ams-artelier",
+          "name": "AMS Artelier at UBC"
+        }
+      ]
+    },
+    {
+      "club": "The UBC Astronomy Club",
+      "url": "https://www.instagram.com/ubcastronomyclub/",
+      "official_page": "https://amsclubs.ca/astronomy-club/",
+      "clubs": [
+        {
+          "club_id": "ams-astronomy-club",
+          "name": "The UBC Astronomy Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Baking Club at UBC",
+      "url": "https://www.instagram.com/ubcbaking/",
+      "official_page": "https://amsclubs.ca/baking-club/",
+      "clubs": [
+        {
+          "club_id": "ams-baking-club",
+          "name": "AMS Baking Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Ballet Club",
+      "url": "https://www.instagram.com/ubcballet/",
+      "official_page": "https://amsclubs.ca/ballet-club/",
+      "clubs": [
+        {
+          "club_id": "ams-ballet-club",
+          "name": "UBC Ballet Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Barista Club at UBC",
+      "url": "https://www.instagram.com/ubcbaristaclub/",
+      "official_page": "https://amsclubs.ca/barista-club/",
+      "clubs": [
+        {
+          "club_id": "ams-barista-club",
+          "name": "AMS Barista Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC BCIT Biotechnology Club",
+      "url": "https://www.instagram.com/ubcbcitbiotech/",
+      "official_page": "https://amsclubs.ca/ubc-bcit-biotechnology-club/",
+      "clubs": [
+        {
+          "club_id": "ams-ubc-bcit-biotechnology-club",
+          "name": "UBC BCIT Biotechnology Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC BizChina Club",
+      "url": "https://www.instagram.com/ubcbizchina/",
+      "official_page": "https://amsclubs.ca/bizchina-club/",
+      "clubs": [
+        {
+          "club_id": "ams-bizchina-club",
+          "name": "UBC BizChina Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC BizTech",
+      "url": "https://www.instagram.com/ubcbiztech/",
+      "official_page": "https://amsclubs.ca/ubc-biztech/",
+      "clubs": [
+        {
+          "club_id": "ubc-biztech",
+          "name": "UBC BizTech"
+        }
+      ]
+    },
+    {
+      "club": "Black Muslim Collective",
+      "url": "https://www.instagram.com/ubcbmc/",
+      "official_page": "https://amsclubs.ca/black-muslim-collective/",
+      "clubs": [
+        {
+          "club_id": "ams-black-muslim-collective",
+          "name": "Black Muslim Collective"
+        }
+      ]
+    },
+    {
+      "club": "UBC Botany Enthusiasts Club",
+      "url": "https://www.instagram.com/ubcbotanyclub/",
+      "official_page": "https://amsclubs.ca/botany-enthusiasts-club/",
+      "clubs": [
+        {
+          "club_id": "ams-botany-enthusiasts-club",
+          "name": "UBC Botany Enthusiasts Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Boxing Club",
+      "url": "https://www.instagram.com/ubcboxingclub/",
+      "official_page": "https://amsclubs.ca/boxing-club/",
+      "clubs": [
+        {
+          "club_id": "ams-boxing-club",
+          "name": "UBC Boxing Club"
+        }
+      ]
+    },
+    {
+      "club": "Bachelor of Pharmaceutical Sciences Student Association",
+      "url": "https://www.instagram.com/ubcbpsc/",
+      "official_page": "https://amsclubs.ca/bachelor-pharmaceutical-sciences-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-bachelor-pharmaceutical-sciences-student-association",
+          "name": "Bachelor of Pharmaceutical Sciences Student Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Brewing Club",
+      "url": "https://www.instagram.com/ubcbrewing/",
+      "official_page": "https://amsclubs.ca/brewing-club/",
+      "clubs": [
+        {
+          "club_id": "ams-brewing-club",
+          "name": "UBC Brewing Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC AMS Black Student Union",
+      "url": "https://www.instagram.com/ubcbsu/",
+      "official_page": "https://amsclubs.ca/black-student-union/",
+      "clubs": [
+        {
+          "club_id": "ams-black-student-union",
+          "name": "UBC AMS Black Student Union"
+        }
+      ]
+    },
+    {
+      "club": "UBC C4 Choral Composition Club",
+      "url": "https://www.instagram.com/ubcc4club/",
+      "official_page": "https://amsclubs.ca/c4-choral-composition-club/",
+      "clubs": [
+        {
+          "club_id": "ams-c4-choral-composition-club",
+          "name": "UBC C4 Choral Composition Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS CAPACity @UBC",
+      "url": "https://www.instagram.com/ubccapacity/",
+      "official_page": "https://amsclubs.ca/capacity/",
+      "clubs": [
+        {
+          "club_id": "ams-capacity",
+          "name": "AMS CAPACity @UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Gluten-Free and Celiac Students",
+      "url": "https://www.instagram.com/ubcceliacs/",
+      "official_page": "https://amsclubs.ca/gluten-free-and-celiac-students/",
+      "clubs": [
+        {
+          "club_id": "ams-gluten-free-and-celiac-students",
+          "name": "UBC Gluten-Free and Celiac Students"
+        }
+      ]
+    },
+    {
+      "club": "UBC Chess Club",
+      "url": "https://www.instagram.com/ubcchessclub/",
+      "official_page": "https://amsclubs.ca/chess-club/",
+      "clubs": [
+        {
+          "club_id": "ubc-chess",
+          "name": "UBC Chess Club"
+        }
+      ]
+    },
+    {
+      "club": "Children's Charity at UBC",
+      "url": "https://www.instagram.com/ubcchildrenscharity/",
+      "official_page": "https://amsclubs.ca/childrens-charity-at-ubc/",
+      "clubs": [
+        {
+          "club_id": "ams-childrens-charity-at-ubc",
+          "name": "Children's Charity at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Club HK",
+      "url": "https://www.instagram.com/ubcclubhk/",
+      "official_page": "https://amsclubs.ca/club-hk/",
+      "clubs": [
+        {
+          "club_id": "ams-club-hk",
+          "name": "UBC Club HK"
+        }
+      ]
+    },
+    {
+      "club": "Mechanical Engineering Club",
+      "url": "https://www.instagram.com/ubcclubmech/",
+      "official_page": "https://amsclubs.ca/mechanical-engineering-club/",
+      "clubs": [
+        {
+          "club_id": "ams-mechanical-engineering-club",
+          "name": "Mechanical Engineering Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Comedy Club at UBC",
+      "url": "https://www.instagram.com/ubccomedyclub/",
+      "official_page": "https://amsclubs.ca/comedy-club/",
+      "clubs": [
+        {
+          "club_id": "ams-comedy-club",
+          "name": "AMS Comedy Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Conservatives",
+      "url": "https://www.instagram.com/ubcconservatives/",
+      "official_page": "https://amsclubs.ca/conservatives/",
+      "clubs": [
+        {
+          "club_id": "ams-conservatives",
+          "name": "UBC Conservatives"
+        }
+      ]
+    },
+    {
+      "club": "Beads and Crafts",
+      "url": "https://www.instagram.com/ubccrafts/",
+      "official_page": "https://amsclubs.ca/beads-and-crafts/",
+      "clubs": [
+        {
+          "club_id": "ams-beads-and-crafts",
+          "name": "Beads and Crafts"
+        }
+      ]
+    },
+    {
+      "club": "Chinese Students' Association",
+      "url": "https://www.instagram.com/ubccsa/",
+      "official_page": "https://amsclubs.ca/chinese-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-chinese-students-association",
+          "name": "Chinese Students' Association"
+        }
+      ]
+    },
+    {
+      "club": "Twilight",
+      "url": "https://www.instagram.com/ubccua/",
+      "official_page": "https://amsclubs.ca/twilight/",
+      "clubs": [
+        {
+          "club_id": "ams-twilight",
+          "name": "Twilight"
+        }
+      ]
+    },
+    {
+      "club": "AMS Curling Club at UBC",
+      "url": "https://www.instagram.com/ubccurlingclub/",
+      "official_page": "https://amsclubs.ca/curling-club/",
+      "clubs": [
+        {
+          "club_id": "ams-curling-club",
+          "name": "AMS Curling Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Dance Horizons",
+      "url": "https://www.instagram.com/ubcdancehorizons/",
+      "official_page": "https://amsclubs.ca/dance-horizons/",
+      "clubs": [
+        {
+          "club_id": "ams-dance-horizons",
+          "name": "AMS Dance Horizons"
+        }
+      ]
+    },
+    {
+      "club": "UBC Dance Team",
+      "url": "https://www.instagram.com/ubcdanceteam/",
+      "official_page": "https://amsclubs.ca/ubc-dance-team/",
+      "clubs": [
+        {
+          "club_id": "ams-ubc-dance-team",
+          "name": "UBC Dance Team"
+        }
+      ]
+    },
+    {
+      "club": "AMS Diabetes Club at UBC",
+      "url": "https://www.instagram.com/ubcdiabetesclub/",
+      "official_page": "https://amsclubs.ca/diabetes-club/",
+      "clubs": [
+        {
+          "club_id": "ams-diabetes-club",
+          "name": "AMS Diabetes Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Disc Golf Club @ UBC",
+      "url": "https://www.instagram.com/ubcdiscgolf/",
+      "official_page": "https://amsclubs.ca/disc-golf-club/",
+      "clubs": [
+        {
+          "club_id": "ams-disc-golf-club",
+          "name": "AMS Disc Golf Club @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Esports Association",
+      "url": "https://www.instagram.com/ubcea/",
+      "official_page": "https://amsclubs.ca/esports-association/",
+      "clubs": [
+        {
+          "club_id": "ams-esports-association",
+          "name": "UBC Esports Association"
+        }
+      ]
+    },
+    {
+      "club": "Environmental Engineering Student Association",
+      "url": "https://www.instagram.com/ubceesa/",
+      "official_page": "https://amsclubs.ca/environmental-engineering-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-environmental-engineering-student-association",
+          "name": "Environmental Engineering Student Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Electronica",
+      "url": "https://www.instagram.com/ubcelectronica/",
+      "official_page": "https://amsclubs.ca/ecegsa-at-ubc/",
+      "clubs": [
+        {
+          "club_id": "ams-ecegsa-at-ubc",
+          "name": "UBC Electronica"
+        }
+      ]
+    },
+    {
+      "club": "UBC Equestrian Club",
+      "url": "https://www.instagram.com/ubcequestrianclub/",
+      "official_page": "https://amsclubs.ca/equestrian/",
+      "clubs": [
+        {
+          "club_id": "ams-equestrian",
+          "name": "UBC Equestrian Club"
+        }
+      ]
+    },
+    {
+      "club": "Environmental Sciences Students' Association (ESSA)",
+      "url": "https://www.instagram.com/ubcessa/",
+      "official_page": "https://amsclubs.ca/environmental-sciences-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-environmental-sciences-students-association",
+          "name": "Environmental Sciences Students' Association (ESSA)"
+        }
+      ]
+    },
+    {
+      "club": "UBC Fencing Club",
+      "url": "https://www.instagram.com/ubcfencing/",
+      "official_page": "https://amsclubs.ca/fencing-club/",
+      "clubs": [
+        {
+          "club_id": "ams-fencing-club",
+          "name": "UBC Fencing Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Figure Skating Club at UBC",
+      "url": "https://www.instagram.com/ubcfigureskating/",
+      "official_page": "https://amsclubs.ca/figure-skating-club/",
+      "clubs": [
+        {
+          "club_id": "ams-figure-skating-club",
+          "name": "AMS Figure Skating Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Film Society",
+      "url": "https://www.instagram.com/ubcfilmsociety/",
+      "official_page": "https://amsclubs.ca/film-society/",
+      "clubs": [
+        {
+          "club_id": "ams-film-society",
+          "name": "UBC Film Society"
+        }
+      ]
+    },
+    {
+      "club": "UBC Food Science Club",
+      "url": "https://www.instagram.com/ubcfoodscience/",
+      "official_page": "https://amsclubs.ca/food-science-club/",
+      "clubs": [
+        {
+          "club_id": "ams-food-science-club",
+          "name": "UBC Food Science Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Game Dev",
+      "url": "https://www.instagram.com/ubcgamedev/",
+      "official_page": "https://ubccsss.org/about/affiliates/"
+    },
+    {
+      "club": "UBC Game Show Club",
+      "url": "https://www.instagram.com/ubcgameshow/",
+      "official_page": "https://amsclubs.ca/game-show-club/",
+      "clubs": [
+        {
+          "club_id": "ams-game-show-club",
+          "name": "UBC Game Show Club"
+        }
+      ]
+    },
+    {
+      "club": "Geography Students' Association",
+      "url": "https://www.instagram.com/ubcgsa/",
+      "official_page": "https://amsclubs.ca/geography-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-geography-students-association",
+          "name": "Geography Students' Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Hui O Hawai'i at UBC",
+      "url": "https://www.instagram.com/ubchawaii/",
+      "official_page": "https://amsclubs.ca/hui-o-haiwaii/",
+      "clubs": [
+        {
+          "club_id": "ams-hui-o-haiwaii",
+          "name": "AMS Hui O Hawai'i at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Health and Society Student Club at UBC",
+      "url": "https://www.instagram.com/ubcheso/",
+      "official_page": "https://amsclubs.ca/health-and-society-student-club/",
+      "clubs": [
+        {
+          "club_id": "ams-health-and-society-student-club",
+          "name": "AMS Health and Society Student Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Hong Kong YOURS Association",
+      "url": "https://www.instagram.com/ubchkyours/",
+      "official_page": "https://amsclubs.ca/hong-kong-yours-association/",
+      "clubs": [
+        {
+          "club_id": "ams-hong-kong-yours-association",
+          "name": "Hong Kong YOURS Association"
+        }
+      ]
+    },
+    {
+      "club": "Hope to House Awareness Initiative at UBC",
+      "url": "https://www.instagram.com/ubchopetohouse/",
+      "official_page": "https://amsclubs.ca/hopetohouse-awareness-initiative/",
+      "clubs": [
+        {
+          "club_id": "ams-hopetohouse-awareness-initiative",
+          "name": "Hope to House Awareness Initiative at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Heart and Stroke Foundation",
+      "url": "https://www.instagram.com/ubchsf/",
+      "official_page": "https://amsclubs.ca/heart-and-stroke-foundation/",
+      "clubs": [
+        {
+          "club_id": "ams-heart-and-stroke-foundation",
+          "name": "UBC Heart and Stroke Foundation"
+        }
+      ]
+    },
+    {
+      "club": "AMS Ice Cream Club at UBC",
+      "url": "https://www.instagram.com/ubcicecream/",
+      "official_page": "https://amsclubs.ca/ice-cream-club/",
+      "clubs": [
+        {
+          "club_id": "ams-ice-cream-club",
+          "name": "AMS Ice Cream Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Improv",
+      "url": "https://www.instagram.com/ubcimprov/",
+      "official_page": "https://amsclubs.ca/ubc-improv/",
+      "clubs": [
+        {
+          "club_id": "ams-ubc-improv",
+          "name": "UBC Improv"
+        }
+      ]
+    },
+    {
+      "club": "UBC Jazz Club at AMS",
+      "url": "https://www.instagram.com/ubcjazzclub/",
+      "official_page": "https://amsclubs.ca/jazz-club/",
+      "clubs": [
+        {
+          "club_id": "ams-jazz-club",
+          "name": "UBC Jazz Club at AMS"
+        }
+      ]
+    },
+    {
+      "club": "UBC Junoon",
+      "url": "https://www.instagram.com/ubcjunoon/",
+      "official_page": "https://amsclubs.ca/junoon/",
+      "clubs": [
+        {
+          "club_id": "ams-junoon",
+          "name": "UBC Junoon"
+        }
+      ]
+    },
+    {
+      "club": "UBC Kababayan: Filipino Student's Association",
+      "url": "https://www.instagram.com/ubckaba/",
+      "official_page": "https://amsclubs.ca/filipino-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-filipino-students-association",
+          "name": "UBC Kababayan: Filipino Student's Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Kendo Club",
+      "url": "https://www.instagram.com/ubckendo/",
+      "official_page": "https://amsclubs.ca/kendo-club/",
+      "clubs": [
+        {
+          "club_id": "ams-kendo-club",
+          "name": "UBC Kendo Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Malayali Students Association",
+      "url": "https://www.instagram.com/ubckeralam/",
+      "official_page": "https://amsclubs.ca/malayali-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-malayali-students-association",
+          "name": "AMS Malayali Students Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Knitting & Sewing Club at UBC",
+      "url": "https://www.instagram.com/ubcknitandsew/",
+      "official_page": "https://amsclubs.ca/knitting-and-sewing/",
+      "clubs": [
+        {
+          "club_id": "ams-knitting-and-sewing",
+          "name": "AMS Knitting & Sewing Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Korean Campus Mission at University of British Columbia (KCM-UBC)",
+      "url": "https://www.instagram.com/ubckoinonia/",
+      "official_page": "https://amsclubs.ca/korean-campus-mission/",
+      "clubs": [
+        {
+          "club_id": "ams-korean-campus-mission",
+          "name": "Korean Campus Mission at University of British Columbia (KCM-UBC)"
+        }
+      ]
+    },
+    {
+      "club": "UBC Kung Fu Association",
+      "url": "https://www.instagram.com/ubckungfu/",
+      "official_page": "https://amsclubs.ca/kung-fu-association/",
+      "clubs": [
+        {
+          "club_id": "ams-kung-fu-association",
+          "name": "UBC Kung Fu Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Kurdish Club at UBC",
+      "url": "https://www.instagram.com/ubckurdishclub/",
+      "official_page": "https://amsclubs.ca/kurdish-club/",
+      "clubs": [
+        {
+          "club_id": "ams-kurdish-club",
+          "name": "AMS Kurdish Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC K-Wave",
+      "url": "https://www.instagram.com/ubckwave/",
+      "official_page": "https://amsclubs.ca/k-wave/",
+      "clubs": [
+        {
+          "club_id": "ams-k-wave",
+          "name": "UBC K-Wave"
+        }
+      ]
+    },
+    {
+      "club": "UBC Launch Pad",
+      "url": "https://www.instagram.com/ubclaunchpad/",
+      "official_page": "https://luma.com/launchpadubc"
+    },
+    {
+      "club": "UBC Life Drawing",
+      "url": "https://www.instagram.com/ubclifedrawingclub/",
+      "official_page": "https://amsclubs.ca/ubclifedrawing/",
+      "clubs": [
+        {
+          "club_id": "ams-ubclifedrawing",
+          "name": "UBC Life Drawing"
+        }
+      ]
+    },
+    {
+      "club": "UBC Weightlifting and Powerlifting Club",
+      "url": "https://www.instagram.com/ubclifting/",
+      "official_page": "https://amsclubs.ca/weightlifting-and-powerlifting-club/",
+      "clubs": [
+        {
+          "club_id": "ams-weightlifting-and-powerlifting-club",
+          "name": "UBC Weightlifting and Powerlifting Club"
+        }
+      ]
+    },
+    {
+      "club": "University of British Columbia Marketing Association",
+      "url": "https://www.instagram.com/ubcma/",
+      "official_page": "https://amsclubs.ca/marketing-association/",
+      "clubs": [
+        {
+          "club_id": "ams-marketing-association",
+          "name": "University of British Columbia Marketing Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Mahjong Club",
+      "url": "https://www.instagram.com/ubcmahjongclub/",
+      "official_page": "https://amsclubs.ca/mahjong-club/",
+      "clubs": [
+        {
+          "club_id": "ams-mahjong-club",
+          "name": "UBC Mahjong Club"
+        }
+      ]
+    },
+    {
+      "club": "Seri Malaysia Club",
+      "url": "https://www.instagram.com/ubcmalaysians/",
+      "official_page": "https://amsclubs.ca/seri-malaysia-club/",
+      "clubs": [
+        {
+          "club_id": "ams-seri-malaysia-club",
+          "name": "Seri Malaysia Club"
+        }
+      ]
+    },
+    {
+      "club": "The Manufacturing Engineering Undergraduate Club of the University of British Columbia",
+      "url": "https://www.instagram.com/ubcmanu/",
+      "official_page": "https://amsclubs.ca/manufacturing-engineering-undergraduate-club/",
+      "clubs": [
+        {
+          "club_id": "ams-manufacturing-engineering-undergraduate-club",
+          "name": "The Manufacturing Engineering Undergraduate Club of the University of British Columbia"
+        }
+      ]
+    },
+    {
+      "club": "AMS Medical Genetics Club",
+      "url": "https://www.instagram.com/ubcmedgen/",
+      "official_page": "https://amsclubs.ca/medical-genetics-club/",
+      "clubs": [
+        {
+          "club_id": "ams-medical-genetics-club",
+          "name": "AMS Medical Genetics Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Mindfulness Meditation Community at UBC",
+      "url": "https://www.instagram.com/ubcmeditationcommunity/",
+      "official_page": "https://amsclubs.ca/mindfulness-meditation-community/",
+      "clubs": [
+        {
+          "club_id": "ams-mindfulness-meditation-community",
+          "name": "AMS Mindfulness Meditation Community at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Middle East Indian Students' Association at UBC",
+      "url": "https://www.instagram.com/ubcmeisa/",
+      "official_page": "https://amsclubs.ca/middle-east-indian-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-middle-east-indian-students-association",
+          "name": "AMS Middle East Indian Students' Association at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC MEXSA",
+      "url": "https://www.instagram.com/ubcmexsa/",
+      "official_page": "https://amsclubs.ca/mexsa/",
+      "clubs": [
+        {
+          "club_id": "ams-mexsa",
+          "name": "UBC MEXSA"
+        }
+      ]
+    },
+    {
+      "club": "UBC Mental Health Awareness Club",
+      "url": "https://www.instagram.com/ubcmhac/",
+      "official_page": "https://amsclubs.ca/mental-health-awareness-club/",
+      "clubs": [
+        {
+          "club_id": "ams-mental-health-awareness-club",
+          "name": "UBC Mental Health Awareness Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Medical Imaging Club at UBC",
+      "url": "https://www.instagram.com/ubcmic/",
+      "official_page": "https://amsclubs.ca/medical-imaging-club/",
+      "clubs": [
+        {
+          "club_id": "ams-medical-imaging-club",
+          "name": "AMS Medical Imaging Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Minecraft Club",
+      "url": "https://www.instagram.com/ubcminecraft/",
+      "official_page": "https://amsclubs.ca/minecraft-club/",
+      "clubs": [
+        {
+          "club_id": "ams-minecraft-club",
+          "name": "AMS Minecraft Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Myanmar Student Club at UBC",
+      "url": "https://www.instagram.com/ubcmmclub/",
+      "official_page": "https://amsclubs.ca/myanmar-student-club/",
+      "clubs": [
+        {
+          "club_id": "ams-myanmar-student-club",
+          "name": "AMS Myanmar Student Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Music for Mental Health at UBC",
+      "url": "https://www.instagram.com/ubcmmh/",
+      "official_page": "https://amsclubs.ca/music-for-mental-health/",
+      "clubs": [
+        {
+          "club_id": "ams-music-for-mental-health",
+          "name": "AMS Music for Mental Health at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Men's Mental Health Club",
+      "url": "https://www.instagram.com/ubcmmhc/",
+      "official_page": "https://amsclubs.ca/mens-mental-health-club/",
+      "clubs": [
+        {
+          "club_id": "ams-mens-mental-health-club",
+          "name": "Men's Mental Health Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Modeling Club @UBC",
+      "url": "https://www.instagram.com/ubcmodelingclub/",
+      "official_page": "https://amsclubs.ca/modeling-club/",
+      "clubs": [
+        {
+          "club_id": "ams-modeling-club",
+          "name": "AMS Modeling Club @UBC"
+        }
+      ]
+    },
+    {
+      "club": "Media Studies Student Association",
+      "url": "https://www.instagram.com/ubcmssa/",
+      "official_page": "https://amsclubs.ca/media-studies-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-media-studies-student-association",
+          "name": "Media Studies Student Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Bike Club at UBC",
+      "url": "https://www.instagram.com/ubcmtbclub/",
+      "official_page": "https://amsclubs.ca/bike-club/",
+      "clubs": [
+        {
+          "club_id": "ams-bike-club",
+          "name": "AMS Bike Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Muaythai Club at UBC",
+      "url": "https://www.instagram.com/ubcmuaythai/",
+      "official_page": "https://amsclubs.ca/muaythai-club/",
+      "clubs": [
+        {
+          "club_id": "ams-muaythai-club",
+          "name": "AMS Muaythai Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Multifaith club",
+      "url": "https://www.instagram.com/ubcmultifaithclub/",
+      "official_page": "https://amsclubs.ca/multifaith-club/",
+      "clubs": [
+        {
+          "club_id": "ams-multifaith-club",
+          "name": "UBC Multifaith club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Music Initiative",
+      "url": "https://www.instagram.com/ubcmusicinitiative/",
+      "official_page": "https://amsclubs.ca/music-initiative/",
+      "clubs": [
+        {
+          "club_id": "ams-music-initiative",
+          "name": "UBC Music Initiative"
+        }
+      ]
+    },
+    {
+      "club": "The Navigators",
+      "url": "https://www.instagram.com/ubcnavigators/",
+      "official_page": "https://amsclubs.ca/navigators/",
+      "clubs": [
+        {
+          "club_id": "ams-navigators",
+          "name": "The Navigators"
+        }
+      ]
+    },
+    {
+      "club": "UBC Young New Democrats",
+      "url": "https://www.instagram.com/ubcndp/",
+      "official_page": "https://amsclubs.ca/young-new-democrats/",
+      "clubs": [
+        {
+          "club_id": "ams-young-new-democrats",
+          "name": "UBC Young New Democrats"
+        }
+      ]
+    },
+    {
+      "club": "AMS Netball Club @ UBC",
+      "url": "https://www.instagram.com/ubcnetballclub/",
+      "official_page": "https://amsclubs.ca/netball-club/",
+      "clubs": [
+        {
+          "club_id": "ams-netball-club",
+          "name": "AMS Netball Club @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC AMS Neuroscience Association",
+      "url": "https://www.instagram.com/ubcneuroassociation/",
+      "official_page": "https://amsclubs.ca/neuroscience-association/",
+      "clubs": [
+        {
+          "club_id": "ams-neuroscience-association",
+          "name": "UBC AMS Neuroscience Association"
+        }
+      ]
+    },
+    {
+      "club": "New Taiwanese Generation",
+      "url": "https://www.instagram.com/ubcntg/",
+      "official_page": "https://amsclubs.ca/new-taiwanese-generation/",
+      "clubs": [
+        {
+          "club_id": "ams-new-taiwanese-generation",
+          "name": "New Taiwanese Generation"
+        }
+      ]
+    },
+    {
+      "club": "UBC Operation Smile Club",
+      "url": "https://www.instagram.com/ubcopsmile/",
+      "official_page": "https://amsclubs.ca/operation-smile-club/",
+      "clubs": [
+        {
+          "club_id": "ams-operation-smile-club",
+          "name": "UBC Operation Smile Club"
+        }
+      ]
+    },
+    {
+      "club": "Occupational Therapy Student Society",
+      "url": "https://www.instagram.com/ubcotss/",
+      "official_page": "https://amsclubs.ca/occupational-therapy-student-society/",
+      "clubs": [
+        {
+          "club_id": "ams-occupational-therapy-student-society",
+          "name": "Occupational Therapy Student Society"
+        }
+      ]
+    },
+    {
+      "club": "AMS Paint Club",
+      "url": "https://www.instagram.com/ubcpaintclub/",
+      "official_page": "https://amsclubs.ca/paint-club/",
+      "clubs": [
+        {
+          "club_id": "ams-paint-club",
+          "name": "AMS Paint Club"
+        }
+      ]
+    },
+    {
+      "club": "Pre-Veterinary and Animal Welfare Club",
+      "url": "https://www.instagram.com/ubcpaw/",
+      "official_page": "https://amsclubs.ca/pre-veterinary-and-animal-welfare-club/",
+      "clubs": [
+        {
+          "club_id": "ams-pre-veterinary-and-animal-welfare-club",
+          "name": "Pre-Veterinary and Animal Welfare Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Pickleball Club",
+      "url": "https://www.instagram.com/ubcpbc/",
+      "official_page": "https://amsclubs.ca/pickleball/",
+      "clubs": [
+        {
+          "club_id": "ams-pickleball",
+          "name": "UBC Pickleball Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Persian Club",
+      "url": "https://www.instagram.com/ubcpc/",
+      "official_page": "https://amsclubs.ca/persian-club/",
+      "clubs": [
+        {
+          "club_id": "ams-persian-club",
+          "name": "UBC Persian Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC AMS PHOTOGRAPHIC SOCIETY",
+      "url": "https://www.instagram.com/ubcphotosoc/",
+      "official_page": "https://amsclubs.ca/photographic-society/",
+      "clubs": [
+        {
+          "club_id": "ams-photographic-society",
+          "name": "UBC AMS PHOTOGRAPHIC SOCIETY"
+        }
+      ]
+    },
+    {
+      "club": "AMS Physics Society at UBC",
+      "url": "https://www.instagram.com/ubcphyssoc/",
+      "official_page": "https://amsclubs.ca/physics-society/",
+      "clubs": [
+        {
+          "club_id": "ams-physics-society",
+          "name": "AMS Physics Society at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Pilates Club",
+      "url": "https://www.instagram.com/ubcpilatesclub/",
+      "official_page": "https://amsclubs.ca/pilates-club/",
+      "clubs": [
+        {
+          "club_id": "ams-pilates-club",
+          "name": "AMS Pilates Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Players Club",
+      "url": "https://www.instagram.com/ubcplayersclub/",
+      "official_page": "https://amsclubs.ca/players-club/",
+      "clubs": [
+        {
+          "club_id": "ams-players-club",
+          "name": "UBC Players Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS PRODUCT MANAGEMENT CLUB @ UBC",
+      "url": "https://www.instagram.com/ubcpmc/",
+      "official_page": "https://amsclubs.ca/product-management-club/",
+      "clubs": [
+        {
+          "club_id": "ams-product-management-club",
+          "name": "AMS PRODUCT MANAGEMENT CLUB @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Pre-Dental Society at UBC",
+      "url": "https://www.instagram.com/ubcpredent/",
+      "official_page": "https://amsclubs.ca/predental-society/",
+      "clubs": [
+        {
+          "club_id": "ams-predental-society",
+          "name": "AMS Pre-Dental Society at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Pre-Law Association",
+      "url": "https://www.instagram.com/ubcprelaw/",
+      "official_page": "https://amsclubs.ca/pre-law-association/",
+      "clubs": [
+        {
+          "club_id": "ams-pre-law-association",
+          "name": "UBC Pre-Law Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Pre-Medical Society",
+      "url": "https://www.instagram.com/ubcpremedsociety/",
+      "official_page": "https://amsclubs.ca/pre-medical-society/",
+      "clubs": [
+        {
+          "club_id": "ams-pre-medical-society",
+          "name": "UBC Pre-Medical Society"
+        }
+      ]
+    },
+    {
+      "club": "UBC Quantum",
+      "url": "https://www.instagram.com/ubcquantum/",
+      "official_page": "https://ubccsss.org/about/affiliates/",
+      "clubs": [
+        {
+          "club_id": "ams-quantum-club",
+          "name": "AMS UBC Quantum Club @UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Quizbowl Club of the AMS",
+      "url": "https://www.instagram.com/ubcquizbowl/",
+      "official_page": "https://amsclubs.ca/quizbowl-club/",
+      "clubs": [
+        {
+          "club_id": "ams-quizbowl-club",
+          "name": "UBC Quizbowl Club of the AMS"
+        }
+      ]
+    },
+    {
+      "club": "UBC Real Estate Club",
+      "url": "https://www.instagram.com/ubcrealestateclub/",
+      "official_page": "https://amsclubs.ca/real-estate-club/",
+      "clubs": [
+        {
+          "club_id": "ams-real-estate-club",
+          "name": "UBC Real Estate Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Red Cross Club",
+      "url": "https://www.instagram.com/ubcredcross/",
+      "official_page": "https://amsclubs.ca/red-cross-club/",
+      "clubs": [
+        {
+          "club_id": "ams-red-cross-club",
+          "name": "UBC Red Cross Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC RISE",
+      "url": "https://www.instagram.com/ubcrise/",
+      "official_page": "https://amsclubs.ca/ubc-rise/",
+      "clubs": [
+        {
+          "club_id": "ams-ubc-rise",
+          "name": "UBC RISE"
+        }
+      ]
+    },
+    {
+      "club": "The Salsa Rueda Club",
+      "url": "https://www.instagram.com/ubcsalsarueda/",
+      "official_page": "https://amsclubs.ca/salsa-rueda/",
+      "clubs": [
+        {
+          "club_id": "ams-salsa-rueda",
+          "name": "The Salsa Rueda Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Sports Business Association",
+      "url": "https://www.instagram.com/ubcsba/",
+      "official_page": "https://amsclubs.ca/sports-business/",
+      "clubs": [
+        {
+          "club_id": "ams-sports-business",
+          "name": "UBC Sports Business Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Sailing Club",
+      "url": "https://www.instagram.com/ubcsc/",
+      "official_page": "https://amsclubs.ca/sailing-club/",
+      "clubs": [
+        {
+          "club_id": "ams-sailing-club",
+          "name": "UBC Sailing Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Science Digest",
+      "url": "https://www.instagram.com/ubcsciencedigest/",
+      "official_page": "https://amsclubs.ca/science-digest/",
+      "clubs": [
+        {
+          "club_id": "ams-science-digest",
+          "name": "UBC Science Digest"
+        }
+      ]
+    },
+    {
+      "club": "AMS Shooting Sports at UBC",
+      "url": "https://www.instagram.com/ubcshootingsports/",
+      "official_page": "https://amsclubs.ca/shooting-sports/",
+      "clubs": [
+        {
+          "club_id": "ams-shooting-sports",
+          "name": "AMS Shooting Sports at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC SISU",
+      "url": "https://www.instagram.com/ubcsisu/",
+      "official_page": "https://amsclubs.ca/sisu/",
+      "clubs": [
+        {
+          "club_id": "ams-sisu",
+          "name": "UBC SISU"
+        }
+      ]
+    },
+    {
+      "club": "UBC Ski and Board",
+      "url": "https://www.instagram.com/ubcskiandboard/",
+      "official_page": "https://amsclubs.ca/ski-and-board/",
+      "clubs": [
+        {
+          "club_id": "ams-ski-and-board",
+          "name": "UBC Ski and Board"
+        }
+      ]
+    },
+    {
+      "club": "UBC Slam Poetry",
+      "url": "https://www.instagram.com/ubcslampoetry/",
+      "official_page": "https://amsclubs.ca/slam-poetry/",
+      "clubs": [
+        {
+          "club_id": "ams-slam-poetry",
+          "name": "UBC Slam Poetry"
+        }
+      ]
+    },
+    {
+      "club": "UBC Scandinavian and Nordic Student Association",
+      "url": "https://www.instagram.com/ubcsnsa/",
+      "official_page": "https://amsclubs.ca/scandinavian-and-nordic-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-scandinavian-and-nordic-student-association",
+          "name": "UBC Scandinavian and Nordic Student Association"
+        }
+      ]
+    },
+    {
+      "club": "AMS Students of the Caribbean (SOCA) at UBC",
+      "url": "https://www.instagram.com/ubcsoca/",
+      "official_page": "https://amsclubs.ca/students-of-the-caribbean/",
+      "clubs": [
+        {
+          "club_id": "ams-students-of-the-caribbean",
+          "name": "AMS Students of the Caribbean (SOCA) at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Sororities",
+      "url": "https://www.instagram.com/ubcsororities/",
+      "official_page": "https://amsclubs.ca/ubc-sororities/",
+      "clubs": [
+        {
+          "club_id": "ams-ubc-sororities",
+          "name": "UBC Sororities"
+        }
+      ]
+    },
+    {
+      "club": "Solidarity for Palestinian Human Rights",
+      "url": "https://www.instagram.com/ubcsphr/",
+      "official_page": "https://amsclubs.ca/solidarity-for-palestenian-human-rights/",
+      "clubs": [
+        {
+          "club_id": "ams-solidarity-for-palestenian-human-rights",
+          "name": "Solidarity for Palestinian Human Rights"
+        }
+      ]
+    },
+    {
+      "club": "AMS Sports Car Club at UBC",
+      "url": "https://www.instagram.com/ubcsportscarclub/",
+      "official_page": "https://amsclubs.ca/sports-car-club/",
+      "clubs": [
+        {
+          "club_id": "ams-sports-car-club",
+          "name": "AMS Sports Car Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Sprouts Cafe",
+      "url": "https://www.instagram.com/ubcsprouts/",
+      "official_page": "https://amsclubs.ca/sprouts-cafe/",
+      "clubs": [
+        {
+          "club_id": "ams-sprouts-cafe",
+          "name": "UBC Sprouts Cafe"
+        }
+      ]
+    },
+    {
+      "club": "AMS Squash Club at UBC",
+      "url": "https://www.instagram.com/ubcsquash/",
+      "official_page": "https://amsclubs.ca/squash-club/",
+      "clubs": [
+        {
+          "club_id": "ams-squash-club",
+          "name": "AMS Squash Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Sociology Students' Association",
+      "url": "https://www.instagram.com/ubcssa/",
+      "official_page": "https://amsclubs.ca/sociology-students-association/",
+      "clubs": [
+        {
+          "club_id": "ams-sociology-students-association",
+          "name": "UBC Sociology Students' Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Startups",
+      "url": "https://www.instagram.com/ubcstartups/",
+      "official_page": "https://ubccsss.org/about/affiliates/"
+    },
+    {
+      "club": "AMS Strings Club",
+      "url": "https://www.instagram.com/ubcstrings/",
+      "official_page": "https://amsclubs.ca/amsstrings/",
+      "clubs": [
+        {
+          "club_id": "ams-amsstrings",
+          "name": "AMS Strings Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Taylor Swift Club at UBC",
+      "url": "https://www.instagram.com/ubcswifties/",
+      "official_page": "https://amsclubs.ca/taylor-swift-club/",
+      "clubs": [
+        {
+          "club_id": "ams-taylor-swift-club",
+          "name": "AMS Taylor Swift Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS UBC Taiwan Association at UBC",
+      "url": "https://www.instagram.com/ubcta/",
+      "official_page": "https://amsclubs.ca/taiwan-association/",
+      "clubs": [
+        {
+          "club_id": "ams-taiwan-association",
+          "name": "AMS UBC Taiwan Association at UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS UBC Taekwondo",
+      "url": "https://www.instagram.com/ubctaekwondo/",
+      "official_page": "https://amsclubs.ca/ubc-taekwondo/",
+      "clubs": [
+        {
+          "club_id": "ams-ubc-taekwondo",
+          "name": "AMS UBC Taekwondo"
+        }
+      ]
+    },
+    {
+      "club": "Thunderbird Dance Team",
+      "url": "https://www.instagram.com/ubctdt/",
+      "official_page": "https://amsclubs.ca/thunderbird-dance-team/",
+      "clubs": [
+        {
+          "club_id": "ams-thunderbird-dance-team",
+          "name": "Thunderbird Dance Team"
+        }
+      ]
+    },
+    {
+      "club": "UBC Tea Club",
+      "url": "https://www.instagram.com/ubcteaclub/",
+      "official_page": "https://amsclubs.ca/teaclub/",
+      "clubs": [
+        {
+          "club_id": "ams-teaclub",
+          "name": "UBC Tea Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Tennis Circle @UBC",
+      "url": "https://www.instagram.com/ubctenniscircle/",
+      "official_page": "https://amsclubs.ca/tennis-circle/",
+      "clubs": [
+        {
+          "club_id": "ams-tennis-circle",
+          "name": "AMS Tennis Circle @UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Logger's Sports",
+      "url": "https://www.instagram.com/ubcthunderjacks/",
+      "official_page": "https://amsclubs.ca/loggers-sports/",
+      "clubs": [
+        {
+          "club_id": "ams-loggers-sports",
+          "name": "UBC Logger's Sports"
+        }
+      ]
+    },
+    {
+      "club": "Thunderbird Marching Band",
+      "url": "https://www.instagram.com/ubctmb/",
+      "official_page": "https://amsclubs.ca/thunderbird-marching-band/",
+      "clubs": [
+        {
+          "club_id": "ams-thunderbird-marching-band",
+          "name": "Thunderbird Marching Band"
+        }
+      ]
+    },
+    {
+      "club": "UBC Trading Group",
+      "url": "https://www.instagram.com/ubctradinggroup/",
+      "official_page": "https://amsclubs.ca/trading-group/",
+      "clubs": [
+        {
+          "club_id": "ams-trading-group",
+          "name": "UBC Trading Group"
+        }
+      ]
+    },
+    {
+      "club": "AMS Transplant Club at UBC",
+      "url": "https://www.instagram.com/ubctransplant/",
+      "official_page": "https://amsclubs.ca/transplant-club/",
+      "clubs": [
+        {
+          "club_id": "ams-transplant-club",
+          "name": "AMS Transplant Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC AMS Triathlon Club",
+      "url": "https://www.instagram.com/ubctriathlon.ams/",
+      "official_page": "https://amsclubs.ca/triathlon-club/",
+      "clubs": [
+        {
+          "club_id": "ams-triathlon-club",
+          "name": "UBC AMS Triathlon Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Third World Eye Care Society",
+      "url": "https://www.instagram.com/ubctwecs/",
+      "official_page": "https://amsclubs.ca/third-world-eye-care-society/",
+      "clubs": [
+        {
+          "club_id": "ams-third-world-eye-care-society",
+          "name": "UBC Third World Eye Care Society"
+        }
+      ]
+    },
+    {
+      "club": "UBC UNICEF",
+      "url": "https://www.instagram.com/ubcunicef_campusclub/",
+      "official_page": "https://amsclubs.ca/ubc-unicef/",
+      "clubs": [
+        {
+          "club_id": "ams-ubc-unicef",
+          "name": "UBC UNICEF"
+        }
+      ]
+    },
+    {
+      "club": "UBC UX Hub",
+      "url": "https://www.instagram.com/ubcuxhub/",
+      "official_page": "https://amsclubs.ca/ux-hub/",
+      "clubs": [
+        {
+          "club_id": "ams-ux-hub",
+          "name": "UBC UX Hub"
+        }
+      ]
+    },
+    {
+      "club": "Vaccine Literacy Club",
+      "url": "https://www.instagram.com/ubcvaccineliteracy/",
+      "official_page": "https://amsclubs.ca/vaccine-literacy-club/",
+      "clubs": [
+        {
+          "club_id": "ams-vaccine-literacy-club",
+          "name": "Vaccine Literacy Club"
+        }
+      ]
+    },
+    {
+      "club": "Vision Health Volunteers",
+      "url": "https://www.instagram.com/ubcvisionhealth/",
+      "official_page": "https://amsclubs.ca/vision-health-volunteers/",
+      "clubs": [
+        {
+          "club_id": "ams-vision-health-volunteers",
+          "name": "Vision Health Volunteers"
+        }
+      ]
+    },
+    {
+      "club": "AMS Volleyball Club at UBC",
+      "url": "https://www.instagram.com/ubcvolleyballclub/",
+      "official_page": "https://amsclubs.ca/volleyball-club/",
+      "clubs": [
+        {
+          "club_id": "ams-volleyball-club",
+          "name": "AMS Volleyball Club at UBC"
+        }
+      ]
+    },
+    {
+      "club": "Vietnamese Student Association",
+      "url": "https://www.instagram.com/ubcvsa/",
+      "official_page": "https://amsclubs.ca/vietnamese-student-association/",
+      "clubs": [
+        {
+          "club_id": "ams-vietnamese-student-association",
+          "name": "Vietnamese Student Association"
+        }
+      ]
+    },
+    {
+      "club": "UBC Water Polo Club",
+      "url": "https://www.instagram.com/ubcwaterpolo/",
+      "official_page": "https://amsclubs.ca/water-polo-club/",
+      "clubs": [
+        {
+          "club_id": "ams-water-polo-club",
+          "name": "UBC Water Polo Club"
+        }
+      ]
+    },
+    {
+      "club": "AMS Women Empowerment Club @ UBC",
+      "url": "https://www.instagram.com/ubcwec/",
+      "official_page": "https://amsclubs.ca/women-empowerment-club/",
+      "clubs": [
+        {
+          "club_id": "ams-women-empowerment-club",
+          "name": "AMS Women Empowerment Club @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Canadian Wheelchair Club",
+      "url": "https://www.instagram.com/ubcwheelchair/",
+      "official_page": "https://amsclubs.ca/canadian-wheelchair-club/",
+      "clubs": [
+        {
+          "club_id": "ams-canadian-wheelchair-club",
+          "name": "UBC Canadian Wheelchair Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC Women in Computer Science",
+      "url": "https://www.instagram.com/ubcwics/",
+      "official_page": "https://ubccsss.org/about/affiliates/"
+    },
+    {
+      "club": "UBC Women's Lacrosse",
+      "url": "https://www.instagram.com/ubcwomens_lacrosse/",
+      "official_page": "https://amsclubs.ca/womens-lacrosse/",
+      "clubs": [
+        {
+          "club_id": "ams-womens-lacrosse",
+          "name": "UBC Women's Lacrosse"
+        }
+      ]
+    },
+    {
+      "club": "UBC Wrestling Club",
+      "url": "https://www.instagram.com/ubcwrestling/",
+      "official_page": "https://amsclubs.ca/wrestling-club/",
+      "clubs": [
+        {
+          "club_id": "ams-wrestling-club",
+          "name": "UBC Wrestling Club"
+        }
+      ]
+    },
+    {
+      "club": "UBC YNOTFORTOTS",
+      "url": "https://www.instagram.com/ubcynotfortots/",
+      "official_page": "https://amsclubs.ca/ynotfortots/",
+      "clubs": [
+        {
+          "club_id": "ams-ynotfortots",
+          "name": "UBC YNOTFORTOTS"
+        }
+      ]
+    },
+    {
+      "club": "UBC Yoga Club",
+      "url": "https://www.instagram.com/ubcyogaclub/",
+      "official_page": "https://amsclubs.ca/yoga-club/",
+      "clubs": [
+        {
+          "club_id": "ams-yoga-club",
+          "name": "UBC Yoga Club"
+        }
+      ]
+    },
+    {
+      "club": "University Christian Ministries",
+      "url": "https://www.instagram.com/ucmatubc/",
+      "official_page": "https://amsclubs.ca/university-christian-ministries/",
+      "clubs": [
+        {
+          "club_id": "ams-university-christian-ministries",
+          "name": "University Christian Ministries"
+        }
+      ]
+    },
+    {
+      "club": "Undergraduate Mathematics Society",
+      "url": "https://www.instagram.com/ums.ubc/",
+      "official_page": "https://amsclubs.ca/undergraduate-math-association/",
+      "clubs": [
+        {
+          "club_id": "ams-undergraduate-math-association",
+          "name": "Undergraduate Mathematics Society"
+        }
+      ]
+    },
+    {
+      "club": "AMS unboundED @ UBC",
+      "url": "https://www.instagram.com/unbounded.ubc/",
+      "official_page": "https://amsclubs.ca/unbounded/",
+      "clubs": [
+        {
+          "club_id": "ams-unbounded",
+          "name": "AMS unboundED @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "Vancouver Hanfu Culture Association",
+      "url": "https://www.instagram.com/vanhanfu/",
+      "official_page": "https://amsclubs.ca/vancouver-hanfu-culture-association/",
+      "clubs": [
+        {
+          "club_id": "ams-vancouver-hanfu-culture-association",
+          "name": "Vancouver Hanfu Culture Association"
+        }
+      ]
+    },
+    {
+      "club": "Vegans of UBC",
+      "url": "https://www.instagram.com/vegansofubc/",
+      "official_page": "https://amsclubs.ca/vegans-of-ubc/",
+      "clubs": [
+        {
+          "club_id": "ams-vegans-of-ubc",
+          "name": "Vegans of UBC"
+        }
+      ]
+    },
+    {
+      "club": "AMS Women's Reproductive Health Project",
+      "url": "https://www.instagram.com/whpubc/",
+      "official_page": "https://amsclubs.ca/womens-health-reproductive-project/",
+      "clubs": [
+        {
+          "club_id": "ams-womens-health-reproductive-project",
+          "name": "AMS Women's Reproductive Health Project"
+        }
+      ]
+    },
+    {
+      "club": "UBC Women in Data Science",
+      "url": "https://www.instagram.com/widsubc/",
+      "official_page": "https://ubccsss.org/about/affiliates/",
+      "clubs": [
+        {
+          "club_id": "ubc-wids",
+          "name": "Women in Data Science (WiDS@UBC)"
+        }
+      ]
+    },
+    {
+      "club": "AMS Women in Sports @ UBC",
+      "url": "https://www.instagram.com/wispubc/",
+      "official_page": "https://amsclubs.ca/women-in-sports/",
+      "clubs": [
+        {
+          "club_id": "ams-women-in-sports",
+          "name": "AMS Women in Sports @ UBC"
+        }
+      ]
+    },
+    {
+      "club": "World Vision UBC",
+      "url": "https://www.instagram.com/wvubc/",
+      "official_page": "https://amsclubs.ca/world-vision/",
+      "clubs": [
+        {
+          "club_id": "ams-world-vision",
+          "name": "World Vision UBC"
+        }
+      ]
+    },
+    {
+      "club": "UBC Chess Club",
+      "url": "https://www.instagram.com/wwwchesscom/",
+      "official_page": "https://amsclubs.ca/chess-club/",
+      "clubs": [
+        {
+          "club_id": "ubc-chess",
+          "name": "UBC Chess Club"
+        }
+      ]
+    },
+    {
+      "club": "Young Women in Business UBC",
+      "url": "https://www.instagram.com/ywibubc/",
+      "official_page": "https://amsclubs.ca/young-women-in-business/",
+      "clubs": [
+        {
+          "club_id": "ams-young-women-in-business",
+          "name": "Young Women in Business UBC"
+        }
+      ]
+    }
   ]
 }

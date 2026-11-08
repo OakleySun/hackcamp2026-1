@@ -8,7 +8,7 @@
 -- MAGIC | Step | What Databricks AI does |
 -- MAGIC | --- | --- |
 -- MAGIC | Venue → building | `ai_query` maps free-text venues ("big Engineering building") to a UBC building for the map |
--- MAGIC | Topics | `ai_classify` fills missing topics from the title and description |
+-- MAGIC | Topics | Reuses the tags in Quad's published event revisions |
 -- MAGIC | Duplicate judge | `ai_query` decides if two posts are the same occurrence and explains why |
 -- MAGIC | Insights | Gold tables for the map app, Genie and the Campus Club Pulse dashboard |
 -- MAGIC
@@ -38,11 +38,8 @@ SELECT
   NULLIF(trim(s.venue), '') AS venue_text,
   coalesce(s.cost_status, 'unknown') AS cost_status,
   CAST(s.beginner_friendly AS BOOLEAN) AS beginner_friendly,
-  -- Missing topics are filled by ai_classify, constrained to the app's 8 topic slugs
-  CASE WHEN size(coalesce(s.topics, array())) > 0 THEN s.topics
-       ELSE array(ai_classify(concat(s.title, '. ', coalesce(s.description, '')),
-                  array('tech', 'career', 'academic', 'arts', 'sports', 'culture', 'social', 'wellness')))
-  END AS topics,
+  -- Use the same tags as Quad; an empty list means there was no reliable tag.
+  coalesce(s.topics, array()) AS topics,
   s.rsvp_url
 FROM (
   SELECT *, from_json(snapshot_json,

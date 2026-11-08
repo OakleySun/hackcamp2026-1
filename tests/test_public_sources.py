@@ -1,6 +1,7 @@
 """Public source boundaries, pagination, review routing and no-cost structured intake."""
 
 from datetime import datetime, timezone
+import json
 
 import httpx
 from fastapi.testclient import TestClient
@@ -10,7 +11,7 @@ from app import db, service
 from app.main import app
 from scripts import check_sources
 from scripts.public_sources import public_feed
-from scripts.setup_sources import register_sources
+from scripts.setup_sources import MANIFEST, register_sources
 
 NOW = datetime(2026, 11, 8, 12, tzinfo=timezone.utc)
 
@@ -88,7 +89,8 @@ def test_public_intake_replay_correction_and_rss_review_without_gemini(tmp_path,
         try:
             register_sources(conn)
             register_sources(conn)
-            assert conn.execute("SELECT COUNT(*) FROM sources").fetchone()[0] == 6
+            expected_sources = {source["source_id"] for source in json.loads(MANIFEST.read_text())["sources"]}
+            assert {row["source_id"] for row in conn.execute("SELECT source_id FROM sources")} == expected_sources
             assert conn.execute("SELECT COUNT(*) FROM subscriptions").fetchone()[0] == 0
         finally:
             conn.close()

@@ -179,7 +179,8 @@ function MapPage() {
                       {e.title}
                     </Link>
                     <p className="text-muted-foreground">
-                      {time(e.start, e.timeKnown)} · {e.venue} · {topicLabel(e.topic)}
+                      {time(e.start, e.timeKnown)} · {e.venue}
+                      {e.topic && ` · ${topicLabel(e.topic)}`}
                     </p>
                   </li>
                 ))}

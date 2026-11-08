@@ -11,7 +11,7 @@ export function ApiErrorView({ error, reset }: ErrorComponentProps) {
         {error instanceof Error ? error.message : "Something went wrong."}
       </p>
       <p className="mt-2 text-sm text-muted-foreground">
-        API: <code>{API_URL}</code>
+        API: <code>{API_URL || "Same origin"}</code>
       </p>
       <button
         type="button"

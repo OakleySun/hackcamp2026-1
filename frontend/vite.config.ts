@@ -8,8 +8,22 @@
 // hosting already compresses at the edge.
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import type { NitroConfig } from "nitro/types";
+
+const maritime = process.env["QUAD_MARITIME_BUILD"] === "1";
+const backend = "http://127.0.0.1:8000";
+const maritimeNitro: NitroConfig = {
+  preset: "node_server",
+  routeRules: {
+    "/health": { proxy: `${backend}/health` },
+    "/api/**": { proxy: `${backend}/api/**` },
+    "/verify": { proxy: `${backend}/verify` },
+    "/manage": { proxy: `${backend}/manage` },
+  },
+};
 
 export default defineConfig({
+  ...(maritime ? { nitro: maritimeNitro } : {}),
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

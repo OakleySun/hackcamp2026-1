@@ -1,6 +1,7 @@
 """Check approved public sources and submit their announcements to Club Alerts."""
 
 import json
+import argparse
 import os
 from datetime import datetime, timezone
 from pathlib import Path
@@ -60,8 +61,6 @@ def check_source(client: httpx.Client, feed_url: str, app_url: str, source_id: s
     if not source_id or not token:
         raise ValueError("Set MARITIME_SOURCE_ID and SOURCE_INGEST_TOKEN")
     feed_endpoint = _service_url(feed_url)
-    intake = _service_url(app_url, private_backend_host).join("/api/intake")
-    headers = {"Authorization": f"Bearer {token}"}
     if feed_format == "ical":
         feed = Feed.model_validate(calendar_feed(
             _download(client, feed_endpoint, MAX_CALENDAR_BYTES), days=lookahead_days))
@@ -70,6 +69,13 @@ def check_source(client: httpx.Client, feed_url: str, app_url: str, source_id: s
     else:
         feed = Feed.model_validate(public_feed(client, str(feed_endpoint), feed_format,
                                               days=lookahead_days, options=options))
+    return submit_feed(client, feed, app_url, source_id, token, private_backend_host, feed_endpoint)
+
+
+def submit_feed(client, feed, app_url, source_id, token, private_backend_host="", feed_endpoint=None):
+    """Share deterministic intake and deduplication with website and browser batches."""
+    intake = _service_url(app_url, private_backend_host).join("/api/intake")
+    headers = {"Authorization": f"Bearer {token}"}
     observed_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     summary = {"checked": len(feed.events), "submitted": 0, "unchanged": 0, "review": 0, "failed": 0}
     for event in feed.events:
@@ -87,7 +93,7 @@ def check_source(client: httpx.Client, feed_url: str, app_url: str, source_id: s
         try:
             if event.flyer_url:
                 flyer_url = _service_url(str(event.flyer_url))
-                if (flyer_url.scheme, flyer_url.netloc) != (feed_endpoint.scheme, feed_endpoint.netloc):
+                if feed_endpoint is None or (flyer_url.scheme, flyer_url.netloc) != (feed_endpoint.scheme, feed_endpoint.netloc):
                     raise ValueError("Flyers must be hosted on the approved feed origin")
                 image = _download(client, flyer_url, MAX_FLYER_BYTES)
                 response = client.post(
@@ -127,9 +133,17 @@ def check_sources(client: httpx.Client, sources: list[dict], app_url: str, token
     result["sources"] = []
     for source in sources:
         try:
-            counts = check_source(client, source["url"], app_url, source["source_id"], token,
-                                  source["format"], int(source.get("lookahead_days", 60)),
-                                  private_backend_host, source.get("options"))
+            if source["format"] in ("club_sites", "instagram_browser"):
+                if source["format"] == "club_sites":
+                    from scripts.club_sites import check as batch_check
+                else:
+                    from scripts.instagram_monitor import check as batch_check
+                counts = batch_check(client, app_url, source["source_id"], token,
+                                     private_backend_host, source.get("options") or {})
+            else:
+                counts = check_source(client, source["url"], app_url, source["source_id"], token,
+                                      source["format"], int(source.get("lookahead_days", 60)),
+                                      private_backend_host, source.get("options"))
             status = "succeeded" if not counts["failed"] else "failed"
             outcome = {"source_id": source["source_id"], "status": status, **counts}
         except (httpx.HTTPError, ValueError, KeyError, TypeError) as exc:
@@ -144,13 +158,18 @@ def check_sources(client: httpx.Client, sources: list[dict], app_url: str, token
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--group", choices=("public", "instagram"), default="public")
+    args = parser.parse_args()
     load_dotenv()
     try:
         with httpx.Client(timeout=30) as client:
             manifest_path = os.environ.get("MARITIME_SOURCES_FILE", "")
             if manifest_path:
                 manifest = json.loads(Path(manifest_path).read_text(encoding="utf-8"))
-                result = check_sources(client, manifest["sources"], os.environ.get("APP_BASE_URL", ""),
+                selected = [s for s in manifest["sources"] if
+                            (s["format"] == "instagram_browser") == (args.group == "instagram")]
+                result = check_sources(client, selected, os.environ.get("APP_BASE_URL", ""),
                                        os.environ.get("SOURCE_INGEST_TOKEN", ""),
                                        os.environ.get("MARITIME_PRIVATE_BACKEND_HOST", ""))
             else:

@@ -12,7 +12,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
-from . import config, matching, places
+from . import config, matching, places, topics
 from .extract import extract
 from .models import Candidate
 
@@ -155,14 +155,39 @@ def update_event(conn, event_id: str, changes: dict, reason: str, approver: str 
                  "VALUES (?,?,?,?,?,?,?)",
                  (event_id, rev, json.dumps(snapshot(updated)), json.dumps(changed), reason, approver, now()))
     enqueue_revision(conn, event_id, rev)
+    if changed.keys() == {"topics"}:
+        # Tagging does not invalidate an already-open time/venue review.
+        conn.execute("UPDATE review_items SET expected_revision=? WHERE state='open' AND expected_revision=? "
+                     "AND json_extract(candidate_ids, '$[0]')=?", (rev, ev["current_revision"], event_id))
     material = any(f in CORRECTION_FIELDS and changed[f]["old"] is not None for f in changed)
     if material and _has_outbox(conn, event_id, "new_event"):
         conn.execute("INSERT INTO event_outbox (event_id, revision, kind) VALUES (?,?,?)",
                      (event_id, rev, "correction"))
-    elif eligible(updated) and not _has_outbox(conn, event_id, "new_event"):
+    elif not eligible(ev) and eligible(updated) and not _has_outbox(conn, event_id, "new_event"):
         conn.execute("INSERT INTO event_outbox (event_id, revision, kind) VALUES (?,?,?)",
                      (event_id, rev, "new_event"))
     return rev
+
+
+def backfill_event_topics(conn) -> int:
+    """Tag previously published rows, recording changes without resending announcements."""
+    tagged = 0
+    with conn:
+        conn.execute("BEGIN IMMEDIATE")
+        rows = conn.execute("SELECT event_id, title FROM events "
+                            "WHERE state='published' AND topics='[]'").fetchall()
+        for row in rows:
+            event_id = row["event_id"]
+            sources = conn.execute("SELECT caption, candidate FROM source_announcements WHERE event_id=? "
+                                   "AND status='linked' ORDER BY detected_at, announcement_id", (event_id,)).fetchall()
+            declared = (tag for source in sources if source["candidate"]
+                        for tag in json.loads(source["candidate"]).get("topics", []))
+            tags = topics.event_topics(declared, row["title"], (source["caption"] for source in sources))
+            if not tags:
+                continue
+            update_event(conn, event_id, {"topics": tags}, "backfill event topics")
+            tagged += 1
+    return tagged
 
 
 # ---------------------------------------------------------------- intake
@@ -242,6 +267,7 @@ def process(conn, aid: str, image: bytes | None = None, mime: str | None = None)
             cand = Candidate.model_validate_json(ann["candidate"])
         else:
             cand = extract(ann["caption"], image, mime)
+        cand.topics = topics.event_topics(cand.topics, cand.title, (ann["caption"],))
         if not cand.organizer_slug:
             cand.organizer_slug = src["club_id"]
         club_id = resolve_club(conn, cand.organizer_slug)
@@ -315,6 +341,8 @@ def resolve_review(conn, review_id: str, decision: str, expected_revision: int |
         raise ReviewConflict("review already resolved")
     ann = conn.execute("SELECT * FROM source_announcements WHERE announcement_id=?", (r["announcement_id"],)).fetchone()
     cand = Candidate.model_validate_json(ann["candidate"]) if ann["candidate"] else None
+    if cand:
+        cand.topics = topics.event_topics(cand.topics, cand.title, (ann["caption"],))
     ids = json.loads(r["candidate_ids"])
     result = {"review_id": review_id, "decision": decision}
     with conn:

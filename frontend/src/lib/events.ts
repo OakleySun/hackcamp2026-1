@@ -70,7 +70,7 @@ export type CampusEvent = {
   id: string;
   title: string;
   club: string;
-  topic: Topic; // primary topic: chip colour and "near" topics
+  topic: Topic | null; // primary topic for recommendations; null when unclassified
   topics: Topic[];
   date: string | null; // YYYY-MM-DD, America/Vancouver
   start: string; // local ISO date-time, "" when the date is unknown
@@ -113,10 +113,10 @@ export function forYou(events: CampusEvent[], topics: Topic[], practical: Practi
     .sort((a, b) => Number(b.beginner === true) - Number(a.beginner === true) || byDate(a, b))
     .slice(0, 6)
     .map((e) => {
-      const hit = e.topics.find((t) => topics.includes(t)) ?? e.topic;
+      const hit = e.topics.find((t) => topics.includes(t));
       return {
         event: e,
-        reason: topics.length ? `Matches your interest in ${topicLabel(hit)}` : "Popular this week",
+        reason: hit ? `Matches your interest in ${topicLabel(hit)}` : "Popular this week",
       };
     });
 }
@@ -133,7 +133,9 @@ export function explore(
       .flatMap((t) => TOPICS.find((x) => x.slug === t)!.near)
       .filter((t) => !topics.includes(t as Topic)),
   );
-  const pool = events.filter((e) => passesPractical(e, practical) && !hasAny(e, topics));
+  const pool = events
+    .filter((e): e is CampusEvent & { topic: Topic } => e.topic !== null)
+    .filter((e) => passesPractical(e, practical) && !hasAny(e, topics));
   const nearEv = pool.filter((e) => near.has(e.topic)).sort(byDate);
   const farEv = pool.filter((e) => !near.has(e.topic)).sort(byDate);
   const ordered =
@@ -254,7 +256,7 @@ export function upcoming(events: CampusEvent[], practical: Practical[]): Ranked[
   return events
     .filter((e) => passesPractical(e, practical))
     .sort(byDate)
-    .map((e) => ({ event: e, reason: `${topicLabel(e.topic)} · ${e.club}` }));
+    .map((e) => ({ event: e, reason: e.topic ? `${topicLabel(e.topic)} · ${e.club}` : e.club }));
 }
 
 export function formatWhen(e: CampusEvent) {

@@ -57,6 +57,8 @@ def _diff(event: dict, c: Candidate) -> tuple[dict, dict]:
         fills["cost_status"] = c.cost_status
     if event["beginner_friendly"] is None and c.beginner_friendly is not None:
         fills["beginner_friendly"] = int(c.beginner_friendly)
+    if not event.get("topics") and c.topics:
+        fills["topics"] = list(c.topics)
     # Perks only accumulate: a mirror post can mention free food the original left out.
     added = [p for p in c.perks if p not in (event.get("perks") or [])]
     if added:

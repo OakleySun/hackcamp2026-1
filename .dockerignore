@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+.venv
+.maritime
+.pytest_cache
+**/__pycache__
+data
+uploads
+frontend/.env*
+frontend/.git
+frontend/.output
+frontend/.tanstack
+frontend/node_modules

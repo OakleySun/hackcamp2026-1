@@ -94,6 +94,8 @@ GROUP BY building_name ORDER BY events DESC LIMIT 10;
 - Which duplicate posts did the AI merge, and why?
 - What's happening this weekend?
 
+**Next: Try a new club.** “Give me three free events this week from three different organizers.” Add a verified public `source_url` to `events_current` before enabling this question. Pick one upcoming event per `club_id`, with confirmed free admission and a source link, then return up to three. If there are fewer than three matches, say how many qualified.
+
 ## 5. Test it
 
 Ask each sample question in the Genie chat. Check that the results only include upcoming events and that "free" excludes unknown cost. If an answer is wrong, click **thumbs down → Fix it** or add another example query for that kind of question.

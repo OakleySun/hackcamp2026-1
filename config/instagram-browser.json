@@ -9,7 +9,13 @@
   "login_verified_at_utc": "2026-11-08T07:06:32Z",
   "club_post_caption_access_verified": true,
   "sleep_wake_session_verified": true,
-  "last_confirmed_status": "sleeping",
+  "last_confirmed_status": "ready",
   "instagram_monitoring_enabled": false,
-  "note": "Owner login and CSSS post caption access verified; login survived a sleep/wake cycle. Computer left asleep. Reuse this computer and profile; do not create another computer per check. Session credentials stay on its disk. Scheduled Instagram intake is not implemented yet."
+  "note": "Initial login survived sleep/wake. Chromium was restarted for its automation interface and requested sign-in. Owner takeover is open; Instagram trigger is prepared but disabled pending reader verification. Reuse this computer and profile; no cookies or passwords are exported.",
+  "login_status": "owner_sign_in_required_after_browser_restart",
+  "scheduled_reader_installed": true,
+  "watchlist_accounts": 294,
+  "trigger_id": "fb3cd165-89fe-4987-9d72-2ce232c5db78",
+  "cron_utc": "0 9,21 * * *",
+  "max_seconds_per_window": 3300
 }

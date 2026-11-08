@@ -12,8 +12,8 @@ import httpx
 from . import config
 from .db import load_fixtures
 from .models import Candidate
+from .topics import TOPICS, valid_topics
 
-TOPICS = ("tech", "career", "academic", "arts", "sports", "culture", "social", "wellness")
 PERKS = ("free_food", "free_swag", "prizes")
 # Who an event is open to. ["anyone"] = explicitly open to all; [] = not stated.
 AUDIENCES = ("anyone", "ubc_students", "first_years", "grad_students", "women", "women_nonbinary",
@@ -78,7 +78,7 @@ def _extract_gemini(caption: str | None, image: bytes | None, mime: str | None) 
         raise ValueError("Gemini returned no structured event")
 
     candidate = Candidate.model_validate(resp.parsed)
-    candidate.topics = list(dict.fromkeys(topic for topic in candidate.topics if topic in TOPICS))[:2]
+    candidate.topics = valid_topics(candidate.topics)
     candidate.perks = list(dict.fromkeys(perk for perk in candidate.perks if perk in PERKS))
     candidate.audience = list(dict.fromkeys(a for a in candidate.audience if a in AUDIENCES))
     if "anyone" in candidate.audience and len(candidate.audience) > 1:

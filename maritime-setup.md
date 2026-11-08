@@ -1,6 +1,6 @@
 # Maritime with real UBC and AMS events
 
-The worker checks six public sources: CSSS affiliates, AMS club listings, AMS campus events, CSSS's website calendar, Launch Pad's public calendar, and UBC Events RSS. Source definitions live in [config/monitored-sources.json](config/monitored-sources.json). See [source coverage](source-coverage.md) for current counts and Instagram limitations.
+The worker checks ten public source groups: the original six below, UBC's homepage, UBC career events/workshops, BizTech, and the directory-wide club website rotation. A separate Instagram source and trigger are prepared pending owner login verification. Source definitions live in [config/monitored-sources.json](config/monitored-sources.json). See [expanded monitoring](club-monitoring.md) and [source coverage](source-coverage.md) for current status.
 
 ## Verified connection
 
@@ -41,7 +41,7 @@ Keep the generated `SOURCE_INGEST_TOKEN` in `.env`. In another terminal run:
 .\.venv\Scripts\python.exe -m scripts.check_sources
 ```
 
-When `MARITIME_SOURCES_FILE` is set, its entries override the legacy single-feed settings. On the remote worker use `/app/config/monitored-sources.json`. Results include one outcome per source, including empty calendars and failures; the other sources continue if one fails. UBC RSS records remain in review because the feed omits event dates and organizer identity. No publication timestamp is used as an event date.
+When `MARITIME_SOURCES_FILE` is set, its entries override the legacy single-feed settings. On the remote worker use `/data/club-alerts/monitored-sources.json` (uploaded public configuration); the image also contains a default under `/app/config/monitored-sources.json`. Results include one outcome per source, including empty calendars and failures; the other sources continue if one fails. UBC RSS records remain in review because the feed omits event dates and organizer identity. No publication timestamp is used as an event date.
 
 ## Calendar behavior
 
@@ -87,4 +87,4 @@ n8n verification and delivery email workflows remain a separate integration. Dat
 
 ## Instagram browser preparation
 
-See [Instagram browser setup](instagram-browser-setup.md) for the prepared Linux browser and disclosed costs. The original agent's built-in desktop switch returned HTTP 402 `seat_limit` despite the active Scale usage plan. The owner then selected a separate persistent Linux computer, `club-alerts-instagram`. Owner login and CSSS post caption access are verified, and the login survived a sleep/wake cycle. The browser was left asleep with its persistent profile retained. This browser is billed at $0.12/hour awake plus sleeping disk; no subscription upgrade or model call was made. Scheduled Instagram intake is not implemented and remains disabled; no Instagram posts were imported during verification. Do not upgrade the subscription to work around the original agent's conflicting entitlement result.
+See [Instagram browser setup](instagram-browser-setup.md) for the prepared Linux browser and disclosed costs. The original agent's built-in desktop switch returned HTTP 402 `seat_limit` despite the active Scale usage plan. The owner then selected a separate persistent Linux computer, `club-alerts-instagram`. Owner login and CSSS post caption access are verified, and the login survived a sleep/wake cycle. The browser was left asleep with its persistent profile retained. This browser is billed at $0.12/hour awake plus sleeping disk; no subscription upgrade or model call was made. The new scheduled reader needs owner sign-in after a Chromium restart; its twice-daily trigger remains disabled pending verification. No Instagram posts were imported during initial verification. Do not upgrade the subscription to work around the original agent's conflicting entitlement result.

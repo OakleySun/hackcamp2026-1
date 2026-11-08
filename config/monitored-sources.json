@@ -1,13 +1,90 @@
 {
   "clubs": [
-    {"club_id": "ubc-anime", "display_name": "UBC Anime Club", "aliases": ["UBCAni"]},
-    {"club_id": "ubc-wargamers", "display_name": "Wargamers of UBC", "aliases": []},
-    {"club_id": "ubc-chess", "display_name": "UBC Chess Club", "aliases": []},
-    {"club_id": "ubc-calligraphy", "display_name": "AMS Asian Brush Calligraphy at UBC", "aliases": []},
-    {"club_id": "ubc-salsa", "display_name": "Speech and Linguistics Student Association", "aliases": ["UBC SALSA"]},
-    {"club_id": "ubc-launchpad", "display_name": "UBC Launch Pad", "aliases": ["Launch Pad"]},
-    {"club_id": "ams-ubc", "display_name": "AMS of UBC", "aliases": ["AMS"]},
-    {"club_id": "ams-gallery", "display_name": "The Gallery Patio & Lounge", "aliases": []}
+    {
+      "club_id": "ubc-anime",
+      "display_name": "UBC Anime Club",
+      "aliases": [
+        "UBCAni"
+      ]
+    },
+    {
+      "club_id": "ubc-wargamers",
+      "display_name": "Wargamers of UBC",
+      "aliases": []
+    },
+    {
+      "club_id": "ubc-chess",
+      "display_name": "UBC Chess Club",
+      "aliases": []
+    },
+    {
+      "club_id": "ubc-calligraphy",
+      "display_name": "AMS Asian Brush Calligraphy at UBC",
+      "aliases": []
+    },
+    {
+      "club_id": "ubc-salsa",
+      "display_name": "Speech and Linguistics Student Association",
+      "aliases": [
+        "UBC SALSA"
+      ]
+    },
+    {
+      "club_id": "ubc-launchpad",
+      "display_name": "UBC Launch Pad",
+      "aliases": [
+        "Launch Pad"
+      ]
+    },
+    {
+      "club_id": "ams-ubc",
+      "display_name": "AMS of UBC",
+      "aliases": [
+        "AMS"
+      ]
+    },
+    {
+      "club_id": "ams-gallery",
+      "display_name": "The Gallery Patio & Lounge",
+      "aliases": []
+    },
+    {
+      "club_id": "ubc-biztech",
+      "display_name": "UBC BizTech",
+      "aliases": [
+        "BizTech"
+      ]
+    },
+    {
+      "club_id": "ubc-career-centre",
+      "display_name": "UBC Career Centre",
+      "aliases": []
+    },
+    {
+      "club_id": "ubc-writing-centre",
+      "display_name": "Centre for Writing and Scholarly Communication",
+      "aliases": []
+    },
+    {
+      "club_id": "ubc-library-research-commons",
+      "display_name": "UBC Library Research Commons",
+      "aliases": []
+    },
+    {
+      "club_id": "ubc-debates",
+      "display_name": "UBC Debates",
+      "aliases": []
+    },
+    {
+      "club_id": "ubc-green-college",
+      "display_name": "Green College",
+      "aliases": []
+    },
+    {
+      "club_id": "ubc-equity-inclusion-office",
+      "display_name": "UBC Equity & Inclusion Office",
+      "aliases": []
+    }
   ],
   "sources": [
     {
@@ -42,7 +119,12 @@
       "format": "tribe",
       "url": "https://www.ams.ubc.ca/wp-json/tribe/events/v1/events",
       "lookahead_days": 60,
-      "options": {"organizers": {"ams": "ams-ubc", "the-gallery-patio-lounge": "ams-gallery"}}
+      "options": {
+        "organizers": {
+          "ams": "ams-ubc",
+          "the-gallery-patio-lounge": "ams-gallery"
+        }
+      }
     },
     {
       "source_id": "src-csss-website",
@@ -61,7 +143,27 @@
       "format": "luma",
       "url": "https://luma.com/launchpadubc",
       "lookahead_days": 60,
-      "options": {"organizer_slug": "ubc-launchpad"}
+      "options": {
+        "organizer_slug": "ubc-launchpad"
+      }
+    },
+    {
+      "source_id": "src-ubc-student-events",
+      "name": "UBC Events student workshops and talks",
+      "kind": "public_events",
+      "format": "tribe",
+      "url": "https://events.ubc.ca/wp-json/tribe/events/v1/events?categories=122,128&organizer=36296,36523,37121,72673,40674,38516",
+      "lookahead_days": 30,
+      "options": {
+        "organizers": {
+          "ubc-career-centre": "ubc-career-centre",
+          "centre-for-writing-and-scholarly-communication": "ubc-writing-centre",
+          "ubc-library-research-commons": "ubc-library-research-commons",
+          "ubc-debates": "ubc-debates",
+          "green-college": "ubc-green-college",
+          "ubc-equity-inclusion-office": "ubc-equity-inclusion-office"
+        }
+      }
     },
     {
       "source_id": "src-ubc-events-rss",
@@ -69,6 +171,55 @@
       "kind": "public_events",
       "format": "rss",
       "url": "https://events.ubc.ca/events/feed/"
+    },
+    {
+      "source_id": "src-ubc-events-home",
+      "name": "UBC Events homepage announcements (review)",
+      "kind": "public_events",
+      "format": "html_events",
+      "url": "https://events.ubc.ca/"
+    },
+    {
+      "source_id": "src-ubc-careers",
+      "name": "UBC Careers events and workshops",
+      "kind": "public_events",
+      "format": "html_events",
+      "url": "https://students.ubc.ca/career/events-workshops/"
+    },
+    {
+      "source_id": "src-biztech",
+      "name": "UBC BizTech events",
+      "kind": "public_events",
+      "club_id": "ubc-biztech",
+      "format": "biztech",
+      "url": "https://www.ubcbiztech.com/events",
+      "lookahead_days": 180,
+      "options": {
+        "organizer_slug": "ubc-biztech"
+      }
+    },
+    {
+      "source_id": "src-club-websites",
+      "name": "All AMS club websites (rotating daily)",
+      "kind": "public_events",
+      "format": "club_sites",
+      "url": "https://amsclubs.ca/all-clubs/",
+      "options": {
+        "inventory": "config/club-directory.json",
+        "batch_size": 10
+      }
+    },
+    {
+      "source_id": "src-instagram-clubs",
+      "name": "All linked club Instagram accounts (twice daily, rotating)",
+      "kind": "public_events",
+      "format": "instagram_browser",
+      "url": "https://www.instagram.com/",
+      "options": {
+        "computer_id": "1667005f-7f99-4cb5-aaf6-94a4b72c1c05",
+        "watchlist": "config/instagram-watchlist.json",
+        "max_seconds_per_window": 3300
+      }
     }
   ]
 }
