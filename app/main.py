@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import AwareDatetime
 
-from . import accounts, config, db, enrichment, oauth, service, topic_enrichment
+from . import accounts, config, db, enrichment, oauth, pulse, service, topic_enrichment
 from .extract import ExtractionUnavailable
 from .models import (ClaimRequest, Credentials, GoogleRedeem, IntakeRequest, ProfileRequest, ResolveRequest,
                      ResultRequest, SubscribeRequest)
@@ -184,6 +184,11 @@ def health():
 def events(topic: str | None = None, free: bool = False, beginner: bool = False,
            after_4pm: bool = False, include_past: bool = False, conn=Depends(get_conn)):
     return service.list_events(conn, topic, free, beginner, after_4pm, include_past)
+
+
+@app.get("/api/pulse")
+def campus_pulse(conn=Depends(get_conn)):
+    return pulse.public_snapshot(conn)
 
 
 @app.get("/api/events/{event_id}")

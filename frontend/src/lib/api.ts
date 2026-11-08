@@ -195,6 +195,29 @@ export async function fetchEvents(): Promise<CampusEvent[]> {
   return (await request<ApiEvent[]>("/api/events")).map(toCampusEvent);
 }
 
+export type PulseSnapshot = {
+  refreshed_at: string | null;
+  metrics: {
+    announcements: number;
+    upcoming_events: number;
+    event_revisions: number;
+    venues_placed_by_ai: number;
+    possible_duplicates: number;
+  } | null;
+  events: {
+    event_id: string;
+    revision: number;
+    title: string;
+    club_name: string;
+    local_date: string;
+    source_url: string;
+    building_name: string | null;
+    location_method: string | null;
+  }[];
+};
+
+export const fetchPulse = () => request<PulseSnapshot>("/api/pulse");
+
 export async function fetchEvent(id: string): Promise<CampusEvent | null> {
   try {
     return toCampusEvent(await request<ApiEvent>(`/api/events/${encodeURIComponent(id)}`));

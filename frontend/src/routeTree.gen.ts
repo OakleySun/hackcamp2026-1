@@ -14,6 +14,7 @@ import { Route as AccountRouteImport } from './routes/account'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MapRouteImport } from './routes/map'
+import { Route as PulseRouteImport } from './routes/pulse'
 import { Route as SetupRouteImport } from './routes/setup'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SubscribeRouteImport } from './routes/subscribe'
@@ -43,6 +44,11 @@ const LoginRoute = LoginRouteImport.update({
 const MapRoute = MapRouteImport.update({
   id: '/map',
   path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PulseRoute = PulseRouteImport.update({
+  id: '/pulse',
+  path: '/pulse',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SetupRoute = SetupRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/explore': typeof ExploreRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/pulse': typeof PulseRoute
   '/setup': typeof SetupRoute
   '/signup': typeof SignupRoute
   '/subscribe': typeof SubscribeRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/explore': typeof ExploreRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/pulse': typeof PulseRoute
   '/setup': typeof SetupRoute
   '/signup': typeof SignupRoute
   '/subscribe': typeof SubscribeRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/explore': typeof ExploreRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/pulse': typeof PulseRoute
   '/setup': typeof SetupRoute
   '/signup': typeof SignupRoute
   '/subscribe': typeof SubscribeRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/explore'
     | '/login'
     | '/map'
+    | '/pulse'
     | '/setup'
     | '/signup'
     | '/subscribe'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/explore'
     | '/login'
     | '/map'
+    | '/pulse'
     | '/setup'
     | '/signup'
     | '/subscribe'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/explore'
     | '/login'
     | '/map'
+    | '/pulse'
     | '/setup'
     | '/signup'
     | '/subscribe'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   ExploreRoute: typeof ExploreRoute
   LoginRoute: typeof LoginRoute
   MapRoute: typeof MapRoute
+  PulseRoute: typeof PulseRoute
   SetupRoute: typeof SetupRoute
   SignupRoute: typeof SignupRoute
   SubscribeRoute: typeof SubscribeRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/map'
       fullPath: '/map'
       preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pulse': {
+      id: '/pulse'
+      path: '/pulse'
+      fullPath: '/pulse'
+      preLoaderRoute: typeof PulseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/setup': {
@@ -241,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExploreRoute: ExploreRoute,
   LoginRoute: LoginRoute,
   MapRoute: MapRoute,
+  PulseRoute: PulseRoute,
   SetupRoute: SetupRoute,
   SignupRoute: SignupRoute,
   SubscribeRoute: SubscribeRoute,

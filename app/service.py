@@ -69,10 +69,11 @@ def enqueue_announcement(conn, aid: str) -> None:
 
 
 def enqueue_revision(conn, event_id: str, revision: int) -> None:
-    r = conn.execute("SELECT r.*, e.club_id FROM event_revisions r JOIN events e USING (event_id) "
+    r = conn.execute("SELECT r.*, e.club_id, e.state FROM event_revisions r JOIN events e USING (event_id) "
                      "WHERE r.event_id=? AND r.revision=?", (event_id, revision)).fetchone()
+    snapshot_json = json.dumps({**json.loads(r["snapshot"]), "state": r["state"]})
     _enqueue(conn, "revision", event_id, revision, {
-        "event_id": event_id, "revision": revision, "club_id": r["club_id"], "snapshot_json": r["snapshot"],
+        "event_id": event_id, "revision": revision, "club_id": r["club_id"], "snapshot_json": snapshot_json,
         "changed_json": r["changed"], "reason": r["reason"], "created_at": r["created_at"]})
 
 

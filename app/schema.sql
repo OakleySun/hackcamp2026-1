@@ -137,6 +137,14 @@ CREATE TABLE IF NOT EXISTS dbx_queue (
 );
 CREATE INDEX IF NOT EXISTS idx_dbx_queue_state ON dbx_queue(state, next_retry_at);
 
+CREATE TABLE IF NOT EXISTS databricks_pulse (
+  singleton    INTEGER PRIMARY KEY CHECK (singleton = 1),
+  job_id       TEXT NOT NULL,
+  run_id       INTEGER NOT NULL,
+  refreshed_at TEXT NOT NULL,
+  payload      TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS deliveries (
   delivery_id    TEXT PRIMARY KEY,
   subscriber_id  TEXT NOT NULL REFERENCES subscriptions(subscriber_id),
