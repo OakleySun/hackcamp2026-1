@@ -37,6 +37,17 @@ CREATE TABLE IF NOT EXISTS events (
 );
 CREATE INDEX IF NOT EXISTS idx_events_date ON events(local_date, local_start);
 
+CREATE TABLE IF NOT EXISTS event_topic_checks (
+  event_id    TEXT PRIMARY KEY REFERENCES events(event_id) ON DELETE CASCADE,
+  input_hash  TEXT NOT NULL,
+  retry_after TEXT                       -- NULL means the model already evaluated this text
+);
+
+CREATE TABLE IF NOT EXISTS topic_enrichment_usage (
+  day      TEXT PRIMARY KEY,
+  requests INTEGER NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS source_announcements (
   announcement_id  TEXT PRIMARY KEY,
   source_id        TEXT NOT NULL REFERENCES sources(source_id),

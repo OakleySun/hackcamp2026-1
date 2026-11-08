@@ -19,5 +19,5 @@ COPY fixtures/ fixtures/
 COPY scripts/dbx_worker.py scripts/
 COPY maritime/start_quad.py maritime/
 COPY --from=web /build/frontend/.output/ web/
-ENV APP_MODE=production DATABASE_PATH=/data/quad/club_alerts.db PYTHONUNBUFFERED=1
+ENV APP_MODE=production DATABASE_PATH=/data/quad/club_alerts.db GEMINI_TOPIC_ENRICHMENT=true PYTHONUNBUFFERED=1
 CMD ["python", "maritime/start_quad.py"]

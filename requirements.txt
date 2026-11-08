@@ -1,4 +1,5 @@
 fastapi
+anyio
 uvicorn
 pydantic
 email-validator

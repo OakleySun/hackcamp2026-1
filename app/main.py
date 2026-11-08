@@ -2,13 +2,14 @@ import hmac
 from contextlib import asynccontextmanager, closing
 from pathlib import Path
 
+import anyio
 from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from pydantic import AwareDatetime
 
-from . import accounts, config, db, enrichment, service
+from . import accounts, config, db, enrichment, service, topic_enrichment
 from .extract import ExtractionUnavailable
 from .models import (ClaimRequest, Credentials, IntakeRequest, ProfileRequest, ResolveRequest, ResultRequest,
                      SubscribeRequest)
@@ -21,7 +22,13 @@ async def lifespan(app: FastAPI):
     with closing(db.connect()) as conn:
         db.init_db(conn)
         service.backfill_event_topics(conn)
-    yield
+    async with anyio.create_task_group() as workers:
+        if topic_enrichment.enabled():
+            workers.start_soon(topic_enrichment.run)
+        try:
+            yield
+        finally:
+            workers.cancel_scope.cancel()
 
 
 app = FastAPI(title="UBC Club Alerts API", lifespan=lifespan)
