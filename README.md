@@ -93,14 +93,19 @@ Show Explore alongside a terminal. The audience will see **Intro to Git** appear
 
 For the scheduled n8n demo, use the [campus notification workflow](n8n/README.md). It can preview a Vancouver morning digest and a one-hour reminder, then deliver a sample through Gmail or ntfy after those channels are connected.
 
+## Campus Pulse
+
+[Campus Pulse](https://hackcamp2026-1.vercel.app/pulse) shows Databricks analysis of the real Quad event feed. Quad exports announcements and event revisions to Bronze. The Quad Pulse job runs the [Silver and Gold pipeline](databricks/notebooks/02_pipeline.sql) when either Bronze table changes, with at least ten minutes between runs. The [final notebook step](databricks/notebooks/03_publish_pulse.py) returns the metrics and up to 12 recently analyzed events. Quad checks for a completed run every five minutes, caches the last successful snapshot, and verifies that each displayed event still matches a published revision and linked source.
+
+Set `DATABRICKS_PULSE_JOB_ID` on the backend to the ID of the Databricks job. Its notebook task key is `pipeline`. The existing Databricks credentials also authorize the result check.
+
 ## What to add next
 
-These are the open items from the [original build plan](ubc-club-alerts.md) and the [Databricks plan](databricks-plan.md). Start with the first two for a demo that uses the existing event feed.
+These are the open items from the [original build plan](ubc-club-alerts.md) and the [Databricks plan](databricks-plan.md).
 
-1. **Databricks: a public view over real events.** Verify the Bronze export and last sync. Connect the notebook's Silver/Gold outputs to real Quad listings with organizer IDs, publication state, and a verified source URL per event. Keep pending, cancelled, and private records out of the view. Keep demo fixtures separate and label data freshness.
-2. **Genie: try a new club.** Ask, “Give me three free events this week from three different organizers.” Genie should return a varied shortlist from Quad's existing listings, with the organizer, date/time, and source link for each. Use Vancouver time, confirmed free admission, and one result per organizer ID. If fewer than three qualify, show the available matches. Test it in the [Genie space](databricks/genie/instructions.md) before adding any chat UI to Quad.
-3. **Alerts: finish the test inbox loop.** The backend has subscription and delivery endpoints. The plan still calls for an n8n workflow export and an end-to-end check: one event alert on replay, one room correction to original recipients, and no message after unsubscribe. Start with a test inbox.
-4. **Organizer intake: expose the existing API in the website.** Add a small flyer or caption submission flow with a preview and a way to confirm missing details. Keep intake credentials server-side. The current review inbox is for operators.
-5. **Later: duplicate evidence and coverage.** Wire asynchronous Databricks match suggestions into the existing review flow and test recurring events and late results before relying on the model. Add a small dashboard for source coverage, missing fields, and the last successful sync. A public Genie endpoint can wait until its data access and fallback have been tested.
+1. **Genie: try a new club.** Ask, “Give me three free events this week from three different organizers.” Genie should return a varied shortlist from Quad's existing listings, with the organizer, date/time, and source link for each. Use Vancouver time, confirmed free admission, and one result per organizer ID. If fewer than three qualify, show the available matches. Test it in the [Genie space](databricks/genie/instructions.md) before adding any chat UI to Quad.
+2. **Alerts: finish the test inbox loop.** The backend has subscription and delivery endpoints. The plan still calls for an n8n workflow export and an end-to-end check: one event alert on replay, one room correction to original recipients, and no message after unsubscribe. Start with a test inbox.
+3. **Organizer intake: expose the existing API in the website.** Add a small flyer or caption submission flow with a preview and a way to confirm missing details. Keep intake credentials server-side. The current review inbox is for operators.
+4. **Later: duplicate evidence and coverage.** Wire asynchronous Databricks match suggestions into the existing review flow and test recurring events and late results before relying on the model. Add a small dashboard for source coverage and missing fields. A public Genie endpoint can wait until its data access and fallback have been tested.
 
 For a four-person team: one person can own the website and demo, one can own source checks and enrichment, one can own backend and alert verification, and one can own the Databricks view and Genie. Rehearse together with one real listing: find it in Quad, open its source, then find it again with Genie.

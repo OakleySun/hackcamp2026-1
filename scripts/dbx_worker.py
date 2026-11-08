@@ -16,11 +16,14 @@ import json
 import time
 from datetime import datetime, timedelta, timezone
 
-from app import databricks, db, service
+import httpx
+
+from app import config, databricks, db, pulse, service
 
 LEASE_SECONDS = 120
 MAX_ATTEMPTS = 12
 BATCH = 25
+PULSE_INTERVAL = 300
 
 
 def _now() -> datetime:
@@ -129,8 +132,16 @@ def main() -> None:
     if not databricks.configured():
         print("Databricks export disabled: set DATABRICKS_HOST, DATABRICKS_WAREHOUSE_ID and DATABRICKS_TOKEN.")
         return
+    pulse_job_id = config.get("DATABRICKS_PULSE_JOB_ID")
+    next_pulse = 0.0
     while True:
         summary = run_once(conn)
+        if pulse_job_id and time.monotonic() >= next_pulse:
+            try:
+                summary["pulse_refreshed"] = pulse.sync(conn, pulse_job_id)
+            except (httpx.HTTPError, ValueError, KeyError, TypeError) as exc:
+                summary["pulse_error"] = type(exc).__name__
+            next_pulse = time.monotonic() + PULSE_INTERVAL
         print(json.dumps(summary), flush=True)
         if args.once:
             return

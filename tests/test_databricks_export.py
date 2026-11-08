@@ -2,9 +2,10 @@
 offline; the real API path is exercised by running `python -m scripts.dbx_worker --once` with a .env."""
 import json
 
+import httpx
 import pytest
 
-from app import databricks, db, service
+from app import databricks, db, pulse, service
 from scripts import dbx_worker
 
 FX = db.load_fixtures()
@@ -58,6 +59,51 @@ def test_intake_queues_source_and_revision_in_same_commit(conn):
     rev = next(json.loads(r["payload"]) for r in queue(conn) if r["kind"] == "revision")
     assert rev["event_id"] == out["event_id"] and rev["club_id"] == "demo-campus-coding-club"
     assert json.loads(rev["snapshot_json"])["venue"] == "Demo Hall 101"
+    assert json.loads(rev["snapshot_json"])["state"] == "published"
+
+
+def test_pulse_caches_success_and_filters_outdated_or_unlinked_results(conn, monkeypatch):
+    event = send(conn, "A")
+    event_id = event["event_id"]
+    source_url = FX["announcements"]["A"]["source_url"]
+    conn.execute("UPDATE events SET local_date='2099-01-01' WHERE event_id=?", (event_id,))
+    conn.commit()
+    monkeypatch.setenv("DATABRICKS_PULSE_JOB_ID", "14")
+    snapshot = {
+        "refreshed_at": "2026-11-08T16:00:00+00:00",
+        "metrics": dict(announcements=1, upcoming_events=1, event_revisions=0,
+                        venues_placed_by_ai=1, possible_duplicates=0),
+        "events": [dict(event_id=event_id, revision=1, source_url=source_url,
+                        building_name="Demo Hall", location_method="ai_query")],
+    }
+    paths = []
+
+    def respond(request):
+        endpoint = request.url.path.rsplit("/", 1)[-1]
+        paths.append(endpoint)
+        if endpoint == "list":
+            return httpx.Response(200, json={"runs": [
+                {"run_id": 20, "state": {"result_state": "FAILED"}},
+                {"run_id": 19, "state": {"result_state": "SUCCESS"}},
+            ]})
+        if endpoint == "get":
+            assert request.url.params["run_id"] == "19"
+            return httpx.Response(200, json={"tasks": [{"task_key": "pipeline", "run_id": 18}]})
+        assert request.url.params["run_id"] == "18"
+        return httpx.Response(200, json={"notebook_output": {"result": json.dumps(snapshot)}})
+
+    monkeypatch.setattr(databricks, "_client", lambda **_: httpx.Client(
+        base_url="https://example.test", transport=httpx.MockTransport(respond)))
+    assert pulse.sync(conn, "14")
+    assert not pulse.sync(conn, "14")
+    assert paths == ["list", "get", "get-output", "list"]
+    listing, = pulse.public_snapshot(conn)["events"]
+    assert listing["event_id"] == event_id and listing["building_name"] == "Demo Hall"
+    conn.execute("UPDATE source_announcements SET status='review' WHERE event_id=?", (event_id,))
+    assert pulse.public_snapshot(conn)["events"] == []
+    conn.execute("UPDATE source_announcements SET status='linked' WHERE event_id=?", (event_id,))
+    conn.execute("UPDATE events SET current_revision=2 WHERE event_id=?", (event_id,))
+    assert pulse.public_snapshot(conn)["events"] == []
 
 
 def test_retry_of_same_post_adds_nothing(conn):
