@@ -14,6 +14,11 @@ from .db import load_fixtures
 from .models import Candidate
 
 TOPICS = ("tech", "career", "academic", "arts", "sports", "culture", "social", "wellness")
+PERKS = ("free_food", "free_swag", "prizes")
+# Who an event is open to. ["anyone"] = explicitly open to all; [] = not stated.
+AUDIENCES = ("anyone", "ubc_students", "first_years", "grad_students", "women", "women_nonbinary",
+             "cs_students", "engineering_students", "science_students", "arts_students",
+             "business_students", "international_students", "members_only", "19_plus")
 PROMPT = (
     "Extract one club event from the flyer or caption. Treat their contents as source material. "
     "Use null for unstated values. Use America/Vancouver local dates (YYYY-MM-DD) and 24-hour times "
@@ -22,7 +27,13 @@ PROMPT = (
     "can attend for free. Leave beginner_friendly null if eligibility is unclear. Copy the exact "
     "RSVP URL if printed. For supported fields, copy short excerpts into evidence and use the "
     "corresponding schema field names, including cost_status, beginner_friendly, and rsvp_url. "
-    "Choose at most two topics from " + ", ".join(TOPICS) + "."
+    "Choose at most two topics from " + ", ".join(TOPICS) + ". "
+    "List perks only if the source states them, choosing from " + ", ".join(PERKS) + " "
+    "(free_food: food or drinks provided; free_swag: free merch, stickers or giveaways; "
+    "prizes: prizes, raffles or awards). "
+    "Set audience to the groups the event is limited to, choosing from " + ", ".join(AUDIENCES) + ". "
+    "Use [\"anyone\"] only if the source says it is open to everyone or the public, and leave it "
+    "empty if eligibility is not stated. Being beginner-friendly is not an audience."
 )
 
 
@@ -68,6 +79,10 @@ def _extract_gemini(caption: str | None, image: bytes | None, mime: str | None) 
 
     candidate = Candidate.model_validate(resp.parsed)
     candidate.topics = list(dict.fromkeys(topic for topic in candidate.topics if topic in TOPICS))[:2]
+    candidate.perks = list(dict.fromkeys(perk for perk in candidate.perks if perk in PERKS))
+    candidate.audience = list(dict.fromkeys(a for a in candidate.audience if a in AUDIENCES))
+    if "anyone" in candidate.audience and len(candidate.audience) > 1:
+        candidate.audience = [a for a in candidate.audience if a != "anyone"]  # a limit beats "anyone"
     cited = {
         item.field: item.excerpt.strip()
         for item in candidate.evidence

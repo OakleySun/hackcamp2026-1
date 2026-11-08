@@ -26,6 +26,12 @@ def load_fixtures() -> dict:
 
 def init_db(conn: sqlite3.Connection, seed: bool = True) -> None:
     conn.executescript(SCHEMA.read_text(encoding="utf-8"))
+    # Databases created before these JSON list columns existed.
+    have = {r["name"] for r in conn.execute("PRAGMA table_info(events)")}
+    for col in ("perks", "audience"):
+        if col not in have:
+            conn.execute(f"ALTER TABLE events ADD COLUMN {col} TEXT NOT NULL DEFAULT '[]'")
+    conn.commit()
     if seed:
         seed_reference_data(conn)
 
