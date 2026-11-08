@@ -1,8 +1,10 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { EventCard } from "@/components/EventCard";
+import { EventRow } from "@/components/EventCard";
 import { ApiErrorView } from "@/components/ApiErrorView";
 import { FilterControls } from "@/components/FilterControls";
+import { Timeline } from "@/components/Timeline";
 import { fetchEvents } from "@/lib/api";
+import { groupByDay } from "@/lib/calendar";
 import { hasAny, hasPerks, upcoming } from "@/lib/events";
 import { parseFilters, validateFilterSearch } from "@/lib/filters";
 import { useLocalSet } from "@/lib/useLocalSet";
@@ -42,12 +44,13 @@ function Explore() {
     ),
     [],
   );
+  const groups = groupByDay(results.map((r) => r.event));
 
   return (
-    <main className="mx-auto max-w-6xl px-4 pb-24 md:px-8">
+    <main className="mx-auto max-w-3xl px-4 pb-24 md:px-6">
       <section className="py-10">
-        <h1 className="font-display text-4xl md:text-5xl">Explore</h1>
-        <p className="mt-2 text-muted-foreground">Every upcoming event, in date order.</p>
+        <h1 className="text-3xl md:text-4xl">Explore</h1>
+        <p className="mt-2 text-muted-foreground">Every upcoming club event at UBC, day by day.</p>
       </section>
       <section aria-label="Filters" className="panel">
         <FilterControls
@@ -56,24 +59,24 @@ function Explore() {
           onChange={(s) => navigate({ search: s, replace: true })}
         />
       </section>
-      <p className="mt-8 mb-4 text-sm text-muted-foreground" aria-live="polite">
+      <p className="mt-8 mb-6 text-sm text-muted-foreground" aria-live="polite">
         {results.length} event{results.length === 1 ? "" : "s"}
       </p>
       {results.length ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((r) => (
-            <EventCard
-              key={r.event.id}
-              item={r}
-              saved={saved.has(r.event.id)}
-              onSave={() => toggleSaved(r.event.id)}
-              onHide={() => toggleHidden(r.event.id)}
+        <Timeline
+          groups={groups}
+          renderEvent={(e) => (
+            <EventRow
+              item={{ event: e, reason: "" }}
+              saved={saved.has(e.id)}
+              onSave={() => toggleSaved(e.id)}
+              onHide={() => toggleHidden(e.id)}
             />
-          ))}
-        </div>
+          )}
+        />
       ) : (
         <div className="panel text-center">
-          <h2 className="font-display text-2xl">Nothing matches those filters</h2>
+          <h2 className="text-2xl">Nothing matches those filters</h2>
           <button type="button" className="btn-solid mt-5" onClick={() => navigate({ search: {} })}>
             Clear filters
           </button>

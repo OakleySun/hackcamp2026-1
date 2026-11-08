@@ -69,7 +69,7 @@ function MapPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 pb-24 md:px-8">
       <section className="py-10">
-        <h1 className="font-display text-4xl md:text-5xl">Campus map</h1>
+        <h1 className="text-3xl md:text-4xl">Campus map</h1>
         <p className="mt-2 text-muted-foreground">
           Where things are happening on campus, one day at a time.
         </p>

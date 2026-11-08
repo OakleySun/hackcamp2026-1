@@ -1,5 +1,6 @@
 import { QueryClient } from "@tanstack/react-query";
 import { createRouter } from "@tanstack/react-router";
+import { PendingView } from "./components/PendingView";
 import { routeTree } from "./routeTree.gen";
 
 export const getRouter = () => {
@@ -12,6 +13,8 @@ export const getRouter = () => {
     scrollRestoration: true,
     // Lets Query own freshness; set caching defaults on the QueryClient, not the router.
     defaultPreloadStaleTime: 0,
+    defaultPendingMs: 300,
+    defaultPendingComponent: PendingView,
   });
 
   return router;

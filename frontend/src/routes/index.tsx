@@ -1,18 +1,20 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { ApiErrorView } from "@/components/ApiErrorView";
-import { EventCard } from "@/components/EventCard";
-import { Section } from "@/components/Section";
+import { EventRow } from "@/components/EventCard";
+import { Timeline } from "@/components/Timeline";
 import { fetchEvents } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
+import { groupByDay } from "@/lib/calendar";
 import {
   TOPICS,
+  addDays,
   explore,
   forYou,
   hasAny,
-  topInterests,
   topicLabel,
-  type Ranked,
+  vancouverToday,
+  type CampusEvent,
   type Topic,
 } from "@/lib/events";
 import { parseFilters, toggleIn, validateFilterSearch } from "@/lib/filters";
@@ -44,6 +46,8 @@ export const Route = createFileRoute("/")({
   component: Discover,
 });
 
+const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
+
 function Discover() {
   const search = Route.useSearch();
   const navigate = useNavigate({ from: "/" });
@@ -53,18 +57,29 @@ function Discover() {
   const [hidden, toggleHidden] = useLocalSet("quad:hidden");
 
   const events = Route.useLoaderData();
+  const today = vancouverToday();
   const pool = events.filter((e) => !hidden.has(e.id));
   const profile = user?.interests ?? [];
   // Chips picked on this page win; otherwise the profile's interests are active.
   const active: Topic[] = chosen.length ? chosen : profile;
-  const featured = topInterests(pool, {
-    chosen,
-    profile,
-    saved: events.filter((e) => saved.has(e.id)),
-  });
-  // No interests yet: Recommended is "popular", and "Try something new" steps away from the top topics.
-  const recommended = forYou(pool, active, []).slice(0, 3);
-  const stretch = explore(pool, active.length ? active : featured.map((f) => f.topic), []);
+
+  // One timeline, no repeats: a "For you" or "Something different" tag marks why an event stands out.
+  const reasons = new Map<string, string>();
+  if (active.length) {
+    for (const r of forYou(pool, active, []).slice(0, 3)) reasons.set(r.event.id, "For you");
+    for (const r of explore(pool, active, []).slice(0, 1))
+      reasons.set(r.event.id, "Something different");
+  }
+  const shown = active.length ? pool.filter((e) => hasAny(e, active) || reasons.has(e.id)) : pool;
+  const groups = groupByDay(shown);
+  const clubs = new Set(pool.map((e) => e.club)).size;
+  const thisWeek = pool.filter((e) => e.date && e.date <= addDays(today, 7)).length;
+
+  const topicCount = new Map<string, number>();
+  for (const e of pool) for (const t of e.topics) topicCount.set(t, (topicCount.get(t) ?? 0) + 1);
+  const topicOrder = [...TOPICS].sort(
+    (a, b) => (topicCount.get(b.slug) ?? 0) - (topicCount.get(a.slug) ?? 0),
+  );
 
   const toggleTopic = (slug: string) => {
     const next = toggleIn(active.join(",") || undefined, slug);
@@ -73,129 +88,108 @@ function Discover() {
     void navigate({ search: { ...search, topics: same ? undefined : next }, replace: true });
   };
 
-  const card = (r: Ranked, variant?: "stretch") => (
-    <EventCard
-      key={r.event.id}
-      item={r}
-      variant={variant}
-      saved={saved.has(r.event.id)}
-      onSave={() => toggleSaved(r.event.id)}
-      onHide={() => toggleHidden(r.event.id)}
+  const row = (e: CampusEvent) => (
+    <EventRow
+      item={{ event: e, reason: reasons.get(e.id) ?? "" }}
+      saved={saved.has(e.id)}
+      onSave={() => toggleSaved(e.id)}
+      onHide={() => toggleHidden(e.id)}
     />
   );
-  const grid = (items: Ranked[], variant?: "stretch") =>
-    items.length ? (
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((r) => card(r, variant))}
-      </div>
-    ) : (
-      <p className="text-muted-foreground">Nothing coming up here right now.</p>
-    );
-
-  const interestsNote = chosen.length
-    ? "Showing picks for these topics"
-    : profile.length
-      ? "From your profile. Tap to try others"
-      : user
-        ? "Pick topics to personalise"
-        : "Pick topics, or sign up to save them";
 
   return (
-    <main className="mx-auto max-w-6xl px-4 pb-24 md:px-8">
-      <section className="py-10 md:py-14">
-        <h1 className="font-display text-4xl leading-[1.05] md:text-6xl">
-          What's on at UBC
-          <br />
-          <span className="text-primary">this week.</span>
-        </h1>
-        <p className="mt-3 max-w-xl text-muted-foreground">
-          Picked for you from club posters, Instagram and newsletters. Want to dig through
-          everything?{" "}
-          <Link to="/explore" className="underline">
-            Explore all events
-          </Link>
-          .
+    <main className="mx-auto max-w-3xl px-4 pb-24 md:px-6">
+      <header className="pt-10 pb-8 md:pt-14">
+        <p className="text-sm font-medium text-muted-foreground">UBC Vancouver</p>
+        <h1 className="mt-1 text-3xl md:text-4xl">What's happening on campus</h1>
+        <p className="mt-3 max-w-prose text-muted-foreground">
+          {plural(pool.length, "upcoming club event")} from {plural(clubs, "club")},
+          {thisWeek > 0 ? ` ${thisWeek} in the next seven days.` : " none in the next seven days."}{" "}
+          Quad reads the posters, Instagram accounts and newsletters so you don't have to.
+        </p>
+      </header>
+
+      <section aria-label="Filter by topic" className="border-y border-border py-4">
+        <div className="flex flex-wrap items-center gap-2">
+          {topicOrder.map((t) => {
+            const on = active.includes(t.slug);
+            const n = topicCount.get(t.slug) ?? 0;
+            return (
+              <button
+                key={t.slug}
+                type="button"
+                aria-pressed={on}
+                className="chip"
+                data-on={on}
+                onClick={() => toggleTopic(t.slug)}
+              >
+                {on && <Check className="size-3.5" aria-hidden />}
+                {t.label}
+                {n > 0 && (
+                  <span className={on ? "text-white/70" : "text-muted-foreground"}>{n}</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+        <p className="mt-3 text-sm text-muted-foreground">
+          {chosen.length
+            ? "Showing these topics only."
+            : profile.length
+              ? "Showing your interests. Tap a topic to look elsewhere."
+              : "Showing everything. Pick topics to narrow it down"}
+          {!user && (
+            <>
+              , or{" "}
+              <Link to="/signup" className="text-link underline underline-offset-4">
+                sign up
+              </Link>{" "}
+              to save them.
+            </>
+          )}
+          {chosen.length > 0 && profile.length > 0 && (
+            <>
+              {" "}
+              <button
+                type="button"
+                className="text-link underline underline-offset-4"
+                onClick={() =>
+                  void navigate({ search: { ...search, topics: undefined }, replace: true })
+                }
+              >
+                Back to my interests
+              </button>
+            </>
+          )}
         </p>
       </section>
 
-      <section aria-label="Your interests" className="panel">
-        <fieldset>
-          <legend className="eyebrow mb-2">Your interests</legend>
-          <div className="flex flex-wrap gap-2">
-            {TOPICS.map((t) => {
-              const on = active.includes(t.slug);
-              return (
-                <button
-                  key={t.slug}
-                  type="button"
-                  aria-pressed={on}
-                  className="chip"
-                  data-on={on}
-                  onClick={() => toggleTopic(t.slug)}
-                >
-                  {on && <Check className="size-3.5" aria-hidden />}
-                  {t.label}
-                </button>
-              );
-            })}
+      <section className="pt-8" aria-label="Upcoming events">
+        {groups.length ? (
+          <Timeline groups={groups} renderEvent={row} today={today} />
+        ) : (
+          <div className="panel text-center">
+            <h2 className="text-xl">Nothing coming up in {active.map(topicLabel).join(", ")}</h2>
+            <p className="mt-2 text-muted-foreground">
+              Try another topic, or see everything on campus.
+            </p>
+            <button
+              type="button"
+              className="btn-solid mt-5"
+              onClick={() => void navigate({ search: {}, replace: true })}
+            >
+              Show all topics
+            </button>
           </div>
-          <p className="mt-3 text-sm text-muted-foreground">
-            {interestsNote}
-            {!user && (
-              <>
-                {" · "}
-                <Link to="/signup" className="underline">
-                  Sign up
-                </Link>
-              </>
-            )}
-            {chosen.length > 0 && profile.length > 0 && (
-              <>
-                {" · "}
-                <button
-                  type="button"
-                  className="underline"
-                  onClick={() =>
-                    void navigate({ search: { ...search, topics: undefined }, replace: true })
-                  }
-                >
-                  Back to my profile
-                </button>
-              </>
-            )}
-          </p>
-        </fieldset>
+        )}
       </section>
-
-      <Section
-        title="Recommended"
-        note={active.length ? "Top picks from your interests" : "Popular this week"}
-      >
-        {grid(recommended)}
-      </Section>
-
-      {featured.map(({ topic, why }) => (
-        <Section key={topic} title={topicLabel(topic)} note={why}>
-          {grid(
-            pool
-              .filter((e) => hasAny(e, [topic]))
-              .sort((a, b) => a.start.localeCompare(b.start))
-              .slice(0, 3)
-              .map((e) => ({ event: e, reason: `More ${topicLabel(topic)} events` })),
-          )}
-        </Section>
-      ))}
-
-      <Section title="Try something new" note="A step outside your usual">
-        {grid(stretch, "stretch")}
-      </Section>
 
       {hidden.size > 0 && (
         <p className="mt-10 text-sm text-muted-foreground">
-          {hidden.size} hidden event{hidden.size > 1 ? "s" : ""}.{" "}
+          {plural(hidden.size, "hidden event")}.{" "}
           <button
             type="button"
-            className="underline"
+            className="text-link underline underline-offset-4"
             onClick={() => [...hidden].forEach(toggleHidden)}
           >
             Show them again

@@ -57,6 +57,10 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+  --color-link: var(--link);
+  --color-gold: var(--gold);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -70,31 +74,40 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui;
+  --font-display: "Public Sans", ui-sans-serif, system-ui;
   --font-sans: "Public Sans", ui-sans-serif, system-ui;
 }
 
+/*
+ * UBC palette (brand.ubc.ca): UBC Blue #002145 is the ink and the primary button; the
+ * secondary blue #0055B7 is for links; sky blues #40B4E5 / #97D4E9 mark selection and today.
+ * Thunderbirds gold is reserved for the "Updated" badge and today's marker on the timeline.
+ */
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.975 0.012 85);
-  --foreground: oklch(0.22 0.04 255);
-  --card: oklch(0.995 0.005 85);
-  --card-foreground: oklch(0.22 0.04 255);
-  --popover: oklch(0.995 0.005 85);
-  --popover-foreground: oklch(0.22 0.04 255);
-  --primary: oklch(0.36 0.12 258);
-  --primary-foreground: oklch(0.98 0.01 85);
-  --secondary: oklch(0.93 0.03 85);
-  --secondary-foreground: oklch(0.22 0.04 255);
-  --muted: oklch(0.94 0.015 85);
-  --muted-foreground: oklch(0.48 0.03 255);
-  --accent: oklch(0.82 0.15 80);
-  --accent-foreground: oklch(0.22 0.04 255);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.235 0.065 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.235 0.065 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.235 0.065 258);
+  --primary: oklch(0.235 0.065 258);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.965 0.008 240);
+  --secondary-foreground: oklch(0.235 0.065 258);
+  --muted: oklch(0.965 0.008 240);
+  --muted-foreground: oklch(0.5 0.035 255);
+  --accent: oklch(0.72 0.12 225);
+  --accent-foreground: oklch(0.235 0.065 258);
+  --sky: oklch(0.72 0.12 225);
+  --sky-soft: oklch(0.955 0.025 220);
+  --link: oklch(0.45 0.17 262);
+  --gold: oklch(0.86 0.17 88);
   --destructive: oklch(0.55 0.21 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.88 0.02 85);
-  --input: oklch(0.86 0.02 85);
-  --ring: oklch(0.55 0.17 258);
+  --border: oklch(0.905 0.012 250);
+  --input: oklch(0.87 0.015 250);
+  --ring: oklch(0.6 0.14 240);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -108,11 +121,14 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
-  --t-tech: oklch(0.9 0.06 240); --t-career: oklch(0.9 0.06 200);
-  --t-academic: oklch(0.9 0.05 280); --t-arts: oklch(0.9 0.07 340);
-  --t-sports: oklch(0.9 0.08 145); --t-culture: oklch(0.9 0.08 50);
-  --t-social: oklch(0.92 0.09 95); --t-wellness: oklch(0.91 0.06 170);
-  --shadow-card: 0 1px 0 var(--border), 0 12px 28px -18px color-mix(in oklab, var(--primary) 35%, transparent);
+  --t-tech: oklch(0.93 0.04 240);
+  --t-career: oklch(0.93 0.04 200);
+  --t-academic: oklch(0.93 0.035 280);
+  --t-arts: oklch(0.93 0.045 340);
+  --t-sports: oklch(0.93 0.05 145);
+  --t-culture: oklch(0.93 0.05 50);
+  --t-social: oklch(0.94 0.05 110);
+  --t-wellness: oklch(0.93 0.04 170);
 }
 
 @layer base {
@@ -120,56 +136,281 @@
     border-color: var(--color-border);
   }
 
+  html {
+    background-color: var(--color-background);
+  }
+
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-background);
     color: var(--color-foreground);
+    font-variant-numeric: tabular-nums;
+    min-height: 100vh;
+    background-color: var(--color-background);
   }
 }
 
 @layer base {
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; }
-  :focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; border-radius: 6px; }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* Frosted surfaces: translucent white over the backdrop with a hairline UBC-blue border. */
+@utility glass {
+  background: color-mix(in oklab, white 78%, transparent);
+  border: 1px solid color-mix(in oklab, var(--foreground) 9%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 @layer components {
-  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground; }
-  .panel { @apply rounded-2xl border border-border bg-card p-5 md:p-6; box-shadow: var(--shadow-card); }
-  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-input bg-card px-3.5 py-1.5 text-sm font-medium transition-colors hover:border-primary; }
-  .chip[data-on="true"] { @apply border-primary bg-primary text-primary-foreground; }
-  .chip-square { @apply rounded-lg; }
-  .chip-square[data-on="true"] { @apply border-foreground bg-accent text-accent-foreground; }
-  .segmented { @apply inline-flex rounded-lg border border-input bg-muted p-1; }
-  .segmented > button { @apply rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors; }
-  .segmented > button[data-on="true"] { @apply bg-card text-foreground shadow-sm; }
-  .event-card { @apply flex flex-col rounded-2xl border border-border bg-card p-5 transition-transform hover:-translate-y-0.5; box-shadow: var(--shadow-card); }
-  .event-card[data-variant="stretch"] { @apply border-2 border-dashed border-accent; }
-  .status-chip { @apply inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold text-foreground; background: var(--muted); }
-  .status-chip[data-kind="updated"] { @apply bg-accent; }
-  .status-chip[data-topic="tech"] { background: var(--t-tech); }
-  .status-chip[data-topic="career"] { background: var(--t-career); }
-  .status-chip[data-topic="academic"] { background: var(--t-academic); }
-  .status-chip[data-topic="arts"] { background: var(--t-arts); }
-  .status-chip[data-topic="sports"] { background: var(--t-sports); }
-  .status-chip[data-topic="culture"] { background: var(--t-culture); }
-  .status-chip[data-topic="social"] { background: var(--t-social); }
-  .status-chip[data-topic="wellness"] { background: var(--t-wellness); }
-  .perk-tag { @apply inline-flex items-center gap-1 rounded-md border border-accent px-2 py-0.5 text-xs font-semibold text-foreground; background: color-mix(in oklch, var(--accent) 22%, transparent); }
-  .reason { @apply border-l-2 border-accent pl-2 text-sm italic text-muted-foreground; }
+  .eyebrow {
+    @apply text-sm font-medium text-muted-foreground;
+  }
+  .panel {
+    @apply glass rounded-2xl p-5 md:p-6;
+  }
+  .event-card {
+    @apply glass flex flex-col rounded-2xl p-5;
+  }
+  .site-header {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  .site-header .nav-link {
+    @apply rounded-full px-3 py-1.5 text-sm font-medium text-white/75 hover:bg-white/10 hover:text-white;
+  }
+  .site-header .nav-link[data-status="active"] {
+    @apply bg-white/15 text-white;
+  }
+  .site-header .btn-pill {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold text-primary hover:bg-sky-soft;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-input bg-white/70 px-3.5 py-1.5 text-sm font-medium transition-colors hover:border-accent hover:bg-sky-soft;
+  }
+  .chip[data-on="true"] {
+    @apply border-primary bg-primary text-primary-foreground hover:bg-primary;
+  }
+  .chip-square {
+    @apply rounded-full;
+  }
+  .chip-square[data-on="true"] {
+    @apply border-primary bg-primary text-primary-foreground;
+  }
+  /* Luma "browse by category" tile: label plus a count, selectable. */
+  .cat-tile {
+    @apply glass flex flex-col items-start gap-0.5 rounded-xl px-4 py-3 text-left transition-colors hover:border-accent;
+  }
+  .cat-tile[data-on="true"] {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+  .cat-tile .cat-count {
+    @apply text-xs text-muted-foreground;
+  }
+  .cat-tile[data-on="true"] .cat-count {
+    @apply text-white/70;
+  }
+  .segmented {
+    @apply inline-flex rounded-full border border-input bg-muted p-1;
+  }
+  .segmented > button {
+    @apply rounded-full px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors;
+  }
+  .segmented > button[data-on="true"] {
+    @apply bg-card text-foreground shadow-sm;
+  }
+  /* Luma date leaf: month on a coloured cap, day number below. */
+  .date-leaf {
+    @apply inline-flex w-12 shrink-0 flex-col overflow-hidden rounded-lg border border-border bg-white text-center leading-none text-foreground;
+  }
+  .date-leaf .leaf-month {
+    @apply bg-primary py-1 text-[10px] font-semibold uppercase tracking-wide text-primary-foreground;
+  }
+  .date-leaf .leaf-day {
+    @apply py-1.5 text-lg font-semibold;
+  }
+  .date-leaf[data-size="lg"] {
+    @apply w-20 rounded-xl;
+  }
+  .date-leaf[data-size="lg"] .leaf-month {
+    @apply py-1.5 text-xs;
+  }
+  .date-leaf[data-size="lg"] .leaf-day {
+    @apply py-3 text-3xl;
+  }
+  /* Club avatar: initials on UBC secondary blue, where Luma shows a host photo. */
+  .club-avatar {
+    @apply inline-flex size-6 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold text-white;
+    background: var(--link);
+  }
+  .club-avatar[data-size="lg"] {
+    @apply size-10 text-sm;
+  }
+  /* Icon in a soft square, Luma's treatment for "when" and "where" rows. */
+  .icon-box {
+    @apply flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-white/70 text-muted-foreground;
+  }
+  /* Poster tile standing in for a cover image: flat UBC Blue with a large date leaf. */
+  .poster-tile {
+    @apply relative flex aspect-square w-full flex-col justify-between overflow-hidden rounded-2xl bg-primary p-5 text-white;
+  }
+  .status-chip {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium text-foreground;
+    background: var(--muted);
+  }
+  .status-chip[data-kind="updated"] {
+    background: var(--gold);
+  }
+  .status-chip[data-topic="tech"] {
+    background: var(--t-tech);
+  }
+  .status-chip[data-topic="career"] {
+    background: var(--t-career);
+  }
+  .status-chip[data-topic="academic"] {
+    background: var(--t-academic);
+  }
+  .status-chip[data-topic="arts"] {
+    background: var(--t-arts);
+  }
+  .status-chip[data-topic="sports"] {
+    background: var(--t-sports);
+  }
+  .status-chip[data-topic="culture"] {
+    background: var(--t-culture);
+  }
+  .status-chip[data-topic="social"] {
+    background: var(--t-social);
+  }
+  .status-chip[data-topic="wellness"] {
+    background: var(--t-wellness);
+  }
+  .perk-tag {
+    @apply inline-flex items-center gap-1 rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-foreground;
+    background: var(--sky-soft);
+  }
+  .reason {
+    @apply text-sm text-muted-foreground;
+  }
+  /* Why an event is on your feed, inline next to the time rather than as its own section. */
+  .reason-tag {
+    @apply rounded-full px-2 py-0.5 text-xs font-medium text-foreground;
+    background: var(--sky-soft);
+  }
+  /* Timeline row: content left, actions right; stacks on narrow screens. */
+  .event-row {
+    @apply glass flex flex-col gap-3 rounded-2xl p-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:p-5;
+  }
+  /* Luma-style timeline: a dashed rail on the left, one dot per day, cards to the right. */
+  .timeline {
+    @apply relative;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.3125rem;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    border-left: 2px dashed color-mix(in oklab, var(--foreground) 18%, transparent);
+  }
+  .tl-day {
+    @apply relative grid gap-4 pb-10 pl-8 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-8;
+  }
+  .tl-day:last-child {
+    @apply pb-0;
+  }
+  .tl-day::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--foreground) 30%, white);
+    box-shadow: 0 0 0 3px var(--background);
+  }
+  .tl-day[data-today="true"]::before {
+    background: var(--gold);
+  }
+  .tl-date {
+    @apply md:sticky md:top-24 md:self-start;
+  }
+  .tl-date .tl-weekday {
+    @apply text-lg font-semibold leading-tight;
+  }
+  .tl-date .tl-sub {
+    @apply text-sm text-muted-foreground;
+  }
   /* Campus map (CampusMap.tsx). Leaflet's own CSS is loaded with the map. */
-  .campus-map { z-index: 0; font-family: inherit; }
-  .map-pin-wrap { background: none; border: none; }
-  .map-pin { @apply flex size-[34px] items-center justify-center rounded-full border-[3px] border-card bg-primary text-sm font-bold text-primary-foreground; box-shadow: 0 2px 6px rgb(0 0 0 / 0.35); }
-  .map-pin-wrap:focus-visible .map-pin { outline: 3px solid var(--ring); outline-offset: 2px; }
-  .map-popup-title { @apply mb-1 font-display text-base font-bold; margin: 0 0 0.35rem !important; }
-  .map-popup ul { @apply space-y-1.5; margin: 0; padding: 0; list-style: none; }
-  .map-popup a { @apply block font-semibold text-primary underline underline-offset-2; }
-  .map-popup span { @apply block text-xs text-muted-foreground; }
-  .map-row[data-on="true"] { @apply border-primary; box-shadow: 0 0 0 1px var(--primary); }
-  .btn-ghost { @apply inline-flex items-center gap-1.5 rounded-lg border border-input px-2.5 py-1.5 text-sm font-medium hover:bg-muted; }
-  .btn-ghost[aria-pressed="true"] { @apply border-primary text-primary; }
-  .btn-solid { @apply inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90; }
-  .field { @apply w-full rounded-lg border border-input bg-background px-3 py-2.5; }
-  .nav-link { @apply rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground; }
-  .nav-link[data-status="active"] { @apply bg-muted text-foreground; }
+  .campus-map {
+    z-index: 0;
+    font-family: inherit;
+  }
+  .map-pin-wrap {
+    background: none;
+    border: none;
+  }
+  .map-pin {
+    @apply flex size-[34px] items-center justify-center rounded-full border-[3px] border-card bg-primary text-sm font-bold text-primary-foreground;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.35);
+  }
+  .map-pin-wrap:focus-visible .map-pin {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+  }
+  .map-popup-title {
+    @apply mb-1 font-display text-base font-semibold;
+    margin: 0 0 0.35rem !important;
+  }
+  .map-popup ul {
+    @apply space-y-1.5;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .map-popup a {
+    @apply block font-semibold text-link underline underline-offset-2;
+  }
+  .map-popup span {
+    @apply block text-xs text-muted-foreground;
+  }
+  .map-row[data-on="true"] {
+    @apply border-accent;
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-input bg-white/70 px-3 py-1.5 text-sm font-medium whitespace-nowrap hover:bg-muted;
+  }
+  .btn-ghost[aria-pressed="true"] {
+    @apply border-accent bg-sky-soft text-foreground;
+  }
+  .btn-quiet {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2 py-1.5 text-sm whitespace-nowrap text-muted-foreground hover:text-foreground;
+  }
+  .btn-solid {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold whitespace-nowrap text-primary-foreground hover:opacity-90;
+  }
+  .field {
+    @apply w-full rounded-xl border border-input bg-white/80 px-3 py-2.5;
+  }
+  .nav-link {
+    @apply rounded-full px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground;
+  }
+  .nav-link[data-status="active"] {
+    @apply bg-muted text-foreground;
+  }
 }

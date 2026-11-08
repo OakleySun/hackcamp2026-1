@@ -1,24 +1,24 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { toast } from "sonner";
 import {
-  Bookmark,
-  BookmarkCheck,
-  Calendar,
+  CalendarCheck,
+  CalendarPlus,
   ExternalLink,
   EyeOff,
   Gift,
   MapPin,
   Pizza,
-  Ticket,
   Trophy,
   Users,
 } from "lucide-react";
+import { ClubAvatar, DateLeaf } from "@/components/Bits";
 import {
   formatAudience,
   formatPrice,
-  formatWhen,
   isRestricted,
   perkLabel,
   topicLabel,
+  type CampusEvent,
   type Perk,
   type Ranked,
 } from "@/lib/events";
@@ -46,95 +46,133 @@ export function PerkTags({ perks }: { perks: Perk[] }) {
   );
 }
 
-export function EventCard({
+/** Time only ("5:00 p.m."), or the full date when the card sits outside a day group. */
+export const formatTime = (e: CampusEvent) =>
+  !e.date
+    ? "Date TBD"
+    : e.timeKnown
+      ? new Date(e.start).toLocaleTimeString("en-CA", { hour: "numeric", minute: "2-digit" })
+      : "Time TBD";
+
+/** Toggle an event in the calendar and confirm it with a toast. Shared by cards and the event page. */
+export function useCalendarToggle() {
+  const navigate = useNavigate();
+  return (e: CampusEvent, saved: boolean, toggle: () => void) => {
+    toggle();
+    if (saved) {
+      toast("Removed from your calendar", {
+        description: e.title,
+        action: { label: "Undo", onClick: toggle },
+      });
+    } else {
+      toast("Added to your calendar", {
+        description: e.title,
+        action: { label: "View calendar", onClick: () => void navigate({ to: "/calendar" }) },
+      });
+    }
+  };
+}
+
+export function CalendarButton({
+  event,
+  saved,
+  onToggle,
+  compact = false,
+}: {
+  event: CampusEvent;
+  saved: boolean;
+  onToggle: () => void;
+  compact?: boolean;
+}) {
+  const toggle = useCalendarToggle();
+  return (
+    <button
+      type="button"
+      className={saved ? "btn-ghost" : "btn-solid"}
+      aria-pressed={saved}
+      onClick={() => toggle(event, saved, onToggle)}
+    >
+      {saved ? (
+        <CalendarCheck className="size-4" aria-hidden />
+      ) : (
+        <CalendarPlus className="size-4" aria-hidden />
+      )}
+      {saved ? "In calendar" : compact ? "Add" : "Add to calendar"}
+    </button>
+  );
+}
+
+/**
+ * One event in a day-grouped timeline, laid out as a Luma list row: time, title, host and venue
+ * on the left; the calendar action on the right. The day heading carries the date.
+ */
+export function EventRow({
   item,
   saved,
   onSave,
   onHide,
-  variant = "default",
 }: {
   item: Ranked;
   saved: boolean;
   onSave: () => void;
   onHide: () => void;
-  variant?: "default" | "stretch" | undefined;
 }) {
   const e = item.event;
-  const action = e.rsvpUrl ?? e.sources[0]?.url;
+  const source = e.rsvpUrl ?? e.sources[0]?.url;
+  const hide = () => {
+    onHide();
+    toast("Event hidden", { description: e.title, action: { label: "Undo", onClick: onHide } });
+  };
+  const facts = [
+    formatPrice(e),
+    e.beginner === true ? "Beginner-friendly" : null,
+    ...e.perks.map(perkLabel),
+    isRestricted(e) ? `For ${formatAudience(e)}` : null,
+  ].filter((f): f is string => !!f);
   return (
-    <article className="event-card" data-variant={variant}>
-      <div className="flex items-center justify-between gap-2">
-        <div className="flex flex-wrap gap-2">
-          {e.topics.map((t) => (
-            <span key={t} className="status-chip" data-topic={t}>
-              {topicLabel(t)}
+    <article className="event-row">
+      <div className="min-w-0">
+        <p className="flex items-center gap-2 text-sm text-muted-foreground">
+          <span className="font-medium text-foreground">{formatTime(e)}</span>
+          {item.reason && <span className="reason-tag">{item.reason}</span>}
+          {e.changes.length > 0 && (
+            <span className="status-chip" data-kind="updated">
+              Updated
             </span>
-          ))}
-        </div>
-        {e.changes.length > 0 && (
-          <span className="status-chip" data-kind="updated">
-            Updated
-          </span>
-        )}
-      </div>
-      <h3 className="mt-3 font-display text-xl leading-tight">
-        <Link
-          to="/events/$id"
-          params={{ id: e.id }}
-          className="hover:underline focus-visible:underline"
-        >
-          {e.title}
-        </Link>
-      </h3>
-      <p className="mt-1 text-sm text-muted-foreground">{e.club}</p>
-      <ul className="mt-3 space-y-1 text-sm">
-        <li className="flex gap-2">
-          <Calendar className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-          {formatWhen(e)}
-        </li>
-        <li className="flex gap-2">
-          <MapPin className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-          {e.venue ?? "Venue not listed"}
-        </li>
-        <li className="flex gap-2">
-          <Ticket className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-          {formatPrice(e)}
-        </li>
-        {isRestricted(e) && (
-          <li className="flex gap-2 font-medium">
-            <Users className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-            <span>
-              <span className="sr-only">Who can go: </span>
-              {formatAudience(e)}
-            </span>
-          </li>
-        )}
-      </ul>
-      {e.perks.length > 0 && (
-        <div className="mt-3">
-          <PerkTags perks={e.perks} />
-        </div>
-      )}
-      <p className="reason mt-3">{item.reason}</p>
-      <div className="mt-auto flex flex-wrap gap-2 pt-4">
-        <button type="button" className="btn-ghost" aria-pressed={saved} onClick={onSave}>
-          {saved ? (
-            <BookmarkCheck className="size-4" aria-hidden />
-          ) : (
-            <Bookmark className="size-4" aria-hidden />
           )}
-          {saved ? "Saved" : "Save"}
-        </button>
-        <button type="button" className="btn-ghost" onClick={onHide}>
-          <EyeOff className="size-4" aria-hidden />
-          Not interested
-        </button>
-        {action && (
-          <a href={action} target="_blank" rel="noreferrer" className="btn-solid ml-auto">
-            {e.rsvpUrl ? "RSVP" : "View source"}
-            <ExternalLink className="size-3.5" aria-hidden />
+        </p>
+        <h3 className="mt-1 text-lg leading-snug font-semibold">
+          <Link to="/events/$id" params={{ id: e.id }} className="hover:underline">
+            {e.title}
+          </Link>
+        </h3>
+        <p className="mt-1.5 flex items-center gap-2 text-sm text-muted-foreground">
+          <ClubAvatar name={e.club} />
+          <span className="truncate">{e.club}</span>
+        </p>
+        <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
+          <MapPin className="size-3.5 shrink-0" aria-hidden />
+          {e.venue ?? "Venue not listed"}
+        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{facts.join(", ")}</p>
+      </div>
+      <div className="flex flex-row flex-wrap items-center gap-1 sm:flex-col sm:flex-nowrap sm:items-end">
+        <CalendarButton event={e} saved={saved} onToggle={onSave} compact />
+        {source && (
+          <a href={source} target="_blank" rel="noreferrer" className="btn-quiet text-xs">
+            {e.rsvpUrl ? "RSVP" : "Source"}
+            <ExternalLink className="size-3" aria-hidden />
           </a>
         )}
+        <button
+          type="button"
+          className="btn-quiet text-xs"
+          aria-label={`Not interested in ${e.title}`}
+          onClick={hide}
+        >
+          <EyeOff className="size-3.5" aria-hidden />
+          Not interested
+        </button>
       </div>
     </article>
   );

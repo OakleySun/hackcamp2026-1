@@ -8,11 +8,12 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider, useAuth } from "../lib/auth";
+import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -24,10 +25,7 @@ function NotFoundComponent() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
+          <Link to="/" className="btn-solid">
             Go home
           </Link>
         </div>
@@ -58,14 +56,11 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="btn-solid"
           >
             Try again
           </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
+          <a href="/" className="btn-ghost">
             Go home
           </a>
         </div>
@@ -101,7 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
@@ -141,10 +136,34 @@ function AccountNav() {
       <Link to="/login" className="nav-link">
         Log in
       </Link>
-      <Link to="/signup" className="btn-solid py-1.5">
+      <Link to="/signup" className="btn-pill">
         Sign up
       </Link>
     </>
+  );
+}
+
+/** Vancouver time, as Luma shows the local time in its header. Rendered after mount to avoid SSR drift. */
+function Clock() {
+  const [now, setNow] = useState<string | null>(null);
+  useEffect(() => {
+    const tick = () =>
+      setNow(
+        new Date().toLocaleTimeString("en-CA", {
+          hour: "numeric",
+          minute: "2-digit",
+          timeZone: "America/Vancouver",
+        }),
+      );
+    tick();
+    const id = setInterval(tick, 30_000);
+    return () => clearInterval(id);
+  }, []);
+  if (!now) return null;
+  return (
+    <span className="hidden text-sm text-white/60 md:inline" aria-label="Current time in Vancouver">
+      {now} <span className="text-white/40">Vancouver</span>
+    </span>
   );
 }
 
@@ -155,10 +174,18 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <header className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
-          <nav className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-4 py-3 md:px-8">
-            <Link to="/" className="mr-auto font-display text-xl font-bold">
-              quad<span className="text-accent">.</span>
+        <header className="site-header sticky top-0 z-10">
+          <nav className="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 px-4 py-2.5 md:px-8">
+            <Link
+              to="/"
+              className="mr-auto flex items-baseline gap-2 text-xl font-semibold tracking-tight"
+            >
+              <span>
+                quad<span className="text-gold">.</span>
+              </span>
+              <span className="hidden text-xs font-medium text-white/50 sm:inline">
+                UBC Vancouver
+              </span>
             </Link>
             <Link to="/" className="nav-link" activeOptions={{ exact: true, includeSearch: false }}>
               Discover
@@ -172,10 +199,25 @@ function RootComponent() {
             <Link to="/pulse" className="nav-link">
               Pulse
             </Link>
+            <Link to="/calendar" className="nav-link">
+              Calendar
+            </Link>
+            <span className="mx-2 hidden h-5 w-px bg-white/20 md:inline" aria-hidden />
+            <Clock />
             <AccountNav />
           </nav>
         </header>
         <Outlet />
+        <footer className="mx-auto max-w-6xl px-4 pb-10 pt-6 text-sm text-muted-foreground md:px-8">
+          <div className="border-t border-border pt-6">
+            <p>
+              Quad is a student project at UBC Vancouver, on the traditional, ancestral and unceded
+              territory of the xʷməθkʷəy̓əm (Musqueam) people. Not affiliated with the University of
+              British Columbia or the AMS.
+            </p>
+          </div>
+        </footer>
+        <Toaster />
       </AuthProvider>
     </QueryClientProvider>
   );
