@@ -76,6 +76,11 @@ VENUES = ["AMS Student Nest room 2306", "the Nest 2nd floor", "Nest Great Hall",
           "SRC multipurpose room", "War Memorial Gym", "Mem Gym court 2", "Chan Centre lobby",
           "Life Building 2201", "Koerner Library lower level", "Forestry building atrium",
           "Somewhere on Main Mall", None]
+# Venues no simple name match can place: the AI has to reason about campus knowledge.
+# Each is used at least once. "online (Zoom)" and "Somewhere on Main Mall" should come back as NONE.
+AI_VENUES = ["the big Engineering building, room 1202", "comp sci building basement", "business school atrium",
+             "main library, lower level", "student rec gym, court B", "the sustainability building atrium",
+             "earth sci building lobby", "the concert hall on Crescent Rd", "online (Zoom)"]
 PARAPHRASE = {"Intro to Git": "Git Workshop for Beginners", "Resume Clinic": "Get Your Resume Reviewed!",
               "Watercolour Night": "Paint & Chill: Watercolour Evening", "Bouldering 101": "Beginner Climbing Session",
               "Board Game Night": "Games Night @ the Nest", "Hack Night": "Weekly Hack Session",
@@ -116,12 +121,14 @@ for d in range(14):
         beginner = rng.choices([True, False, None], [0.55, 0.2, 0.25])[0]
         source = rng.choices(["src-direct-form", "src-demo-feed", "src-maritime-feed"], [0.5, 0.2, 0.3])[0]
         rev2 = rng.choice(VENUES[:-2]) if rng.random() < 0.06 else None
-        eid, snap = add_event(club, title, desc, topics, day, rng.choice(TIMES), rng.choice(VENUES),
+        venue = AI_VENUES.pop(0) if AI_VENUES and rng.random() < 0.5 else rng.choice(VENUES)
+        eid, snap = add_event(club, title, desc, topics, day, rng.choice(TIMES), venue,
                               cost, beginner, source, rev2)
-        # ~10%: the same occurrence re-posted elsewhere with a different title -> AI judge should merge
+        # ~10%: the same occurrence re-posted elsewhere with a different title -> AI judge should merge.
+        # A re-post keeps the same time and place, but sometimes writes the venue differently.
         if title in PARAPHRASE and rng.random() < 0.35:
             add_event(club, PARAPHRASE[title], desc, topics, day, snap["local_start"],
-                      rng.choice(VENUES), cost, beginner, "src-maritime-feed")
+                      snap["venue"], cost, beginner, "src-maritime-feed")
 
 # Same day, different sessions -> AI judge should keep them separate
 day = today + timedelta(days=2)
@@ -129,11 +136,25 @@ add_event("demo-climbing", "Bouldering 101 (Morning Session)", "Shoes provided."
           "SRC multipurpose room", "free", True)
 add_event("demo-climbing", "Bouldering 101 (Evening Session)", "Shoes provided.", ["sports"], day, "18:00",
           "SRC multipurpose room", "free", True)
+# Any AI venue not used by the random loop still gets one event, so every hard case is tested
+for i, v in enumerate(AI_VENUES):
+    club = rng.choice(list(CLUBS))
+    title, desc, topics = rng.choice(TEMPLATES[club])
+    add_event(club, title, desc, topics, today + timedelta(days=3 + i), "17:30", v, "free", True)
 print(f"{len(revisions)} revisions, {len(announcements)} announcements, {n} events")
 
 # COMMAND ----------
 
-now = datetime.utcnow()
+from datetime import timezone
+now = datetime.now(timezone.utc).replace(tzinfo=None)
+
+# Demo events change when this notebook is edited, so clear the AI caches for them.
+# The pipeline then re-places venues and re-judges duplicate pairs on its next run.
+GOLD = f"{CATALOG}.{PREFIX}_gold"
+if spark.catalog.tableExists(f"{GOLD}.match_judgements"):
+    spark.sql(f"DELETE FROM {GOLD}.match_judgements WHERE event_a LIKE 'demo-%' OR event_b LIKE 'demo-%'")
+if spark.catalog.tableExists(f"{SILVER}.venue_resolution"):
+    spark.sql(f"DELETE FROM {SILVER}.venue_resolution")
 rev_df = spark.createDataFrame([r + (now,) for r in revisions],
     "event_id STRING, revision INT, club_id STRING, snapshot_json STRING, changed_json STRING, reason STRING, "
     "created_at TIMESTAMP, ingested_at TIMESTAMP")
