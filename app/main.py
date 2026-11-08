@@ -10,10 +10,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import AwareDatetime
 
-from . import accounts, config, db, enrichment, oauth, pulse, service, topic_enrichment
+from . import accounts, config, db, enrichment, genie, oauth, pulse, service, topic_enrichment
 from .extract import ExtractionUnavailable
-from .models import (ClaimRequest, Credentials, GoogleRedeem, IntakeRequest, ProfileRequest, ResolveRequest,
-                     ResultRequest, SubscribeRequest)
+from .models import (ClaimRequest, Credentials, GenieQuestion, GoogleRedeem, IntakeRequest, ProfileRequest,
+                     ResolveRequest, ResultRequest, SubscribeRequest)
 
 MAX_IMAGE_BYTES = 5 * 1024 * 1024
 
@@ -189,6 +189,11 @@ def events(topic: str | None = None, free: bool = False, beginner: bool = False,
 @app.get("/api/pulse")
 def campus_pulse(conn=Depends(get_conn)):
     return pulse.public_snapshot(conn)
+
+
+@app.post("/api/genie")
+def ask_genie(body: GenieQuestion, conn=Depends(get_conn)):
+    return genie.recommend(conn, body.question)
 
 
 @app.get("/api/events/{event_id}")

@@ -218,6 +218,30 @@ export type PulseSnapshot = {
 
 export const fetchPulse = () => request<PulseSnapshot>("/api/pulse");
 
+export type GenieResult = {
+  engine: "genie" | "quad";
+  requested: number;
+  matched: number;
+  events: {
+    event_id: string;
+    title: string;
+    club_name: string;
+    local_date: string;
+    local_start: string | null;
+    venue: string | null;
+    cost_status: Cost;
+    beginner_friendly: number | null;
+    source_url: string;
+  }[];
+};
+
+export const askGenie = (question: string) =>
+  request<GenieResult>("/api/genie", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question }),
+  });
+
 export async function fetchEvent(id: string): Promise<CampusEvent | null> {
   try {
     return toCampusEvent(await request<ApiEvent>(`/api/events/${encodeURIComponent(id)}`));

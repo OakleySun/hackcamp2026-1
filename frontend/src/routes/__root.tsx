@@ -172,6 +172,9 @@ function RootComponent() {
             <Link to="/pulse" className="nav-link">
               Pulse
             </Link>
+            <Link to="/genie" className="nav-link">
+              Ask Genie
+            </Link>
             <AccountNav />
           </nav>
         </header>

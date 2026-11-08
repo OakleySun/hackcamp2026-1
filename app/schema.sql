@@ -145,6 +145,11 @@ CREATE TABLE IF NOT EXISTS databricks_pulse (
   payload      TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS genie_usage (
+  day      TEXT PRIMARY KEY,
+  requests INTEGER NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS deliveries (
   delivery_id    TEXT PRIMARY KEY,
   subscriber_id  TEXT NOT NULL REFERENCES subscriptions(subscriber_id),

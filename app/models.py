@@ -1,7 +1,7 @@
 from datetime import date
-from typing import Literal, Optional
+from typing import Annotated, Literal, Optional
 
-from pydantic import AwareDatetime, BaseModel, Field
+from pydantic import AwareDatetime, BaseModel, Field, StringConstraints
 
 
 class Evidence(BaseModel):
@@ -34,6 +34,10 @@ class IntakeRequest(BaseModel):
     observed_at: Optional[AwareDatetime] = None
     caption: Optional[str] = None
     candidate: Optional[Candidate] = None
+
+
+class GenieQuestion(BaseModel):
+    question: Annotated[str, StringConstraints(strip_whitespace=True, min_length=2, max_length=280)]
 
 
 class SubscribeRequest(BaseModel):
