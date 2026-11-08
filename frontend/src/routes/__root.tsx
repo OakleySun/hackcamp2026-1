@@ -190,9 +190,6 @@ function RootComponent() {
             <Link to="/" className="nav-link" activeOptions={{ exact: true, includeSearch: false }}>
               Discover
             </Link>
-            <Link to="/explore" className="nav-link">
-              Explore
-            </Link>
             <Link to="/map" className="nav-link">
               Map
             </Link>

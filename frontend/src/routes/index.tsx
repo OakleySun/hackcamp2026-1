@@ -7,11 +7,13 @@ import { fetchEvents } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import { groupByDay } from "@/lib/calendar";
 import {
+  PERKS,
   TOPICS,
   addDays,
   explore,
   forYou,
   hasAny,
+  hasPerks,
   topicLabel,
   vancouverToday,
   type CampusEvent,
@@ -52,7 +54,7 @@ function Discover() {
   const search = Route.useSearch();
   const navigate = useNavigate({ from: "/" });
   const { user } = useAuth();
-  const { topics: chosen } = parseFilters(search);
+  const { topics: chosen, perks } = parseFilters(search);
   const [saved, toggleSaved] = useLocalSet("quad:saved");
   const [hidden, toggleHidden] = useLocalSet("quad:hidden");
 
@@ -70,7 +72,9 @@ function Discover() {
     for (const r of explore(pool, active, []).slice(0, 1))
       reasons.set(r.event.id, "Something different");
   }
-  const shown = active.length ? pool.filter((e) => hasAny(e, active) || reasons.has(e.id)) : pool;
+  const shown = (
+    active.length ? pool.filter((e) => hasAny(e, active) || reasons.has(e.id)) : pool
+  ).filter((e) => hasPerks(e, perks));
   const groups = groupByDay(shown);
   const clubs = new Set(pool.map((e) => e.club)).size;
   const thisWeek = pool.filter((e) => e.date && e.date <= addDays(today, 7)).length;
@@ -132,6 +136,29 @@ function Discover() {
             );
           })}
         </div>
+        <div className="mt-2 flex flex-wrap items-center gap-2" aria-label="Filter by perks">
+          {PERKS.map((p) => {
+            const on = perks.includes(p.key);
+            return (
+              <button
+                key={p.key}
+                type="button"
+                aria-pressed={on}
+                className="chip"
+                data-on={on}
+                onClick={() =>
+                  void navigate({
+                    search: { ...search, perks: toggleIn(search.perks, p.key) },
+                    replace: true,
+                  })
+                }
+              >
+                {on && <Check className="size-3.5" aria-hidden />}
+                {p.label}
+              </button>
+            );
+          })}
+        </div>
         <p className="mt-3 text-sm text-muted-foreground">
           {chosen.length
             ? "Showing these topics only."
@@ -169,16 +196,20 @@ function Discover() {
           <Timeline groups={groups} renderEvent={row} today={today} />
         ) : (
           <div className="panel text-center">
-            <h2 className="text-xl">Nothing coming up in {active.map(topicLabel).join(", ")}</h2>
+            <h2 className="text-xl">
+              {active.length
+                ? `Nothing coming up in ${active.map(topicLabel).join(", ")}`
+                : "Nothing matches those filters"}
+            </h2>
             <p className="mt-2 text-muted-foreground">
-              Try another topic, or see everything on campus.
+              Try another topic or perk, or see everything on campus.
             </p>
             <button
               type="button"
               className="btn-solid mt-5"
               onClick={() => void navigate({ search: {}, replace: true })}
             >
-              Show all topics
+              Show everything
             </button>
           </div>
         )}

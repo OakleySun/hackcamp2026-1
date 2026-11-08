@@ -312,7 +312,7 @@
   }
   /* Timeline row: content left, actions right; stacks on narrow screens. */
   .event-row {
-    @apply glass flex flex-col gap-3 rounded-2xl p-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:p-5;
+    @apply glass flex w-full min-w-0 flex-col gap-3 rounded-2xl p-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:p-5;
   }
   /* Luma-style timeline: a dashed rail on the left, one dot per day, cards to the right. */
   .timeline {

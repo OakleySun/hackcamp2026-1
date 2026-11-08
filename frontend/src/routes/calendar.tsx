@@ -147,8 +147,8 @@ function CalendarPage() {
             Press <strong>Add to calendar</strong> on any event and it will show up here, ready to
             sync to the calendar you already use.
           </p>
-          <Link to="/explore" className="btn-solid mt-6">
-            Explore events
+          <Link to="/" className="btn-solid mt-6">
+            Browse events
           </Link>
         </div>
       ) : (

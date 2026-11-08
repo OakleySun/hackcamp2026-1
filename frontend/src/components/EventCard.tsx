@@ -9,9 +9,8 @@ import {
   MapPin,
   Pizza,
   Trophy,
-  Users,
 } from "lucide-react";
-import { ClubAvatar, DateLeaf } from "@/components/Bits";
+import { ClubAvatar } from "@/components/Bits";
 import {
   formatAudience,
   formatPrice,
@@ -131,8 +130,8 @@ export function EventRow({
   ].filter((f): f is string => !!f);
   return (
     <article className="event-row">
-      <div className="min-w-0">
-        <p className="flex items-center gap-2 text-sm text-muted-foreground">
+      <div className="min-w-0 flex-1">
+        <p className="flex h-6 items-center gap-2 text-sm text-muted-foreground">
           <span className="font-medium text-foreground">{formatTime(e)}</span>
           {item.reason && <span className="reason-tag">{item.reason}</span>}
           {e.changes.length > 0 && (
@@ -140,33 +139,49 @@ export function EventRow({
               Updated
             </span>
           )}
+          <button
+            type="button"
+            className="btn-quiet -mr-2 ml-auto text-xs sm:hidden"
+            aria-label={`Not interested in ${e.title}`}
+            onClick={hide}
+          >
+            <EyeOff className="size-3.5" aria-hidden />
+            Not interested
+          </button>
         </p>
-        <h3 className="mt-1 text-lg leading-snug font-semibold">
+        <h3 className="mt-1 line-clamp-2 min-h-[3.1rem] text-lg leading-snug font-semibold">
           <Link to="/events/$id" params={{ id: e.id }} className="hover:underline">
             {e.title}
           </Link>
         </h3>
-        <p className="mt-1.5 flex items-center gap-2 text-sm text-muted-foreground">
+        <p className="mt-1.5 flex h-6 items-center gap-2 text-sm text-muted-foreground">
           <ClubAvatar name={e.club} />
           <span className="truncate">{e.club}</span>
         </p>
-        <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
+        <p className="mt-1 flex h-5 items-center gap-1.5 text-sm text-muted-foreground">
           <MapPin className="size-3.5 shrink-0" aria-hidden />
-          {e.venue ?? "Venue not listed"}
+          <span className="truncate">{e.venue ?? "Venue not listed"}</span>
         </p>
-        <p className="mt-2 text-sm text-muted-foreground">{facts.join(", ")}</p>
+        <p className="mt-2 h-5 truncate text-sm text-muted-foreground" title={facts.join(", ")}>
+          {facts.join(", ")}
+        </p>
       </div>
-      <div className="flex flex-row flex-wrap items-center gap-1 sm:flex-col sm:flex-nowrap sm:items-end">
+      <div className="flex flex-row flex-wrap items-center gap-1 sm:w-36 sm:shrink-0 sm:flex-col sm:flex-nowrap sm:items-end">
         <CalendarButton event={e} saved={saved} onToggle={onSave} compact />
-        {source && (
-          <a href={source} target="_blank" rel="noreferrer" className="btn-quiet text-xs">
-            {e.rsvpUrl ? "RSVP" : "Source"}
-            <ExternalLink className="size-3" aria-hidden />
-          </a>
-        )}
+        <a
+          href={source}
+          target="_blank"
+          rel="noreferrer"
+          className={`btn-quiet text-xs ${source ? "" : "invisible"}`}
+          aria-hidden={!source}
+          tabIndex={source ? undefined : -1}
+        >
+          {e.rsvpUrl ? "RSVP" : "Source"}
+          <ExternalLink className="size-3" aria-hidden />
+        </a>
         <button
           type="button"
-          className="btn-quiet text-xs"
+          className="btn-quiet hidden text-xs sm:inline-flex"
           aria-label={`Not interested in ${e.title}`}
           onClick={hide}
         >

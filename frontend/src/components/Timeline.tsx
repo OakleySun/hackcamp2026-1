@@ -23,9 +23,11 @@ export function Timeline({
               <p className="tl-weekday">{date || label}</p>
               {date && <p className="tl-sub">{label}</p>}
             </div>
-            <ul className="grid gap-3">
+            <ul className="grid min-w-0 gap-3">
               {events.map((e) => (
-                <li key={e.id}>{renderEvent(e)}</li>
+                <li key={e.id} className="min-w-0">
+                  {renderEvent(e)}
+                </li>
               ))}
             </ul>
           </li>

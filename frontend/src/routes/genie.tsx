@@ -138,7 +138,7 @@ function Results({ result }: { result: GenieResult }) {
         <h2 className="font-display text-xl">No matching upcoming events</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           Try a broader topic or a wider date range. You can also{" "}
-          <Link to="/explore" className="underline">
+          <Link to="/" className="underline">
             browse the full event list
           </Link>
           .
