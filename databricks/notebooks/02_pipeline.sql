@@ -38,7 +38,11 @@ SELECT
   NULLIF(trim(s.venue), '') AS venue_text,
   coalesce(s.cost_status, 'unknown') AS cost_status,
   CAST(s.beginner_friendly AS BOOLEAN) AS beginner_friendly,
-  coalesce(s.topics, array()) AS topics,
+  -- Missing topics are filled by ai_classify, constrained to the app's 8 topic slugs
+  CASE WHEN size(coalesce(s.topics, array())) > 0 THEN s.topics
+       ELSE array(ai_classify(concat(s.title, '. ', coalesce(s.description, '')),
+                  array('tech', 'career', 'academic', 'arts', 'sports', 'culture', 'social', 'wellness')))
+  END AS topics,
   s.rsvp_url
 FROM (
   SELECT *, from_json(snapshot_json,
@@ -46,14 +50,6 @@ FROM (
      cost_status STRING, beginner_friendly INT, topics ARRAY<STRING>, rsvp_url STRING') AS s
   FROM latest
 );
-
--- COMMAND ----------
-
--- Fill missing topics with ai_classify, constrained to the app's 8 topic slugs
-UPDATE club_alerts_silver.events
-SET topics = array(ai_classify(concat(title, '. ', coalesce(description, '')),
-                               array('tech', 'career', 'academic', 'arts', 'sports', 'culture', 'social', 'wellness')))
-WHERE size(topics) = 0;
 
 -- COMMAND ----------
 
