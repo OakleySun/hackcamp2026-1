@@ -46,6 +46,46 @@ def start_utc(date: str | None, start: str | None) -> str | None:
     return local.astimezone(timezone.utc).isoformat(timespec="minutes")
 
 
+# ---------------------------------------------------------------- Databricks export queue
+# These only INSERT local rows; they must be called inside the caller's write transaction so the
+# change and its export record commit together. The network call happens later in scripts/dbx_worker.py.
+
+def _enqueue(conn, kind: str, aggregate: str, version: int, payload: dict) -> None:
+    conn.execute("INSERT OR IGNORE INTO dbx_queue (op_key, kind, aggregate, version, payload, created_at, "
+                 "next_retry_at) VALUES (?,?,?,?,?,?,?)",
+                 (f"{kind}:{aggregate}:{version}", kind, aggregate, version, json.dumps(payload), now(), now()))
+
+
+def enqueue_announcement(conn, aid: str) -> None:
+    a = conn.execute("SELECT * FROM source_announcements WHERE announcement_id=?", (aid,)).fetchone()
+    version = conn.execute("SELECT COALESCE(MAX(version), 0) + 1 FROM dbx_queue "
+                           "WHERE kind='announcement' AND aggregate=?", (aid,)).fetchone()[0]
+    _enqueue(conn, "announcement", aid, version, {
+        "announcement_id": aid, "source_id": a["source_id"], "external_id": a["external_id"],
+        "source_url": a["source_url"], "detected_at": a["detected_at"], "status": a["status"],
+        "caption": a["caption"], "candidate_json": a["candidate"], "evidence_json": a["evidence"],
+        "event_id": a["event_id"], "projection_version": version})
+
+
+def enqueue_revision(conn, event_id: str, revision: int) -> None:
+    r = conn.execute("SELECT r.*, e.club_id FROM event_revisions r JOIN events e USING (event_id) "
+                     "WHERE r.event_id=? AND r.revision=?", (event_id, revision)).fetchone()
+    _enqueue(conn, "revision", event_id, revision, {
+        "event_id": event_id, "revision": revision, "club_id": r["club_id"], "snapshot_json": r["snapshot"],
+        "changed_json": r["changed"], "reason": r["reason"], "created_at": r["created_at"]})
+
+
+def dbx_status(conn) -> dict:
+    from . import databricks
+    counts = {r["state"]: r["n"] for r in conn.execute("SELECT state, COUNT(*) AS n FROM dbx_queue GROUP BY state")}
+    last = conn.execute("SELECT MAX(done_at) FROM dbx_queue WHERE state='done'").fetchone()[0]
+    error = conn.execute("SELECT last_error FROM dbx_queue WHERE last_error IS NOT NULL AND state<>'done' "
+                         "ORDER BY created_at DESC LIMIT 1").fetchone()
+    return {"enabled": databricks.configured(), "pending": counts.get("pending", 0) + counts.get("claimed", 0),
+            "failed": counts.get("failed", 0), "exported": counts.get("done", 0), "last_export_at": last,
+            "last_error": error[0] if error else None}
+
+
 # ---------------------------------------------------------------- events
 
 def get_event(conn, event_id: str) -> dict | None:
@@ -87,6 +127,8 @@ def create_event(conn, club_id: str, c: Candidate, ann_id: str, reviewer: str | 
     if eligible(ev):
         conn.execute("INSERT INTO event_outbox (event_id, revision, kind) VALUES (?,?,?)", (eid, 1, "new_event"))
     conn.execute("UPDATE source_announcements SET event_id=?, status='linked' WHERE announcement_id=?", (eid, ann_id))
+    enqueue_revision(conn, eid, 1)
+    enqueue_announcement(conn, ann_id)
     return eid
 
 
@@ -108,6 +150,7 @@ def update_event(conn, event_id: str, changes: dict, reason: str, approver: str 
     conn.execute("INSERT INTO event_revisions (event_id, revision, snapshot, changed, reason, approver, created_at) "
                  "VALUES (?,?,?,?,?,?,?)",
                  (event_id, rev, json.dumps(snapshot(updated)), json.dumps(changed), reason, approver, now()))
+    enqueue_revision(conn, event_id, rev)
     material = any(f in CORRECTION_FIELDS and changed[f]["old"] is not None for f in changed)
     if material and _has_outbox(conn, event_id, "new_event"):
         conn.execute("INSERT INTO event_outbox (event_id, revision, kind) VALUES (?,?,?)",
@@ -147,13 +190,16 @@ def intake(conn, source_id: str, external_id: str, caption: str | None, source_u
     h = content_hash(caption, image)
     detected_at = observed_at.astimezone(timezone.utc).isoformat(timespec="seconds") if observed_at else now()
     with conn:
-        conn.execute("INSERT INTO source_announcements (announcement_id, source_id, external_id, source_url, "
-                     "content_hash, caption, detected_at) VALUES (?,?,?,?,?,?,?) "
-                     "ON CONFLICT(source_id, external_id, content_hash) DO NOTHING",
-                     (new_id("ann"), source_id, external_id, source_url, h, caption, detected_at))
+        inserted = conn.execute(
+            "INSERT INTO source_announcements (announcement_id, source_id, external_id, source_url, "
+            "content_hash, caption, detected_at) VALUES (?,?,?,?,?,?,?) "
+            "ON CONFLICT(source_id, external_id, content_hash) DO NOTHING",
+            (new_id("ann"), source_id, external_id, source_url, h, caption, detected_at)).rowcount
         row = conn.execute("SELECT announcement_id, status, event_id FROM source_announcements "
                            "WHERE source_id=? AND external_id=? AND content_hash=?",
                            (source_id, external_id, h)).fetchone()
+        if inserted:  # keep the raw source version even if processing later fails
+            enqueue_announcement(conn, row["announcement_id"])
         conn.execute("UPDATE sources SET last_success_at=? WHERE source_id=?", (now(), source_id))
     if row["status"] != "pending":
         return _duplicate(row)
@@ -174,6 +220,7 @@ def _review(conn, aid: str, reason: str, candidate_ids=None, diff=None, expected
     conn.execute("INSERT INTO review_items (review_id, announcement_id, candidate_ids, expected_revision, "
                  "field_diff, created_at) VALUES (?,?,?,?,?,?)",
                  (rid, aid, json.dumps(candidate_ids or []), expected_revision, json.dumps(diff or {}), now()))
+    enqueue_announcement(conn, aid)
     return {"announcement_id": aid, "state": "review", "review_id": rid, "reason": reason, "duplicate": False}
 
 
@@ -241,6 +288,7 @@ def process(conn, aid: str, image: bytes | None = None, mime: str | None = None)
             conn.execute("UPDATE source_announcements SET event_id=?, status='linked' WHERE announcement_id=?",
                          (eid, aid))
             update_event(conn, eid, d["fills"], "corroboration from additional source")
+            enqueue_announcement(conn, aid)
             outcome = "linked"
     return {"announcement_id": aid, "state": "linked", "event_id": eid, "outcome": outcome, "duplicate": False}
 
@@ -260,6 +308,7 @@ def resolve_review(conn, review_id: str, decision: str, expected_revision: int |
     with conn:
         if decision == "reject":
             conn.execute("UPDATE source_announcements SET status='rejected' WHERE announcement_id=?", (ann["announcement_id"],))
+            enqueue_announcement(conn, ann["announcement_id"])
             state = "rejected"
         elif decision in ("link", "confirm"):
             if not ids or cand is None:
@@ -275,6 +324,7 @@ def resolve_review(conn, review_id: str, decision: str, expected_revision: int |
             result["revision"] = update_event(conn, ev["event_id"], changes, f"review {decision}", reviewer)
             conn.execute("UPDATE source_announcements SET event_id=?, status='linked' WHERE announcement_id=?",
                          (ev["event_id"], ann["announcement_id"]))
+            enqueue_announcement(conn, ann["announcement_id"])
             result["event_id"] = ev["event_id"]
             state = "confirmed" if decision == "confirm" else "linked"
         else:  # separate

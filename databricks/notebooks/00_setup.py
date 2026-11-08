@@ -42,10 +42,19 @@ CREATE TABLE IF NOT EXISTS {BRONZE}.source_announcements (
   status          STRING COMMENT 'pending | linked | review | rejected',
   caption         STRING COMMENT 'Raw caption / flyer text',
   candidate_json  STRING COMMENT 'Fields extracted by Gemini',
+  evidence_json   STRING COMMENT 'Short source excerpts supporting each extracted field',
   event_id        STRING,
+  projection_version BIGINT COMMENT 'Increases with each app update; older retries never overwrite newer rows',
   ingested_at     TIMESTAMP
 ) COMMENT 'Raw club announcements as received by UBC Club Alerts'
 """)
+
+# Upgrade tables created by an earlier version of this notebook
+existing = {f.name for f in spark.table(f"{BRONZE}.source_announcements").schema.fields}
+for col, typ in (("evidence_json", "STRING"), ("projection_version", "BIGINT")):
+    if col not in existing:
+        spark.sql(f"ALTER TABLE {BRONZE}.source_announcements ADD COLUMNS ({col} {typ})")
+        print("Added column", col)
 
 spark.sql(f"""
 CREATE TABLE IF NOT EXISTS {BRONZE}.event_revisions (

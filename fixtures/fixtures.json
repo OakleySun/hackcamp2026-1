@@ -6,7 +6,8 @@
   },
   "sources": [
     {"source_id": "src-direct-form", "club_id": "demo-campus-coding-club", "kind": "direct_form"},
-    {"source_id": "src-demo-feed",   "club_id": "demo-campus-coding-club", "kind": "demo_feed"}
+    {"source_id": "src-demo-feed",   "club_id": "demo-campus-coding-club", "kind": "demo_feed"},
+    {"source_id": "src-maritime-feed", "club_id": "demo-campus-coding-club", "kind": "maritime_feed"}
   ],
   "announcements": {
     "A": {
