@@ -172,3 +172,29 @@ CREATE TABLE IF NOT EXISTS sessions (
   created_at  TEXT NOT NULL,
   expires_at  TEXT NOT NULL
 );
+
+-- Sign in with Google (app/oauth.py). One row per external account, linked to a Quad user.
+CREATE TABLE IF NOT EXISTS user_identities (
+  provider    TEXT NOT NULL,                   -- google
+  subject     TEXT NOT NULL,                   -- the provider's stable user ID ("sub")
+  user_id     TEXT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+  email       TEXT,
+  created_at  TEXT NOT NULL,
+  PRIMARY KEY (provider, subject)
+);
+
+-- Short-lived, single-use OAuth handshake rows. Only hashes of the random values are stored.
+CREATE TABLE IF NOT EXISTS oauth_states (
+  state_hash  TEXT PRIMARY KEY,
+  verifier    TEXT NOT NULL,                   -- PKCE code_verifier, sent to Google only at token exchange
+  nonce       TEXT NOT NULL,
+  next_path   TEXT NOT NULL,
+  expires_at  TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS login_codes (
+  code_hash   TEXT PRIMARY KEY,                -- handed to the website once, traded for a session
+  user_id     TEXT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+  created     INTEGER NOT NULL,                -- 1 = this sign-in created the account
+  expires_at  TEXT NOT NULL
+);

@@ -50,6 +50,10 @@ class ResolveRequest(BaseModel):
     reviewer: str = "team"
 
 
+class GoogleRedeem(BaseModel):
+    code: str = Field(min_length=20, max_length=200)
+
+
 class ClaimRequest(BaseModel):
     subscriber_id: str
     event_id: str
