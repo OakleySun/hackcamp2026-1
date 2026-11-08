@@ -100,6 +100,25 @@ CREATE TABLE IF NOT EXISTS event_outbox (
   PRIMARY KEY (event_id, revision, kind)
 );
 
+-- Durable export queue to Databricks Bronze. Rows are written in the SAME transaction as the local
+-- change they describe; scripts/dbx_worker.py sends them later, outside any request or transaction.
+CREATE TABLE IF NOT EXISTS dbx_queue (
+  op_key        TEXT PRIMARY KEY,                -- announcement:<id>:<version> | revision:<event_id>:<revision>
+  kind          TEXT NOT NULL CHECK (kind IN ('announcement','revision')),
+  aggregate     TEXT NOT NULL,                   -- announcement_id or event_id
+  version       INTEGER NOT NULL,                -- projection_version or revision
+  payload       TEXT NOT NULL,                   -- JSON parameters for the MERGE
+  state         TEXT NOT NULL DEFAULT 'pending', -- pending | claimed | done | failed
+  attempts      INTEGER NOT NULL DEFAULT 0,
+  claim_expires TEXT,
+  next_retry_at TEXT,
+  statement_id  TEXT,                            -- in-flight Databricks statement to reconcile after a timeout
+  last_error    TEXT,
+  created_at    TEXT NOT NULL,
+  done_at       TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_dbx_queue_state ON dbx_queue(state, next_retry_at);
+
 CREATE TABLE IF NOT EXISTS deliveries (
   delivery_id    TEXT PRIMARY KEY,
   subscriber_id  TEXT NOT NULL REFERENCES subscriptions(subscriber_id),

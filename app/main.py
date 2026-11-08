@@ -237,6 +237,12 @@ def dispatch(event_id: str, revision: int, kind: str, conn=Depends(get_conn)):
     return _run(service.dispatch_info, conn, event_id, revision, kind)
 
 
+@app.get("/internal/databricks/status", dependencies=[Depends(require_workflow)])
+def databricks_status(conn=Depends(get_conn)):
+    """Is the Databricks export enabled, how much is waiting, and when did it last succeed."""
+    return service.dbx_status(conn)
+
+
 @app.get("/internal/outbox/pending", dependencies=[Depends(require_workflow)])
 def outbox_pending(conn=Depends(get_conn)):
     """Rows the retry loop should re-dispatch, oldest revision first so a correction never passes its original."""
