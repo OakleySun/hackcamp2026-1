@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as GenieRouteImport } from './routes/genie'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as PulseRouteImport } from './routes/pulse'
@@ -40,6 +41,11 @@ const CalendarRoute = CalendarRouteImport.update({
 const ExploreRoute = ExploreRouteImport.update({
   id: '/explore',
   path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GenieRoute = GenieRouteImport.update({
+  id: '/genie',
+  path: '/genie',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/account': typeof AccountRoute
   '/calendar': typeof CalendarRoute
   '/explore': typeof ExploreRoute
+  '/genie': typeof GenieRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
   '/pulse': typeof PulseRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/account': typeof AccountRoute
   '/calendar': typeof CalendarRoute
   '/explore': typeof ExploreRoute
+  '/genie': typeof GenieRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
   '/pulse': typeof PulseRoute
@@ -117,6 +125,7 @@ export interface FileRoutesById {
   '/account': typeof AccountRoute
   '/calendar': typeof CalendarRoute
   '/explore': typeof ExploreRoute
+  '/genie': typeof GenieRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
   '/pulse': typeof PulseRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/calendar'
     | '/explore'
+    | '/genie'
     | '/login'
     | '/map'
     | '/pulse'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/calendar'
     | '/explore'
+    | '/genie'
     | '/login'
     | '/map'
     | '/pulse'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/calendar'
     | '/explore'
+    | '/genie'
     | '/login'
     | '/map'
     | '/pulse'
@@ -176,6 +188,7 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRoute
   CalendarRoute: typeof CalendarRoute
   ExploreRoute: typeof ExploreRoute
+  GenieRoute: typeof GenieRoute
   LoginRoute: typeof LoginRoute
   MapRoute: typeof MapRoute
   PulseRoute: typeof PulseRoute
@@ -214,6 +227,13 @@ declare module '@tanstack/react-router' {
       path: '/explore'
       fullPath: '/explore'
       preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/genie': {
+      id: '/genie'
+      path: '/genie'
+      fullPath: '/genie'
+      preLoaderRoute: typeof GenieRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -280,6 +300,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccountRoute: AccountRoute,
   CalendarRoute: CalendarRoute,
   ExploreRoute: ExploreRoute,
+  GenieRoute: GenieRoute,
   LoginRoute: LoginRoute,
   MapRoute: MapRoute,
   PulseRoute: PulseRoute,
