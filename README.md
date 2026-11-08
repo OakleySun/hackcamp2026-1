@@ -91,6 +91,8 @@ Show Explore alongside a terminal. The audience will see **Intro to Git** appear
 
 **Presenter line:** “We announced the workshop, then corrected the room. Students can use the link they already have and see what changed.”
 
+For the scheduled n8n demo, use the [campus notification workflow](n8n/README.md). It can preview a Vancouver morning digest and a one-hour reminder, then deliver a sample through Gmail or ntfy after those channels are connected.
+
 ## What to add next
 
 These are the open items from the [original build plan](ubc-club-alerts.md) and the [Databricks plan](databricks-plan.md). Start with the first two for a demo that uses the existing event feed.

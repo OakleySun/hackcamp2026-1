@@ -1,0 +1,631 @@
+{
+  "name": "Quad · Morning digest and one-hour reminders",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0,10,20 8 * * *"
+            }
+          ]
+        }
+      },
+      "id": "6a8ae36c-24fe-4a82-af1f-3477e0268bd9",
+      "name": "8 AM digest",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "*/10 * * * *"
+            }
+          ]
+        }
+      },
+      "id": "f6337b1d-e8af-4868-a89a-0d292f9ecbe1",
+      "name": "Check starts every 10 minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b2094db8-d077-44e0-a54e-b3fb9d24b14a",
+      "name": "Preview both alerts",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { mode: 'digest' } }];"
+      },
+      "id": "0118926d-5f03-4c12-ab20-8548588ad8a9",
+      "name": "Select morning digest",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        235,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { mode: 'reminder' } }];"
+      },
+      "id": "b03ea23d-e45e-4c57-ac5d-cde5817be8e8",
+      "name": "Select one-hour reminders",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        235,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Set mode to 'test' for a single sample alert to the configured test recipient.\nconst mode = 'preview';\nreturn [{ json: { mode } }];"
+      },
+      "id": "66d7ca0d-b264-4f97-a3e7-4085380daafd",
+      "name": "Select preview or test",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        235,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Add only recipients who opted in. Keep recipient details in the workspace.\nconst recipients = [\n  // { id: 'presenter', email: '', phoneTopic: '', digest: true, reminder: true, topics: [] },\n];\nconst enabled = false;\nconst emailEnabled = false;\nconst phoneEnabled = false;\nconst testRecipientId = 'presenter';\nconst { mode } = $input.first().json;\nconst optedIn = recipients.map((recipient) => ({\n  ...recipient,\n  email: emailEnabled ? recipient.email : '',\n  phoneTopic: phoneEnabled ? recipient.phoneTopic : '',\n})).filter((recipient) => recipient.id && (recipient.email || recipient.phoneTopic));\nconst selected = mode === 'test' ? optedIn.filter((recipient) => recipient.id === testRecipientId).slice(0, 1) : optedIn;\nif (mode === 'test' && selected.length === 0) throw new Error('Set the test recipient and enable at least one channel in Quad settings.');\nif (mode !== 'preview' && mode !== 'test' && (!enabled || selected.length === 0)) return [];\nreturn [{ json: {\n  mode,\n  now: new Date().toISOString(),\n  quadUrl: 'https://4774d003-8629-4264-90d6-274ad60172ce.mtm.sh',\n  phoneUrl: 'https://ntfy.sh',\n  recipients: selected,\n} }];"
+      },
+      "id": "308ba648-6d9a-48bb-adbc-a83b4a46a5da",
+      "name": "Quad settings",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "Quad notification receipts",
+        "columns": {
+          "column": [
+            {
+              "name": "deliveryKey",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      },
+      "id": "50aa534c-26cb-476f-a7e5-c0f5686c4388",
+      "name": "Open delivery ledger",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        730,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Quad settings').first().json.quadUrl + '/api/events' }}",
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "200f2265-57d7-4a89-a97c-9bac6f5b0f94",
+      "name": "Fetch Quad events",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Quad notification receipts"
+        },
+        "returnAll": true
+      },
+      "id": "42f6d3df-fe60-4e6c-aa78-d01b94639b49",
+      "name": "Read sent receipts",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1190,
+        0
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// This code runs in the n8n \"Prepare notifications\" node.\nconst settings = $('Quad settings').first().json;\nconst feed = $('Fetch Quad events').first().json.body;\nif (!Array.isArray(feed)) throw new Error('Quad did not return an event list');\n\nconst now = new Date(settings.now);\nconst zone = 'America/Vancouver';\nconst vancouverDate = new Intl.DateTimeFormat('en-CA', {\n  timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit',\n});\nconst vancouverTime = new Intl.DateTimeFormat('en-CA', {\n  timeZone: zone, hour: 'numeric', minute: '2-digit', hour12: true,\n});\nconst dateKey = (date) => {\n  const parts = Object.fromEntries(vancouverDate.formatToParts(date).map(({ type, value }) => [type, value]));\n  return `${parts.year}-${parts.month}-${parts.day}`;\n};\nconst today = dateKey(now);\nconst preview = settings.mode === 'preview';\nconst test = settings.mode === 'test';\nconst sent = new Set($input.all().map(({ json }) => json.deliveryKey).filter(Boolean));\nconst seen = new Set();\nconst events = feed.filter((event) => event.state === 'published' && event.event_id && event.title);\nconst messages = [];\n\nfunction start(event) {\n  return event.start_utc ? Date.parse(event.start_utc) : NaN;\n}\n\nfunction eventLine(event) {\n  const time = Number.isFinite(start(event)) ? vancouverTime.format(start(event)) : 'Time TBD';\n  const venue = event.venue || 'Venue TBD';\n  return `${time} — ${event.title} · ${venue}`;\n}\n\nfunction queue(recipient, kind, key, subject, text, phoneText, link) {\n  if (preview) {\n    messages.push({ json: { channel: 'preview', kind, subject, text, phoneText, link } });\n    return;\n  }\n  const destinations = [\n    ...(recipient.email ? [{ channel: 'email', address: recipient.email }] : []),\n    ...(recipient.phoneTopic ? [{ channel: 'phone', address: recipient.phoneTopic }] : []),\n  ];\n  for (const { channel, address } of destinations) {\n    const deliveryKey = JSON.stringify([kind, recipient.id, channel, key]);\n    if (seen.has(deliveryKey) || sent.has(deliveryKey)) continue;\n    seen.add(deliveryKey);\n    messages.push({ json: { channel, address, kind, subject, text, phoneText, link, deliveryKey } });\n  }\n}\n\nfunction digest(recipient, matches) {\n  const todayEvents = matches.filter((event) => event.local_date === today)\n    .sort((a, b) => (a.local_start || '99:99').localeCompare(b.local_start || '99:99'));\n  if (todayEvents.length === 0 && !preview) return;\n  const count = todayEvents.length;\n  const label = `${count} ${count === 1 ? 'event' : 'events'}`;\n  const link = `${settings.quadUrl}/explore`;\n  const lines = todayEvents.map(eventLine);\n  const emailLines = todayEvents.flatMap((event) => [eventLine(event), `${settings.quadUrl}/events/${encodeURIComponent(event.event_id)}`, '']);\n  const phoneLines = lines.slice(0, 4);\n  if (count > 4) phoneLines.push(`+${count - 4} more in Quad`);\n  queue(recipient, 'digest', today, `Today on Quad · ${label}`,\n    [`${label} today in Vancouver.`, '', ...emailLines, `Browse Quad: ${link}`].join('\\n'),\n    [label + ' today', ...phoneLines].join('\\n').slice(0, 900), link);\n}\n\nfunction reminders(recipient, matches) {\n  for (const event of matches) {\n    const startsAt = start(event);\n    const minutes = Math.ceil((startsAt - now.getTime()) / 60_000);\n    if (!(minutes > 0 && minutes <= 60)) continue;\n    const link = event.previewOnly ? `${settings.quadUrl}/explore` : `${settings.quadUrl}/events/${encodeURIComponent(event.event_id)}`;\n    const title = `${event.previewOnly ? '[Demo] ' : ''}${event.title} starts in ${minutes} min`;\n    const details = `${event.title} starts at ${vancouverTime.format(startsAt)} Vancouver time. ${event.venue || 'Venue TBD'}.`;\n    const key = test ? ['demo', today] : [event.event_id, startsAt];\n    queue(recipient, 'reminder', key, title, `${details}\\n\\nOpen in Quad: ${link}`, details, link);\n  }\n}\n\nconst sample = {\n  event_id: 'demo-reminder', title: 'Intro to Git', venue: 'Demo Hall 204', previewOnly: true,\n  start_utc: new Date(now.getTime() + 57 * 60_000).toISOString(),\n};\nif (preview) {\n  digest({}, events);\n  reminders({}, [sample]);\n} else if (test) {\n  reminders(settings.recipients[0], [sample]);\n} else {\n  for (const recipient of settings.recipients) {\n    const matches = events.filter((event) => !recipient.topics?.length ||\n      recipient.topics.some((topic) => event.topics?.includes(topic)));\n    if (settings.mode === 'digest' && recipient.digest === true) digest(recipient, matches);\n    if (settings.mode === 'reminder' && recipient.reminder === true) reminders(recipient, matches);\n  }\n}\nreturn messages;\n"
+      },
+      "id": "7aac0803-f0af-4016-a545-ee685a4fbb98",
+      "name": "Prepare notifications",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1420,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9e6d9af1-7810-4fd0-af29-44834190028a",
+              "leftValue": "={{ $json.channel }}",
+              "rightValue": "preview",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "823ecad0-3aeb-4b7b-af0c-9e5031bcd27c",
+      "name": "Preview only?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1650,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ca5f6d2a-3f4e-4939-a254-e53a11a4d74b",
+      "name": "Inspect the digest and reminder",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1910,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cf1609df-98eb-4ca7-a3d4-a74ab21cf1f7",
+              "leftValue": "={{ $json.channel }}",
+              "rightValue": "email",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "12320b0b-37c1-4cc9-a266-f5b2ecf630ea",
+      "name": "Email or phone?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1910,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "={{ $json.address }}",
+        "subject": "={{ $json.subject }}",
+        "emailType": "text",
+        "message": "={{ $json.text }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "1bb734c1-944b-4ee1-a605-9e80c3698641",
+      "name": "Send email via Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        2170,
+        -40
+      ],
+      "disabled": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Quad settings').first().json.phoneUrl }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ topic: $json.address, title: $json.subject, message: $json.phoneText, click: $json.link, tags: [$json.kind === \"reminder\" ? \"alarm_clock\" : \"calendar\"] }) }}",
+        "options": {
+          "timeout": 12000,
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "9710f426-2771-4995-a817-73ca3e090d7c",
+      "name": "Push to phone via ntfy",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2170,
+        200
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {},
+      "id": "5e4d818f-2eeb-4877-a260-edc6cd9d0344",
+      "name": "Inspect delivery failures",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2430,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().flatMap(({ json }, index) => {\n  if (!(json.id && json.threadId)) return [];\n  const { deliveryKey } = $('Prepare notifications').itemMatching(index).json;\n  return [{ json: { deliveryKey }, pairedItem: { item: index } }];\n});"
+      },
+      "id": "fb3d4b45-d9e8-46f1-ab49-ddc97b7239b0",
+      "name": "Check Gmail accepted the email",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2430,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().flatMap(({ json }, index) => {\n  if (!(json.event === \"message\" && json.id)) return [];\n  const { deliveryKey } = $('Prepare notifications').itemMatching(index).json;\n  return [{ json: { deliveryKey }, pairedItem: { item: index } }];\n});"
+      },
+      "id": "95159401-ba9b-4f5c-a7f4-064b6f6cd9f2",
+      "name": "Check ntfy accepted the push",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2430,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "insert",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Quad notification receipts"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "deliveryKey": "={{ $json.deliveryKey }}"
+          },
+          "schema": [
+            {
+              "id": "deliveryKey",
+              "displayName": "deliveryKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4ca35fb3-6e56-4696-ad8e-b6ccb058d94e",
+      "name": "Record successful delivery",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        2690,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Quad campus notifications\nRun **Preview both alerts** to see the morning digest and a sample reminder.\nThe schedule uses Vancouver time. The delivery ledger prevents repeat alerts on later runs.\nSet opted-in recipients in **Quad settings**. Connect your account and enable **Send email via Gmail** before turning on the email channel.",
+        "width": 520,
+        "height": 260,
+        "color": 4
+      },
+      "id": "f930cf26-7f39-43e8-ac7c-3218498929f5",
+      "name": "Quad notification guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        -520
+      ]
+    }
+  ],
+  "connections": {
+    "8 AM digest": {
+      "main": [
+        [
+          {
+            "node": "Select morning digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check starts every 10 minutes": {
+      "main": [
+        [
+          {
+            "node": "Select one-hour reminders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preview both alerts": {
+      "main": [
+        [
+          {
+            "node": "Select preview or test",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select morning digest": {
+      "main": [
+        [
+          {
+            "node": "Quad settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select one-hour reminders": {
+      "main": [
+        [
+          {
+            "node": "Quad settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select preview or test": {
+      "main": [
+        [
+          {
+            "node": "Quad settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quad settings": {
+      "main": [
+        [
+          {
+            "node": "Open delivery ledger",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Open delivery ledger": {
+      "main": [
+        [
+          {
+            "node": "Fetch Quad events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Quad events": {
+      "main": [
+        [
+          {
+            "node": "Read sent receipts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read sent receipts": {
+      "main": [
+        [
+          {
+            "node": "Prepare notifications",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare notifications": {
+      "main": [
+        [
+          {
+            "node": "Preview only?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preview only?": {
+      "main": [
+        [
+          {
+            "node": "Inspect the digest and reminder",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Email or phone?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email or phone?": {
+      "main": [
+        [
+          {
+            "node": "Send email via Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Push to phone via ntfy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email via Gmail": {
+      "main": [
+        [
+          {
+            "node": "Check Gmail accepted the email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Inspect delivery failures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Push to phone via ntfy": {
+      "main": [
+        [
+          {
+            "node": "Check ntfy accepted the push",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Inspect delivery failures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Gmail accepted the email": {
+      "main": [
+        [
+          {
+            "node": "Record successful delivery",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check ntfy accepted the push": {
+      "main": [
+        [
+          {
+            "node": "Record successful delivery",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "timezone": "America/Vancouver",
+    "executionOrder": "v1",
+    "executionTimeout": 120
+  },
+  "pinData": {}
+}
